@@ -1,0 +1,209 @@
+---
+version: '2.0'
+
+metadata:
+  # Version 接口版本
+  apiVersion: '2015-11-01'
+  endpointPrefix: iam
+  globalEndpoint: iam.api.ksyun.com
+  jsonVersion: '1.1'
+  serviceFullName: Identity and Access Management
+  signatureVersion: v4
+  targetPrefix: iam
+  # query/ec2/json/query-json/rest-json/rest-xml
+  protocol: json
+
+documentation: ''
+
+operations:
+
+  CreateUser:
+    name: CreateUser
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: CreateUserRequest
+    output:
+      shape: UserResponse
+
+  DeleteUser:
+    name: DeleteUser
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: DeleteUserRequest
+
+
+  UpdateUser:
+    name: UpdateUser
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: IamUser
+
+  ListUsers:
+    name: ListUsers
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: Empty
+    output:
+      shape: ListUserResponse
+
+  GetUser:
+    name: GetUser
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: Id
+      documentation: ""
+    output:
+      shape: IamUser
+      documentation: ""
+    documentation: ""
+
+shapes:
+
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: int
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""
+
+  ListUserResponse:
+    type: structure
+    members:
+      ListUserResult:
+        shape: ListUserResult
+      ResponseMetadata:
+        shape: ResponseMetadata
+
+  UserResponse:
+    type: structure
+    members:
+      User:
+        shape: IamUser
+      ErrNo:
+        shape: Int
+      ErrMsg:
+        shape: Message
+
+  CreateUserRequest:
+    type: structure
+    required:
+    - UserName
+    members:
+      UserName:
+        shape: NonEmptyString
+        documentation: ""
+      RealName:
+        shape: NonEmptyString
+        documentation: ""
+      NeedKey:
+        shape: Bool
+        documentation: ""
+
+  DeleteUserRequest:
+    type: structure
+    members:
+      UserName:
+        shape: DeleteUserList
+
+  DeleteUserList:
+    type: list
+    member:
+      shape: UserOnlyName
+
+  UserOnlyName:
+    type: structure
+    required:
+    - UserName
+    members:
+      UserName:
+        shape: NonEmptyString
+        documentation: ""
+
+  IamUser:
+    type: structure
+    required:
+    - UserName
+    - Id
+    members:
+      UserId:
+        shape: Id
+        documentation: ""
+      UserName:
+        shape: NonEmptyString
+        documentation: ""
+      RealName:
+        shape: NonEmptyString
+        documentation: ""
+      Path:
+        shape: NonEmptyString
+        documentation: ""
+      Krn:
+        shape: NonEmptyString
+        documentation: ""
+      CreateDate:
+        shape: DataTime
+        documentation: ""
+
+  ListUserResult:
+    type: structure
+    members:
+      Users:
+        shape: IamUserDict
+        documentation: ""
+      IsTruncated:
+        shape: Bool
+        documentation: ""
+
+  ResponseMetadata:
+    type: structure
+    members:
+      RequestId:
+        shape: Id
+        documentation: ""
+
+  IamUserDict:
+    type: structure
+    members:
+      member:
+        shape: IamUserList
+
+  IamUserList:
+    type: list
+    member:
+      shape: IamUser

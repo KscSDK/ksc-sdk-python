@@ -1,0 +1,87 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2010-05-25'
+  endpointPrefix: monitor
+  jsonVersion: '1.1'
+  serviceFullName: KSC Monitor Service
+  signatureVersion: v4
+  targetPrefix: monitor
+  protocol: query-json
+
+operations:
+  ListMetrics:
+    name: ListMetrics
+    http:
+      method: GET
+    input:
+      shape: Metric
+  GetMetricStatistics:
+    name: GetMetricStatistics
+    http:
+      method: GET
+    input:
+      shape: Project
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: int
+  String:
+    type: string
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  Metric:
+    type: structure
+    members:
+      InstanceID:
+        shape: String
+        documentation: ""
+      Namespace:
+        shape: String
+        documentation: ""
+      PageIndex:
+        shape: String
+        documentation: ""
+      PageSize:
+        shape: String
+        documentation: ""
+      MetricName:
+        shape: String
+
+  Project:
+    type: structure
+    members:
+      InstanceID:
+        shape: String
+      MetricName:
+        shape: String
+      Namespace:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Period:
+        shape: String
+      Aggregate:
+        shape: String

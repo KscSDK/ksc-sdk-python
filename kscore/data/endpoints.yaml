@@ -1,0 +1,94 @@
+---
+version: 1
+partitions:
+# available zone
+- partition: ksyun-cn
+  partitionName: KS China
+  # iam.cn-beijing-6.[dnsSuffix]
+  dnsSuffix: api.ksyun.com
+  regionRegex: "^cn\\-\\w+\\-\\d+$"
+  defaults:
+    # eg: iam.cn-beijing-6.api.ksyun.com
+    hostname: "{service}.{region}.{dnsSuffix}"
+    protocols:
+    - http
+    - https
+    # signature aws v4
+    signatureVersions:
+    - v4
+  # regions with partition
+  regions:
+    ksc-global:
+      description: KSC partition-global endpoint
+
+    cn-shanghai-2:
+      description: China ShangHai (PengBoShi)
+
+    cn-beijing-6:
+      description: China Beijing (WuQing)
+
+    cn-beijing-5:
+      description: China Beijing (ZaoJunMiao)
+  # services
+  services:
+
+    kog:
+      defaults:
+        credentialScope:
+          service: kog
+      EndpointRegion: cn-beijing-6
+      partitionEndpoint: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+
+    iam:
+      defaults:
+        protocols:
+        - http
+        - https
+        credentialScope:
+          # eg: [iam].cn-beijing-6.api.ksyun.com
+          service: iam
+      # eg: iam.[cn-beijing-6].api.ksyun.com
+      partitionEndpoint: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          hostname: iam.api.ksyun.com
+
+    kec:
+      defaults:
+        credentialScope:
+          service: kec
+      EndpointRegion: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+        cn-shanghai-2:
+          protocols:
+          - http
+          - https
+    monitor:
+      defaults:
+        credentialScope:
+          service: monitor
+      EndpointRegion: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+        cn-shanghai-2:
+          protocols:
+          - http
+          - https
+        cn-beijing-5:
+          protocols:
+          - http
+          - https
+
+

@@ -1,0 +1,67 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: vpc 
+  jsonVersion: '1.1'
+  serviceFullName: vpc Service
+  signatureVersion: v4
+  targetPrefix: vpc 
+  protocol: query-json
+
+operations:
+  RegionList:
+    name: RegionList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  DescribeVpcs:
+    name: DescribeVpcs
+    http:
+      method: GET
+    input:
+      shape: Empty
+  DescribeNetworkInterfaces:
+    name: DescribeNetworkInterfaces
+    http:
+      method: GET
+  DescribeSubnetAvailableAddresses:
+    name: DescribeSubnetAvailableAddresses
+    http:
+      method: GET
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: int
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""

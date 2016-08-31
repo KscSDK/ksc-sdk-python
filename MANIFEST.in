@@ -1,0 +1,8 @@
+include README.rst
+include LICENSE.txt
+include requirements.txt
+include kscore/vendored/requests/cacert.pem
+recursive-include kscore/data *.json *.yaml
+graft docs
+prune docs/build
+graft tests
