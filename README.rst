@@ -12,7 +12,7 @@ A low-level interface to a growing number of KSC Web Services. Reference from bo
 + pip 安装
     + pip install kscore
 + github 安装
-    + https://github.com/liuyichen/kscore 下载
+    + https://github.com/KscSDK/ksc-sdk-python 下载
     + python setup.py install
 
 ----------------
@@ -161,5 +161,4 @@ TESTS 测试
 Contact Information
 --------------------
 
-群   号: 367780788
-邮   箱: liuyc.mail@gmail.com
+邮   箱: ksc_sdk@kingsoft.com
