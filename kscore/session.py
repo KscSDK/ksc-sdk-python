@@ -75,27 +75,27 @@ class Session(object):
     #: found.
     SESSION_VARIABLES = {
         # logical:  config_file, env_var,        default_value, conversion_func
-        'profile': (None, ['AWS_DEFAULT_PROFILE', 'AWS_PROFILE'], None, None),
-        'region': ('region', 'AWS_DEFAULT_REGION', None, None),
-        'data_path': ('data_path', 'AWS_DATA_PATH', None, None),
-        'config_file': (None, 'AWS_CONFIG_FILE', '~/.ks/config', None),
-        'ca_bundle': ('ca_bundle', 'AWS_CA_BUNDLE', None, None),
+        'profile': (None, ['KS_DEFAULT_PROFILE', 'KS_PROFILE'], None, None),
+        'region': ('region', 'KS_DEFAULT_REGION', None, None),
+        'data_path': ('data_path', 'KS_DATA_PATH', None, None),
+        'config_file': (None, 'KS_CONFIG_FILE', '~/.ks/config', None),
+        'ca_bundle': ('ca_bundle', 'KS_CA_BUNDLE', None, None),
         'api_versions': ('api_versions', None, {}, None),
         'dynamic_loader': ("dynamic_loader", "KS_DYNAMIC_LOADER", "YAML", None),
         # This is the shared credentials file amongst sdks.
-        'credentials_file': (None, 'AWS_SHARED_CREDENTIALS_FILE',
-                             '~/.aws/credentials', None),
+        'credentials_file': (None, 'KS_SHARED_CREDENTIALS_FILE',
+                             '~/.ks/credentials', None),
 
         # These variables only exist in the config file.
 
         # This is the number of seconds until we time out a request to
         # the instance metadata service.
         'metadata_service_timeout': ('metadata_service_timeout',
-                                     'AWS_METADATA_SERVICE_TIMEOUT', 1, int),
+                                     'KS_METADATA_SERVICE_TIMEOUT', 1, int),
         # This is the number of request attempts we make until we give
         # up trying to retrieve data from the instance metadata service.
         'metadata_service_num_attempts': ('metadata_service_num_attempts',
-                                          'AWS_METADATA_SERVICE_NUM_ATTEMPTS', 1, int),
+                                          'KS_METADATA_SERVICE_NUM_ATTEMPTS', 1, int),
     }
 
     #: The default format string to use when configuring the kscore logger.

@@ -24,7 +24,7 @@ class TestGameTestService(unittest.TestCase):
         self.environ = os.environ.copy()
         self.patched = mock.patch('os.environ', self.environ)
         self.patched.start()
-        self.environ.pop('AWS_DATA_PATH', None)
+        self.environ.pop('KS_DATA_PATH', None)
 
         self.session = kscore.session.get_session()
         self.client = self.session.create_client("kog")

@@ -7,11 +7,11 @@ from setuptools import setup, find_packages
 
 AUTHOR = "liuyichen"
 
-AUTHOR_EMAIL = "liuyc.mail@gmail.com"
+AUTHOR_EMAIL = "ksc_sdk@kingsoft.com"
 
-KEYWORDS = "ksc sdk"
+KEYWORDS = "ksc-sdk-python"
 
-URL = "https://github.com/liuyichen/kscore"
+URL = "https://github.com/kscsdk/ksc-sdk-python/"
 
 requires = ['jmespath>=0.7.1,<1.0.0',
             'python-dateutil>=2.1,<3.0.0',
@@ -33,7 +33,7 @@ if sys.version_info[:2] == (2, 6):
 
 
 setup(
-    name='kscore',
+    name='ksc-sdk-python',
     version=kscore.__version__,
     description='Low-level, data-driven core of ksc.',
     long_description=open('README.rst').read(),
