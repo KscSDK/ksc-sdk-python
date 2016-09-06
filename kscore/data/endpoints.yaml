@@ -1,10 +1,8 @@
 ---
 version: 1
 partitions:
-# available zone
-- partition: ksyun-cn
-  partitionName: KS China
-  # iam.cn-beijing-6.[dnsSuffix]
+- partition: ksc
+  partitionName: KSC China
   dnsSuffix: api.ksyun.com
   regionRegex: "^cn\\-\\w+\\-\\d+$"
   defaults:
@@ -13,13 +11,11 @@ partitions:
     protocols:
     - http
     - https
-    # signature aws v4
     signatureVersions:
     - v4
-  # regions with partition
   regions:
-    ksc-global:
-      description: KSC partition-global endpoint
+    ksyun-global:
+      description: KSYUN partition-global endpoint
 
     cn-shanghai-2:
       description: China ShangHai (PengBoShi)
@@ -36,14 +32,16 @@ partitions:
       defaults:
         credentialScope:
           service: kog
-      EndpointRegion: cn-beijing-6
-      partitionEndpoint: cn-beijing-6
+      partitionEndpoint: ksyun-global
+      isRegionalized: false
       endpoints:
-        cn-beijing-6:
+        ksyun-global:
+          hostname: kog.cn-beijing-6.api.ksyun.com
           protocols:
           - http
           - https
-
+          credentialScope:
+            region: cn-beijing-6
     iam:
       defaults:
         protocols:

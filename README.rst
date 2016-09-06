@@ -1,61 +1,128 @@
-kscore
+SDK 使用文档
 ========
 
-A low-level interface to a growing number of KSC Web Services. Reference from botocore.
+A low-level interface to a growing number of KSC Web Services.
 
-`Documentation <http://www.ksyun.com/doc/search?word=API>`__
+
 
 ----------------
-安装
+Install 安装
 ----------------
 
 + pip 安装
     + pip install kscore
+
 + github 安装
-    + https://github.com/KscSDK/ksc-sdk-python 下载
-    + python setup.py install
+    + 通过 `GitHub <https://github.com/liuyichen/kscore>`__ 下载
+    + 进入`kscore`目录通过命令 python setup.py install 安装
 
 ----------------
-Credentials 配置
+Config 配置
 ----------------
 
-+ 参考examples内示例
++ 申请安全凭证：
 
-    + 配置文件: ``.kscore.cfg``
+    在第一次使用云API之前，用户首先需要在金山云控制台IAM服务申请安全凭证，安全凭证包括access_key_id和secret_access_key,access_key_id 是用于标识API调用者的身份，secret_access_key是用于加密签名字符串和服务器端验证签名字符串的密钥。secret_access_key 必须严格保管，避免泄露。
+
++ 通过文件配置及管理密钥，参考examples内示例：
 
     + 所在位置: '/etc/kscore.cfg' 或 './.kscore.cfg' 或 'C:\\kscore.cfg'
 
     + 注意: 使用相对路径时，需与运行目录保持一致。
 ::
 
-  [Credentials]
-  ks_access_key_id=AKLTyW1V6ZWET7aIvdCeIH1cwQ
-  ks_secret_access_key=OEoTK4IgEBIq3rlFsbpcNDs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ==
+    [Credentials]
+    ks_access_key_id=AKLTyW1V6ZWET7aIvdeeIH1cwQ
+    ks_secret_access_key=OEoTK4IgEBIq3rlFsbpcESs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ==
 
++ 或在程序运行时配置：
 
-+ 或运行时配置
-    + session.set_credentials(access_key_id, secret_access_key, session_token=None)
+::
+
+    from kscore.session import get_session
+    # 密钥
+    ACCESS_KEY_ID = "AKLTyW1V6ZWET7aIvdeeIH1cwQ"
+    SECRET_ACCESS_KEY = "OEoTK4IgEBIq3rlFsbpcESs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ=="
+
+    s = get_session()
+    client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
 
 ----------------
-Service 使用
+Service 服务
 ----------------
 
-+ create_client 方法
-    | service_name                服务，必须参数，例 iam
-    | region_name=None            大区，必须参数，全局服务可以为None
-    | api_version=None            API版本，默认使用最近版本
-    | use_ssl=True                是否使用HTTPS，如接口支持情况下，优先使用
-    | verify=None                 是否验证SSL证书
-    | endpoint_url=None
-    | ks_access_key_id=None
-    | ks_secret_access_key=None
-    | ks_session_token=None
++ 已支持大区 region_name
+
+    +-------------------+------------+
+    | region_name       | 大区       |
+    +===================+============+
+    | cn-beijing-5      | 北京5区    |
+    +-------------------+------------+
+    | cn-beijing-6      | 北京6区    |
+    +-------------------+------------+
+    | cn-shanghai-2     | 上海2区    |
+    +-------------------+------------+
+
++ 服务列表 service_name， `详情参考API手册 <http://docs.ksyun.com>`__
+
+    +-------------------+------------+
+    | service_name      | 服务名     |
+    +===================+============+
+    | iam               |            |
+    +-------------------+------------+
+    | eip               |            |
+    +-------------------+------------+
+    | kec               |            |
+    +-------------------+------------+
+    | slb               |            |
+    +-------------------+------------+
+    | vpc               |            |
+    +-------------------+------------+
+    | monitor           |            |
+    +-------------------+------------+
+
+----------------
+Method 方法
+----------------
+
++ 常用方法
+
+    + get_session
+
+    +---------------------------+---------------------------------------+
+    | 参数                       | 说明                                 |
+    +===========================+=======================================+
+    | env_vars                  | 环境变量                              |
+    +---------------------------+---------------------------------------+
+
+    + create_client
+
+    +---------------------------+---------------------------------------+
+    | 参数                       | 说明                                 |
+    +===========================+=======================================+
+    | service_name              | 服务，必须参数，例：iam               |
+    +---------------------------+---------------------------------------+
+    | region_name=None          | 大区，必须参数，全局服务可以为None    |
+    +---------------------------+---------------------------------------+
+    | api_version=None          | API 版本，默认使用最近版本            |
+    +---------------------------+---------------------------------------+
+    | use_ssl=True              | 是否使用HTTPS，优先使用               |
+    +---------------------------+---------------------------------------+
+    | verify=None               | 是否验证SSL证书                       |
+    +---------------------------+---------------------------------------+
+    | endpoint_url=None         |                                       |
+    +---------------------------+---------------------------------------+
+    | ks_access_key_id=None     |                                       |
+    +---------------------------+---------------------------------------+
+    | ks_secret_access_key=None |                                       |
+    +---------------------------+---------------------------------------+
+    | ks_session_token=None     |                                       |
+    +---------------------------+---------------------------------------+
 
 
-+ 已支持大区 region_name 参考data/endpoints.yaml
-    | cn-beijing-5      北京5区
-    | cn-beijing-6      北京6区
-    | cn-shanghai-2     上海2区
+----------------
+Examples 示例
+----------------
 
 + IAM
 
@@ -100,65 +167,8 @@ Service 使用
 
 + 更多
 
-::
-
-    欢迎补充
-
-------------------
-Data 更多服务配置
-------------------
-+ 参考 https://github.com/liuyichen/kscore/issues
-+ ENDPOINT 配置
-    + data\\endpoints.yaml
-
-::
-
-    version: n
-    partitions:
-    - partition:
-      ...
-      # REGION 列表
-      regions:
-        ...
-    # 服务列表
-    - service:
-      ...
-
-+ SERVICE 配置
-    + data\\[service]\\[version]\\service-2.yaml
-
-::
-
-    version: n
-    # API 配置
-    metadata:
-      ...
-    # 操作方法
-    operations:
-      ...
-    # 请求及返回的结构体
-    shapes:
-      ...
-
-+ 请参考IAM,KEC等配置
-
-    配置文件变更后请重新安装 python setup.py install
-
-
---------------------
-TESTS 测试
---------------------
-
-+ 基本接口测试
-
-\tests\acceptance> behave
-
-+ 各服务测试用例
-
-\tests>nosetests --with-xunit --cover-erase --with-coverage --cover-package kscore --cover-xml -v integration
-
 --------------------
 Contact Information
 --------------------
 
-邮   箱: ksc_sdk@kingsoft.com
+服 务 群 号: 580681922

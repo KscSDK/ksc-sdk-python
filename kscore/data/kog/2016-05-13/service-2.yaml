@@ -20,7 +20,7 @@ operations:
     name: AddProject
     http:
       method: POST
-      requestUri: /
+
     input:
       shape: Project
     output:
@@ -30,7 +30,6 @@ operations:
     name: DeleteProject
     http:
       method: DELETE
-      requestUri: /
     input:
       shape: InstanceId
 
@@ -38,7 +37,6 @@ operations:
     name: EditProject
     http:
       method: PUT
-      requestUri: /
     input:
       shape: Project
     output:
@@ -48,7 +46,6 @@ operations:
     name: GetProjectInfo
     http:
       method: GET
-      requestUri: /
     input:
       shape: Id
     output:
@@ -58,7 +55,6 @@ operations:
     name: GetProjectList
     http:
       method: GET
-      requestUri: /
     input:
       shape: Empty
       documentation: ""
