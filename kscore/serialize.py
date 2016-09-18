@@ -312,6 +312,29 @@ class ResJSONSerializer(QuerySerializer):
         return serialized
 
 
+class KCSSerializer(QuerySerializer):
+
+    def serialize_to_request(self, parameters, operation_model):
+        shape = operation_model.input_shape
+        serialized = self._create_default_request()
+        serialized['method'] = operation_model.http.get('method', self.DEFAULT_METHOD)
+        body_params = self.MAP_TYPE()
+        body_params['Action'] = operation_model.name
+        body_params['Version'] = operation_model.metadata['apiVersion']
+        if shape is not None:
+            self._serialize(body_params, parameters, shape)
+        else:
+            body_params.update(parameters)
+
+        serialized['query_string'] = body_params
+
+        serialized['body'] = {}
+
+        serialized['headers'].update(Accept='application/json')
+
+        return serialized
+
+
 class JSONSerializer(Serializer):
     TIMESTAMP_FORMAT = 'unixtimestamp'
 
@@ -664,6 +687,7 @@ class RestXMLSerializer(BaseRestSerializer):
 
 
 SERIALIZERS = {
+    'kcs': KCSSerializer,
     'ec2': EC2Serializer,
     'query': QuerySerializer,
     'query-json': ResJSONSerializer,
