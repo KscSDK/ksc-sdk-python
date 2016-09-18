@@ -783,6 +783,7 @@ PROTOCOL_PARSERS = {
     'ec2': EC2QueryParser,
     'query': QueryParser,
     'query-json': JSONParser,
+    'kcs': JSONParser,
     'json': JSONParser,
     'rest-json': RestJSONParser,
     'rest-xml': RestXMLParser,
