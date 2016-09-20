@@ -171,7 +171,10 @@ BUG FIXED 问题修正
 --------------------
 
 + CERTIFICATE_VERIFY_FAILED
-    `requests.exceptions.SSLError: [Errno 1] _ssl.c:504: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed`
+::
+
+    requests.exceptions.SSLError: [Errno 1] _ssl.c:504: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
  + 参考 `InsecurePlatformWarning <https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings>`__ 解决方法如下
 ::
 
