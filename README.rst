@@ -176,7 +176,7 @@ BUG FIXED 问题修正
 ::
 
     pip install requests[security]
-::
+
  + 如 `build/temp.linux-x86_64-2.7/_openssl.c:433:30: fatal error: openssl/opensslv.h: No such file or directory` 解决方法如下
 ::
 
