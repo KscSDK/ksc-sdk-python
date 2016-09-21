@@ -357,12 +357,16 @@ class JSONSerializer(Serializer):
         serialized = self._create_default_request()
         serialized['method'] = operation_model.http.get('method',
                                                         self.DEFAULT_METHOD)
+
+        serialized['query_string'] = self.MAP_TYPE(
+            Action=operation_model.name, Version=operation_model.metadata['apiVersion']
+        )
+
         serialized['headers'] = {
             'X-Amz-Target': target,
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Version': operation_model.metadata['apiVersion'],
-            'Action': operation_model.name
+
         }
         body = {}
         input_shape = operation_model.input_shape
@@ -434,7 +438,7 @@ class NotGetJsonSerializer(JSONSerializer):
     def _serialize_data(self, serialized, data):
         if serialized['method'].lower() == "get":
             serialized['body'] = {}
-            serialized['query_string'] = data
+            serialized['query_string'].update(data)
         else:
             serialized['body'] = json.dumps(data).encode(self.DEFAULT_ENCODING)
         return serialized
