@@ -88,5 +88,14 @@ partitions:
           protocols:
           - http
           - https
+    offline:
+      defaults:
+        credentialScope:
+          service: offline
+      EndpointRegion: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+            - http
 
 
