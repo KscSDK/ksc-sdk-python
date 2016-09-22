@@ -4,7 +4,6 @@ SDK 使用文档
 A low-level interface to a growing number of KSC Web Services.
 
 
-
 ----------------
 Install 安装
 ----------------
@@ -166,6 +165,30 @@ Examples 示例
         print json.dumps(m,sort_keys=True,indent=4)
 
 + 更多
+
+--------------------
+BUG FIXED 问题修正
+--------------------
+
++ CERTIFICATE_VERIFY_FAILED
+::
+
+    requests.exceptions.SSLError: [Errno 1] _ssl.c:504: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+ + 参考 `InsecurePlatformWarning <https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings>`__ 解决方法如下
+::
+
+    pip install requests[security]
+
+ + 如 `build/temp.linux-x86_64-2.7/_openssl.c:433:30: fatal error: openssl/opensslv.h: No such file or directory` 解决方法如下
+::
+
+    yum install openssl-devel
+
+ + 如 `build/temp.linux-x86_64-2.7/_openssl.c:12:24: fatal error: pyconfig.h: No such file or directory`解决方法如下
+::
+
+    yum install python-devel
 
 --------------------
 Contact Information
