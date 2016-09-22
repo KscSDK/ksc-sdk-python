@@ -785,6 +785,7 @@ PROTOCOL_PARSERS = {
     'query-json': JSONParser,
     'kcs': JSONParser,
     'json': JSONParser,
+    'json2': JSONParser,
     'rest-json': RestJSONParser,
     'rest-xml': RestXMLParser,
 }
