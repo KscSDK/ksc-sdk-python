@@ -16,24 +16,70 @@ operations:
       method: GET
     input:
       shape: Empty
-
+  CreateLoadBalancer:
+    name: CreateLoadBalancer
+    http:
+      method: GET
+  DeleteLoadBalancer:
+    name: DeleteLoadBalancer
+    http:
+      method: GET
+  ModifyLoadBalancer:
+    name: ModifyLoadBalancer
+    http:
+      method: GET    
+  DescribeLoadBalancers:
+    name: DescribeLoadBalancers
+    http:
+      method: GET    
+  CreateListeners:
+    name: CreateListeners
+    http:
+      method: GET    
+  ModifyListeners:
+    name: ModifyListeners
+    http:
+      method: GET
+  DeleteListeners:
+    name: DeleteListeners
+    http:
+      method: GET
   DescribeListeners:
     name: DescribeListeners
+    http:
+      method: GET
+  ConfigureHealthCheck:
+    name: ConfigureHealthCheck
+    http:
+      method: GET
+  ModifyHealthCheck:
+    name: ModifyHealthCheck
+    http:
+      method: GET
+  DeleteHealthCheck:
+    name: DeleteHealthCheck
+    http:
+      method: GET
+  DescribeHealthChecks:
+    name: DescribeHealthChecks
     http:
       method: GET
   RegisterInstancesWithListener:
     name: RegisterInstancesWithListener
     http:
       method: GET
-  DescribeInstancesWithListener:
-    name: DescribeInstancesWithListener
+  ModifyInstancesWithListener:
+    name: ModifyInstancesWithListener
     http:
       method: GET
   DeregisterInstancesFromListener:
     name: DeregisterInstancesFromListener
     http:
       method: GET
-
+  DescribeInstancesWithListener:
+    name: DescribeInstancesWithListener
+    http:
+      method: GET
 
 shapes:
   Id:

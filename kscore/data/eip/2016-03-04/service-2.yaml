@@ -16,11 +16,18 @@ operations:
       method: GET
     input:
       shape: Empty
-
-  DescribeAddresses:
-    name: DescribeAddresses
+  GetLines:
+    name: GetLines
     http:
       method: GET
+  AllocateAddress:
+    name: AllocateAddress
+    http:
+      method: GET  
+  ReleaseAddress:
+    name: ReleaseAddress
+    http:
+      method: GET  
   AssociateAddress:
     name: AssociateAddress
     http:
@@ -28,7 +35,24 @@ operations:
   DisassociateAddress:
     name: DisassociateAddress
     http:
+      method: GET      
+  DescribeAddresses:
+    name: DescribeAddresses
+    http:
       method: GET
+  AssociateAddressPortfwd:
+    name: AssociateAddressPortfwd
+    http:
+      method: GET  
+  DisassociateAddressPortfwd:
+    name: DisassociateAddressPortfwd
+    http:
+      method: GET  
+  DescribeAddressPortfwds:
+    name: DescribeAddressPortfwds
+    http:
+      method: GET  
+
 
 shapes:
   Id:
@@ -63,11 +87,3 @@ shapes:
       id:
         shape: Id
     documentation: ""
-
-  DescribeAddresses:
-    type: structure
-    members:
-      NextToken:
-        shape: NonEmptyString
-      MaxResults:
-        shape: Int
