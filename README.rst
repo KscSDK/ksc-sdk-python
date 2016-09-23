@@ -172,41 +172,42 @@ Examples 示例
 
     from kscore.session import get_session
     import json
-    if __name__=="__main__":
-    s = get_session()
-    client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
-    #创建模板接口调用示例 : preset  
-    presetname = 'testpreset'
-    description = 'just a demo'
-    presetType = 'avop'
-
-    param = {
-       "preset": presetname,
-       "description": description,
-       "presettype": presetType,
-       "param": {
-           "f": "mp4",
-           "AUDIO": {
-               "acodec": "aac",
-               "ar":"44100",
-               "ab":"64k"
-           },
-           "VIDEO": {
-               "vr": 25,
-               "vb": "500k",
-               "vcodec": "h264",
-               "width": 640,
-               "height": 360
-           }
-       }
-    }
-
-    res = client.preset(**param)
-    print json.dumps(res)
     
-    #获取模板信息接口调用示例 : get_preset_detail
-    res = client.get_preset_detail(preset = presetname)
-    print json.dumps(res)
+    if __name__=="__main__":
+        s = get_session()
+        client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
+        #创建模板接口调用示例 : preset  
+        presetname = 'testpreset'
+        description = 'just a demo'
+        presetType = 'avop'
+
+        param = {
+           "preset": presetname,
+           "description": description,
+           "presettype": presetType,
+           "param": {
+               "f": "mp4",
+               "AUDIO": {
+                   "acodec": "aac",
+                   "ar":"44100",
+                   "ab":"64k"
+               },
+               "VIDEO": {
+                   "vr": 25,
+                   "vb": "500k",
+                   "vcodec": "h264",
+                   "width": 640,
+                   "height": 360
+               }
+           }
+        }
+
+        res = client.preset(**param)
+        print json.dumps(res)
+        
+        #获取模板信息接口调用示例 : get_preset_detail
+        res = client.get_preset_detail(preset = presetname)
+        print json.dumps(res)
 
 + 更多
 
