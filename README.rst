@@ -174,13 +174,15 @@ Examples 示例
     import json
     
     if __name__=="__main__":
+        
+        #初始化
         s = get_session()
         client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
+        
         #创建模板接口调用示例 : preset  
         presetname = 'testpreset'
         description = 'just a demo'
         presetType = 'avop'
-
         param = {
            "preset": presetname,
            "description": description,
@@ -201,7 +203,6 @@ Examples 示例
                }
            }
         }
-
         res = client.preset(**param)
         print json.dumps(res)
         
