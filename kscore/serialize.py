@@ -190,8 +190,8 @@ class QuerySerializer(Serializer):
         # that's what we hand off the _serialize_* methods.
         serialized['headers'].update(
             {
-                'Action': operation_model.name,
-                'Version': operation_model.metadata['apiVersion'],
+                'X-Action': operation_model.name,
+                'X-Version': operation_model.metadata['apiVersion'],
             }
         )
         body_params = {}
@@ -368,8 +368,8 @@ class JSONSerializer(Serializer):
             'X-Amz-Target': target,
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Action': operation_model.name,
-            'Version': operation_model.metadata['apiVersion']
+            'X-Action': operation_model.name,
+            'X-Version': operation_model.metadata['apiVersion']
         }
         body = {}
         input_shape = operation_model.input_shape
