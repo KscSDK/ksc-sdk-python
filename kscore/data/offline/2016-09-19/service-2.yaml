@@ -78,6 +78,13 @@ operations:
       requestUri: /
     input:
       shape: TaskIDInstance
+  GetTaskMetaInfo:
+    name: GetTaskMetaInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
 
 shapes:  
   Preset:
