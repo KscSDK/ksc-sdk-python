@@ -79,6 +79,8 @@ Service 服务
     +-------------------+------------+
     | monitor           |            |
     +-------------------+------------+
+    | offline           |            |
+    +-------------------+------------+
 
 ----------------
 Method 方法
@@ -163,6 +165,50 @@ Examples 示例
         m=client.get_metric_statistics(InstanceID="6f582c78-5d49-438e-bf2d-db4345daf503",Namespace="eip",MetricName="qos.bps_in",StartTime="2016-08-16T17:09:00Z",EndTime="2016-08-16T23:56:00Z",Period="600",Aggregate="Average")
 
         print json.dumps(m,sort_keys=True,indent=4)
+
++ OFFLINE
+
+::
+
+    from kscore.session import get_session
+    import json
+    
+    if __name__=="__main__":
+        
+        #初始化
+        s = get_session()
+        client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
+        
+        #创建模板接口调用示例 : preset  
+        presetname = 'testpreset'
+        description = 'just a demo'
+        presetType = 'avop'
+        param = {
+           "preset": presetname,
+           "description": description,
+           "presettype": presetType,
+           "param": {
+               "f": "mp4",
+               "AUDIO": {
+                   "acodec": "aac",
+                   "ar":"44100",
+                   "ab":"64k"
+               },
+               "VIDEO": {
+                   "vr": 25,
+                   "vb": "500k",
+                   "vcodec": "h264",
+                   "width": 640,
+                   "height": 360
+               }
+           }
+        }
+        res = client.preset(**param)
+        print json.dumps(res)
+        
+        #获取模板信息接口调用示例 : get_preset_detail
+        res = client.get_preset_detail(preset = presetname)
+        print json.dumps(res)
 
 + 更多
 
