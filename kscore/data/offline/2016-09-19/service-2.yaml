@@ -78,6 +78,13 @@ operations:
       requestUri: /
     input:
       shape: TaskIDInstance
+  GetTaskMetaInfo:
+    name: GetTaskMetaInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
 
 shapes:  
   Preset:
@@ -90,8 +97,6 @@ shapes:
     max: 45
   PresetInstance:
     type: structure
-    required:
-      - preset
     members:
       preset:
         shape: Preset
@@ -102,8 +107,6 @@ shapes:
         shape: WithDetail
   TaskIDInstance:
     type: structure
-    required:
-      - taskid
     members:
       taskid:
         shape: TaskID
