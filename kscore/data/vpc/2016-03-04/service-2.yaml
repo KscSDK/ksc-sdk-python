@@ -17,12 +17,110 @@ operations:
     input:
       shape: Empty
 
+  CreateVpc:
+    name: CreateVpc
+    http:
+      method: GET
+  DeleteVpc:
+    name: DeleteVpc
+    http:
+      method: GET
   DescribeVpcs:
     name: DescribeVpcs
     http:
       method: GET
-    input:
-      shape: Empty
+  CreateSubnet:
+    name: CreateSubnet
+    http:
+      method: GET
+  DeleteSubnet:
+    name: DeleteSubnet
+    http:
+      method: GET
+  ModifySubnet:
+    name: ModifySubnet
+    http:
+      method: GET
+  DescribeSubnets:
+    name: DescribeSubnets
+    http:
+      method: GET
+  AssociateNetworkAcl:
+    name: AssociateNetworkAcl
+    http:
+      method: GET
+  DisassociateNetworkAcl:
+    name: DisassociateNetworkAcl
+    http:
+      method: GET
+  DescribeSubnetAvailableAddresses:
+    name: DescribeSubnetAvailableAddresses
+    http:
+      method: GET
+  CreateRoute:
+    name: CreateRoute
+    http:
+      method: GET
+  DeleteRoute:
+    name: DeleteRoute
+    http:
+      method: GET
+  DescribeRoutes:
+    name: DescribeRoutes
+    http:
+      method: GET
+  CreateNetworkAcl:
+    name: CreateNetworkAcl
+    http:
+      method: GET
+  DeleteNetworkAcl:
+    name: DeleteNetworkAcl
+    http:
+      method: GET
+  ModifyNetworkAcl:
+    name: ModifyNetworkAcl
+    http:
+      method: GET
+  CreateNetworkAclEntry:
+    name: CreateNetworkAclEntry
+    http:
+      method: GET
+  DeleteNetworkAclEntry:
+    name: DeleteNetworkAclEntry
+    http:
+      method: GET
+  DescribeNetworkAcls:
+    name: DescribeNetworkAcls
+    http:
+      method: GET
+  CreateSecurityGroup:
+    name: CreateSecurityGroup
+    http:
+      method: GET
+  DeleteSecurityGroup:
+    name: DeleteSecurityGroup
+    http:
+      method: GET
+  ModifySecurityGroup:
+    name: ModifySecurityGroup
+    http:
+      method: GET
+  AuthorizeSecurityGroupEntry:
+    name: AuthorizeSecurityGroupEntry
+    http:
+      method: GET
+  RevokeSecurityGroupEntry:
+    name: RevokeSecurityGroupEntry
+    http:
+      method: GET
+  DescribeSecurityGroups:
+    name: DescribeSecurityGroups
+    http:
+      method: GET
+  DescribeInternetGateways:
+    name: DescribeInternetGateways
+    http:
+      method: GET
   DescribeNetworkInterfaces:
     name: DescribeNetworkInterfaces
     http:
