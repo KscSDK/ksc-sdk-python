@@ -1,11 +1,8 @@
 # -*- encoding:utf-8 -*-
-from kscore.session import get_session
+from kscore.offline import getOfflineClient
 import json
-
-#初始化
-s = get_session()
-#注：参数不能改变
-client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
+# 参数：服务service_name,大区region_name 
+client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False)
 
 #创建模板接口调用示例 : preset  
 presetname = 'testpreset'
@@ -34,30 +31,29 @@ param = {
     }
 }
 
-#该接口需要输入json格式数据，并且在参数前面加上"**"
-res = client.preset(**param)
+#该接口需要输入json格式数据
+res = client.Preset(param)
+print json.dumps(res)
+
+#更新模板接口调用示例 : UpdatePreset
+#该接口需要输入json格式数据
+res = client.UpdatePreset(param)
+print json.dumps(res)
+
+#获取模板列表接口调用示例 : GetPresetList
+res = client.GetPresetList()
+print json.dumps(res)
+
+#获取模板信息接口调用示例 : GetPresetDetail
+res = client.GetPresetDetail(presetname)
+print json.dumps(res)
+
+#删除模板接口调用示例 : DelPreset
+res = client.DelPreset(presetname)
 print json.dumps(res)
 
 
-#更新模板接口调用示例 : update_preset
-#该接口需要输入json格式数据，并且在参数前面加上"**"
-res = client.update_preset(**param)
-print json.dumps(res)
-
-#获取模板列表接口调用示例 : get_preset_list
-res = client.get_preset_list()
-print json.dumps(res)
-
-#获取模板信息接口调用示例 : get_preset_detail
-res = client.get_preset_detail(preset = presetname)
-print json.dumps(res)
-
-#删除模板接口调用示例 : del_preset
-res = client.del_preset(preset = presetname)
-print json.dumps(res)
-
-
-#创建任务接口调用示例 : create_task
+#创建任务接口调用示例 : CreateTask
 #具体参数请参考官方文档
 task = {
     "dstDir": "",
@@ -76,27 +72,27 @@ task = {
     "cbUrl": "http://10.4.2.38:19090/"
 }
 
-#该接口需要输入json格式数据，并且在参数前面加上"**"
-res = client.create_task(**task)
+#该接口需要输入json格式数据
+res = client.CreateTask()
 print json.dumps(res)
 
-#查看任务状态接口调用示例 : get_task_by_task_id
+#查看任务状态接口调用示例 : GetTaskByTaskID
 taskid = "40d309d3b2bf373cd3f08e5b5e1bddf720160816"
-res = client.get_task_by_task_id(taskid = taskid)
+res = client.GetTaskByTaskID(taskid)
 print json.dumps(res)
 
-#获取任务列表接口调用示例 : get_task_list
-res = client.get_task_list()
+#获取任务列表接口调用示例 : GetTaskList
+res = client.GetTaskList()
 print json.dumps(res)
 
-#删除任务接口调用示例 : del_task_by_task_id
-res = client.del_task_by_task_id(taskid = taskid)
+#删除任务接口调用示例 : DelTaskByTaskID
+res = client.DelTaskByTaskID(taskid)
 print json.dumps(res)
 
-#任务置顶接口调用示例 : top_task_by_task_id
-res = client.top_task_by_task_id(taskid = taskid)
+#任务置顶接口调用示例 : TopTaskByTaskID
+res = client.TopTaskByTaskID(taskid)
 print json.dumps(res)
 
-#查询任务META列表接口调用示例 : get_task_meta_info
-res = client.get_task_meta_info(taskid = taskid)
+#查询任务META列表接口调用示例 : GetTaskMetaInfo
+res = client.GetTaskMetaInfo(taskid)
 print json.dumps(res)
