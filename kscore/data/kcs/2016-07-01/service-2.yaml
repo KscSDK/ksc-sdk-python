@@ -1,0 +1,252 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2016-07-01'
+  endpointPrefix: kcs
+  jsonVersion: '1.1'
+  serviceFullName: KCS Service
+  signatureVersion: v4
+  targetPrefix: kcs
+  protocol: kcs
+
+operations:
+  CreateCacheCluster:
+    name: CreateCacheCluster
+    http:
+      method: POST
+    input:
+      shape: CreateCacheRequest
+
+  DescribeCacheClusters:
+    name: DescribeCacheClusters
+    http:
+      method: GET
+    input:
+      shape: DescribeCachesRequest
+
+  DescribeCacheCluster:
+    name: DescribeCacheCluster
+    http:
+      method: GET
+    input:
+      shape: CommonCacheRequest
+
+  FlushCacheCluster:
+    name: FlushCacheCluster
+    http:
+      method: PUT
+    input:
+      shape: CommonCacheRequest
+
+  LockCacheCluster:
+    name: LockCacheCluster
+    http:
+      method: PUT
+    input:
+      shape: CommonCacheRequest
+
+  UnlockCacheCluster:
+    name: UnlockCacheCluster
+    http:
+      method: PUT
+    input:
+      shape: CommonCacheRequest
+
+  RenameCacheCluster:
+    name: RenameCacheCluster
+    http:
+      method: PUT
+    input:
+      shape: RenameCacheRequest
+
+  ResizeCacheCluster:
+    name: ResizeCacheCluster
+    http:
+      method: PUT
+    input:
+      shape: ResizeCacheRequest
+
+  DeleteCacheCluster:
+    name: DeleteCacheCluster
+    http:
+      method: DELETE
+    input:
+      shape: CommonCacheRequest
+
+  SetCacheParameters:
+    name: SetCacheParameters
+    http:
+      method: PUT
+
+  DescribeCacheParameters:
+    name: DescribeCacheParameters
+    http:
+      method: GET
+    input:
+      shape: CommonCacheRequest
+
+  SetCacheSecurityRules:
+    name: SetCacheSecurityRules
+    http:
+      method: PUT
+
+  DeleteCacheSecurityRule:
+    name: DeleteCacheSecurityRule
+    http:
+      method: DELETE
+    input:
+      shape: DelSecurityRuleRequest
+
+  DescribeCacheSecurityRules:
+    name: DescribeCacheSecurityRules
+    http:
+      method: GET
+    input:
+      shape: CommonCacheRequest
+
+shapes:
+  Id:
+    type: string
+
+  Bool:
+    type: bool
+
+  Int:
+    type: integer
+
+  String:
+    type: string
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  CommonCacheRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - CacheId
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+
+  CreateCacheRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - Name
+    - Capacity
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      Name:
+        shape: NonEmptyString
+      Capacity:
+        shape: Int
+      Engine:
+        shape: NonEmptyString
+      Mode:
+        shape: Int
+      NetType:
+        shape: Int
+      VpcId:
+        shape: NonEmptyString
+      VnetId:
+        shape: NonEmptyString
+
+  DescribeCachesRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+      Name:
+        shape: NonEmptyString
+      Vip:
+        shape: NonEmptyString
+      VpcId:
+        shape: NonEmptyString
+      VnetId:
+        shape: NonEmptyString
+      Offset:
+        shape: Int
+      Limit:
+        shape: Int
+      OrderBy:
+        shape: NonEmptyString
+
+  RenameCacheRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - Name
+    - CacheId
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      Name:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+
+  ResizeCacheRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - CacheId
+    - Capacity
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+      Capacity:
+        shape: Int
+
+  DelSecurityRuleRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - CacheId
+    - SecurityRuleId
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+      SecurityRuleId:
+        shape: Int
