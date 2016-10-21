@@ -96,3 +96,7 @@ print json.dumps(res)
 #任务置顶接口调用示例 : top_task_by_task_id
 res = client.top_task_by_task_id(taskid = taskid)
 print json.dumps(res)
+
+#查询任务META列表接口调用示例 : get_task_meta_info
+res = client.get_task_meta_info(taskid = taskid)
+print json.dumps(res)
