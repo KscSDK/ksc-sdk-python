@@ -888,7 +888,7 @@ shapes:
     key:
       shape: NonEmptyString
     value:
-      shape: id
+      shape: NonEmptyString
 
   # [{'a': 'xxxx'}, {'b': 'xxxx'}]
   Maps:

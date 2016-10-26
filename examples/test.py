@@ -532,4 +532,4 @@ def message_center_test(client):
 
     print '把所有消息设置为已读:', client.batch_set_message_flag(set_all=True)
 
-    print client.listen_message_center()  # 监听消息中心, 未测试通过
+    print client.listen_message_center()  # 监听消息中心
