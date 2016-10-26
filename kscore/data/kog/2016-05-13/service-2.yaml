@@ -34,7 +34,7 @@ operations:
     input:
       shape: InstanceId
 
-  # 获取某个项目下的
+  # 获取某个项目下的角色
   GetProjectRoles:
     name: GetProjectRoles
     http:
