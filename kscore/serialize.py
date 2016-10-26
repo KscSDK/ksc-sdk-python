@@ -188,10 +188,14 @@ class QuerySerializer(Serializer):
                                                         self.DEFAULT_METHOD)
         # The query serializer only deals with body params so
         # that's what we hand off the _serialize_* methods.
+        serialized['headers'].update(
+            {
+                'X-Action': operation_model.name,
+                'X-Version': operation_model.metadata['apiVersion'],
+            }
+        )
+        body_params = {}
 
-        body_params = self.MAP_TYPE()
-        body_params['Action'] = operation_model.name
-        body_params['Version'] = operation_model.metadata['apiVersion']
         if shape is not None:
             self._serialize(body_params, parameters, shape)
         else:
@@ -358,15 +362,14 @@ class JSONSerializer(Serializer):
         serialized['method'] = operation_model.http.get('method',
                                                         self.DEFAULT_METHOD)
 
-        serialized['query_string'] = self.MAP_TYPE(
-            Action=operation_model.name, Version=operation_model.metadata['apiVersion']
-        )
+        serialized['query_string'] = self.MAP_TYPE()
 
         serialized['headers'] = {
             'X-Amz-Target': target,
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-
+            'X-Action': operation_model.name,
+            'X-Version': operation_model.metadata['apiVersion']
         }
         body = {}
         input_shape = operation_model.input_shape
