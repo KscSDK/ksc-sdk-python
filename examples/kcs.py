@@ -5,6 +5,7 @@ from kscore.session import get_session
 if __name__ == "__main__":
     s = get_session()
 
+    #确定服务名称以及机房
     kcsClient = s.create_client("kcs", "cn-shanghai-3", use_ssl=False)
 
     # 创建缓存服务

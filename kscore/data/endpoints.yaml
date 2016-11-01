@@ -114,7 +114,6 @@ partitions:
       defaults:
         credentialScope:
           service: kcs
-      EndpointRegion: cn-shanghai-3
       endpoints:
         cn-shanghai-3:
           protocols:
