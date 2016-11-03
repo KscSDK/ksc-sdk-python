@@ -1,0 +1,114 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-09-19'
+  endpointPrefix: offline
+  jsonVersion: '1.1'
+  serviceFullName: KSC OFFLINE Service
+  signatureVersion: v4
+  targetPrefix: offline
+  protocol: json2
+
+operations:
+  Preset:
+    name: Preset
+    http:
+      method: POST
+
+  UpdatePreset:
+    name: UpdatePreset
+    http:
+      method: POST
+
+  DelPreset:
+    name: DelPreset
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: PresetInstance
+
+  GetPresetList:
+    name: GetPresetList
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: WithDetailInstance
+
+  GetPresetDetail:
+    name: GetPresetDetail
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: PresetInstance
+
+  CreateTask:
+    name: CreateTask
+    http:
+      method: POST
+
+  DelTaskByTaskID:
+    name: DelTaskByTaskID
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
+
+  TopTaskByTaskID:
+    name: TopTaskByTaskID 
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
+
+  GetTaskList:
+    name: GetTaskList
+    http:
+      method: GET
+      requestUri: /
+
+  GetTaskByTaskID:
+    name: GetTaskByTaskID
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
+  GetTaskMetaInfo:
+    name: GetTaskMetaInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: TaskIDInstance
+
+shapes:  
+  Preset:
+    type: string
+  WithDetail:
+    type: integer
+  TaskID:
+    type: string
+    min: 35
+    max: 45
+  PresetInstance:
+    type: structure
+    members:
+      preset:
+        shape: Preset
+  WithDetailInstance:
+    type: structure
+    members:
+      withDetail:
+        shape: WithDetail
+  TaskIDInstance:
+    type: structure
+    members:
+      taskid:
+        shape: TaskID
+
+  

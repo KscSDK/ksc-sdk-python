@@ -25,6 +25,18 @@ partitions:
 
     cn-beijing-5:
       description: China Beijing (ZaoJunMiao)
+
+    cn-beijing-1:
+      description: China Beijing (YiZhuang)
+
+    cn-beijing-3:
+      description: China Beijing
+
+    cn-shanghai-1:
+      description: China ShangHai
+
+    cn-shanghai-3:
+      description: China ShangHai (PengBoShiVPC)
   # services
   services:
 
@@ -88,5 +100,36 @@ partitions:
           protocols:
           - http
           - https
+    offline:
+      defaults:
+        credentialScope:
+          service: offline
+      EndpointRegion: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+            - http
 
-
+    kcs:
+      defaults:
+        credentialScope:
+          service: kcs
+      endpoints:
+        cn-shanghai-3:
+          protocols:
+          - http
+        cn-beijing-1:
+          protocols:
+          - http
+        cn-beijing-3:
+          protocols:
+          - http
+        cn-beijing-6:
+          protocols:
+          - http
+        cn-shanghai-1:
+          protocols:
+          - http
+        cn-shanghai-2:
+          protocols:
+          - http
