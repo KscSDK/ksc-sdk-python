@@ -194,13 +194,12 @@ class QuerySerializer(Serializer):
                 'X-Version': operation_model.metadata['apiVersion'],
             }
         )
-        body_params = {}
+        body_params = self.MAP_TYPE()
 
         if shape is not None:
             self._serialize(body_params, parameters, shape)
         else:
             self._serialize_not_shape(body_params, parameters)
-
         return self._serialize_data(serialized, body_params)
 
     def _serialize_not_shape(self, data, parameters):
@@ -349,6 +348,48 @@ class KCSSerializer(QueryAcceptJsonSerializer):
         return serialized
 
 
+class CustomBodySerializer(QuerySerializer):
+
+    @property
+    def headers(self):
+        return {"Accept": 'application/json'}
+
+    def _serialize_not_shape(self, data, parameters):
+
+        data.update(parameters)
+
+    def serialize_to_request(self, parameters, operation_model):
+        shape = operation_model.input_shape
+        serialized = self._create_default_request()
+        serialized['method'] = operation_model.http.get('method',
+                                                        self.DEFAULT_METHOD)
+        # The query serializer only deals with body params so
+        # that's what we hand off the _serialize_* methods.
+        serialized['headers'].update(
+            {
+                'X-Action': operation_model.name,
+                'X-Version': operation_model.metadata['apiVersion'],
+            }
+        )
+        body_params = self.MAP_TYPE()
+        if 'Body' in parameters:
+            body_params['body'] = parameters['Body']
+            del parameters
+
+        if shape is not None:
+            self._serialize(body_params, parameters, shape)
+        else:
+            self._serialize_not_shape(body_params, parameters)
+        return self._serialize_data(serialized, body_params)
+
+    def _serialize_data(self, serialized, data):
+        if 'Body' in data:
+            serialized['body'] = json.dumps(data['Body']).encode(self.DEFAULT_ENCODING)
+            del data['Body']
+        serialized['query_string'] = data
+        return serialized
+
+
 class JSONSerializer(Serializer):
     """
         BASE JSON REQUEST all method with json body
@@ -371,7 +412,7 @@ class JSONSerializer(Serializer):
             'X-Action': operation_model.name,
             'X-Version': operation_model.metadata['apiVersion']
         }
-        body = {}
+        body = self.MAP_TYPE()
         input_shape = operation_model.input_shape
         if input_shape is not None:
             self._serialize(body, parameters, input_shape)
@@ -718,4 +759,5 @@ SERIALIZERS = {
     'json2': NotGetJsonSerializer,
     'rest-json': RestJSONSerializer,
     'rest-xml': RestXMLSerializer,
+    'custom-body': CustomBodySerializer,
 }
