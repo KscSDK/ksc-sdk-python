@@ -373,8 +373,8 @@ class CustomBodySerializer(QuerySerializer):
         )
         body_params = self.MAP_TYPE()
         if 'Body' in parameters:
-            body_params['body'] = parameters['Body']
-            del parameters
+            body_params['Body'] = parameters['Body']
+            del parameters['Body']
 
         if shape is not None:
             self._serialize(body_params, parameters, shape)
@@ -383,8 +383,8 @@ class CustomBodySerializer(QuerySerializer):
         return self._serialize_data(serialized, body_params)
 
     def _serialize_data(self, serialized, data):
+        serialized['body'] = json.dumps(data).encode(self.DEFAULT_ENCODING)
         if 'Body' in data:
-            serialized['body'] = json.dumps(data['Body']).encode(self.DEFAULT_ENCODING)
             del data['Body']
         serialized['query_string'] = data
         return serialized
