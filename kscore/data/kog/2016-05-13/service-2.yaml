@@ -888,7 +888,7 @@ shapes:
     key:
       shape: NonEmptyString
     value:
-      shape: NonEmptyString
+      shape: Id
 
   # [{'a': 'xxxx'}, {'b': 'xxxx'}]
   Maps:
@@ -1826,6 +1826,17 @@ shapes:
     documentation: ""
 
   # ======== 批量删除变量的参数配置 ========
+  BatchDelVbMaps:
+    type: list
+    member:
+      shape: BatchDelVbMap
+
+  BatchDelVbMap:
+    type: map
+    key:
+      shape: NonEmptyString
+    value:
+      shape: NonEmptyString
 
   BatchDeleteVariable:
     type: structure
@@ -1837,7 +1848,7 @@ shapes:
         shape: Id
         documentation: ""
       varList:
-        shape: Maps
+        shape: BatchDelVbMaps
         documentation: ""
     documentation: ""
 
