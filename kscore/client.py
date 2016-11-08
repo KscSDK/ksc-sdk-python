@@ -557,8 +557,21 @@ class BaseClient(object):
                 operation_name=operation_name),
             params=api_params, model=operation_model, context=context)
 
-        request_dict = self._serializer.serialize_to_request(
-            api_params, operation_model)
+        operation_protocol_serialize = None
+        if operation_model._operation_model.has_key('protocol'):
+            operation_protocol = operation_model._operation_model['protocol']
+            if operation_protocol is not None:
+                operation_protocol_serialize = kscore.serialize.create_serializer(
+                    operation_protocol, True)
+
+        if operation_protocol_serialize is not None:
+            request_dict = operation_protocol_serialize.serialize_to_request(
+                api_params, operation_model
+            )
+        else:
+            request_dict = self._serializer.serialize_to_request(
+                api_params, operation_model)
+
         prepare_request_dict(request_dict, endpoint_url=self._endpoint.host,
                              user_agent=self._client_config.user_agent)
         return request_dict

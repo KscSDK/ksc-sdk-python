@@ -784,6 +784,7 @@ PROTOCOL_PARSERS = {
     'query': QueryParser,
     'query-json': JSONParser,
     'kcs': JSONParser,
+    'custom-body': JSONParser,
     'json': JSONParser,
     'json2': JSONParser,
     'rest-json': RestJSONParser,
