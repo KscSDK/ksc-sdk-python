@@ -381,6 +381,17 @@ class OperationModel(object):
         return self._operation_model.get('name')
 
     @property
+    def protocol(self):
+        """protocol from operation_model or service_model
+        """
+        return self._operation_model.get("protocol", self.metadata['protocol'])
+
+    @property
+    def is_rewrite_protocol(self):
+
+        return "protocol" in self._operation_model
+
+    @property
     def service_model(self):
         return self._service_model
 

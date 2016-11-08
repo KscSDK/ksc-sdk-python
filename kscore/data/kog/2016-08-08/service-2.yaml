@@ -1,0 +1,1988 @@
+---
+version: '2.0'
+
+metadata:
+  # Version 接口版本
+  apiVersion: '2016-08-08'
+  endpointPrefix: kog
+  jsonVersion: '1.1'
+  serviceFullName: KSC Game Service
+  signatureVersion: v4
+  targetPrefix: kog
+  # query/ec2/json/query-json/rest-json/rest-xml
+  protocol: json
+
+documentation: ''
+
+operations:
+
+# ===== Project-项目 APIs =====
+
+  # 获取项目列表
+  GetProjectList:
+    name: GetProjectList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 获取某个项目的详细信息
+  GetProject:
+    name: GetProject
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取某个项目下的角色
+  GetProjectRoles:
+    name: GetProjectRoles
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取某个项目下的分组
+  GetProjectGroups:
+    name: GetProjectGroups
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取某个项目下的程序
+  GetProjectApplications:
+    name: GetProjectApplications
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取某个项目下的服务器
+  GetProjectServers:
+    name: GetProjectServers
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取某个项目下的操作方法
+  GetProjectMethods:
+    name: GetProjectMethods
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取项目数量
+  GetProjectCount:
+    name: GetProjectCount
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 获取某个项目下的配置模板
+  GetProjectSettingsTemplate:
+    name: GetProjectSettingsTemplate
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+    
+  # 获取该项目下分组服务器角色的相关信息
+  GetProjectAllRelatedInfo:
+    name: GetProjectAllRelatedInfo
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 创建项目
+  CreateProject:
+    name: CreateProject
+    http:
+      method: POST
+    input:
+      shape: Project
+
+  # 添加项目下的服务器
+  CreateProjectServers:
+    name: CreateProjectServers
+    http:
+      method: POST
+    input:
+      shape: ProjectServers
+
+  # 更新/编辑项目
+  EditProject:
+    name: EditProject
+    http:
+      method: PATCH
+    input:
+      shape: EditProject
+
+  # 删除项目
+  DeleteProject:
+    name: DeleteProject
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 删除项目下的服务器
+  DeleteProjectServers:
+    name: DeleteProjectServers
+    http:
+      method: POST
+    input:
+      shape: ProjectServers
+
+  # 检查某个项目下角色/分组/命令/模板/应用程序的名称不可重复
+  CheckProjectSubElementDuplicate:
+    name: CheckProjectSubElementDuplicate
+    http:
+      method:  POST
+    input:
+      shape: CheckUnderProject
+
+  # 检查项目名不可重复
+  CheckProjectElementDuplicate:
+    name: CheckProjectElementDuplicate
+    http:
+      method: POST
+    input:
+      shape: CheckProject
+    
+
+# ===== Application-应用程序 APIs =====
+
+  # 获取程序包版本
+  GetApplicationVersions:
+    name: GetApplicationVersions
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取程序包拆分规则
+  GetApplicationAppRole:
+    name: GetApplicationAppRole
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 编辑/更新应用
+  EditApplication:
+    name:  EditApplication
+    http:
+      method: PATCH
+    input:
+      shape: EditApplication
+
+  # 创建程序包拆分规则
+  CreateApplicationAppRole:
+    name:  CreateApplicationAppRole
+    http:
+      method: POST
+    input:
+      shape: ApplicationAppRole
+
+  # 删除程序版本
+  DeleteApplicationVersions:
+    name: DeleteApplicationVersions
+    http:
+      method: POST
+    input:
+      shape: DeleteApplicationVersions
+
+  # 删除程序包拆分规则
+  DeleteApplicationAppRole:
+    name: DeleteApplicationAppRole
+    http:
+      method: POST
+    input:
+      shape: DeleteApplicationAppRole
+
+  # 删除应用
+  DeleteApplication:
+    name: DeleteApplication
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除应用
+  BatchDeleteApplication:
+    name: BatchDeleteApplication
+    http:
+      method: POST
+    input:
+      shape: IdMap
+
+  # 下发程序包/根据拆分规则下发程序包
+  ApplicationDistribute:
+    name:  ApplicationDistribute
+    http:
+      method: POST
+    input:
+      shape: ApplicationDistribute
+
+  # 操作应用程序预览
+  ApplicationReview:
+    name:  ApplicationReview
+    http:
+      method: POST
+    input:
+      shape: ApplicationReview
+
+
+# ==== ApplicationRole-程序包拆分 APIs ====
+
+  # 编译/更新应用拆分规则
+  EditApplicationRole:
+    name: EditApplicationRole
+    http:
+      method: PATCH
+    input:
+      shape: EditApplicationRole
+
+
+# ===== Group-分组 APIs =====
+
+  # 获取分组下面服务器
+  GetGroupServers:
+    name: GetGroupServers
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取不在分组中的服务器
+  GetGroupOutServers:
+    name: GetGroupOutServers
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 添加服务器到当前分组
+  CreateGroupServers:
+    name: CreateGroupServers
+    http:
+      method: POST
+    input:
+      shape: GroupServers
+
+  # 创建/添加分组
+  CreateGroup:
+    name: CreateGroup
+    http:
+      method: POST
+    input:
+      shape: Group
+
+  # 编辑/更新分组
+  EditGroup:
+    name: EditGroup
+    http:
+      method: PATCH
+    input:
+      shape: EditGroup
+
+  # 删除分组下面的服务器
+  DeleteGroupServer:
+    name: DeleteGroupServer
+    http:
+      method: POST
+    input:
+      shape: GroupServers
+
+  # 删除分组
+  DeleteGroup:
+    name: DeleteGroup
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除分组
+  BatchDeleteGroup:
+    name: BatchDeleteGroup
+    http:
+      method: POST
+    input:
+      shape: IdMap
+    
+
+# ===== Method-部署命令 APIs =====
+
+  # 创建/添加命令
+  CreateMethod:
+    name: CreateMethod
+    http:
+      method: POST
+    input:
+      shape: Method
+
+  # 更新/编辑命令
+  EditMethod:
+    name: EditMethod
+    http:
+      method: PATCH
+    input:
+      shape: EditMethod
+
+ # 删除命令
+  DeleteMethod:
+    name: DeleteMethod
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除命令
+  BatchDeleteMethod:
+    name: BatchDeleteMethod
+    http:
+      method: POST
+    input:
+      shape: IdMap
+
+  # 执行命令
+  MethodExecute:
+    name: MethodExecute
+    http:
+      method: POST
+    input:
+      shape:  MethodExecute
+
+  # 操作命令前预览
+  MethodReview:
+    name: MethodReview
+    http:
+      method: POST
+    input:
+      shape:  MethodRoleGroup
+    
+
+# === Role-角色 APIs ===
+
+  # 获取角色中的服务器
+  GetRoleServers:
+    name: GetRoleServers
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取角色中的配置模板
+  GetRoleSettingsTemplate:
+    name: GetRoleSettingsTemplate
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取角色与程序的关系
+  GetRoleApplications:
+    name: GetRoleApplications
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 获取角色中的命令
+  GetRoleMethods:
+    name:  GetRoleMethods
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 创建/添加角色
+  CreateRole:
+    name:  CreateRole
+    http:
+      method: POST
+    input:
+      shape: Role
+
+  # 编辑/更新角色
+  EditRole:
+    name:  EditRole
+    http:
+      method: PATCH
+    input:
+      shape: EditRole
+
+  # 修改/更新关联当前角色的服务器
+  UpdateRoleServers:
+    name: UpdateRoleServers
+    http:
+      method: POST
+    input:
+      shape: RoleServers
+
+  # 删除角色
+  DeleteRole:
+    name:  DeleteRole
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除角色
+  BatchDeleteRole:
+    name:  BatchDeleteRole
+    http:
+      method: POST
+    input:
+      shape: IdMap
+    
+
+# ===== Version-版本 APIs =====
+
+  # 获取程序包版本列表
+  GetVersionList:
+    name: GetVersionList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 获取版本包版本详情
+  GetVersion:
+    name: GetVersion
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 编译/更新应用版本包
+  EditVersion:
+    name: EditVersion
+    http:
+      method: PATCH
+    input:
+      shape: EditVersion
+
+  # 删除程序版本
+  DeleteVersion:
+    name: DeleteVersion
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除程序版本
+  BatchDeleteVersion:
+    name: BatchDeleteVersion
+    http:
+      method: POST
+    input:
+      shape: IdMap
+    
+
+# ====== HistoryLog ======
+
+  # 获取最近不同类型任务的列表
+  GetHistoryLast:
+    name: GetHistoryLast
+    http:
+      method: GET
+    input:
+      shape: HistoryLog
+    
+
+# ======= Server-服务器 APIs =======
+
+  # 获取服务器列表
+  GetServerList:
+    name: GetServerList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 获取某台主机的详细信息
+  GetServer:
+    name: GetServer
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 返回服务器数量
+  GetServerCount:
+    name: GetServerCount
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 返回可用服务器
+  GetServerUsageList:
+    name: GetServerUsageList
+    http:
+      method: GET
+    input:
+      shape: ServerUsage
+
+  # 认证服务器agent
+  AuthenticationServerAgent:
+    name: AuthenticationServerAgent
+    http:
+      method: POST
+    input:
+      shape: IdMap
+
+  # 开启主机
+  StartServer:
+    name: StartServer
+    http:
+      method: POST
+    input:
+      shape: ServerOperation
+
+  # 关闭主机
+  StopServer:
+    name: StopServer
+    http:
+      method: POST
+    input:
+      shape: ServerOperation
+
+  # 重启主机
+  RebootServer:
+    name: RebootServer
+    http:
+      method: POST
+    input:
+      shape: ServerOperation
+
+  # 查询主机状态
+  GetServerStatus:
+    name: GetServerStatus
+    http:
+      method: POST
+    input:
+      shape: ServerOperation
+
+  # 统计15天合主机总数量
+  GetServerDayCount:
+    name: GetServerDayCount
+    http:
+      method: POST
+    input:
+      shape: ServerDayCount
+
+  # 检查主机名不重复
+  CheckServerElementDuplicate:
+    name: CheckServerElementDuplicate
+    http:
+      method: POST
+    input:
+      shape: CheckServerElementDuplicate
+
+  # 编译/更新服务器
+  EditServer:
+    name: EditServer
+    http:
+      method: PATCH
+    input:
+      shape: EditServer
+
+
+# ==== Package-程序包 APIs ====
+
+  # 获取Package列表
+  GetPackageList:
+    name: GetPackageList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 统计15天的程序包总量
+  PackageDayCount:
+    name: PackageDayCount
+    http:
+      method: GET
+    input:
+      shape: PackageDayCount
+
+  # 已上传的程序包容量及其占比
+  PackageCount:
+    name: PackageCount
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+
+# ==== AssetServer-用户私有主机/服务器 APIs ====
+
+  # 创建AssetServer
+  CreateAssetServer:
+    name: CreateAssetServer
+    http:
+      method: POST
+    input:
+      shape: AssetServer
+
+  # 更新/编辑AssetServer
+  EditAssetServer:
+    name: EditAssetServer
+    http:
+      method: PATCH
+    input:
+      shape: EditAssetServer
+
+  # 删除AssetServer
+  DeleteAssetServer:
+    name: DeleteAssetServer
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除AssetServer
+  BatchDeleteAssetServer:
+    name: BatchDeleteAssetServer
+    http:
+      method: POST
+    input:
+      shape: IdMap
+    
+
+# ==== AssetRegion-用户自定义region节点 APIs ====
+
+  # 获取指定的AssetRegion
+  GetAssetRegion:
+    name: GetAssetRegion
+    http:
+      method: GET
+    input:
+      shape: InstanceId
+
+  # 创建一个AssetRegion
+  CreateAssetRegion:
+    name: CreateAssetRegion
+    http:
+      method: POST
+    input:
+      shape: AssetRegion
+
+  # 更新一个AssetRegion
+  EditAssetRegion:
+    name: EditAssetRegion
+    http:
+      method: PATCH
+    input:
+      shape: EditAssetRegion
+
+  # 删除一个AssetRegion
+  DeleteAssetRegion:
+    name: DeleteAssetRegion
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除AssetRegion
+  BatchDeleteAssetRegion:
+    name: BatchDeleteAssetRegion
+    http:
+      method: POST
+    input:
+      shape: IdMap
+    
+
+# ==== MessageCenter-消息中心 APIs ====
+
+  # 获取消息中心列表
+  GetMessageCenterList:
+    name: GetMessageCenterList
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 监听消息中心
+  ListenMessageCenter:
+    name: ListenMessageCenter
+    http:
+      method: GET
+    input:
+      shape: Empty
+
+  # 标识所有消息为已读
+  BatchSetMessageFlag:
+    name: BatchSetMessageFlag
+    http:
+      method: POST
+    input:
+      shape: BatchSetMessageFlag
+
+  # 更新/编辑消息
+  EditMessageCenter:
+    name: EditMessageCenter
+    http:
+      method: PATCH
+    input:
+      shape: EditMessageCenter
+
+
+# ==== DeploySettingsTemplate-部署配置文件 APIs ====
+
+  # 下发配置文件
+  DeploySettingsTemplateDistribute:
+    name: DeploySettingsTemplateDistribute
+    http:
+      method: POST
+    input:
+      shape: DeploySettingsTemplateDistribute
+
+  # 操作配置文件前预览
+  DeploySettingsTemplateReview:
+    name: DeploySettingsTemplateReview
+    http:
+      method: POST
+    input:
+      shape: DeploySettingsTemplateReview
+
+  # 更新配置文件
+  EditDeploySettingsTemplate:
+    name: EditDeploySettingsTemplate
+    http:
+      method: PATCH
+    input:
+      shape: EditDeploySettingsTemplate
+
+  # 删除配置文件
+  DeleteDeploySettingsTemplate:
+    name: DeleteDeploySettingsTemplate
+    http:
+      method: DELETE
+    input:
+      shape: InstanceId
+
+  # 批量删除配置文件
+  BatchDeploySettingsTemplate:
+    name: BatchDeploySettingsTemplate
+    http:
+      method: POST
+    input:
+      shape: IdMap
+
+
+# ==== History-操作历史记录APIs ====
+
+  # 获取最近的任务列表
+  GetDeployHistoryLast:
+    name: GetDeployHistoryLast
+    http:
+      method: GET
+    input:
+      shape: DeployHistoryLast
+    
+
+# ==== ObjectVariables-变量 APIs ====
+
+  # 获取项目下角色/分组/服务器等的相关变量
+  GetProjectVariable:
+    name: GetProjectVariable
+    http:
+      method: POST
+    input:
+      shape: ProjectVariable
+
+  # 根据变量的类型/名称获取所需的变量
+  GetDiffTypeVariable:
+    name: GetDiffTypeVariable
+    http:
+      method: POST
+    input:
+      shape: DiffTypeVariable
+
+  # 根据变量的类型/名称删除相应的变量
+  DeleteVariable:
+    name: DeleteVariable
+    http:
+      method: POST
+    input:
+      shape: DeleteVariable
+
+  # 根据变量的类型/名称批量删除变量
+  BatchDeleteVariable:
+    name: BatchDeleteVariable
+    http:
+      method: POST
+    input:
+      shape: BatchDeleteVariable
+
+  # 添加变量
+  CreateVariable:
+    name: CreateVariable
+    http:
+      method: POST
+    input:
+      shape: Variable
+
+  # 更新变量
+  EditVariable:
+    name: EditVariable
+    http:
+      method: POST
+    input:
+      shape: EditVariable
+
+  # 检查某个项目下不同作用域的变量名称不可重复
+  CheckVariableSubElementDuplicate:
+    name: CheckVariableSubElementDuplicate
+    http:
+      method: POST
+    input:
+      shape: CheckVariableSubElementDuplicate
+
+
+shapes:
+
+# === Public Parameters ===
+
+  Id:
+    type: string
+    min: 36
+    max: 36
+
+  # {'id': 'x-x-x-x'}
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+    documentation: ""
+
+  # ['x-x-x-x', 'x-x-x-x']
+  Ids:
+    type: list
+    member:
+      shape: Id
+
+  # {'id': ['x-x-x-x', 'x-x-x-x']}
+  IdMap:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Ids
+
+  Map:
+    type: map
+    key:
+      shape: NonEmptyString
+    value:
+      shape: Id
+
+  # [{'a': 'xxxx'}, {'b': 'xxxx'}]
+  Maps:
+    type: list
+    member:
+      shape: Map
+
+  Int:
+    type: integer
+
+  Bool:
+    type: boolean
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  List:
+    type: list
+    member:
+      shape: NonEmptyString
+
+# === Project Parameters ===
+
+  CheckProject:
+    type: structure
+    required:
+    - key
+    - value
+    members:
+      key:
+        shape: NonEmptyString
+        documentation: "The Field For Checking"
+      value:
+        shape: NonEmptyString
+        documentation: "The Value of Field for Checking"
+      exclude:
+        shape: List
+        documentation: "check when exclude this object"
+    documentation: ""
+
+  CheckUnderProject:
+    type: structure
+    required:
+    - id
+    - key
+    - value
+    - scope
+    members:
+      id:
+        shape: Id
+        documentation: "Project ID"
+      key:
+        shape: NonEmptyString
+        documentation: ""
+      value:
+        shape: NonEmptyString
+        documentation: ""
+      scope:
+        shape: NonEmptyString
+        documentation: "The Scope(role/group/method/template/application)"
+    documentation: ""
+
+  ProjectServers:
+    type: structure
+    required:
+    - id
+    - sid
+    members:
+      id:
+        shape: Id
+        documentation: "Project ID"
+      sid:
+        shape: Ids
+        documentation: "Server ID List"
+    documentation: ""
+
+  Project:
+    type: structure
+    required:
+    - name
+    members:
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+      server:
+        shape: Ids
+        documentation: "Server ID List"
+      groups:
+        shape: Ids
+        documentation: "Group ID List"
+      roles:
+        shape: Ids
+        documentation: "Role ID List"
+
+  EditProject:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+        documentation: "Project ID"
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+# === Application Parameters ===
+
+
+  ApplicationAppRole:
+    type: structure
+    required:
+      - id
+      - name
+      - role
+      - regex
+      - path
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      name:
+        shape: NonEmptyString
+        documentation: "ApplicatioRole Name"
+      role:
+        shape: Id
+        documentation: "Role ID"
+      regex:
+        shape: NonEmptyString
+        documentation: "split rule"
+      path:
+        shape: NonEmptyString
+        documentation: "deploy path"
+      type:
+        shape: NonEmptyString
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+  ApplicationDistribute:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+      - version
+      - split
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      role:
+        shape: Id
+        documentation: "Role ID"
+      group:
+        shape: Ids
+        documentation: "Group List"
+      version:
+        shape: Id
+        documentation: "Version ID"
+      split:
+        shape: Bool
+        documentation: "split when distribute"
+      server:
+        shape: Ids
+        documentation: "Server ID List"
+      deploy_filename:
+        shape: NonEmptyString
+        documentation: ""
+      deploy_path:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+  ApplicationReview:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      role:
+        shape: Id
+        documentation: "Role ID"
+      group:
+        shape: Ids
+        documentation: "Group ID List"
+    documentation: ""
+
+
+  EditApplication:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      name:
+        shape: NonEmptyString
+        documentation: "Application Name"
+      path:
+        shape: NonEmptyString
+        documentation: "Install Path"
+      role:
+        shape: Id
+        documentation: "Role ID"
+      time_value:
+        shape: Int
+        documentation: "Backup Cycle"
+      time_unit:
+        shape: Int
+        documentation: "Backup Cycle Unit"
+    documentation: ""
+
+  DeleteApplicationVersions:
+    type: structure
+    required:
+      - id
+      - vid
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      vid:
+        shape: Ids
+        documentation: "Version ID List"
+    documentation: ""
+
+
+  DeleteApplicationAppRole:
+    type: structure
+    required:
+      - id
+      - app_role_id
+    members:
+      id:
+        shape: Id
+        documentation: "Application ID"
+      app_role_id:
+        shape: Ids
+        documentation: "Application Role ID"
+    documentation: ""
+
+# === Package Parameters ===
+
+  PackageDayCount:
+    type: structure
+    required:
+      - day
+    members:
+      day:
+        shape: Int
+
+# === Group Parameters ===
+
+  GroupServers:
+    type: structure
+    required:
+      - id
+      - servers
+    members:
+      id:
+        shape: Id
+        documentation: "Group ID"
+      servers:
+        shape: Ids
+        documentation: "Server ID List"
+    documentation: ""
+
+  Group:
+    type: structure
+    required:
+      - name
+      - project
+      - servers
+    members:
+      name:
+        shape: NonEmptyString
+        documentation: "Group Name"
+      project:
+        shape: Id
+        documentation: "Project ID"
+      servers:
+        shape: Ids
+        documentation: "Server ID List"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  EditGroup:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: "Group ID"
+      name:
+        shape: NonEmptyString
+        documentation: "Group Name"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+# === Method Parameters ===
+
+
+  Method:
+    type: structure
+    required:
+      - project
+      - name
+      - comment
+      - command
+      - role
+    members:
+      project:
+        shape: Id
+        documentation: "Project ID"
+      name:
+        shape: NonEmptyString
+        documentation: "Method Name"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+      command:
+        shape: NonEmptyString
+        documentation: ""
+      filter_rule:
+        shape: NonEmptyString
+        documentation: ""
+      role:
+        shape: Id
+        documentation: "Role ID"
+    documentation: ""
+
+
+  EditMethod:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+      command:
+        shape: NonEmptyString
+        documentation: ""
+      filter_rule:
+        shape: Id
+        documentation: ""
+      role:
+        shape: Id
+        documentation: ""
+    documentation: ""
+
+
+  MethodRoleGroup:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      role:
+        shape: Id
+        documentation: ""
+      group:
+        shape: Ids
+        documentation: ""
+    documentation: ""
+
+
+  MethodExecute:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+    members:
+      id:
+        shape: Id
+        documentation: "Method ID"
+      role:
+        shape: Id
+        documentation: "Role ID"
+      group:
+        shape: Ids
+        documentation: "Group ID"
+      server:
+        shape: Ids
+        documentation: "Server ID"
+    documentation: ""
+
+# === Role Parameters ===
+
+  Role:
+    type: structure
+    required:
+    - name
+    - project
+    - is_global
+    members:
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      project:
+        shape: Id
+        documentation: ""
+      is_global:
+        shape: Bool
+        documentation: "Is Global Role"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  EditRole:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  RoleServers:
+    type: structure
+    required:
+      - id
+      - servers
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      servers:
+        shape: Ids
+        documentation: ""
+    documentation: ""
+
+# === Version Parameters ===
+
+  EditVersion:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      update_mode:
+        shape: Bool
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+# === Server Parameter ===
+
+  ServerUsage:
+    type: structure
+    members:
+      pid:
+        shape: Id
+        documentation: "Project ID"
+    documentation: ""
+
+  ServerOperation:
+    type: structure
+    required:
+      - region_server
+    members:
+      region_server:
+        shape: Maps
+        documentation: "per element is region server_id map"
+
+
+  ServerDayCount:
+    type: structure
+    required:
+      - flag
+    members:
+      flag:
+        shape: NonEmptyString
+        documentation: "server flag 'public' or 'private'"
+      day:
+        shape: Int
+        documentation: ""
+    documentation: ""
+
+  CheckServerElementDuplicate:
+    type: structure
+    required:
+      - key
+      - value
+    members:
+      key:
+        shape: NonEmptyString
+        documentation: "The Field For Checking"
+      value:
+        shape: NonEmptyString
+        documentation: "The Value of Field for Checking"
+    documentation: ""
+
+  EditServer:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+# === HistoryLog Parameters ===
+
+  HistoryLog:
+    type: structure
+    members:
+      count:
+        shape: Int
+        documentation: "the number of task list"
+      id:
+        shape: Id
+        documentation: "History Log id"
+    documentation: ""
+
+
+# === ApplicationRole Parameters
+
+  EditApplicationRole:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: "ApplicationRole ID"
+      name:
+        shape: NonEmptyString
+        documentation: "ApplicationRole Name"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+      regex:
+        shape: NonEmptyString
+        documentation: ""
+      path:
+        shape: NonEmptyString
+        documentation: "Deploy Path"
+      role:
+        shape: Id
+        documentation: "Role ID"
+    documentation: ""
+
+
+# === AssetServer Parameters ===
+
+  AssetServer:
+    type: structure
+    required:
+      - region_name
+      - region
+      - private_ip
+      - public_ip
+      - cpu
+      - os
+      - mem_size
+      - disk_type
+      - disk_size
+    members:
+      name:
+        shape: NonEmptyString
+        documentation: "AssetServer Name"
+      region_name:
+        shape: NonEmptyString
+        documentation: "AssetServer Region Name"
+      region:
+        shape: Id
+        documentation: "AssetRegion ID"
+      domain:
+        shape: NonEmptyString
+        documentation: "AssetRegion Domain"
+      minion:
+        shape: Id
+        documentation: "AssetServer Minion"
+      private_ip:
+        shape: NonEmptyString
+        documentation: "AssetServer IP"
+      status:
+        shape: NonEmptyString
+        documentation: "AssetServer Status"
+      server_id:
+        shape: Id
+        documentation: "Server ID"
+      public_ip:
+        shape: NonEmptyString
+        documentation: ""
+      cpu:
+        shape: Int
+        documentation: ""
+      os:
+        shape: NonEmptyString
+        documentation: ""
+      mem_size:
+        shape: Int
+        documentation: ""
+      disk_type:
+        shape: NonEmptyString
+        documentation: ""
+      disk_size:
+        shape: Int
+        documentation: ""
+      create_time:
+        shape: NonEmptyString
+        documentation: "AssetServer Create Time"
+      crate_user:
+        shape: Id
+        documentation: "AssetServer Create User"
+    documentation: ""
+
+  EditAssetServer:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      region_name:
+        shape: NonEmptyString
+        documentation: ""
+      region:
+        shape: Id
+        documentation: ""
+      domain:
+        shape: NonEmptyString
+        documentation: ""
+      minion:
+        shape: Id
+        documentation: ""
+      private_ip:
+        shape: NonEmptyString
+        documentation: ""
+      status:
+        shape: NonEmptyString
+        documentation: ""
+      server_id:
+        shape: Id
+        documentation: ""
+      public_ip:
+        shape: NonEmptyString
+        documentation: ""
+      cpu:
+        shape: Int
+        documentation: ""
+      os:
+        shape: NonEmptyString
+        documentation: ""
+      mem_size:
+        shape: Int
+        documentation: ""
+      disk_type:
+        shape: NonEmptyString
+        documentation: ""
+      disk_size:
+        shape: Int
+        documentation: ""
+      create_time:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+# === AssetRegion Parameters ===
+
+  AssetRegion:
+    type: structure
+    required:
+      - name
+      - domain
+      - username
+      - password
+      - proxy_minon
+      - verbose
+    members:
+      name:
+        shape: NonEmptyString
+        documentation: "AssetRegion Name"
+      domain:
+        shape: NonEmptyString
+        documentation: "AssetRegion Domain"
+      username:
+        shape: NonEmptyString
+        documentation: "AssetRegion Uername"
+      password:
+        shape: NonEmptyString
+        documentation: "AssetRegion Password"
+      proxy_minon:
+        shape: NonEmptyString
+        documentation: "AssetRegion Proxy Minon"
+      verbose:
+        shape: NonEmptyString
+        documentation: "AssetRegion Verbose"
+      comment:
+        shape: NonEmptyString
+        documentation: "AssetRegion Comment"
+      create_time:
+        shape: NonEmptyString
+        documentation: "AssetRegion Create Time"
+      create_user:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  EditAssetRegion:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      domain:
+        shape: NonEmptyString
+        documentation: ""
+      username:
+        shape: NonEmptyString
+        documentation: ""
+      password:
+        shape: NonEmptyString
+        documentation: ""
+      proxy_minon:
+        shape: NonEmptyString
+        documentation: ""
+      verbose:
+        shape: NonEmptyString
+        documentation: ""
+      content:
+        shape: NonEmptyString
+        documentation: ""
+      create_time:
+        shape: NonEmptyString
+        documentation: ""
+      count:
+        shape: Int
+        documentation: ""
+    documentation: ""
+
+# === Message Parameters ===
+
+  BatchSetMessageFlag:
+    type: structure
+    members:
+      set_all:
+        shape: Bool
+        documentation: ""
+      id_list:
+        shape: Ids
+        documentation: "Message ID List"
+    documentation: ""
+
+  EditMessageCenter:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: "Message ID"
+      flag:
+        shape: Bool
+        documentation: "Message Read or not"
+    documentation: ""
+
+
+# === DeploySettingsTemplateDistribute Parameters ===
+
+  DeploySettingsTemplateDistribute:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+    members:
+      id:
+        shape: Id
+        documentation: "Settings Template File ID"
+      role:
+        shape: Id
+        documentation: ""
+      group:
+        shape: Ids
+        documentation: ""
+      server:
+        shape: Ids
+        documentation: ""
+    documentation: ""
+
+  DeploySettingsTemplateReview:
+    type: structure
+    required:
+      - id
+      - role
+      - group
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      role:
+        shape: Id
+        documentation: ""
+      group:
+        shape: Ids
+        documentation: ""
+    documentation: ""
+
+
+  EditDeploySettingsTemplate:
+    type: structure
+    required:
+      - id
+    members:
+      id:
+        shape: Id
+        documentation: ""
+      role:
+        shape: Id
+        documentation: ""
+      rename:
+        shape: NonEmptyString
+        documentation: "the filename for deployment"
+      file_path:
+        shape: NonEmptyString
+        documentation: "the path for deployment"
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+
+# === DeployHistory Parameters ===
+
+  DeployHistoryLast:
+    type: structure
+    members:
+      count:
+        shape: Int
+        documentation: ""
+      create_time:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+# ====== ObojectVariable Parameters ======
+
+  ProjectVariable:
+    type: structure
+    required:
+      - pid
+    members:
+      pid:
+        shape: Id
+        documentation: ""
+    documentation: ""
+
+  # ======== 删除变量的参数配置 ========
+  DeleteVariable:
+    type: structure
+    required:
+      - pid
+      - type
+      - name
+    members:
+      pid:
+        shape: Id
+        documentation: "Project ID"
+      type:
+        shape: NonEmptyString
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  # ======== 批量删除变量的参数配置 ========
+  BatchDelVbMaps:
+    type: list
+    member:
+      shape: BatchDelVbMap
+
+  BatchDelVbMap:
+    type: map
+    key:
+      shape: NonEmptyString
+    value:
+      shape: NonEmptyString
+
+  BatchDeleteVariable:
+    type: structure
+    required:
+      - pid
+      - varList
+    members:
+      pid:
+        shape: Id
+        documentation: ""
+      varList:
+        shape: BatchDelVbMaps
+        documentation: ""
+    documentation: ""
+
+  # ======== 根据变量名称/类型获取所需变量的参数配置 ========
+  DiffTypeVariable:
+    type: structure
+    required:
+      - pid
+      - type
+      - name
+      - varList
+    members:
+      pid:
+        shape: Id
+        documentation: ""
+      type:
+        shape: NonEmptyString
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      varList:
+        shape: Ids
+        documentation: ""
+    documentation: ""
+
+  # ======== 创建变量的参数配置 ========
+  VariableVarListMap:
+    type: structure
+    required:
+      - id
+      - value
+    members:
+      id:
+        shape: Id
+        documentation: "Project ID"
+      value:
+        shape: NonEmptyString
+    documemtation: ""
+
+  VariableVarList:
+    type: list
+    member:
+      shape: VariableVarListMap
+
+  Variable:
+    type: structure
+    required:
+      - pid
+      - type
+      - name
+      - varList
+    members:
+      pid:
+        shape: Id
+        documentation: ""
+      type:
+        shape: NonEmptyString
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      varList:
+        shape: VariableVarList
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  # ======== 编辑变量的参数配置 ========
+  EditVariableVarListMap:
+    type: structure
+    required:
+      - tid
+      - id
+      - value
+    members:
+      tid:
+        shape: Id
+        documentation: "Project ID"
+      id:
+        shape: Id
+        documentation: "Variable ID"
+      value:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  EditVariableVarList:
+    type: list
+    member:
+      shape: EditVariableVarListMap
+
+  EditVariable:
+    type: structure
+    required:
+      - type
+      - name
+      - varList
+    members:
+      type:
+        shape: NonEmptyString
+        documentation: ""
+      name:
+        shape: NonEmptyString
+        documentation: ""
+      varList:
+        shape: EditVariableVarList
+        documentation: ""
+      comment:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
+
+  # ======== 检查某个项目下不同作用域的变量名称不可重复的参数配置 ========
+  CheckVariableSubElementDuplicate:
+    type: structure
+    required:
+      - pid
+      - scope
+      - key
+      - value
+    members:
+      pid:
+        shape: Id
+        documentation: ""
+      scope:
+        shape: NonEmptyString
+        documentation: ""
+      key:
+        shape: NonEmptyString
+        documentation: ""
+      value:
+        shape: NonEmptyString
+        documentation: ""
+    documentation: ""
