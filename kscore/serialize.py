@@ -348,15 +348,7 @@ class KCSSerializer(QueryAcceptJsonSerializer):
         return serialized
 
 
-class CustomBodySerializer(QuerySerializer):
-
-    @property
-    def headers(self):
-        return {"Accept": 'application/json'}
-
-    def _serialize_not_shape(self, data, parameters):
-
-        data.update(parameters)
+class CustomBodySerializer(QueryAcceptJsonSerializer):
 
     def serialize_to_request(self, parameters, operation_model):
         shape = operation_model.input_shape
@@ -372,21 +364,20 @@ class CustomBodySerializer(QuerySerializer):
             }
         )
         body_params = self.MAP_TYPE()
+        custom_body = None
         if 'Body' in parameters:
-            body_params['Body'] = parameters['Body']
-            del parameters['Body']
-
+            custom_body = parameters.pop('Body')
         if shape is not None:
             self._serialize(body_params, parameters, shape)
         else:
             self._serialize_not_shape(body_params, parameters)
-        return self._serialize_data(serialized, body_params)
+        return self._serialize_data(serialized, body_params, custom_body)
 
-    def _serialize_data(self, serialized, data):
-        serialized['body'] = json.dumps(data).encode(self.DEFAULT_ENCODING)
-        if 'Body' in data:
-            del data['Body']
+    def _serialize_data(self, serialized, data, body=None):
+        if body is not None:
+            serialized['body'] = json.dumps(body).encode(self.DEFAULT_ENCODING)
         serialized['query_string'] = data
+        print serialized
         return serialized
 
 
@@ -397,6 +388,7 @@ class JSONSerializer(Serializer):
     TIMESTAMP_FORMAT = 'unixtimestamp'
 
     def serialize_to_request(self, parameters, operation_model):
+
         target = '%s.%s' % (operation_model.metadata['targetPrefix'],
                             operation_model.name)
         serialized = self._create_default_request()
