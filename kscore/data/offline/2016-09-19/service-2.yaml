@@ -34,7 +34,7 @@ operations:
       method: GET
       requestUri: /
     input:
-      shape: WithDetailInstance
+      shape: GetPresetListInstance
 
   GetPresetDetail:
     name: GetPresetDetail
@@ -84,7 +84,7 @@ operations:
       method: GET
       requestUri: /
     input:
-      shape: TaskIDInstance
+      shape: GetTaskByTaskIDInstance
 
 shapes:  
   Preset:
@@ -95,20 +95,60 @@ shapes:
     type: string
     min: 35
     max: 45
+  PresetType:
+    type: string
+  Presets:
+    type: string
+  StartDate:
+    type: integer
+  EndDate:
+    type: integer
+  Marker:
+    type: integer
+  Limit:
+    type: integer
   PresetInstance:
     type: structure
     members:
       preset:
         shape: Preset
-  WithDetailInstance:
+  GetPresetListInstance:
     type: structure
     members:
       withDetail:
         shape: WithDetail
+      presettype:
+        shape: PresetType
+      presets:
+        shape: Presets  
   TaskIDInstance:
     type: structure
     members:
       taskid:
         shape: TaskID
+  GetTaskListInstance:
+    type: structure
+    members:
+      startdate:
+        shape: StartDate
+      enddate:
+        shape: EndDate
+      marker:
+        shape: Marker
+      limit:
+        shape: Limit
+  GetTaskByTaskIDInstance:
+    type: structure
+    members:
+      taskid:
+        shape: TaskID
+      startdate:
+        shape: StartDate
+      enddate:
+        shape: EndDate
+      marker:
+        shape: Marker
+      limit:
+        shape: Limit
 
   

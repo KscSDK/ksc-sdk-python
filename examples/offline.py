@@ -31,6 +31,7 @@ param = {
     }
 }
 
+
 #该接口需要输入json格式数据
 res = client.Preset(param)
 print json.dumps(res)
@@ -41,7 +42,11 @@ res = client.UpdatePreset(param)
 print json.dumps(res)
 
 #获取模板列表接口调用示例 : GetPresetList
-res = client.GetPresetList()
+#参数
+# withDetail:是否查询模板详情，1-是 0-否
+# presettype:模板类型，多种模板类型以逗号隔开
+# presets:模板名称，多个模板名称以逗号隔开
+res = client.GetPresetList(withDetail=0,presettype="avop",presets='test')
 print json.dumps(res)
 
 #获取模板信息接口调用示例 : GetPresetDetail
@@ -73,7 +78,7 @@ task = {
 }
 
 #该接口需要输入json格式数据
-res = client.CreateTask()
+res = client.CreateTask(task)
 print json.dumps(res)
 
 #查看任务状态接口调用示例 : GetTaskByTaskID
@@ -82,7 +87,12 @@ res = client.GetTaskByTaskID(taskid)
 print json.dumps(res)
 
 #获取任务列表接口调用示例 : GetTaskList
-res = client.GetTaskList()
+#参数
+# startdate:开始时间，默认为当前月的第一天；格式：20160919
+# enddate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
+# marker:请求起始游标，默认为0    
+# limit:单次请求的记录数，默认为100，最大值为100
+res = client.GetTaskList(startdate=20161101,enddate=20161118,marker=0,limit=50)
 print json.dumps(res)
 
 #删除任务接口调用示例 : DelTaskByTaskID
@@ -94,5 +104,11 @@ res = client.TopTaskByTaskID(taskid)
 print json.dumps(res)
 
 #查询任务META列表接口调用示例 : GetTaskMetaInfo
-res = client.GetTaskMetaInfo(taskid)
+#参数
+# taskid:任务ID
+# startdate:开始时间，默认为当前月的第一天；格式：20160919
+# enddate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
+# marker:请求起始游标，默认为0    
+# limit:单次请求的记录数，默认为100，最大值为100
+res = client.GetTaskMetaInfo(taskid=taskid,startdate=20161101,enddate=20161118,marker=0,limit=50)
 print json.dumps(res)
