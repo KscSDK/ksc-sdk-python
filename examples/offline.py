@@ -46,7 +46,7 @@ print json.dumps(res)
 # withDetail:是否查询模板详情，1-是 0-否
 # presettype:模板类型，多种模板类型以逗号隔开
 # presets:模板名称，多个模板名称以逗号隔开
-res = client.GetPresetList(withDetail=0,presettype="avop",presets='test')
+res = client.GetPresetList(withDetail=0,presettype="avop")
 print json.dumps(res)
 
 #获取模板信息接口调用示例 : GetPresetDetail

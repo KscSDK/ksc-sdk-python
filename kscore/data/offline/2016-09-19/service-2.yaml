@@ -70,6 +70,8 @@ operations:
     http:
       method: GET
       requestUri: /
+    input:
+      shape: GetTaskListInstance
 
   GetTaskByTaskID:
     name: GetTaskByTaskID
@@ -78,6 +80,7 @@ operations:
       requestUri: /
     input:
       shape: TaskIDInstance
+  
   GetTaskMetaInfo:
     name: GetTaskMetaInfo
     http:
