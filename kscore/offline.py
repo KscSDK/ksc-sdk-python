@@ -2,9 +2,13 @@
 from kscore.session import get_session
 import time
 class OfflineClient:
-	def __init__(self,service_name,region_name,use_ssl,env_vars):
+	def __init__(self,service_name,region_name,use_ssl,ks_access_key_id,ks_secret_access_key):
 		s = get_session()
-		self.client = s.create_client(service_name, region_name, use_ssl = use_ssl)
+		if ks_access_key_id != None and  ks_secret_access_key != None:
+			self.client = s.create_client(service_name, region_name, use_ssl = use_ssl,
+			ks_access_key_id=ks_access_key_id, ks_secret_access_key=ks_secret_access_key)
+		else:
+			self.client = s.create_client(service_name, region_name, use_ssl = use_ssl)
 
 	def Preset(self,param):
 		return self.client.preset(**param)
@@ -52,5 +56,5 @@ class OfflineClient:
 		else:
 			return self.client.get_task_meta_info(taskid = taskid)
 
-def getOfflineClient(service_name,region_name,use_ssl=True,env_vars=None):
-	return OfflineClient(service_name,region_name,use_ssl,env_vars)
+def getOfflineClient(service_name,region_name,use_ssl=False,ks_access_key_id=None, ks_secret_access_key=None):
+	return OfflineClient(service_name,region_name,use_ssl,ks_access_key_id,	ks_secret_access_key)

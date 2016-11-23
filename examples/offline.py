@@ -1,8 +1,16 @@
 # -*- encoding:utf-8 -*-
 from kscore.offline import getOfflineClient
 import json
+
+#没有配置kscore.cfg调用方式
+ks_access_key_id='xxxxxxxxxxxxxxxxxxxx'
+ks_secret_access_key='xxxxxxxxxxxxxxxxxxxxxxx'
 # 参数：服务service_name,大区region_name 
-client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False)
+client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
+
+#配置kscore.cfg调用方式
+
+#client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False)
 
 #创建模板接口调用示例 : preset  
 presetname = 'testpreset'
