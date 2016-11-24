@@ -129,6 +129,10 @@ operations:
     name: DescribeSubnetAvailableAddresses
     http:
       method: GET
+  ModifyNat:
+    name: ModifyNat
+    http:
+      method: GET
 
 shapes:
   Id:

@@ -52,6 +52,10 @@ operations:
     name: DescribeAddressPortfwds
     http:
       method: GET  
+  ModifyAddress:
+    name: ModifyAddress
+    http:
+      method: GET
 
 
 shapes:
