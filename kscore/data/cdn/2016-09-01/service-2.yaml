@@ -1951,7 +1951,7 @@ shapes:
   DomainOnlineUserDataByRegionList:
     type: list
     member:
-      shape: DMOnlineUserDataByByRegion
+      shape: DomainOnlineUserDataByRegion
   
   DomainOnlineUserDataByDomain:
     type: structure
@@ -2097,10 +2097,11 @@ shapes:
   
   TopOnlineUserDataByByRegion:
     type: structure
-    Region:
-      shape: String
-    OnlineUser:
-      shape: Long
+    members:
+      Region:
+        shape: String
+      OnlineUser:
+        shape: Long
   TopOnlineUserDataByByRegionList:
     type: list
     member:

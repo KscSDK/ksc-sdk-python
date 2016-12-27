@@ -255,7 +255,7 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
         
     '''
-    #res = client.get_bandwidth_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
+    #res = client.get_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
     
     
     '''
@@ -277,7 +277,7 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
         
     '''
-    #res = client.get_flow_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
+    #res = client.get_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
     
     
     '''
@@ -302,7 +302,7 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
                
     '''
-    #res = client.get_pv_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
+    #res = client.get_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
    
    
     '''
@@ -324,7 +324,7 @@ if __name__ == "__main__":
         HitType         String  数据类型， 取值为flowhitrate:流量命中率; reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
         
     '''
-    #res = client.get_hit_rate_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',HitType='flowhitrate')
+    #res = client.get_hit_rate_detailed_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',HitType='flowhitrate')
     
     
     '''
@@ -346,7 +346,7 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    #res = client.get_hit_rate_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    #res = client.get_hit_rate_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
     
     
     '''
@@ -371,7 +371,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    #res = client.get_province_and_isp_flow_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0')
+    #res = client.get_province_and_isp_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='1', Granularity='1440')
     
     
     '''
@@ -397,7 +397,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    #res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0')
+    #res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0', Granularity='1440')
     
     
     '''
@@ -452,7 +452,7 @@ if __name__ == "__main__":
         LimitN      String  热门Url条数，取值为1-200，最大200，默认100
     
     '''
-    #res = client.get_top_url_data(DomainIds='2D09NSH',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    #res = client.get_top_url_data(DomainIds='2D09RW5',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
     
     
     '''
@@ -491,7 +491,7 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
             
     '''
-    #res = client.get_isp_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    #res = client.get_isp_data(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
     
     
     '''
@@ -529,7 +529,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_flow_data_by_stream(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092',ResultType='0',Regions='CN',Granularity='1440')
+    #res = client.get_live_flow_data_by_stream(StartTime='2016-12-18T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
     
     
     '''
@@ -550,7 +550,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_bandwidth_data_by_stream(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092',ResultType='0',Regions='CN',Granularity='1440')
+    #res = client.get_live_bandwidth_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
     
     
     '''
@@ -572,7 +572,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
             
     '''
-    #res = client.get_live_online_user_data_by_domain(DomainIds='2D09STT,',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',Regions='CN',Granularity='1440',ResultType='0')
+    #res = client.get_live_online_user_data_by_domain(DomainIds='2D09W0V',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',Regions='CN',Granularity='1440',ResultType='1')
     
     
     '''
@@ -595,7 +595,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
        
     '''
-    #res = client.get_live_online_user_data_by_stream(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092',ResultType='0',Regions='CN',Granularity='1440')
+    #res = client.get_live_online_user_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='0',Regions='CN',Granularity='5')
     
     
     '''
@@ -614,7 +614,7 @@ if __name__ == "__main__":
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         LimitN 否 Int Top条数，取值为1-200，最大200，默认100
     '''
-    res = client.get_live_top_online_user_data(StartTime='2016-11-19T08:00+0800',ResultType='0',Regions='CN',LimitN='100')
+    #res = client.get_live_top_online_user_data(StartTime='2016-11-19T08:00+0800',ResultType='1',Regions='CN',LimitN='100')
     
     
     
