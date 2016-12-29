@@ -3,6 +3,7 @@
 from kscore.session import get_session
 
 if __name__ == "__main__":
+    
 
     s = get_session()
     client = s.create_client("cdn", use_ssl=False)
@@ -21,8 +22,8 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''  
-    #domains = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
-    
+    #res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
+ 
        
     '''
     add_cdn_domain_request 新增域名
@@ -157,6 +158,9 @@ if __name__ == "__main__":
                     IgnoreNoCache   String  是否忽略源站的no－cache头，on表示忽略，off（默认）表示不忽略。 (本期暂不支持此选项)
         
     '''
+    
+    ''' 
+    # json格式规则
     cacheRules = {
             "DomainId":"2D09NSH",
             "CacheRules":
@@ -170,6 +174,7 @@ if __name__ == "__main__":
                 }
             ]
     }
+    '''
     #client.set_cache_rule_config(**cacheRules)
     #confs = client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
     
@@ -202,6 +207,9 @@ if __name__ == "__main__":
                         Origin      String  回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。
     
     ''' 
+    
+    '''
+    # json格式规则
     originParam = {
                     "DomainId":"2D09NSH",
                     "Enable":"on",
@@ -220,6 +228,7 @@ if __name__ == "__main__":
                         }
                     ]
                   }
+    '''              
     #client.set_origin_advanced_config(**originParam)
     
     
@@ -619,10 +628,10 @@ if __name__ == "__main__":
     
     
     
-    print '****************************cdn test*****************:'
+    #print '****************************cdn test*****************:'
     #print client.get_domain_configs(DomainId='2D09NSH', ConfigList='src_advanced')
     #print type(res)   
-    print res
+    #print res
     #print client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,cc,page_compress,ignore_query_string,src_host,test_url,http_header,range,src_advanced')
     
     
