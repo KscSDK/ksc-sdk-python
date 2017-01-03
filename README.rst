@@ -81,6 +81,8 @@ Service 服务
     +-------------------+------------+
     | offline           |            |
     +-------------------+------------+
+    | cdn               |            |
+    +-------------------+------------+    
 
 ----------------
 Method 方法
@@ -209,7 +211,24 @@ Examples 示例
         #获取模板信息接口调用示例 : get_preset_detail
         res = client.get_preset_detail(preset = presetname)
         print json.dumps(res)
+        
++ CDN
 
+::
+    ## CDN API调用 详细示例位于 ./examples/cdn.py
+    
+    from kscore.session import get_session
+    import json
+    
+    if __name__=="__main__":
+        
+        #初始化
+        s = get_session()
+        client = s.create_client("cdn", use_ssl=False)
+        
+        domains = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainStatus='online',CdnType='download')
+        print domains
+        
 + 更多
 
 --------------------
