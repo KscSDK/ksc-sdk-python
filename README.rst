@@ -215,19 +215,18 @@ Examples 示例
 + CDN
 
 ::
-    ## CDN API调用 详细示例位于 ./examples/cdn.py
-    
+
     from kscore.session import get_session
-    import json
-    
-    if __name__=="__main__":
-        
-        #初始化
+
+    if __name__ == "__main__":
+        # CDN API调用 详细示例位于 ./examples/cdn.py
         s = get_session()
+
         client = s.create_client("cdn", use_ssl=False)
-        
-        domains = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainStatus='online',CdnType='download')
-        print domains
+
+        res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainStatus='online',CdnType='download')
+
+        print res
         
 + 更多
 
