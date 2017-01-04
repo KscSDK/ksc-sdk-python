@@ -195,10 +195,10 @@ class Endpoint(object):
                          exc_info=True)
             return (None, e)
         # This returns the http_response and the parsed_data.
-        response_dict = convert_to_response_dict(http_response,
-                                                 operation_model)
+        response_dict = convert_to_response_dict(http_response, operation_model)
         parser = self._response_parser_factory.create_parser(
-            operation_model.metadata['protocol'])
+            operation_model.protocol)
+
         return ((http_response,
                  parser.parse(response_dict, operation_model.output_shape)),
                 None)
