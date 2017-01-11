@@ -62,7 +62,7 @@ Service 服务
     | cn-shanghai-2     | 上海2区    |
     +-------------------+------------+
 
-+ 已支持服务列表 service_name， `详情参考API手册 <http://docs.ksyun.com>`__
++ 已支持服务列表 service_name，具体方法与API的Action对应,如kec服务RunInstances对应为run_instances方法。 `详情参考API手册 <http://docs.ksyun.com>`__
 
     +-------------------+----------------+
     | service           | 服务名         |
