@@ -132,6 +132,7 @@ partitions:
         cn-shanghai-2:
           protocols:
           - http
+
     tag:
       defaults:
         credentialScope:
@@ -145,3 +146,16 @@ partitions:
           protocols:
           - http
           - https
+
+    cdn:
+      defaults:
+        protocols:
+        - http
+        - https
+        credentialScope:
+          service: cdn
+      partitionEndpoint: cn-shanghai-1
+      endpoints:
+        cn-shanghai-1:
+          hostname: cdn.api.ksyun.com
+
