@@ -72,7 +72,6 @@ partitions:
       defaults:
         credentialScope:
           service: kec
-      EndpointRegion: cn-beijing-6
       endpoints:
         cn-beijing-6:
           protocols:
@@ -133,3 +132,16 @@ partitions:
         cn-shanghai-2:
           protocols:
           - http
+    tag:
+      defaults:
+        credentialScope:
+          service: tag
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+        cn-shanghai-2:
+          protocols:
+          - http
+          - https
