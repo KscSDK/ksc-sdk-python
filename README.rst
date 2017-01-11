@@ -9,7 +9,7 @@ Install 安装
 ----------------
 
 + pip 安装
-    + pip install kscore
+    + pip install ksc-sdk-python
 
 + github 安装
     + 通过 `GitHub <https://github.com/liuyichen/kscore>`__ 下载
