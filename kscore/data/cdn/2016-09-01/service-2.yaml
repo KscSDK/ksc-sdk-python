@@ -1,0 +1,2147 @@
+---
+version: '2.0'
+
+metadata:
+  # Version 
+  apiVersion: '2016-09-01'
+  endpointPrefix: cdn
+  globalEndpoint: cdn.api.ksyun.com
+  jsonVersion: '1.1'
+  serviceFullName: cdn Service
+  signatureVersion: v4
+  targetPrefix: cdn
+  protocol: query-json
+
+documentation: ''
+
+operations:
+
+  GetCdnDomains:
+    name: GetCdnDomains
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetCdnDomains
+    input:
+      shape: GetCdnDomainsRequest
+    output:
+      shape: GetCdnDomainsResponse
+  
+  AddCdnDomain:
+    name: AddCdnDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/AddCdnDomain
+    input:
+      shape: AddCdnDomainRequest
+    output:
+      shape: AddCdnDomainResponse
+  
+  GetCdnDomainBasicInfo:
+    name: GetCdnDomainBasicInfo
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetCdnDomainBasicInfo
+    input:
+      shape: GetCdnDomainBasicRequest
+    output:
+      shape: GetCdnDomainBasicResponse
+      
+  GetDomainConfigs:
+    name: GetDomainConfigs
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetDomainConfigs
+    input:
+      shape: GetDomainConfigsRequest
+    output:
+      shape: GetDomainConfigsResponse
+      
+  ModifyCdnDomainBasicInfo:
+    name: ModifyCdnDomainBasicInfo
+    http:
+      method: GET
+      requestUri: 2016-09-01/domain/ModifyCdnDomainBasicInfo
+    input:
+      shape: ModifyCdnDomainBasicInfoRequest
+    output:
+      shape: ModifyCdnDomainBasicInfoResponse
+    
+  StartStopCdnDomain:
+    name: StartStopCdnDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/StartStopCdnDomain
+    input:
+      shape: StartStopCdnDomainRequest
+    output:
+      shape: StartStopCdnDomainResponse
+      
+  DeleteCdnDomain:
+    name: DeleteCdnDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/DeleteCdnDomain
+    input:
+      shape: DeleteCdnDomainRequest
+    output:
+      shape: DeleteCdnDomainResponse
+  
+  SetIgnoreQueryStringConfig:
+    name: SetIgnoreQueryStringConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetIgnoreQueryStringConfig
+    input:
+      shape: SetIgnoreQueryStringConfigRequest
+
+  SetBackOriginHostConfig:
+    name: SetBackOriginHostConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetBackOriginHostConfig
+    input:
+      shape: SetBackOriginHostConfigRequest
+  
+  SetReferProtectionConfig:
+    name: SetReferProtectionConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetReferProtectionConfig
+    input:
+      shape: SetReferProtectionConfigRequest
+ 
+  SetCacheRuleConfig:
+    name: SetCacheRuleConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetCacheRuleConfig
+  
+  SetTestUrlConfig:
+    name: SetTestUrlConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetTestUrlConfig
+    input:
+      shape: SetTestUrlConfigRequest
+  
+  SetOriginAdvancedConfig:
+    name: SetOriginAdvancedConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetOriginAdvancedConfig
+      
+  SetRemarkConfig:
+    name: SetRemarkConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetRemarkConfig
+    input:
+      shape: SetRemarkConfigRequest
+      
+  GetBandwidthData:
+    name: GetBandwidthData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetBandwidthData
+    input:
+      shape: GetBandwidthDataRequest
+    output:
+      shape: GetBandwidthDataResponse
+      
+  GetFlowData:
+    name: GetFlowData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetFlowData
+    input:
+      shape: GetFlowDataRequest
+    output:
+      shape: GetFlowDataResponse
+      
+  GetPvData:
+    name: GetPvData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPvData
+    input:
+      shape: GetPvDataRequest
+    output:
+      shape: GetPvDataResponse
+    
+  GetHitRateDetailedData:
+    name: GetHitRateDetailedData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetHitRateDetailedData
+    input:
+      shape: GetHitRateDetailedDataRequest
+    output:
+      shape: GetHitRateDetailedDataResponse
+  
+  GetHitRateData:
+    name: GetHitRateData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetHitRateData
+    input:
+      shape: GetHitRateDataRequest
+    output:
+      shape: GetHitRateDataResponse
+ 
+  GetProvinceAndIspFlowData:
+    name: GetProvinceAndIspFlowData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetProvinceAndIspFlowData
+    input:
+      shape: GetProvinceAndIspFlowDataRequest
+    output:
+      shape: GetProvinceAndIspFlowDataResponse
+  
+  GetProvinceAndIspBandwidthData:
+    name: GetProvinceAndIspBandwidthData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetProvinceAndIspBandwidthData
+    input:
+      shape: GetProvinceAndIspBandwidthDataRequest
+    output:
+      shape: GetProvinceAndIspBandwidthDataResponse
+      
+  GetHttpCodeData:
+    name: GetHttpCodeData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetHttpCodeData
+    input: 
+      shape: GetHttpCodeDataRequest
+    output:
+      shape: GetHttpCodeDataResponse
+      
+  GetHttpCodeDetailedData:
+    name: GetHttpCodeDetailedData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetHttpCodeDetailedData
+    input:
+      shape: GetHttpCodeDetailedDataRequest
+    output:
+      shape: GetHttpCodeDetailedDataResponse
+    
+  GetTopUrlData:
+    name: GetTopUrlData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetTopUrlData
+    input:
+      shape: GetTopUrlDataRequest
+    output:
+      shape: GetTopUrlDataResponse
+  
+  GetAreaData:
+    name: GetAreaData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetAreaData
+    input:
+      shape: GetAreaDataRequest
+    output:
+      shape: GetAreaDataResponse
+      
+  GetIspData:
+    name: GetIspData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetIspData
+    input:
+      shape: GetIspDataRequest
+    output:
+      shape: GetIspDataResponse
+ 
+  GetDomainRankingListData:
+    name: GetDomainRankingListData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetDomainRankingListData
+    input:
+      shape: GetDomainRankingListDataRequest
+    output:
+      shape: GetDomainRankingListDataResponse
+  
+  GetLiveFlowDataByStream:
+    name: GetLiveFlowDataByStream
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetLiveFlowDataByStream
+    input:
+      shape: GetLiveFlowDataByStreamRequest
+    output:
+      shape: GetLiveFlowDataByStreamResponse
+  
+  GetLiveBandwidthDataByStream:
+    name: GetLiveBandwidthDataByStream
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetLiveBandwidthDataByStream
+    input:
+      shape: GetLiveBandwidthDataByStreamRequest
+    output:
+      shape: GetLiveBandwidthDataByStreamResponse
+  
+  GetLiveOnlineUserDataByDomain:
+    name: GetLiveOnlineUserDataByDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetLiveOnlineUserDataByDomain
+    input:
+      shape: GetLiveOnlineUserDataByDomainRequest
+    output:
+      shape: GetLiveOnlineUserDataByDomainResponse
+      
+  GetLiveOnlineUserDataByStream:
+    name: GetLiveOnlineUserDataByStream
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetLiveOnlineUserDataByStream
+    input:
+      shape: GetLiveOnlineUserDataByStreamRequest
+    output:
+      shape: GetLiveOnlineUserDataByStreamResponse
+  
+  GetLiveTopOnlineUserData:
+    name: GetLiveTopOnlineUserData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetLiveTopOnlineUserData
+    input:
+      shape: GetLiveTopOnlineUserDataRequest
+    output:
+      shape: GetLiveTopOnlineUserDataResponse
+  
+#####################################
+shapes:
+
+  String:
+    type: string
+
+  Bool:
+    type: bool
+    
+  Integer:
+    type: integer
+    
+  Long:
+    type: long
+    
+  DataTime:
+    type: timestamp
+
+  Double:
+    type: double  
+  
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    
+  Domain:
+    type: structure
+    members:
+      DomainName:
+        shape: String
+      DomainId:
+        shape: String
+      Cname:
+        shape: String
+      CdnType:
+        shape: String
+      CdnSubType:
+        shape: String
+      IcpRegistration:
+        shape: String
+      DomainStatus:
+        shape: String
+      CreatedTime:
+        shape: String
+      ModifiedTime:
+        shape: String
+      Description:
+        shape: String
+  
+  DomainList:
+    type: list
+    member:
+      shape: Domain
+  
+  GetCdnDomainsRequest:
+    type: structure
+    members:
+      PageSize:
+        shape: Long
+      PageNumber:
+        shape: Long
+      DomainName:
+        shape: String
+      DomainStatus:
+        shape: String
+      CdnType:
+        shape: String
+      FuzzyMatch:
+        shape: String
+        
+  GetCdnDomainsResponse:
+    type: structure
+    members:
+      PageNumber:
+        shape: Long
+      PageSize:
+        shape: Long
+      TotalCount:
+        shape: Long
+      Domains:
+        shape: DomainList
+        
+  AddCdnDomainRequest:
+    type: structure
+    required:
+    - DomainName
+    - CdnType
+    - CdnProtocol
+    - OriginType
+    - OriginProtocol
+    - Origin
+    members:
+      DomainName: 
+        shape: String
+      CdnType:  
+        shape: String
+      CdnSubType:  
+        shape: String
+      CdnProtocol:  
+        shape: String
+      BillingRegions:  
+        shape: String
+      OriginType:  
+        shape: String
+      OriginProtocol:  
+        shape: String
+      OriginPort: 
+        shape: Integer
+      Origin:  
+        shape: String
+  
+  AddCdnDomainResponse:
+    type: structure
+    members:
+      DomainID:   
+        shape: String
+      DomainStatus:   
+        shape: String
+  
+  GetCdnDomainBasicRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:   
+        shape: String
+          
+  GetCdnDomainBasicResponse:
+    type: structure
+    members:
+      DomainName:
+        shape: String
+      DomainId:
+        shape: String
+      Cname:
+        shape: String
+      HttpsCname:
+        shape: String
+      HttpDnsCname:
+        shape: String
+      DomainStatus:
+        shape: String
+      CdnType:
+        shape: String
+      CdnSubType:
+        shape: String
+      IcpRegistration:
+        shape: String
+      AuditFailReason:
+        shape: String
+      CdnProtocol:
+        shape: String
+      BillingRegions:
+        shape: String
+      OriginType:
+        shape: String
+      OriginPort:
+        shape: String
+      OriginProtocol:
+        shape: String
+      Origin:
+        shape: String
+      CreatedTime:
+        shape: String
+      ModifiedTime:
+        shape: String
+        
+  GetDomainConfigsRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+      ConfigList:
+        shape: String
+ 
+  #Configs response 各项封装
+  CacheRule:
+    type: structure
+    members:
+      Value:
+        shape: String
+      CacheTime:
+        shape: Long
+      RespectOrigin:
+        shape: String
+      IgnoreNoCache:
+        shape: String
+  CacheRuleList:
+    type: list
+    member:
+      shape: CacheRule
+  CacheRuleConfigShape:
+    type: structure
+    members:
+      CacheRules:
+        shape: CacheRuleList
+  
+  IpProtectionConfigShape:
+    type: structure
+    members:
+      IpProtectionType:
+        shape: String
+      IpList:
+        shape: String
+        
+  GzipConfigShape:   
+    type: structure
+    members:
+      Enable:
+        shape: String
+        
+  IgnoreQueryStringConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+   
+  BackOriginConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+        
+  ReferProtectionConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      ReferType:
+        shape: String
+      ReferList:
+        shape: String
+        
+  UrlAuthConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      AuthType:
+        shape: String
+      Key1:
+        shape: String
+      Key2:
+        shape: String
+      Timeout:
+        shape: String
+  
+  BackOriginHostConfigShape:
+    type: structure
+    members:
+      BackOriginHost: 
+        shape: String
+      
+  VideoSeekConfigShape:    
+    type: structure
+    members:
+      Enable:
+        shape: String
+        
+  OriginAdvancedItem:
+    type: structure
+    members:
+      OriginLine:
+        shape: String
+      Origin:
+        shape: String
+  OriginAdvancedItemList:
+    type: list
+    member:
+      shape: OriginAdvancedItem
+  OriginAdvancedConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      OriginType:
+        shape: String
+      OriginPolicy:
+        shape: String
+      OriginPolicyBestCount:
+        shape: Long
+      OriginAdvancedItems:
+        shape: OriginAdvancedItemList
+   
+  DetectOriginConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      DetectMethod:
+        shape: String
+      ExpectedResponse:
+        shape: String
+      DetectUrl:
+        shape: String
+      Frequency:
+        shape: String
+        
+  TestUrlConfigShape:
+    type: structure
+    members:
+      TestUrl:
+        shape: String
+        
+  HttpHeaderRule:
+    type: structure
+    members:
+      HttpHeaderRuleType:
+        shape: String
+      HeaderKey:
+        shape: String
+      HeaderValue:
+        shape: String
+  HttpHeaderRuleList:
+    type: list
+    member:
+      shape: HttpHeaderRule
+  HttpHeadersConfigShape:
+    type: structure
+    members:
+      HttpHeaderRules:
+        shape: HttpHeaderRuleList
+  ##
+  GetDomainConfigsResponse:    
+    type: structure
+    members:
+      CacheRuleConfig:
+        shape: CacheRuleConfigShape
+      IpProtectionConfig:
+        shape: IpProtectionConfigShape
+      GzipConfig:
+        shape: GzipConfigShape
+      IgnoreQueryStringConfig:
+        shape: IgnoreQueryStringConfigShape
+      BackOriginConfig:
+        shape: BackOriginConfigShape
+      ReferProtectionConfig:
+        shape: ReferProtectionConfigShape
+      UrlAuthConfig:
+        shape: UrlAuthConfigShape
+      BackOriginHostConfig:
+        shape: BackOriginHostConfigShape
+      VideoSeekConfig:
+        shape: VideoSeekConfigShape
+      OriginAdvancedConfig:
+        shape: OriginAdvancedConfigShape
+      DetectOriginConfig:
+        shape: DetectOriginConfigShape
+      TestUrlConfig:
+        shape: TestUrlConfigShape
+      HttpHeadersConfig:
+        shape: HttpHeadersConfigShape
+        
+  ModifyCdnDomainBasicInfoRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+      Regions:
+        shape: String
+      OriginType:
+        shape: String
+      OriginPort:
+        shape: String
+      Origin:
+        shape: String
+        
+  ModifyCdnDomainBasicInfoResponse:
+    type: structure
+    members:
+      RequestID:
+        shape: String
+      
+  StartStopCdnDomainRequest:
+    type: structure
+    required:
+    - DomainId
+    - ActionType
+    members:
+      DomainId:
+        shape: String
+      ActionType:
+        shape: String
+        
+  StartStopCdnDomainResponse:
+    type: structure
+    members:
+      RequestID:
+        shape: String
+        
+  DeleteCdnDomainRequest:  
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+        
+  DeleteCdnDomainResponse:
+    type: structure
+    members:
+      RequestID:
+        shape: String
+        
+  SetIgnoreQueryStringConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+        
+  SetBackOriginHostConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - BackOriginHost
+    members:
+      DomainId:
+        shape: String
+      BackOriginHost:
+        shape: String
+        
+  SetReferProtectionConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String   
+      Enable:
+        shape: String
+      ReferType:
+        shape: String
+      ReferList:
+        shape: String
+      AllowEmpty:
+        shape: String
+        
+  SetTestUrlConfigRequest:       
+    type: structure
+    required:
+    - DomainId
+    - TestUrl
+    members:
+      DomainId:
+        shape: String
+      TestUrl:
+        shape: String
+        
+  SetRemarkConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Remark
+    members:
+      DomainId:
+        shape: String
+      Remark:
+        shape: String
+        
+  ######查询带宽封装######  
+  GetBandwidthDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      CdnType:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+    
+  BpsDataByRegion: 
+    type: structure
+    members:
+      Region:
+        shape: String
+      Bw:
+        shape: Long
+      SrcBw:
+        shape: Long
+  BpsDataByRegionList:
+    type: list
+    member:
+      shape: BpsDataByRegion
+      
+  BpsDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Bw:
+        shape: String
+      SrcBw:
+        shape: String
+      Regions:
+        shape: BpsDataByRegionList
+  BpsDataByDomainList:
+    type: list
+    member:
+      shape: BpsDataByDomain
+    
+  BpsDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Bw:
+        shape: Long
+      SrcBw:
+        shape: Long
+      Domains:
+        shape: BpsDataByDomainList
+  BpsDataByTimeList:
+    type: list
+    member:
+      shape: BpsDataByTime
+      
+  GetBandwidthDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: BpsDataByTimeList
+        
+  #####流量查询封装#####
+  GetFlowDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      CdnType:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+   
+  FlowDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      Flow:
+        shape: String
+      SrcFlow:
+        shape: String
+  FlowDataByRegionList:
+    type: list
+    member:
+      shape: FlowDataByRegion
+      
+  FlowDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Flow:
+        shape: Long
+      SrcFlow:
+        shape: Long
+      Regions:
+        shape: FlowDataByRegionList
+  FlowDataByDomainList:
+    type: list
+    member:
+      shape: FlowDataByDomain
+  
+  FlowDataByTime:
+    type: structure
+    members:
+      Time: 
+        shape: String
+      Flow:
+        shape: Long
+      SrcFlow:
+        shape: Long
+      Domains:
+        shape: FlowDataByDomainList
+  FlowDataByTimeList:
+    type: list
+    member:
+      shape: FlowDataByTime
+    
+  GetFlowDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: FlowDataByTimeList
+
+  ####请求数查询####
+  GetPvDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      CdnType:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+        
+  PvDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      Pv:
+        shape: Long
+      SrcPv:
+        shape: Long
+  PvDataByRegionList:
+    type: list
+    member:
+      shape: PvDataByRegion
+      
+  PvDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Pv:
+        shape: Long
+      SrcPv:
+        shape: Long
+      Regions:
+        shape: PvDataByRegionList
+  PvDataByDomainList:
+    type: list
+    member:
+      shape: PvDataByDomain
+      
+  PvDataByTime:
+    type: structure
+    members:
+      Time: 
+        shape: String
+      Pv:
+        shape: Long
+      SrcPv:
+        shape: Long
+      Domains:
+        shape: PvDataByDomainList
+  PvDataByTimeList:
+    type: list
+    member:
+      shape: PvDataByTime     
+  
+  GetPvDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: PvDataByTimeList
+  
+  ####命中率详情####
+  GetHitRateDetailedDataRequest:        
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      DomainIds:
+        shape: String
+      CdnType:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      HitType:
+        shape: String        
+  
+  HitRateDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      FlowHitRate:
+        shape: Double
+      ReqHitRate:
+        shape: Double
+  HitRateDataByDomainList:
+    type: list
+    member:
+      shape: HitRateDataByDomain
+      
+  HitRateDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      FlowHitRate:
+        shape: Double
+      ReqHitRate:
+        shape: Double
+      Domains:
+        shape: HitRateDataByDomainList
+  HitRateDataByTimeList:
+    type: list
+    member:
+      shape: HitRateDataByTime
+   
+  GetHitRateDetailedDataResponse:        
+    type: structure
+    members:    
+      DomainIds:
+        shape: String
+      CdnType:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      HitType:
+        shape: String 
+      Datas:
+        shape: HitRateDataByTimeList      
+
+  #### 命中率查询（饼图） ####
+  GetHitRateDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String      
+      EndTime:
+        shape: String  
+      CdnType:
+        shape: String  
+      DomainIds:
+        shape: String
+
+  HitRateData:
+    type: structure
+    members:
+      HitPv:
+        shape: Long
+      MissPv:
+        shape: Long
+      HitPvProportion:
+        shape: Double
+      MissPvProportion:
+        shape: Double
+      HitFlow:
+        shape: Long
+      MissFlow:
+        shape: Long
+      HitFlowProportion:
+        shape: Double
+      MissFlowProportion:
+        shape: Double
+  HitRateDataList:
+    type: list
+    member:
+      shape: HitRateData
+        
+  GetHitRateDataResponse:      
+    type: structure
+    members:
+      StartTime:
+        shape: String      
+      EndTime:
+        shape: String  
+      CdnType:
+        shape: String  
+      DomainIds:
+        shape: String 
+      Datas:
+        shape: HitRateDataList
+ 
+  #### 省份+运营商流量查询 #### 
+  GetProvinceAndIspFlowDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Provinces:
+        shape: String
+      Isps:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+
+  ProvinceAndIspFlowDataByIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Flow:
+        shape: Long
+  ProvinceAndIspFlowDataByIspList:
+    type: list
+    member:
+      shape: ProvinceAndIspFlowDataByIsp
+      
+  ProvinceAndIspFlowDataByProvince:
+    type: structure
+    members:
+      Province:
+        shape: String
+      Flow:
+        shape: Long
+      Isps:
+        shape: ProvinceAndIspFlowDataByIspList
+  ProvinceAndIspFlowDataByProvinceList:
+    type: list
+    member:
+      shape: ProvinceAndIspFlowDataByProvince
+  
+  ProvinceAndIspFlowDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Flow:
+        shape: Long
+      Provinces:
+        shape: ProvinceAndIspFlowDataByProvinceList
+        
+  ProvinceAndIspFlowDataByDomainList:
+    type: list
+    member:
+      shape: ProvinceAndIspFlowDataByDomain
+      
+  ProvinceAndIspFlowDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Flow:
+        shape: Long
+      Domains:
+       shape: ProvinceAndIspFlowDataByDomainList
+  ProvinceAndIspFlowDataByTimeList:
+    type: list
+    member:
+      shape: ProvinceAndIspFlowDataByTime
+  
+  GetProvinceAndIspFlowDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Provinces:
+        shape: String
+      Isps: 
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      Datas:
+        shape: ProvinceAndIspFlowDataByTimeList
+
+  #### 省份+运营商带宽查询 #### 
+  GetProvinceAndIspBandwidthDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Provinces:
+        shape: String
+      Isps:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String 
+  
+  BwDataByIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Bw:
+        shape: Long
+  BwDataByIspList:
+    type: list
+    member:
+      shape: BwDataByIsp
+      
+  BwDataByProvince:
+    type: structure
+    members:
+      Province:
+        shape: String
+      Bw:
+        shape: Long
+      Isps:
+        shape: BwDataByIspList
+  BwDataByProvinceList:
+    type: list
+    member:
+      shape: BwDataByProvince
+      
+  BwDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Bw:
+        shape: Long
+      Provinces:
+        shape: BwDataByProvinceList
+  BwDataByDomainList:
+    type: list
+    member:
+      shape: BwDataByDomain
+
+  BwDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Bw:
+        shape: Long
+      Domains:
+        shape: BwDataByDomainList
+  BwDataByTimeList:
+    type: list
+    member:
+      shape: BwDataByTime
+    
+  GetProvinceAndIspBandwidthDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Provinces:
+        shape: String
+      Isps:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String 
+      Datas:
+        shape: BwDataByTimeList
+        
+  #### GetHttpCodeData ####
+  GetHttpCodeDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+
+  HttpCode:
+    type: structure
+    members:
+      Code:
+        shape: String
+      Proportion:
+        shape: Double
+      Pv:
+        shape: Long
+  HttpCodeList:
+    type: list
+    member:
+      shape: HttpCode
+      
+  HttpCodeData:
+    type: structure
+    members:
+      CodeType:
+        shape: String
+      Proportion:
+        shape: Double
+      Pv:
+        shape: Long
+      Codes:
+        shape: HttpCodeList
+  HttpCodeDataList:
+    type: list
+    member:
+      shape: HttpCodeData   
+    
+  GetHttpCodeDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Datas:
+        shape: HttpCodeDataList
+        
+  #### GetHttpCodeDetailedData ####
+  GetHttpCodeDetailedDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String   
+      Granularity:
+        shape: String
+      ResultType:
+        shape: String
+  
+  HttpCodeDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Codes:
+        shape: HttpCodeList  #GetHttpCodeData里封装
+  HttpCodeDataByDomainList:
+    type: list
+    member:
+      shape: HttpCodeDataByDomain
+      
+  HttpCodeDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      CodeSum:
+        shape: HttpCodeList
+      Domains:
+        shape: HttpCodeDataByDomainList
+  HttpCodeDataByTimeList:
+    type: list
+    member:
+      shape: HttpCodeDataByTime
+      
+  GetHttpCodeDetailedDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String   
+      Granularity:
+        shape: String
+      ResultType:
+        shape: String 
+      Datas:
+        shape: HttpCodeDataByTimeList
+ 
+  #### GetTopUrlData封装 #### 
+  GetTopUrlDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String 
+      LimitN:
+        shape: String
+  
+  UrlList:
+    type: structure
+    members:
+      Url:
+        shape: String
+      Pv:
+        shape: Long
+      Flow:
+        shape: Long
+  UrlListList:
+    type: list
+    member:
+      shape: UrlList
+  
+  GetTopUrlDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String 
+      LimitN:
+        shape: String
+      Datas:
+        shape: UrlListList
+
+  #### GetAreaData ####        
+  GetAreaDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+
+  AreaDataByIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Flow:
+        shape: Long
+      Pv:
+        shape: Long
+      FlowProportion:
+        shape: Double
+      PvProportion:
+        shape: Double
+  AreaDataByIspList:
+    type: list
+    member:
+      shape: AreaDataByIsp
+      
+  AreaDataByArea:
+    type: structure
+    members:
+      Area:
+        shape: String
+      Flow:
+        shape: Long
+      Pv:
+        shape: Long
+      FlowProportion:
+        shape: Double
+      PvProportion:
+        shape: Double
+      Isps:
+        shape: AreaDataByIspList
+  AreaDataByAreaList:
+    type: list
+    member:
+      shape: AreaDataByArea
+        
+  GetAreaDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String      
+      Datas:
+        shape: AreaDataByAreaList
+        
+  #### GetIspData ####
+  GetIspDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String  
+  
+  IspData:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Flow:
+        shape: Long
+      Pv:
+        shape: Long
+      FlowProportion:
+        shape: Double
+      PvProportion:
+        shape: Double
+  IspDataList:
+    type: list
+    member:
+      shape: IspData     
+  
+  GetIspDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String      
+      Datas:
+        shape: IspDataList
+
+  #### GetDomainRankingListData ####        
+  GetDomainRankingListDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String  
+        
+  DomainRankingList:
+    type: structure
+    members:
+      Domain:
+        shape: String
+      DomainId:
+        shape: String
+      Flow:
+        shape: Long
+      FlowProportion:
+        shape: Double
+      Bw:
+        shape: Long
+      Timemax:
+        shape: String
+      Pv:
+        shape: Long
+  DomainRankingListList:
+    type: list
+    member:
+      shape: DomainRankingList
+  
+  GetDomainRankingListDataResponse: 
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String     
+      Datas:
+        shape: DomainRankingListList  
+  
+  #### GetLiveFlowDataByStream #### 
+  GetLiveFlowDataByStreamRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - StreamUrl
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      StreamUrl:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+  
+  LiveFlowDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      Flow:
+        shape: Long
+  LiveFlowDataByRegionList:
+    type: list
+    member:
+      shape: LiveFlowDataByRegion
+  
+  LiveFlowDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      Flow:
+        shape: Long
+      Regions:
+        shape: LiveFlowDataByRegionList
+  LiveFlowDataByStreamList:
+    type: list
+    member:
+      shape: LiveFlowDataByStream
+  
+  LiveFlowDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Flow:
+        shape: Long
+      Streams:
+        shape: LiveFlowDataByStreamList
+  LiveFlowDataByTimeList:
+    type: list
+    member:
+      shape: LiveFlowDataByTime    
+  
+  GetLiveFlowDataByStreamResponse:  
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      Datas:
+        shape: LiveFlowDataByTimeList
+  
+  #### GetLiveBandwidthDataByStream ####
+  GetLiveBandwidthDataByStreamRequest:  
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - StreamUrl
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      StreamUrl:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String  
+  
+  BWDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      Bw:
+        shape: Long
+  BWDataByRegionList:
+    type: list
+    member:
+      shape: BWDataByRegion
+  
+  BWDataByStream: 
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      Bw:
+        shape: Long
+      Regions:
+        shape: BWDataByRegionList
+  BWDataByStreamList:
+    type: list
+    member:
+      shape: BWDataByStream
+      
+  BWDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Bw:
+        shape: Long
+      Streams:
+        shape: BWDataByStreamList
+  BWDataByTimeList:
+    type: list
+    member:
+      shape: BWDataByTime
+  
+  GetLiveBandwidthDataByStreamResponse: 
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      Datas:
+        shape: BWDataByTimeList
+        
+  ####GetLiveOnlineUserDataByDomain####        
+  GetLiveOnlineUserDataByDomainRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+
+  DomainOnlineUserDataByRegion: 
+    type: structure
+    members:
+        Region: 
+          shape: String
+        OnlineUser:
+          shape: Long
+  DomainOnlineUserDataByRegionList:
+    type: list
+    member:
+      shape: DomainOnlineUserDataByRegion
+  
+  DomainOnlineUserDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      OnlineUser:
+        shape: Long
+      Regions:
+        shape: DomainOnlineUserDataByRegionList
+  DomainOnlineUserDataByDomainList:
+    type: list
+    member:
+      shape: DomainOnlineUserDataByDomain
+      
+  DomainOnlineUserDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      OnlineUser:
+        shape: Long
+      Domains:
+        shape: DomainOnlineUserDataByDomainList
+  DomainOnlineUserDataByTimeList:
+    type: list
+    member:
+      shape: DomainOnlineUserDataByTime   
+  
+  GetLiveOnlineUserDataByDomainResponse:  
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String  
+      Datas:
+        shape: DomainOnlineUserDataByTimeList
+  
+  #### GetLiveOnlineUserDataByStream ####  
+  GetLiveOnlineUserDataByStreamRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - StreamUrl
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      StreamUrl:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String 
+        
+  StreamOnlineUserDataByByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      OnlineUser:
+        shape: Long
+  StreamOnlineUserDataByByRegionList:
+    type: list
+    member:
+      shape: StreamOnlineUserDataByByRegion
+  
+  StreamOnlineUserDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      OnlineUser:
+        shape: Long
+      Regions:
+        shape: StreamOnlineUserDataByByRegionList
+  StreamOnlineUserDataByStreamList:
+    type: list
+    member:
+      shape: StreamOnlineUserDataByStream
+      
+  StreamOnlineUserDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      OnlineUser:
+        shape: Long
+      Streams:
+        shape: StreamOnlineUserDataByStreamList
+  StreamOnlineUserDataByTimeList:
+    type: list
+    member:
+      shape: StreamOnlineUserDataByTime
+  
+  GetLiveOnlineUserDataByStreamResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      Datas:
+        shape: StreamOnlineUserDataByTimeList
+
+  #### GetLiveTopOnlineUserData ####        
+  GetLiveTopOnlineUserDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String
+  
+  TopOnlineUserDataByByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      OnlineUser:
+        shape: Long
+  TopOnlineUserDataByByRegionList:
+    type: list
+    member:
+      shape: TopOnlineUserDataByByRegion
+  
+  TopOnlineUserDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      OnlineUser:
+        shape: Long
+      Regions:
+        shape: TopOnlineUserDataByByRegionList
+  TopOnlineUserDataByStreamList:
+    type: list
+    member:
+      shape: TopOnlineUserDataByStream    
+  
+  GetLiveTopOnlineUserDataResponse:  
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String      
+      Datas:
+        shape: TopOnlineUserDataByStreamList  
+  
+  
+  
+  
+  
+  
+  
+  
+  
