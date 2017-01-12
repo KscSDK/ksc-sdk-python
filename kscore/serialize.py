@@ -200,6 +200,9 @@ class QuerySerializer(Serializer):
 
         body_params = self.MAP_TYPE()
 
+        body_params['Action'] = operation_model.name
+        body_params['Version'] = operation_model.metadata['apiVersion']
+
         if shape is not None:
             self._serialize(body_params, parameters, shape)
         else:
