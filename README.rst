@@ -4,13 +4,12 @@ SDK 使用文档
 A low-level interface to a growing number of KSC Web Services.
 
 
-
 ----------------
 Install 安装
 ----------------
 
 + pip 安装
-    + pip install kscore
+    + pip install ksc-sdk-python
 
 + github 安装
     + 通过 `GitHub <https://github.com/liuyichen/kscore>`__ 下载
@@ -63,23 +62,33 @@ Service 服务
     | cn-shanghai-2     | 上海2区    |
     +-------------------+------------+
 
-+ 服务列表 service_name， `详情参考API手册 <http://docs.ksyun.com>`__
 
-    +-------------------+------------+
-    | service_name      | 服务名     |
-    +===================+============+
-    | iam               |            |
-    +-------------------+------------+
-    | eip               |            |
-    +-------------------+------------+
-    | kec               |            |
-    +-------------------+------------+
-    | slb               |            |
-    +-------------------+------------+
-    | vpc               |            |
-    +-------------------+------------+
-    | monitor           |            |
-    +-------------------+------------+
++ 已支持服务列表 service_name，具体方法与API的Action对应,如kec服务RunInstances对应为run_instances方法。 `详情参考API手册 <http://docs.ksyun.com>`__
+
+    +-------------------+----------------+
+    | service           | 服务名         |
+    +===================+================+
+    | iam               | 身份与访问控制 |
+    +-------------------+----------------+
+    | eip               | 弹性IP         |
+    +-------------------+----------------+
+    | kec               | 云服务器       |
+    +-------------------+----------------+
+    | tag               | 标签服务       |
+    +-------------------+----------------+
+    | slb               | 负载均衡       |
+    +-------------------+----------------+
+    | kcs               | REDIS          |
+    +-------------------+----------------+
+    | vpc               | 虚拟私有网络   |
+    +-------------------+----------------+
+    | cdn               | 内容分发网络   |
+    +-------------------+----------------+
+    | monitor           | 云监控         |
+    +-------------------+----------------+
+    | offline           | 视频转码       |
+    +-------------------+----------------+
+
 
 ----------------
 Method 方法
@@ -165,7 +174,91 @@ Examples 示例
 
         print json.dumps(m,sort_keys=True,indent=4)
 
++ OFFLINE
+
+::
+
+    from kscore.session import get_session
+    import json
+    
+    if __name__=="__main__":
+        
+        #初始化
+        s = get_session()
+        client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
+        
+        #创建模板接口调用示例 : preset  
+        presetname = 'testpreset'
+        description = 'just a demo'
+        presetType = 'avop'
+        param = {
+           "preset": presetname,
+           "description": description,
+           "presettype": presetType,
+           "param": {
+               "f": "mp4",
+               "AUDIO": {
+                   "acodec": "aac",
+                   "ar":"44100",
+                   "ab":"64k"
+               },
+               "VIDEO": {
+                   "vr": 25,
+                   "vb": "500k",
+                   "vcodec": "h264",
+                   "width": 640,
+                   "height": 360
+               }
+           }
+        }
+        res = client.preset(**param)
+        print json.dumps(res)
+        
+        #获取模板信息接口调用示例 : get_preset_detail
+        res = client.get_preset_detail(preset = presetname)
+        print json.dumps(res)
+        
++ CDN
+
+::
+
+    from kscore.session import get_session
+
+    if __name__ == "__main__":
+        # CDN API调用 详细示例位于 ./examples/cdn.py
+        s = get_session()
+
+        client = s.create_client("cdn", use_ssl=False)
+
+        res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainStatus='online',CdnType='download')
+
+        print res
+        
 + 更多
+
+--------------------
+BUG FIXED 问题修正
+--------------------
+
++ CERTIFICATE_VERIFY_FAILED
+::
+
+    requests.exceptions.SSLError: [Errno 1] _ssl.c:504: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+ + 参考 `InsecurePlatformWarning <https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings>`__ 解决方法如下
+::
+
+    pip install requests[security]
+
+ + 如 `build/temp.linux-x86_64-2.7/_openssl.c:433:30: fatal error: openssl/opensslv.h: No such file or directory` 解决方法如下
+::
+
+    yum install openssl-devel
+
+ + 如 `build/temp.linux-x86_64-2.7/_openssl.c:12:24: fatal error: pyconfig.h: No such file or directory`解决方法如下
+::
+
+    yum install python-devel
 
 --------------------
 Contact Information

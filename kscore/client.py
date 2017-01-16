@@ -557,8 +557,14 @@ class BaseClient(object):
                 operation_name=operation_name),
             params=api_params, model=operation_model, context=context)
 
-        request_dict = self._serializer.serialize_to_request(
-            api_params, operation_model)
+        serializer = self._serializer
+
+        if operation_model.is_rewrite_protocol:
+
+            serializer = kscore.serialize.create_serializer(operation_model.protocol, True)
+
+        request_dict = serializer.serialize_to_request(api_params, operation_model)
+
         prepare_request_dict(request_dict, endpoint_url=self._endpoint.host,
                              user_agent=self._client_config.user_agent)
         return request_dict

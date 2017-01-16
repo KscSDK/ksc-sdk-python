@@ -590,7 +590,20 @@ class JSONParser(BaseJSONParser):
 
     def _do_error_parse(self, response, shape):
         body = self._parse_body_as_json(response['body'])
-        error = {"ResponseMetadata": {}, 'Error': body.get("Error", body.get("error", {}))}
+
+        if "Error" in body or "error" in body:
+            error = {"ResponseMetadata": {}, 'Error': body.get("Error", body.get("error", {}))}
+        else:
+            if "Code" in body or "code" in body:
+                code = body.get("Code", body.get("code"))
+            else:
+                code = response['status_code']
+            if "Message" in body or "message" in body:
+                message = body.get("Message", body.get("message"))
+            else:
+                message = str(body)
+            error = {"ResponseMetadata": {}, 'Error': {'Code': code, 'Message': message}}
+
         error['ResponseMetadata'].update(RequestId=body.get("RequestId"))
         return error
 
@@ -783,7 +796,10 @@ PROTOCOL_PARSERS = {
     'ec2': EC2QueryParser,
     'query': QueryParser,
     'query-json': JSONParser,
+    'kcs': JSONParser,
+    'custom-body': JSONParser,
     'json': JSONParser,
+    'json2': JSONParser,
     'rest-json': RestJSONParser,
     'rest-xml': RestXMLParser,
 }

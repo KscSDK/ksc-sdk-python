@@ -1,0 +1,27 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: tag
+  jsonVersion: '1.1'
+  serviceFullName: Tag Service
+  signatureVersion: v4
+  targetPrefix: tag
+  protocol: query-json
+
+operations:
+  CreateTags:
+    http:
+      method: GET
+  DeleteTags:
+    http:
+      method: GET
+  DescribeTags:
+    http:
+      method: GET    
+  DescribeTagValues:
+    http:
+      method: GET
+  DescribeTagKeys:
+    http:
+      method: GET

@@ -6,6 +6,6 @@ if __name__ == "__main__":
 
     s = get_session()
 
-    client = s.create_client("kog", use_ssl=True)
+    client = s.create_client("tag", region_name="cn-beijing-6", use_ssl=True)
 
-    projects = client.get_project_list()
+    print client.describe_tags()
