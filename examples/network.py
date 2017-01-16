@@ -32,8 +32,6 @@ if __name__ == "__main__":
     slbClient.register_instances_with_listener(**{'ListenerId':'9156f303-65fb-4f90-86cb-52dc25721031','RealServerIp':'120.92.33.46','RealServerPort':'4431','RealServerType':'Ipfwd','Weight':10}) 
     slbClient.register_instances_with_listener(**{'ListenerId':'9156f303-65fb-4f90-86cb-52dc25721031','RealServerIp':'120.92.42.4','RealServerPort':'4431','RealServerType':'Ipfwd','Weight':10}) 
     slbClient.register_instances_with_listener(**{'ListenerId':'9156f303-65fb-4f90-86cb-52dc25721031','RealServerIp':'120.92.9.75','RealServerPort':'4431','RealServerType':'Ipfwd','Weight':10}) 
-    #eipClient.associate_address_portfwd(**{'AllocationId':'981ad9c1-329e-4096-a25b-0684a908a164','InstanceId':'9cbf64e0-b974-43e9-9d9c-18ed96101041','Protocol':'UDP','PublicIpPort':'8080','InstancePort':'8090'})
-    #eipClient.associate_address_portfwd(**{'AllocationId':'981ad9c1-329e-4096-a25b-0684a908a164','InstanceId':'9cbf64e0-b974-43e9-9d9c-18ed96101041','Protocol':'TCP','PublicIpPort':'9080','InstancePort':'9090'})
     #givenListeners=slbClient.describe_listeners(**{'ListenerId.1':'d94b6af0-61bd-4b15-ab2c-c6758a3367bc'}) 
     #prettyPrinter().pprint(givenListeners)
     #slbClient.deregister_instances_from_listener(**{'RegisterId':'cf0245b2-b847-462a-a777-7f680f6e48b8'}) 
@@ -55,7 +53,6 @@ if __name__ == "__main__":
     for item in allListeners['ListenerSet']:
        print item['ListenerName']
        print item['ListenerId']
-    #availableIps=vpcClient.describe_subnet_available_addresses()
     #availableIps=vpcClient.describe_subnet_available_addresses(**{'Filter.1.Name':'subnet-id','Filter.1.Value.1':'0d238ac1-69b0-4602-893b-8da5862069e0'})
     #pprint.pprint(dir(vpcClient)) 
     #eipClient.modify_address(**{'AllocationId':'c054f87a-4508-4db2-bc10-f594b34a2ef3','BandWidth':1})
