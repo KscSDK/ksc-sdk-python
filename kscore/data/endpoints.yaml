@@ -72,7 +72,6 @@ partitions:
       defaults:
         credentialScope:
           service: kec
-      EndpointRegion: cn-beijing-6
       endpoints:
         cn-beijing-6:
           protocols:
@@ -134,6 +133,20 @@ partitions:
           protocols:
           - http
 
+    tag:
+      defaults:
+        credentialScope:
+          service: tag
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+        cn-shanghai-2:
+          protocols:
+          - http
+          - https
+
     cdn:
       defaults:
         protocols:
@@ -145,3 +158,4 @@ partitions:
       endpoints:
         cn-shanghai-1:
           hostname: cdn.api.ksyun.com
+

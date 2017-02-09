@@ -10,47 +10,79 @@ metadata:
   protocol: query-json
 
 operations:
-  RegionList:
-    name: RegionList
+
+  RunInstances:
     http:
       method: GET
-    input:
-      shape: Empty
+
+  TerminateInstances:
+    http:
+      method: GET
+
+  StartInstances:
+    http:
+      method: GET
+
+  StopInstances:
+    http:
+      method: GET
+
+  RebootInstances:
+    http:
+      method: GET
+
+  MonitorInstances:
+    http:
+      method: GET
+
+  UnmonitorInstances:
+    http:
+      method: GET
+
+  ModifyInstanceType:
+    http:
+      method: GET
+
+  ModifyInstanceImage:
+    http:
+      method: GET
+
+  ModifyInstanceAttribute:
+    http:
+      method: GET
+
+  DescribeInstanceVnc:
+    http:
+      method: GET
+
+  AttachNetworkInterface:
+    http:
+      method: GET
 
   DescribeInstances:
-    name: DescribeInstances
     http:
       method: GET
-shapes:
-  Id:
-    type: string #list/map/structure
 
-  Bool:
-    type: bool
+  ModifyNetworkInterfaceAttribute:
+    http:
+      method: GET
 
-  Int:
-    type: int
+  DetachNetworkInterface:
+    http:
+      method: GET
 
-  DataTime:
-    type: timestamp
+  CreateImage:
+    http:
+      method: GET
 
-  Empty:
-    type: structure
-    members: {}
-    documentation: ""
+  DescribeImages:
+    http:
+      method: GET
 
-  NonEmptyString:
-    type: string
-    min: 1
+  RemoveImages:
+    http:
+      method: GET
 
-  Message:
-    type: string
-
-  InstanceId:
-    type: structure
-    required:
-    - id
-    members:
-      id:
-        shape: Id
-    documentation: ""
+  ModifyImageAttribute:
+    http:
+      method: GET

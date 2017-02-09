@@ -194,7 +194,14 @@ class QuerySerializer(Serializer):
                 'X-Version': operation_model.metadata['apiVersion'],
             }
         )
+
+        if 'requestUri' in operation_model.http:
+            serialized['url_path'] = operation_model.http['requestUri']
+
         body_params = self.MAP_TYPE()
+
+        body_params['Action'] = operation_model.name
+        body_params['Version'] = operation_model.metadata['apiVersion']
 
         if shape is not None:
             self._serialize(body_params, parameters, shape)
@@ -363,6 +370,9 @@ class CustomBodySerializer(QueryAcceptJsonSerializer):
                 'X-Version': operation_model.metadata['apiVersion'],
             }
         )
+        if 'requestUri' in operation_model.http:
+            serialized['url_path'] = operation_model.http['requestUri']
+
         body_params = self.MAP_TYPE()
         custom_body = None
         if 'Body' in parameters:
@@ -377,7 +387,6 @@ class CustomBodySerializer(QueryAcceptJsonSerializer):
         if body is not None:
             serialized['body'] = json.dumps(body).encode(self.DEFAULT_ENCODING)
         serialized['query_string'] = data
-        print serialized
         return serialized
 
 
@@ -394,6 +403,9 @@ class JSONSerializer(Serializer):
         serialized = self._create_default_request()
         serialized['method'] = operation_model.http.get('method',
                                                         self.DEFAULT_METHOD)
+
+        if 'requestUri' in operation_model.http:
+            serialized['url_path'] = operation_model.http['requestUri']
 
         serialized['query_string'] = self.MAP_TYPE()
 
@@ -497,6 +509,10 @@ class BaseRestSerializer(Serializer):
 
     def serialize_to_request(self, parameters, operation_model):
         serialized = self._create_default_request()
+        serialized['headers'] = {
+            'X-Action': operation_model.name,
+            'X-Version': operation_model.metadata['apiVersion']
+        }
         serialized['method'] = operation_model.http.get('method',
                                                         self.DEFAULT_METHOD)
         shape = operation_model.input_shape

@@ -5,13 +5,12 @@ metadata:
   # Version 接口版本
   apiVersion: '2015-11-01'
   endpointPrefix: iam
-  globalEndpoint: iam.api.ksyun.com
   jsonVersion: '1.1'
   serviceFullName: Identity and Access Management
   signatureVersion: v4
   targetPrefix: iam
   # query/ec2/json/query-json/rest-json/rest-xml
-  protocol: json
+  protocol: query-json
 
 documentation: ''
 
@@ -45,14 +44,8 @@ operations:
       shape: IamUser
 
   ListUsers:
-    name: ListUsers
     http:
       method: GET
-      requestUri: /
-    input:
-      shape: Empty
-    output:
-      shape: ListUserResponse
 
   GetUser:
     name: GetUser
