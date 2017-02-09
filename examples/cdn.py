@@ -532,13 +532,13 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        StreamUrl   String  流名，支持批量查询，多个流名用逗号（半角）分隔
+        StreamUrls   String  流名，支持批量查询，多个流名用逗号（半角）分隔
         Regions     String  计费区域名称，取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多计费区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_flow_data_by_stream(StartTime='2016-12-18T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
+    #res = client.get_live_flow_data_by_stream(StartTime='2016-12-18T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
     
     
     '''
@@ -553,13 +553,13 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        StreamUrl   String  流名，支持批量查询，多个流名用逗号（半角）分隔
+        StreamUrls   String  流名，支持批量查询，多个流名用逗号（半角）分隔
         Regions     String  计费区域名称，取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多计费区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_bandwidth_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
+    #res = client.get_live_bandwidth_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
     
     
     '''
@@ -598,13 +598,13 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        StreamUrl   String  流名，支持批量查询，多个流名用逗号（半角）分隔
+        StreamUrls   String  流名，支持批量查询，多个流名用逗号（半角）分隔
         Regions     String  计费区域名称，取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多计费区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
        
     '''
-    #res = client.get_live_online_user_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrl='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='0',Regions='CN',Granularity='5')
+    #res = client.get_live_online_user_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='0',Regions='CN',Granularity='5')
     
     
     '''
