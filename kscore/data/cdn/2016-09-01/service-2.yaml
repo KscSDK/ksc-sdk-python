@@ -1770,14 +1770,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
@@ -1848,14 +1848,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
@@ -2005,14 +2005,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
