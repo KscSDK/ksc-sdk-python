@@ -625,7 +625,19 @@ if __name__ == "__main__":
     '''
     #res = client.get_live_top_online_user_data(StartTime='2016-11-19T08:00+0800',ResultType='1',Regions='CN',LimitN='100')
     
-    
+    ''' 
+    get_domain_logs 日志下载接口
+        
+    Parameters:
+        PageSize        long    分页大小，默认20，最大500，取值1～500间整数 
+        PageNumber      long    取第几页。默认为1，取值1～10000 
+        DomainId      string  按域名过滤，默认为空，代表当前用户下所有域名 
+        Time    string  按域名状态过滤，默认为空，代表当前用户下所有域名状态全部
+ 
+    Returns:
+        <type 'dict'>
+    '''  
+    #res = client.get_domain_logs(PageSize=20,PageNumber=1,DomainId='2D09W48',Time='')
     
     
     #print '****************************cdn test*****************:'
