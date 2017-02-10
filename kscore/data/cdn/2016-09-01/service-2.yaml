@@ -1,5 +1,5 @@
 ---
-version: '2.0'
+version: '2.1'
 
 metadata:
   # Version 
@@ -15,6 +15,16 @@ metadata:
 documentation: ''
 
 operations:
+
+  GetDomainLogs:
+    name: GetDomainLogs
+    http:
+      method: GET
+      requestUri: /2016-09-01/log/GetDomainLogs
+    input:
+      shape: GetDomainLogsRequest
+    output:
+      shape: GetDomainLogsResponse
 
   GetCdnDomains:
     name: GetCdnDomains
@@ -390,6 +400,52 @@ shapes:
     member:
       shape: Domain
   
+  GetDomainLogsRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      PageSize:
+        shape: Long
+      PageNumber:
+        shape: Long
+      DomainId:
+        shape: String
+      Time:
+        shape: String
+        
+  DomainLogData:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      LogName:
+        shape: String
+      LogUrl:
+        shape: String
+      LogSize:
+        shape: Long
+  DomainLogList:
+    type: list
+    member:
+      shape: DomainLogData
+      
+  GetDomainLogsResponse:
+    type: structure
+    members:
+      PageNumber:
+        shape: Long
+      PageSize:
+        shape: Long
+      TotalCount:
+        shape: Long
+      DomainId:
+        shape: String
+      DomainLogs:
+        shape: DomainLogList
+        
   GetCdnDomainsRequest:
     type: structure
     members:
@@ -1770,14 +1826,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
@@ -1848,14 +1904,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
@@ -2005,14 +2061,14 @@ shapes:
     required:
     - StartTime
     - EndTime
-    - StreamUrl
+    - StreamUrls
     - ResultType
     members:
       StartTime:
         shape: String
       EndTime:
         shape: String
-      StreamUrl:
+      StreamUrls:
         shape: String
       Regions:
         shape: String
