@@ -632,12 +632,10 @@ if __name__ == "__main__":
         PageSize        long    分页大小，默认20，最大500，取值1～500间整数 
         PageNumber      long    取第几页。默认为1，取值1～10000 
         DomainId      string  按域名过滤，默认为空，代表当前用户下所有域名 
-        Time    string  按域名状态过滤，默认为空，代表当前用户下所有域名状态全部
- 
-    Returns:
-        <type 'dict'>
+        StartTime    string  查询开始时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
+		EndTime    string  查询结束时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
     '''  
-    #res = client.get_domain_logs(PageSize=20,PageNumber=1,DomainId='2D09W48',Time='')
+    #res = client.get_domain_logs(PageSize=20,PageNumber=1,DomainId='2D09X6F',StartTime='2017-01-01',EndTime='2017-02-23')
     
     
     #print '****************************cdn test*****************:'
@@ -646,14 +644,331 @@ if __name__ == "__main__":
     #print res
     #print client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,cc,page_compress,ignore_query_string,src_host,test_url,http_header,range,src_advanced')
     
+    ''' 
+    refresh_caches 刷新
+        同一个 ID每日设有提交刷新类请求条数限制额度，与控制台共享此额度，具体额度可查看控制台或调用GetRefreshOrPreloadQuota接口获取
+        刷新预热类接口包含 RefreshCaches刷新接口和PreloadCaches 预热接口
+        Files与Dirs必须至少指定一种，可同时指定，即文件刷新和目录刷新可同时进行
+		每个 Url 必须以http://或者https://开头
+        每个 Url 最大长度 1000 字符
+        每个 Url 所在的域名必须是该用户在金山云加速的域名。
+        Url 如果包含中文字符
+        单次调用 Url 上限为1000条
+        预热仅支持Url，不支持目录预热，不支持正则
+    Parameters:
+        Files        Url[]    需要文件类型刷新的Url列表
+        Dirs         Url[]    需要文件类型刷新的Url列表
+        其中url[]为：
+		Url String 需要提交刷新的Url，单条
+    '''  
+    '''
+    # json格式规则
+    param = {
+              "Files": [
+                 {
+                   "Url": "http://test.dxz.ksyun.8686c.com/abc.txt"
+                 },
+                 {
+                   "Url": "http://test.dxz.ksyun.8686c.com/test"
+                 }],
+              "Dirs": [
+                 {
+                   "Url": "http://test.dxz.ksyun.8686c.com/abc"
+                 },
+                 {
+                   "Url": "http://test.dxz.ksyun.8686c.com/def"
+                 }]
+            }
+    '''
+    #res = client.refresh_caches(**param)
+	
+    ''' 
+    preload_caches 预热
+        同一个 ID 每日设有提交预热类请求条数限制额度，与控制台共享此额度，具体额度可查看控制台或调用GetRefreshOrPreloadQuota接口获取
+        刷新预热类接口包含 RefreshCaches刷新接口和PreloadCaches 预热接口
+		每个 Url 必须以http://或者https://开头
+        每个 Url 最大长度 1000 字符
+        每个 Url 所在的域名必须是该用户在金山云加速的域名。
+        Url 如果包含中文字符
+        单次调用 Url 上限为1000条
+        预热仅支持Url，不支持目录预热，不支持正则
+    Parameters:
+        Urls         Url[]    需要文件类型预热的Url列表
+        其中url[]为：
+		Url String 需要提交预热的Url，单条
+    '''  
+    '''
+    # json格式规则
+    param = {
+              "Urls": [
+                 {
+                   "Url": "http://test.dxz.ksyun.8686c.com/1.html"
+                 }]
+            }
+    '''
+    #res = client.preload_caches(**param)
+    ''' 
+    get_refresh_or_preload_task 预热进度查询
+        本接口用于获取刷新、预热任务进度百分比及状态，查看任务是否在全网生效。
+        支持根据任务ID、URL获取数据
+        支持按指定的起止时间查询，两者需要同时指定
+        所有参数都不指定，默认查7天内，第一页的数据（20条）
+        起止时间、TaskId、Url可以同时指定，逻辑与的关系
+        最多可获取7天内的数据
+        使用场景：
+           查询用户刷新或预热URL进度百分比及状态，查看是否在全网生效，用于在控制台展示
+           客户通过API获取刷新或预热任务或URL进度百分比及状态，查看是否在全网生效
+        注意：
+           接口仅支持POST请求格式
+    Parameters:
+		PageSize        long    分页大小，默认20，最大500，取值1～500间整数 
+        PageNumber      long    取第几页。默认为1，取值1～10000 
+        StartTime    string  查询开始时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
+		EndTime    string  查询结束时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
+		TaskId    string   支持按任务ID查询，只允许输入单个任务ID
+        Urls         Url[]    需要文件类型预热的Url列表
+        其中url[]为：
+		Url String 需要提交预热的Url，单条
+    '''  
+    '''
+    # json格式规则
+    param = {
+           "StartTime":"2017-02-21T00:00+0800",
+		   "EndTime":"2017-02-24T00:00+0800",
+           "PageSize":10,
+           "PageNumber":1,
+		   "TaskId":"26ce0148-ef2e-4588-983c-c29077258020",
+           "Urls":[
+              {"Url": "http://test.dxz.ksyun.8686c.com/1.html"},
+              {"Url": "http://test.dxz.ksyun.8686c.com/abc"}
+             ]
+           }
+    '''
+    #res = client.get_refresh_or_preload_task(**param)
     
-    
-    
+    ''' 
+    get_refresh_or_preload_quota 预热进度查询
+        获取刷新、预热URL及目录的最大限制数量，及当日剩余刷新、预热URL及目录的条数
+        刷新预热类接口包含 RefreshCaches刷新接口和PreloadCaches 预热接口
+    '''  
 
+    #res = client.get_refresh_or_preload_quota()
+    ''' 
+    set_domain_log_service 设置日志服务接口
+        本接口用于启用、停用某个加速域名的日志服务。
+		支持批量域名查询，多个域名ID用逗号（半角）分隔
+		日志服务支持按域名维度启用、停用
+		注意：域名对应账户如果由于欠费，或域名处于非法状态（审核中、审核失败、停用），则无法正常调用该接口启用加速域名的日志服务。
+		     
+    Parameters:
+        ActionType      string  操作类型，取值为start：启用；stop：停用
+        DomainIds    string  需要启用或停用日志服务的域名ID，支持批量域名开启或停用，多个域名ID用逗号（半角）分隔
+		Granularity    Long  日志存储粒度，取值为60：按小时粒度存储；1440：按天粒度存储，当前暂不支持按小时粒度存储；开启时为必填，关闭时可不填
+    ''' 
+    #res = client.set_domain_log_service(ActionType="start",DomainIds="2D09SHE",Granularity=1440)
+	
+    ''' 
+    get_domain_log_service_status 设置日志服务接口
+        本接口用于获取域名日志服务状态。
+		支持批量域名查询，多个域名ID用逗号（半角）分隔
+		     
+    Parameters:
+        DomainIds    string  需要查询日志服务的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+    ''' 
+    #res = client.get_domain_log_service_status(DomainIds="2D09SHE")
+    
+	
+    '''
+    GetUvData    获取域名独立请求的IP个数，单位：个
+            支持按指定的起止时间查询，两者需要同时指定
+            支持批量域名查询，多个域名ID用逗号（半角）分隔
+            最多可获取最近一年内31天跨度的数据
+            统计粒度：5分钟粒度
+            时效性：30分钟延迟
+            接口性能：接口最大吞吐量为10000，即DomainId个数*(EndTime-StartTime)\/统计粒度 <= 10000。注：在获取多个域名合并值时，DomainId个数按照1计算
+            使用场景：
+                        客户查询单个域名或多域名合并后独立请求IP的个数，用于绘制一条独立请求IP求数线图
+                        客户查询单个域名的详细独立请求IP数据，进行数据保存及数据分析
+            说明：
+                        独立访问IP数：统计当前域名下独立请求的IP个数
+    
+    Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        ResultType      Long    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
+        Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；
+    '''
+    #res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    '''
+    GetTopReferData 获取域名某天内某一时段的热门页面访问数据排名，仅包含Top200且访问数大于15次的热门页面的访问次数、访问流量，并按次数排名
+            支持批量域名查询，多个域名ID用逗号（半角）分隔
+            最多可获取最近一年内24小时跨度的数据
+            时效性：30分钟延迟
+            使用场景：
+                        查询单个域名或多个域名的热门来源Refer数据，进行热门页面数据分析
+ 
+    Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
+    '''
+    #res = client.get_top_refer_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
+    #res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    '''
+    GetTopIpData 
+	本接口用于获取域名某天内某一时段的TOP IP访问数据，仅包含Top200且访问次数大于15次的独立请求的IP的访问次数、访问流量，并按次数排序
+            支持批量域名查询，多个域名ID用逗号（半角）分隔
+            最多可获取最近一年内24小时跨度的数据
+            时效性：30分钟延迟
+            使用场景：
+                        查询单个域名或多个域名的独立请求的IP的访问数据，用于感知IP攻击
+ 
+    Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
+    '''
+    #res = client.get_top_ip_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
+    '''
+    GetProvinceAndIspHitRateDetailedData 
+	获取域名流量命中率、请求数命中率数据，单位：百分比
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内31天跨度的数据
+        统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Province个数*Isp个数*DomainId个数*(EndTime-StartTime)\/统计粒度 <= 10000。注：多域名多省份多运营商取合并数据时，Province个数、Isp个数、DomainId个数按照1计算。
+        使用场景：
+             客户查询单个域名或多域名在省份及运营商合并后实时命中率数据，用于绘制一条命中率线图
+             客户查询单个域名的详细命中率数据，进行数据保存及数据分析
+        说明：
+			 请求数命中率=[边缘的hit状态的请求数\/边缘请求数]*100%
+             流量命中率=[边缘的hit状态的流量\/边缘流量]*100%
+             当边缘请求数或边缘流量为0时，命中率为0
+			 
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
+		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+		Granularity     Long     热统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度；以上粒度均取该粒度时间段的流量之和、请求数之和
+		HitType     String     数据类型， 取值为flowhitrate:流量命中率;reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
+    '''
+    #res = client.get_province_and_isp_hit_rate_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='live',Provinces='liaoning',Isps='UN',ResultType=1,Granularity=5,HitType='reqhitrate,flowhitrate')
+    
+    '''
+    GetProvinceAndIspHttpCodeData 
+	获取域名一段时间内在中国大陆地区各省份及各运营商的Http状态码访问次数及占比数据（用于绘制饼图）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内31天 跨度的数据
+        时效性：5分钟延迟
+        使用场景：
+             客户查询单个域名或多个域名一段时间内在中国大陆地区各省份及各运营商的状态码访问次数，用于绘制状态码饼图
 
+			 
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
+		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
+    '''
+    #res = client.get_province_and_isp_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN')
+    '''
+    GetProvinceAndIspHttpCodeDetailedData 
+        获取域名在中国大陆地区各省份及各运营商的Http状态码详细访问次数及占比数据（用于绘制状态码线图）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内31天跨度的数据 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度，以上统计粒度均取该粒度内各状态码的访问次数之和
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Province个数*Isp个数*DomainId个数*(EndTime-StartTime)\/统计粒度 <= 10000。注：多域名多省份多运营商取合并数据时，Province个数、Isp个数、DomainId个数按照1计算。
+        使用场景：
+            客户查询单个域名或多个域名在中国大陆地区各省份及各运营商的Http状态码详细访问数据，用于绘制状态码线图
+            客户查询单个域名的详细状态码数据，进行数据保存及数据分析
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
+		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
+		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+    '''
+    #res = client.get_province_and_isp_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
+	
+    '''
+    GetProvinceAndIspPvData 
+        获取域名在中国大陆地区各省份及各运营商的请求数数据，包括边缘请求数， 单位：次
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内31天跨度的数据
+        统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的请求数之和
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Province个数*Isp个数*DomainId个数*(EndTime-StartTime)\/统计粒度 <= 10000。
+        注：在获取多个域名多个省份区域多个运营商合并值时，Province个数、Isp个数和DomainId个数按照1计算
+        使用场景：
+            客户查询单个域名或多个域名在各个省份及运营商的合并后的请求数数据，用于绘制一条请求数线图
+            客户查询单个域名的详细请求数数据，进行数据保存及数据分析
+        注意： 此处的请求数，仅包含边缘层的请求数。
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
+		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
+		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+    '''
+    #res = client.get_province_and_isp_pv_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
     
-    
-    
+    '''
+    GetSrcHttpCodeData 
+        获取域名一段时间内的回源Http状态码访问次数及占比数据（用于绘制饼图）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内93天跨度的数据
+        时效性：5分钟延迟
+        使用场景：
+            客户查询单个域名或多个域名一段时间内各回源状态码访问次数，用于绘制状态码饼图。
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速，当前暂不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+    '''
+    #res = client.get_src_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download')
+	
+    '''
+    GetSrcHttpCodeDetailedData 
+        获取域名的回源Http状态码详细访问次数及占比数据（用于绘制状态码线图）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内93天跨度的数据        统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度，以上统计粒度均取该粒度内各状态码的访问次数之和
+        时效性：5分钟延迟
+        使用场景：
+                客户查询单个域名或多个域名回源状态码详细访问数据，用于绘制回源状态码线图
+	Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        CdnType         String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速，当前暂不支持直播类型
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+	'''
+    res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
     
     
     
