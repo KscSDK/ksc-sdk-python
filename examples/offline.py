@@ -39,7 +39,6 @@ param = {
     }
 }
 
-'''
 #该接口需要输入json格式数据
 res = client.Preset(param)
 print json.dumps(res)
@@ -118,10 +117,6 @@ print json.dumps(res)
 # enddate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
 # marker:请求起始游标，默认为0    
 # limit:单次请求的记录数，默认为100，最大值为100
-'''
+
 #res = client.GetTaskMetaInfo(startdate=20161101,enddate=20161118,marker=0,limit=50)
 #print json.dumps(res)
-res = client.GetTaskByTaskID("6ad245d84e126d40dcdf40fe87cc4f4e20161219")
-print json.dumps(res)
-res = client.GetPresetList(withDetail=1,presettype="avop")
-print json.dumps(res)
