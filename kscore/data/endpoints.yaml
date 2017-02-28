@@ -97,5 +97,14 @@ partitions:
         cn-beijing-6:
           protocols:
             - http
+    livetran:
+      defaults:
+        credentialScope:
+          service: livetran
+      EndpointRegion: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+            - http
 
 
