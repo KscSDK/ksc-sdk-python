@@ -980,7 +980,7 @@ shapes:
       AllowEmpty:
         shape: String
 
-  SetIprotectionConfigRequest:
+  SetIpProtectionConfigRequest:
     type: structure
     required:
     - DomainId
