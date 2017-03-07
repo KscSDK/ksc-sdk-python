@@ -63,7 +63,7 @@ if __name__ == "__main__":
     Parameters:
         DomainId    String  域名ID
         ConfigList  String  需要查询的配置，多个配置用逗号（半角）分隔，不填代表查询所有 
-                            当前支持  cache_expired、cc、error_page、http_header、optimize、page_compress、
+                            当前支持  cache_expired、ip、error_page、http_header、optimize、page_compress、
                             ignore_query_string、range、referer、req_auth、src_host、video_seek、waf,notify_url, 
                             redirect_type 
         
@@ -140,8 +140,18 @@ if __name__ == "__main__":
         AllowEmpty  String  是否允许空refer访问,取值：on：允许；off：不允许；默认值：on。注：仅当选择白名单时，此项才生效
     '''
     #client.set_refer_protection_config(DomainId='2D09NSH', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
-    
-    
+
+    '''
+    SetIpProtectionConfig  设置加速域名的Ip防盗链 加速域名创建后，默认不开启Ip防盗链功能
+
+    Parameters:
+        DomainId    String  域名ID
+        Enable      String  配置是否开启或关闭 取值：on、off，默认值为off关闭。开启时，下述必须项为必填项；关闭时，只更改此标识，忽略后面的项目。
+        IpType      String  refer类型，取值：block：黑名单；allow：白名单，开启后必填
+        IpList      String  逗号隔开的Ip列表
+    '''
+    client.set_ip_protection_config(DomainId='2D09NN8', Enable='on', IpType='allow', IpList='1.1.1.1')
+
     '''
     SetCacheRuleConfig  设置缓存规则。加速域名创建后，默认缓存规则为空
                         更新加速域名的缓存规则为覆盖更新，需要对全部的规则进行修改，不能仅提交需要修改的部分
@@ -968,7 +978,7 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 	'''
-    res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
+    #res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
     
     
     

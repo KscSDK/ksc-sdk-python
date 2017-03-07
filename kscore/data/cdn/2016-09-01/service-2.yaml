@@ -250,6 +250,14 @@ operations:
       requestUri: /2016-09-01/domain/SetReferProtectionConfig
     input:
       shape: SetReferProtectionConfigRequest
+
+  SetIpProtectionConfig:
+    name: SetIpProtectionConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetIpProtectionConfig
+    input:
+      shape: SetIpProtectionConfigRequest
  
   SetCacheRuleConfig:
     name: SetCacheRuleConfig
@@ -971,7 +979,22 @@ shapes:
         shape: String
       AllowEmpty:
         shape: String
-        
+
+  SetIprotectionConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+      IpType:
+        shape: String
+      IpList:
+        shape: String
+
   SetTestUrlConfigRequest:       
     type: structure
     required:
