@@ -1,5 +1,5 @@
 # -*- encoding:utf-8 -*-
-from kscore.offline import getOfflineClient
+from kscore.kvs import getKvsClient
 import json
 
 #没有配置kscore.cfg调用方式
@@ -10,7 +10,7 @@ import json
 
 #配置kscore.cfg调用方式
 
-client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False)
+client = getKvsClient("kvs", "cn-beijing-6",use_ssl=False)
 
 #创建模板接口调用示例 : preset  
 presetname = 'testpreset'
@@ -19,10 +19,10 @@ presetType = 'avop'
 
 #具体的格式请参考官网说明
 param = {
-    "preset": presetname,
-    "description": description,
-    "presettype": presetType,
-    "param": {
+    "Preset": presetname,
+    "Description": description,
+    "PresetType": presetType,
+    "Param": {
         "f": "mp4",
         "AUDIO": {
             "acodec": "aac",
@@ -50,38 +50,40 @@ print json.dumps(res)
 
 #获取模板列表接口调用示例 : GetPresetList
 #参数
-# withDetail:是否查询模板详情，1-是 0-否
-# presettype:模板类型，多种模板类型以逗号隔开
-# presets:模板名称，多个模板名称以逗号隔开
-res = client.GetPresetList(withDetail=0,presettype="avop")
+# WithDetail:是否查询模板详情，1-是 0-否
+# PresetType:模板类型，多种模板类型以逗号隔开
+# Presets:模板名称，多个模板名称以逗号隔开
+res = client.GetPresetList(WithDetail=1,PresetType="avop")
 print json.dumps(res)
 
 #获取模板信息接口调用示例 : GetPresetDetail
-res = client.GetPresetDetail(presetname)
+# Preset:模板名称
+res = client.GetPresetDetail(Preset=presetname)
 print json.dumps(res)
 
 #删除模板接口调用示例 : DelPreset
-res = client.DelPreset(presetname)
+# Preset:模板名称
+res = client.DelPreset(Preset=presetname)
 print json.dumps(res)
 
 
 #创建任务接口调用示例 : CreateTask
 #具体参数请参考官方文档
 task = {
-    "dstDir": "",
-    "dstObjectKey": "4.mp4",
-    "dstBucket": "autotestoffline",
-    "dstAcl": "public-read",
-    "preset": presetname,
-    "srcInfo": [
+    "DstDir": "",
+    "DstObjectKey": "4.mp4",
+    "DstBucket": "autotestoffline",
+    "DstAcl": "public-read",
+    "Preset": presetname,
+    "SrcInfo": [
         {
             "path": "/autotestoffline/11.mp4",
             "type": "video",
             "index": 0
         }
     ],
-    "cbMethod": "POST",
-    "cbUrl": "http://10.4.2.38:19090/"
+    "CbMethod": "POST",
+    "CbUrl": "http://10.4.2.38:19090/"
 }
 
 #该接口需要输入json格式数据
@@ -90,33 +92,35 @@ print json.dumps(res)
 
 #查看任务状态接口调用示例 : GetTaskByTaskID
 taskid = "40d309d3b2bf373cd3f08e5b5e1bddf720160816"
-res = client.GetTaskByTaskID(taskid)
+# TaskID:任务ID
+res = client.GetTaskByTaskID(TaskID = taskid)
 print json.dumps(res)
 
 #获取任务列表接口调用示例 : GetTaskList
 #参数
-# startdate:开始时间，默认为当前月的第一天；格式：20160919
-# enddate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
-# marker:请求起始游标，默认为0    
-# limit:单次请求的记录数，默认为100，最大值为100
-res = client.GetTaskList(startdate=20161101,enddate=20161118,marker=0,limit=50)
+# StartDate:开始时间，默认为当前月的第一天；格式：20160919
+# EndDate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
+# Marker:请求起始游标，默认为0    
+# Limit:单次请求的记录数，默认为100，最大值为100
+res = client.GetTaskList(StartDate=20170100,EndDate=20170112,Marker=0,Limit=50)
 print json.dumps(res)
 
 #删除任务接口调用示例 : DelTaskByTaskID
-res = client.DelTaskByTaskID(taskid)
+# TaskID:任务ID
+res = client.DelTaskByTaskID(TaskID = taskid)
 print json.dumps(res)
 
 #任务置顶接口调用示例 : TopTaskByTaskID
-res = client.TopTaskByTaskID(taskid)
+# TaskID:任务ID
+res = client.TopTaskByTaskID(TaskID = taskid)
 print json.dumps(res)
 
 #查询任务META列表接口调用示例 : GetTaskMetaInfo
 #参数
-# taskid:任务ID
-# startdate:开始时间，默认为当前月的第一天；格式：20160919
-# enddate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
-# marker:请求起始游标，默认为0    
-# limit:单次请求的记录数，默认为100，最大值为100
-
-#res = client.GetTaskMetaInfo(startdate=20161101,enddate=20161118,marker=0,limit=50)
-#print json.dumps(res)
+# TaskID:任务ID
+# StartDate:开始时间，默认为当前月的第一天；格式：20160919
+# EndDate:截止时间，默认为开始时间加30天；若大于当前时间，则默认为当前时间；格式：20160930
+# Marker:请求起始游标，默认为0    
+# Limit:单次请求的记录数，默认为100，最大值为100
+res = client.GetTaskMetaInfo(StartDate=20170100,EndDate=20170112,Marker=0,Limit=50)
+print json.dumps(res)

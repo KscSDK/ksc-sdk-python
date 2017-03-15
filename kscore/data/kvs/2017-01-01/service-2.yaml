@@ -1,12 +1,12 @@
 ---
 version: '2.0'
 metadata:
-  apiVersion: '2016-09-19'
-  endpointPrefix: offline
+  apiVersion: '2017-01-01'
+  endpointPrefix: kvs
   jsonVersion: '1.1'
-  serviceFullName: KSC OFFLINE Service
+  serviceFullName: KSC KVS Service
   signatureVersion: v4
-  targetPrefix: offline
+  targetPrefix: kvs
   protocol: json2
 
 operations:
@@ -96,8 +96,6 @@ shapes:
     type: integer
   TaskID:
     type: string
-    min: 35
-    max: 45
   PresetType:
     type: string
   Presets:
@@ -113,45 +111,45 @@ shapes:
   PresetInstance:
     type: structure
     members:
-      preset:
+      Preset:
         shape: Preset
   GetPresetListInstance:
     type: structure
     members:
-      withDetail:
+      WithDetail:
         shape: WithDetail
-      presettype:
+      PresetType:
         shape: PresetType
-      presets:
+      Presets:
         shape: Presets  
   TaskIDInstance:
     type: structure
     members:
-      taskid:
+      TaskID:
         shape: TaskID
   GetTaskListInstance:
     type: structure
     members:
-      startdate:
+      StartDate:
         shape: StartDate
-      enddate:
+      EndDate:
         shape: EndDate
-      marker:
+      Marker:
         shape: Marker
-      limit:
+      Limit:
         shape: Limit
   GetTaskByTaskIDInstance:
     type: structure
     members:
-      taskid:
+      TaskID:
         shape: TaskID
-      startdate:
+      StartDate:
         shape: StartDate
-      enddate:
+      EndDate:
         shape: EndDate
-      marker:
+      Marker:
         shape: Marker
-      limit:
+      Limit:
         shape: Limit
 
   

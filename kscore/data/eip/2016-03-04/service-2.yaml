@@ -40,18 +40,10 @@ operations:
     name: DescribeAddresses
     http:
       method: GET
-  AssociateAddressPortfwd:
-    name: AssociateAddressPortfwd
+  ModifyAddress:
+    name: ModifyAddress
     http:
-      method: GET  
-  DisassociateAddressPortfwd:
-    name: DisassociateAddressPortfwd
-    http:
-      method: GET  
-  DescribeAddressPortfwds:
-    name: DescribeAddressPortfwds
-    http:
-      method: GET  
+      method: GET
 
 
 shapes:
