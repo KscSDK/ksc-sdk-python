@@ -468,7 +468,27 @@ operations:
       shape: GetLiveTopOnlineUserDataRequest
     output:
       shape: GetLiveTopOnlineUserDataResponse
-  
+
+  GetPlayTimeDataByStream:
+    name: GetPlayTimeDataByStream
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPlayTimeDataByStream
+    input:
+      shape: GetPlayTimeDataByStreamRequest
+    output:
+      shape: GetPlayTimeDataByStreamResponse
+
+  GetPlayTimeDataByDomain:
+    name: GetPlayTimeDataByDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPlayTimeDataByDomain
+    input:
+      shape: GetPlayTimeDataByDomainRequest
+    output:
+      shape: GetPlayTimeDataByDomainResponse
+
 #####################################
 shapes:
 
@@ -3039,13 +3059,196 @@ shapes:
       LimitN:
         shape: String      
       Datas:
-        shape: TopOnlineUserDataByStreamList  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+        shape: TopOnlineUserDataByStreamList
+
+
+
+
+
+
+
+  GetPlayTimeDataByStreamRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - StreamUrls
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      StreamUrls:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+
+  GetPlayTimeDataByDomainRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+
+  PlayTimeDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+
+  PlayTimeDataByRegionList:
+    type: list
+    member:
+      shape: PlayTimeDataByRegion
+
+  PlayTimeDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Regions:
+        shape: PlayTimeDataByRegionList
+
+  PlayTimeDataByStreamList:
+    type: list
+    member:
+      shape: PlayTimeDataByStream
+
+  PlayTimeDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Streams:
+        shape: PlayTimeDataByStreamList
+
+  PlayTimeDataByTimeList:
+    type: list
+    member:
+      shape: PlayTimeDataByTime
+
+  GetPlayTimeDataByStreamResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+      Datas:
+        shape: PlayTimeDataByTimeList
+
+  WatchLengthDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+
+  WatchLengthDataByRegionList:
+    type: list
+    member:
+      shape: WatchLengthDataByRegion
+
+  WatchLengthDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Regions:
+        shape: WatchLengthDataByRegionList
+
+  WatchLengthDataByDomainList:
+    type: list
+    member:
+      shape: WatchLengthDataByDomain
+
+  WatchLengthDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      DomainIds:
+        shape: WatchLengthDataByDomainList
+
+  WatchLengthDataByTimeList:
+    type: list
+    member:
+      shape: WatchLengthDataByTime
+
+  GetPlayTimeDataByDomainResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+      Datas:
+        shape: WatchLengthDataByTimeList
+

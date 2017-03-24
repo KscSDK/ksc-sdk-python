@@ -69,7 +69,7 @@ if __name__ == "__main__":
         
     Returns:
     '''
-    #res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
+    # res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
     
     
     '''
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         IpType      String  refer类型，取值：block：黑名单；allow：白名单，开启后必填
         IpList      String  逗号隔开的Ip列表
     '''
-    client.set_ip_protection_config(DomainId='2D09NN8', Enable='on', IpType='allow', IpList='1.1.1.1')
+    # client.set_ip_protection_config(DomainId='2D09NN8', Enable='on', IpType='allow', IpList='1.1.1.1')
 
     '''
     SetCacheRuleConfig  设置缓存规则。加速域名创建后，默认缓存规则为空
@@ -1032,5 +1032,55 @@ if __name__ == "__main__":
 		Dirs       String  目录名称，支持统计域名下一级目录，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容;支持批量查询，多个目录用逗号（半角）分隔，缺省为该域名下所有一级目录及“\/”；若输入\/，则查询该域名下所有无一级目录的URL带宽合并值
 	'''
     #res = client.get_flow_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=0,Regions='')
-    
-    
+
+
+
+    '''
+    GetPlayTimeDataByStream
+        本接口用于获取直播流维度的平均观看时长数据，单位：毫秒（ms）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量流名查询，多个流名用逗号（半角）分割；多流名合并的方法为“将各流名的总播放时长，除以各流名的总访问次数”
+        最大查询范围：最多可获取最近62天内，7天跨度的数据；
+        统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的观看时长为该时段的播放时长总和，除以该时段的总访问次数
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Region个数*StreamUrl个数*(EndTime-StartTime)/统计粒度 <= 10000。注：在获取多个流名多个区域合并值时，Region个数和StreamUrl个数按照1计算
+        使用场景：
+           1）客户查询单个流名或多个流名，在一段时间内的合并后的平均观看时长，用于绘制一条曲线；
+           2）客户查询单个流名或多个流名，在一段时间内的详细数据，用于画出多条曲线，表征每个流名的详细情况
+        说明：只支持RTMP/HDL协议；
+
+    请求参数：
+	Parameters:
+        StreamUrls      String  流名，支持批量查询，多个流名用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+		Granularity     integer     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+		Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+	'''
+    res = client.get_play_time_data_by_stream(StreamUrls='http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
+    # print res
+
+    '''
+    GetPlayTimeDataByDomain
+            本接口用于获取直播域名维度的观看时长数据，单位毫秒（ms）
+            支持批量域名查询，批量域名合并的方法为“将各域名下各流名的总播放时长，除以各域名下各流名的总访问次数”；
+            最大查询范围：最多可获取最近62天内，7天跨度的数据
+            统计粒度：5分钟；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的观看时长为该时段的播放时长总和，除以该时段的总访问次数；
+            接口性能：接口最大吞吐量为10000，即Region个数*DomainId个数*(EndTime-StartTime)/统计粒度<= 10000。注：在获取多个域名多个区域合并值时，Region个数和DomainId个数按照1计算
+            时效性：5分钟延迟；
+            应用场景：
+               1）客户查询单个域名或多个域名下的流名，在一段时间内的合并后的观看时长，用于绘制一条曲线；
+               2）客户查询单个域名或多个域名下的流名，在一段时间内的详细数据，用于画出多条曲线，表征每个域名的详细情况
+            说明：只支持RTMP/HDL协议；
+    请求参数：
+    Parameters:
+        DomainIds       String  流名，支持批量查询，多个域名id用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Granularity     integer     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+        ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+    '''
+    res = client.get_play_time_data_by_domain(DomainIds='2D09QKA,2D09VS9',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
+    # print res
