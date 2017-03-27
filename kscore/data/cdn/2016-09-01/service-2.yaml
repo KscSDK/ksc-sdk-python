@@ -500,7 +500,15 @@ operations:
     output:
       shape: GetBillingModeResponse
 
-
+  GetBillingData:
+    name: GetBillingData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetBillingData
+    input:
+      shape: GetBillingDataRequest
+    output:
+      shape: GetBillingDataResponse
 #####################################
 shapes:
 
@@ -3281,3 +3289,54 @@ shapes:
       Describe:
         shape: String
 
+  GetBillingDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      BillingMode:
+        shape: String
+
+
+  GetBillingDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      BillingMode:
+        shape: String
+      Datas:
+        shape: BillingDataList
+
+  BillingDataList:
+    type: list
+    member:
+      shape: BillingData
+
+  BillingData:
+    type: structure
+    members:
+      Region:
+        shape: String
+      BillingData:
+        shape: Long

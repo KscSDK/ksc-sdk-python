@@ -1075,7 +1075,7 @@ if __name__ == "__main__":
             说明：只支持RTMP/HDL协议；
     请求参数：
     Parameters:
-        DomainIds       String  流名，支持批量查询，多个域名id用逗号（半角）分隔
+        DomainIds       String  客户域名，支持批量查询，多个域名id用逗号（半角）分隔
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         Granularity     integer     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
@@ -1097,5 +1097,31 @@ if __name__ == "__main__":
     Parameters:
         CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
     '''
-    res = client.get_billing_mode(CdnType='live')
+    # res = client.get_billing_mode(CdnType='live')
+    # print res
+
+
+
+    '''
+    GetBillingData
+        获取域名的计费数据
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内93天跨度的数据
+        使用场景：
+            客户查询域名计费数据，用于计费核算
+            客户根据不同计费方式，对比不同计费数据值，用于计费方式调整依据。
+        注意：
+            1、95带宽峰值计费计算方法：，在选定时间段内，取每5分钟有效带宽值进行降序排列，然后把带宽数值前5%的点去掉，剩下的最高带宽就是95带宽峰值即计费值
+            2、日峰值平均值带宽计算方法：在选定时间段内，取每一日的峰值带宽和，除以选择时间段的自然天数，得到一段时间内日峰值带宽的平均值即计费值
+    请求参数：
+    Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+        BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
+    '''
+    res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',BillingMode='monthflow',Regions='CN,AS,NA,AU')
     print res
