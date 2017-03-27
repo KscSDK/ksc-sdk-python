@@ -1058,7 +1058,7 @@ if __name__ == "__main__":
 		ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 		Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 	'''
-    res = client.get_play_time_data_by_stream(StreamUrls='http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
+    # res = client.get_play_time_data_by_stream(StreamUrls='http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
     # print res
 
     '''
@@ -1082,5 +1082,20 @@ if __name__ == "__main__":
         ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
     '''
-    res = client.get_play_time_data_by_domain(DomainIds='2D09QKA,2D09VS9',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
+    # res = client.get_play_time_data_by_domain(DomainIds='2D09QKA,2D09VS9',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
     # print res
+
+
+
+    '''
+    GetBillingMode
+        获取用户当前的计费方式。
+        支持按产品类型查询
+        使用场景：
+           客户查询当前时刻用户维度下各产品类型的计费方式
+    请求参数：
+    Parameters:
+        CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+    '''
+    res = client.get_billing_mode(CdnType='live')
+    print res

@@ -489,6 +489,18 @@ operations:
     output:
       shape: GetPlayTimeDataByDomainResponse
 
+
+  GetBillingMode:
+    name: GetBillingMode
+    http:
+      method: GET
+      requestUri: /2016-09-01/service/GetBillingMode
+    input:
+      shape: GetBillingModeRequest
+    output:
+      shape: GetBillingModeResponse
+
+
 #####################################
 shapes:
 
@@ -3251,4 +3263,21 @@ shapes:
         shape: Integer
       Datas:
         shape: WatchLengthDataByTimeList
+
+
+  GetBillingModeRequest:
+    type: structure
+    required:
+    - CdnType
+    members:
+      CdnType:
+        shape: String
+
+  GetBillingModeResponse:
+    type: structure
+    members:
+      BillingMode:
+        shape: String
+      Describe:
+        shape: String
 
