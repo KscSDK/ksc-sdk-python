@@ -1123,5 +1123,19 @@ if __name__ == "__main__":
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
     '''
-    res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    #res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    #print res
+	
+    '''
+    GetServiceIpData
+        获取域名当前的服务节点IP列表，用于分析域名服务节点运行状况，便于故障排查
+        仅支持单个域名查询，配置黑白名单后才可生效
+        使用场景：
+            客户获取域名当前的服务节点IP，用于故障排查
+          
+    请求参数：
+    Parameters:
+        DomainId       String  域名ID，输入需要查询的域名ID，仅支持单个域名ID
+    '''
+    res = client.get_service_ip_data(DomainId='2D09NK5')
     print res
