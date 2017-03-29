@@ -15,7 +15,15 @@ metadata:
 documentation: ''
 
 operations:
-
+  GetServiceIpData:
+    name: GetServiceIpData
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetServiceIpData
+    input:
+      shape: GetServiceIpRequest
+    output:
+      shape: GetServiceIpResponse
   GetDomainLogServiceStatus:
     name: GetDomainLogServiceStatus
     http:
@@ -250,6 +258,14 @@ operations:
       requestUri: /2016-09-01/domain/SetReferProtectionConfig
     input:
       shape: SetReferProtectionConfigRequest
+
+  SetIpProtectionConfig:
+    name: SetIpProtectionConfig
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/SetIpProtectionConfig
+    input:
+      shape: SetIpProtectionConfigRequest
  
   SetCacheRuleConfig:
     name: SetCacheRuleConfig
@@ -460,7 +476,58 @@ operations:
       shape: GetLiveTopOnlineUserDataRequest
     output:
       shape: GetLiveTopOnlineUserDataResponse
-  
+
+  GetPlayTimeDataByStream:
+    name: GetPlayTimeDataByStream
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPlayTimeDataByStream
+    input:
+      shape: GetPlayTimeDataByStreamRequest
+    output:
+      shape: GetPlayTimeDataByStreamResponse
+
+  GetPlayTimeDataByDomain:
+    name: GetPlayTimeDataByDomain
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPlayTimeDataByDomain
+    input:
+      shape: GetPlayTimeDataByDomainRequest
+    output:
+      shape: GetPlayTimeDataByDomainResponse
+
+
+  GetBillingMode:
+    name: GetBillingMode
+    http:
+      method: GET
+      requestUri: /2016-09-01/service/GetBillingMode
+    input:
+      shape: GetBillingModeRequest
+    output:
+      shape: GetBillingModeResponse
+
+  GetBillingData:
+    name: GetBillingData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetBillingData
+    input:
+      shape: GetBillingDataRequest
+    output:
+      shape: GetBillingDataResponse
+
+  GetPeakBandwidthData:
+    name: GetPeakBandwidthData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPeakBandwidthData
+    input:
+      shape: GetPeakBandwidthDataRequest
+    output:
+      shape: GetPeakBandwidthDataResponse
+
 #####################################
 shapes:
 
@@ -530,7 +597,6 @@ shapes:
     type: list
     member:
       shape: Domain
-  
   GetDomainLogsRequest:
     type: structure
     required:
@@ -971,7 +1037,22 @@ shapes:
         shape: String
       AllowEmpty:
         shape: String
-        
+
+  SetIpProtectionConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+      IpType:
+        shape: String
+      IpList:
+        shape: String
+
   SetTestUrlConfigRequest:       
     type: structure
     required:
@@ -3016,13 +3097,324 @@ shapes:
       LimitN:
         shape: String      
       Datas:
-        shape: TopOnlineUserDataByStreamList  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+        shape: TopOnlineUserDataByStreamList
+
+
+
+
+
+
+
+  GetPlayTimeDataByStreamRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - StreamUrls
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      StreamUrls:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+
+  GetPlayTimeDataByDomainRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+
+  PlayTimeDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+
+  PlayTimeDataByRegionList:
+    type: list
+    member:
+      shape: PlayTimeDataByRegion
+
+  PlayTimeDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Regions:
+        shape: PlayTimeDataByRegionList
+
+  PlayTimeDataByStreamList:
+    type: list
+    member:
+      shape: PlayTimeDataByStream
+
+  PlayTimeDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Streams:
+        shape: PlayTimeDataByStreamList
+
+  PlayTimeDataByTimeList:
+    type: list
+    member:
+      shape: PlayTimeDataByTime
+
+  GetPlayTimeDataByStreamResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+      Datas:
+        shape: PlayTimeDataByTimeList
+
+  WatchLengthDataByRegion:
+    type: structure
+    members:
+      Region:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+
+  WatchLengthDataByRegionList:
+    type: list
+    member:
+      shape: WatchLengthDataByRegion
+
+  WatchLengthDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      Regions:
+        shape: WatchLengthDataByRegionList
+
+  WatchLengthDataByDomainList:
+    type: list
+    member:
+      shape: WatchLengthDataByDomain
+
+  WatchLengthDataByTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      TotalSv:
+        shape: Long
+      TotalPlayTime:
+        shape: Long
+      PlayTime:
+        shape: Long
+      DomainIds:
+        shape: WatchLengthDataByDomainList
+
+  WatchLengthDataByTimeList:
+    type: list
+    member:
+      shape: WatchLengthDataByTime
+
+  GetPlayTimeDataByDomainResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: Integer
+      Granularity:
+        shape: Integer
+      Datas:
+        shape: WatchLengthDataByTimeList
+
+
+  GetBillingModeRequest:
+    type: structure
+    required:
+    - CdnType
+    members:
+      CdnType:
+        shape: String
+
+  GetBillingModeResponse:
+    type: structure
+    members:
+      BillingMode:
+        shape: String
+      Describe:
+        shape: String
+
+  GetBillingDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      BillingMode:
+        shape: String
+
+
+  GetBillingDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      BillingMode:
+        shape: String
+      Datas:
+        shape: BillingDataList
+
+  BillingDataList:
+    type: list
+    member:
+      shape: BillingData
+
+  BillingData:
+    type: structure
+    members:
+      Region:
+        shape: String
+      BillingData:
+        shape: Long
+  GetServiceIpRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+  GetServiceIpData:
+    type: structure
+    members:
+      Ip:
+        shape: String
+  GetServiceIpDatas:
+    type: list
+    member:
+      shape: GetServiceIpData
+  GetServiceIpResponse:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Datas:
+        shape: GetServiceIpDatas
+
+  GetPeakBandwidthDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+
+
+  GetPeakBandwidthDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      PeakBw:
+        shape: Long
+      RealTime:
+        shape: String

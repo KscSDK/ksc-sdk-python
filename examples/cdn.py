@@ -63,13 +63,13 @@ if __name__ == "__main__":
     Parameters:
         DomainId    String  域名ID
         ConfigList  String  需要查询的配置，多个配置用逗号（半角）分隔，不填代表查询所有 
-                            当前支持  cache_expired、cc、error_page、http_header、optimize、page_compress、
+                            当前支持  cache_expired、ip、error_page、http_header、optimize、page_compress、
                             ignore_query_string、range、referer、req_auth、src_host、video_seek、waf,notify_url, 
                             redirect_type 
         
     Returns:
     '''
-    #res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
+    # res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
     
     
     '''
@@ -140,8 +140,18 @@ if __name__ == "__main__":
         AllowEmpty  String  是否允许空refer访问,取值：on：允许；off：不允许；默认值：on。注：仅当选择白名单时，此项才生效
     '''
     #client.set_refer_protection_config(DomainId='2D09NSH', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
-    
-    
+
+    '''
+    SetIpProtectionConfig  设置加速域名的Ip防盗链 加速域名创建后，默认不开启Ip防盗链功能
+
+    Parameters:
+        DomainId    String  域名ID
+        Enable      String  配置是否开启或关闭 取值：on、off，默认值为off关闭。开启时，下述必须项为必填项；关闭时，只更改此标识，忽略后面的项目。
+        IpType      String  refer类型，取值：block：黑名单；allow：白名单，开启后必填
+        IpList      String  逗号隔开的Ip列表
+    '''
+    # client.set_ip_protection_config(DomainId='2D09NN8', Enable='on', IpType='allow', IpList='1.1.1.1')
+
     '''
     SetCacheRuleConfig  设置缓存规则。加速域名创建后，默认缓存规则为空
                         更新加速域名的缓存规则为覆盖更新，需要对全部的规则进行修改，不能仅提交需要修改的部分
@@ -968,9 +978,182 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 	'''
-    res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
+    #res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
     
-    
-    
-    
-    
+    '''
+    GetBandwidthDataByDir 
+        本接口用于获取某段时间内按一级目录为维度下消耗的带宽，单位bit\/second
+        支持按指定的起止时间查询，两者需要同时指定
+        仅支持下载域名查询
+        仅支持单个域名查询
+        支持批量目录过滤查询，多个目录用逗号（半角）分隔
+        支持统计域名下一级目录所产生的带宽，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容
+        当取不到一级目录时，即请求URL中域名后有且仅有一个“\/”时，将统计这部分请求URL产生的带宽并进行求和，以“\/”表示；
+        最多可获取最近62天内24小时跨度的数据       统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的带宽值均取该粒度时间段的峰值
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Region个数*Dir个数*(EndTime-StartTime)\/统计粒度 <= 10000。注：在获取多个目录多个区域合并值时，Dir个数和Region个数按照1计算
+        使用场景：
+        客户查询一个域名下单个或多个目录的带宽数据汇总，以单独查看或对比同一域名下不同目录的带宽曲线
+        需配置白名单后方可调用此接口
+    请求参数：
+	Parameters:
+        DomainId       String  输入需要查询的域名ID，只允许输入一个
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+		Regions       String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+		Dirs       String  目录名称，支持统计域名下一级目录，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容;支持批量查询，多个目录用逗号（半角）分隔，缺省为该域名下所有一级目录及“\/”；若输入\/，则查询该域名下所有无一级目录的URL带宽合并值
+	'''
+    #res = client.get_bandwidth_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=1,Regions='')
+    '''
+    GetFlowDataByDir 
+        本接口用于获取某段时间内按一级目录为维度下消耗的流量，单位byte
+        支持按指定的起止时间查询，两者需要同时指定
+        仅支持下载域名查询
+        仅支持单个域名查询
+        支持批量目录过滤查询，多个目录用逗号（半角）分隔
+        支持统计域名下一级目录所产生的带宽，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容
+        当取不到一级目录时，即请求URL中域名后有且仅有一个“\/”时，将统计这部分请求URL产生的带宽并进行求和，以“\/”表示；
+        最多可获取最近62天内24小时跨度的数据       统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的带宽值均取该粒度时间段的峰值
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Region个数*Dir个数*(EndTime-StartTime)\/统计粒度 <= 10000。注：在获取多个目录多个区域合并值时，Dir个数和Region个数按照1计算
+        使用场景：
+        客户查询一个域名下单个或多个目录的带宽数据汇总，以单独查看或对比同一域名下不同目录的带宽曲线
+        需配置白名单后方可调用此接口
+    请求参数：
+	Parameters:
+        DomainId       String  输入需要查询的域名ID，只允许输入一个
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+		Regions       String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+		Dirs       String  目录名称，支持统计域名下一级目录，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容;支持批量查询，多个目录用逗号（半角）分隔，缺省为该域名下所有一级目录及“\/”；若输入\/，则查询该域名下所有无一级目录的URL带宽合并值
+	'''
+    #res = client.get_flow_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=0,Regions='')
+
+
+
+    '''
+    GetPlayTimeDataByStream
+        本接口用于获取直播流维度的平均观看时长数据，单位：毫秒（ms）
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量流名查询，多个流名用逗号（半角）分割；多流名合并的方法为“将各流名的总播放时长，除以各流名的总访问次数”
+        最大查询范围：最多可获取最近62天内，7天跨度的数据；
+        统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的观看时长为该时段的播放时长总和，除以该时段的总访问次数
+        时效性：5分钟延迟
+        接口性能：接口最大吞吐量为10000，即Region个数*StreamUrl个数*(EndTime-StartTime)/统计粒度 <= 10000。注：在获取多个流名多个区域合并值时，Region个数和StreamUrl个数按照1计算
+        使用场景：
+           1）客户查询单个流名或多个流名，在一段时间内的合并后的平均观看时长，用于绘制一条曲线；
+           2）客户查询单个流名或多个流名，在一段时间内的详细数据，用于画出多条曲线，表征每个流名的详细情况
+        说明：只支持RTMP/HDL协议；
+
+    请求参数：
+	Parameters:
+        StreamUrls      String  流名，支持批量查询，多个流名用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+		Granularity     integer     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+		ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+		Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+	'''
+    # res = client.get_play_time_data_by_stream(StreamUrls='http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
+    # print res
+
+    '''
+    GetPlayTimeDataByDomain
+            本接口用于获取直播域名维度的观看时长数据，单位毫秒（ms）
+            支持批量域名查询，批量域名合并的方法为“将各域名下各流名的总播放时长，除以各域名下各流名的总访问次数”；
+            最大查询范围：最多可获取最近62天内，7天跨度的数据
+            统计粒度：5分钟；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的观看时长为该时段的播放时长总和，除以该时段的总访问次数；
+            接口性能：接口最大吞吐量为10000，即Region个数*DomainId个数*(EndTime-StartTime)/统计粒度<= 10000。注：在获取多个域名多个区域合并值时，Region个数和DomainId个数按照1计算
+            时效性：5分钟延迟；
+            应用场景：
+               1）客户查询单个域名或多个域名下的流名，在一段时间内的合并后的观看时长，用于绘制一条曲线；
+               2）客户查询单个域名或多个域名下的流名，在一段时间内的详细数据，用于画出多条曲线，表征每个域名的详细情况
+            说明：只支持RTMP/HDL协议；
+    请求参数：
+    Parameters:
+        DomainIds       String  客户域名，支持批量查询，多个域名id用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        Granularity     integer     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+        ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+    '''
+    # res = client.get_play_time_data_by_domain(DomainIds='2D09QKA,2D09VS9',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
+    # print res
+
+
+
+    '''
+    GetBillingMode
+        获取用户当前的计费方式。
+        支持按产品类型查询
+        使用场景：
+           客户查询当前时刻用户维度下各产品类型的计费方式
+    请求参数：
+    Parameters:
+        CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+    '''
+    # res = client.get_billing_mode(CdnType='live')
+    # print res
+
+
+
+    '''
+    GetBillingData
+        获取域名的计费数据
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内93天跨度的数据
+        使用场景：
+            客户查询域名计费数据，用于计费核算
+            客户根据不同计费方式，对比不同计费数据值，用于计费方式调整依据。
+        注意：
+            1、95带宽峰值计费计算方法：，在选定时间段内，取每5分钟有效带宽值进行降序排列，然后把带宽数值前5%的点去掉，剩下的最高带宽就是95带宽峰值即计费值
+            2、日峰值平均值带宽计算方法：在选定时间段内，取每一日的峰值带宽和，除以选择时间段的自然天数，得到一段时间内日峰值带宽的平均值即计费值
+    请求参数：
+    Parameters:
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+        BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
+    '''
+    #res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    #print res
+	
+    '''
+    GetServiceIpData
+        获取域名当前的服务节点IP列表，用于分析域名服务节点运行状况，便于故障排查
+        仅支持单个域名查询，配置黑白名单后才可生效
+        使用场景：
+            客户获取域名当前的服务节点IP，用于故障排查
+          
+    请求参数：
+    Parameters:
+        DomainId       String  域名ID，输入需要查询的域名ID，仅支持单个域名ID
+    '''
+    # res = client.get_service_ip_data(DomainId='2D09NK5')
+    # print res
+
+    '''
+    GetPeakBandwidthData
+        获取域名带宽峰值，峰值时间点
+        1、峰值带宽计算方法：在选定时间段内，取每5分钟有效带宽值进行降序排列，最高带宽就是峰值带宽
+        2、realtime，峰值时间点，取每5分钟一个时间点，最高峰出现的时间点即为峰值时间
+        最多可获取最近一年内93天跨度的数据
+
+    请求参数：
+    Parameters:
+         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+    '''
+    res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
+    print res
