@@ -1137,5 +1137,23 @@ if __name__ == "__main__":
     Parameters:
         DomainId       String  域名ID，输入需要查询的域名ID，仅支持单个域名ID
     '''
-    res = client.get_service_ip_data(DomainId='2D09NK5')
+    # res = client.get_service_ip_data(DomainId='2D09NK5')
+    # print res
+
+    '''
+    GetPeakBandwidthData
+        获取域名带宽峰值，峰值时间点
+        1、峰值带宽计算方法：在选定时间段内，取每5分钟有效带宽值进行降序排列，最高带宽就是峰值带宽
+        2、realtime，峰值时间点，取每5分钟一个时间点，最高峰出现的时间点即为峰值时间
+        最多可获取最近一年内93天跨度的数据
+
+    请求参数：
+    Parameters:
+         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
+        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+    '''
+    res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
     print res

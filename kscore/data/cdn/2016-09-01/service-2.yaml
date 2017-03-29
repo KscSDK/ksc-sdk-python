@@ -517,6 +517,17 @@ operations:
       shape: GetBillingDataRequest
     output:
       shape: GetBillingDataResponse
+
+  GetPeakBandwidthData:
+    name: GetPeakBandwidthData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetPeakBandwidthData
+    input:
+      shape: GetPeakBandwidthDataRequest
+    output:
+      shape: GetPeakBandwidthDataResponse
+
 #####################################
 shapes:
 
@@ -3370,3 +3381,40 @@ shapes:
         shape: String
       Datas:
         shape: GetServiceIpDatas
+
+  GetPeakBandwidthDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - EndTime
+    - CdnType
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+
+
+  GetPeakBandwidthDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      CdnType:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      PeakBw:
+        shape: Long
+      RealTime:
+        shape: String
