@@ -1,0 +1,116 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2017-01-01'
+  endpointPrefix: ket
+  jsonVersion: '1.1'
+  serviceFullName: KSC OFFLINE Service
+  signatureVersion: v4
+  targetPrefix: ket
+  protocol: json2
+
+operations:
+  Preset:
+    name: Preset
+    http:
+      method: POST
+
+  UpdatePreset:
+    name: UpdatePreset
+    http:
+      method: POST
+
+  DelPreset:
+    name: DelPreset
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: PresetInstance
+
+  GetPresetList:
+    name: GetPresetList
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: UserInstance
+
+  GetPresetDetail:
+    name: GetPresetDetail
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: PresetInstance
+
+  StartStreamPull:
+    name: StartStreamPull
+    http:
+      method: POST
+
+  StopStreamPull:
+    name: StopStreamPull
+    http:
+      method: POST
+
+  GetStreamTranList:
+    name: GetStreamTranList
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: StreamTranInstance
+
+  GetQuotaUsed:
+    name: GetQuotaUsed
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: UniqNameInstance
+
+shapes:  
+  App:
+    type: string
+  UniqName:
+    type: string
+  Preset:
+    type: string
+  StreamID:
+    type: string
+  OutPull:
+    type: integer
+
+  UniqNameInstance:
+    type: structure
+    members:
+      UniqName:
+        shape: UniqName
+  PresetInstance:
+    type: structure
+    members:
+      App:
+        shape: App
+      UniqName:
+        shape: UniqName
+      Preset:
+        shape: Preset
+  UserInstance:
+    type: structure
+    members:
+      App:
+        shape: App
+      UniqName:
+        shape: UniqName
+  StreamTranInstance:
+    type: structure
+    members:
+      App:
+        shape: App
+      UniqName:
+        shape: UniqName
+      StreamID:
+        shape: StreamID
+      OutPull:
+        shape: OutPull
