@@ -1,11 +1,10 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-from kscore.session import get_session
+from kscore.ket import getKetClient
 import json
 
 if __name__ == "__main__":
-    s = get_session()
-    client = s.create_client("ket", "cn-beijing-6", use_ssl=False)
+    client = getKetClient("ket", "cn-beijing-6",use_ssl=False)
 
     uniqname = 'mytest'
     presetname = 'testpreset00'
@@ -34,23 +33,23 @@ if __name__ == "__main__":
          }
        ]
     }
-    res = client.preset(**param)
+    res = client.Preset(param)
     print json.dumps(res)
 
     # 更新模板
-    res = client.update_preset(**param)
+    res = client.UpdatePreset(param)
     print json.dumps(res)
 
     # 获取模板详情
-    res = client.get_preset_detail(App=appname, UniqName=uniqname, Preset=presetname)
+    res = client.GetPresetDetail(App=appname, UniqName=uniqname, Preset=presetname)
     print json.dumps(res)
 
     # 获取用户模板列表
-    res = client.get_preset_list(App=appname, UniqName=uniqname)
+    res = client.GetPresetList(App=appname, UniqName=uniqname)
     print json.dumps(res)
 
     # 删除模板
-    res = client.del_preset(App=appname, UniqName=uniqname, Preset=presetname)
+    res = client.DelPreset(App=appname, UniqName=uniqname, Preset=presetname)
     print json.dumps(res)
 
     # 启动外网拉流
@@ -61,7 +60,7 @@ if __name__ == "__main__":
        "App": appname,
        "Params": "a",
     }
-    res = client.start_stream_pull(**param1)
+    res = client.StartStreamPull(param1)
     print json.dumps(res)
 
     # 停止外网拉流
@@ -70,13 +69,13 @@ if __name__ == "__main__":
        "StreamID": streamid,
        "App": appname,
     }
-    res = client.stop_stream_pull(**param2)
+    res = client.StopStreamPull(param2)
     print json.dumps(res)
 
     # 获取转码任务列表
-    res = client.get_stream_tran_list(App=appname, UniqName=uniqname, StreamID=streamid, OutPull=outpull)
+    res = client.GetStreamTranList(App=appname, UniqName=uniqname, StreamID=streamid, OutPull=outpull)
     print json.dumps(res)
 
     # 获取用户已占用配额
-    res = client.get_quota_used(UniqName=uniqname)
+    res = client.GetQuotaUsed(UniqName=uniqname)
     print json.dumps(res)
