@@ -129,8 +129,28 @@ operations:
     name: DescribeSubnetAvailableAddresses
     http:
       method: GET
+  CreateNat:
+    name: CreateNat
+    http:
+      method: GET
+  DeleteNat:
+    name: DeleteNat
+    http:
+      method: GET
   ModifyNat:
     name: ModifyNat
+    http:
+      method: GET
+  DescribeNats:
+    name: DescribeNats
+    http:
+      method: GET
+  AssociateNat:
+    name: AssociateNat
+    http:
+      method: GET
+  DisassociateNat:
+    name: DisassociateNat
     http:
       method: GET
 
