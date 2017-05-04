@@ -70,6 +70,26 @@ operations:
     input:
       shape: UniqNameInstance
 
+  StartLoop:
+    name: StartLoop
+    http:
+      method: POST
+
+  StopLoop:
+    name: StopLoop
+    http:
+      method: POST
+
+  UpdateLoop:
+    name: UpdateLoop
+    http:
+      method: POST
+
+  GetLoopList:
+    name: GetLoopList
+    http:
+      method: GET
+
 shapes:  
   App:
     type: string
