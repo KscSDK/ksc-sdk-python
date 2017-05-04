@@ -13,7 +13,7 @@ Install 安装
 
 + github 安装
     + 通过 `GitHub <https://github.com/KscSDK/ksc-sdk-python>`__ 下载
-    + 进入`kscore`目录通过命令 python setup.py install 安装
+    + 通过命令 python setup.py install 安装
 
 ----------------
 Config 配置
