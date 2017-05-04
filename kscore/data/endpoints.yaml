@@ -26,6 +26,12 @@ partitions:
     cn-beijing-5:
       description: China Beijing (ZaoJunMiao)
 
+    cn-hongkong-2:
+      description: China HongKong 2
+
+    cn-hongkong-1:
+      description: China HongKong 1
+
     cn-beijing-1:
       description: China Beijing (YiZhuang)
 
