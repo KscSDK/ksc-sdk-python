@@ -5,7 +5,7 @@ metadata:
   # Version 
   apiVersion: '2016-09-01'
   endpointPrefix: cdn
-  globalEndpoint: cdn.api.ksyun.com
+  globalEndpoint: cdn.cn-shanghai-2.api.ksyun.com
   jsonVersion: '1.1'
   serviceFullName: cdn Service
   signatureVersion: v4

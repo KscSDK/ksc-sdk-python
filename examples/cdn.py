@@ -6,7 +6,7 @@ if __name__ == "__main__":
     
 
     s = get_session()
-    client = s.create_client("cdn", use_ssl=False)
+    client = s.create_client("cdn",region_name="cn-shanghai-2",use_ssl=False)
 
     ''' 
     get_cdn_domains 查询域名列表
@@ -1058,8 +1058,8 @@ if __name__ == "__main__":
 		ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 		Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 	'''
-    # res = client.get_play_time_data_by_stream(StreamUrls='http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
-    # print res
+    #res = client.get_play_time_data_by_stream(StreamUrls='http://c.gdown.baidu.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
+    #print res
 
     '''
     GetPlayTimeDataByDomain
@@ -1082,8 +1082,8 @@ if __name__ == "__main__":
         ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
     '''
-    # res = client.get_play_time_data_by_domain(DomainIds='2D09QKA,2D09VS9',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
-    # print res
+    #res = client.get_play_time_data_by_domain(DomainIds='',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
+    #print res
 
 
 
@@ -1097,8 +1097,8 @@ if __name__ == "__main__":
     Parameters:
         CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
     '''
-    # res = client.get_billing_mode(CdnType='live')
-    # print res
+    #res = client.get_billing_mode(CdnType='live')
+    #print res
 
 
 
@@ -1123,7 +1123,7 @@ if __name__ == "__main__":
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
     '''
-    #res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    #res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',DomainIds='',BillingMode='monthflow',Regions='CN,AS,NA,AU')
     #print res
 	
     '''
@@ -1137,5 +1137,5 @@ if __name__ == "__main__":
     Parameters:
         DomainId       String  域名ID，输入需要查询的域名ID，仅支持单个域名ID
     '''
-    res = client.get_service_ip_data(DomainId='2D09NK5')
-    print res
+    #res = client.get_service_ip_data(DomainId='2D09NK5')
+    #print res
