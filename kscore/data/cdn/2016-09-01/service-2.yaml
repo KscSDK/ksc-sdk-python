@@ -705,7 +705,7 @@ shapes:
   AddCdnDomainResponse:
     type: structure
     members:
-      DomainID:   
+      DomainId:   
         shape: String
       DomainStatus:   
         shape: String
