@@ -24,6 +24,7 @@ operations:
       shape: GetServiceIpRequest
     output:
       shape: GetServiceIpResponse
+
   GetDomainLogServiceStatus:
     name: GetDomainLogServiceStatus
     http:
@@ -33,6 +34,7 @@ operations:
       shape: GetDomainLogServiceStatusRequest
     output:
       shape: GetDomainLogServiceStatusResponse
+
   SetDomainLogService:
     name: SetDomainLogService
     http:
@@ -40,6 +42,7 @@ operations:
       requestUri: /2016-09-01/log/SetDomainLogService
     input:
       shape: SetDomainLogServiceRequest
+
   GetRefreshOrPreloadQuota:
     name: GetRefreshOrPreloadQuota
     http:
@@ -47,6 +50,7 @@ operations:
       requestUri: /2016-09-01/content/GetRefreshOrPreloadQuota
     output:
       shape: GetRefreshOrPreloadQuotaResponse
+
   PreloadCaches:
     name: PreloadCaches
     protocol: json
@@ -55,6 +59,7 @@ operations:
       requestUri: /2016-09-01/content/PreloadCaches
     output:
       shape: PreloadCachesResponse
+
   RefreshCaches:
     name: RefreshCaches
     protocol: json
@@ -63,6 +68,7 @@ operations:
       requestUri: /2016-09-01/content/RefreshCaches
     output:
       shape: RefreshCachesResponse
+
   GetRefreshOrPreloadTask:
     name: GetRefreshOrPreloadTask
     protocol: json
@@ -71,6 +77,7 @@ operations:
       requestUri: /2016-09-01/content/GetRefreshOrPreloadTask
     output:
       shape: GetRefreshOrPreloadTaskResponse
+
   GetUvData:
     name: GetUvData
     http:
@@ -90,6 +97,7 @@ operations:
       shape: GetTopIpDataRequest
     output:
       shape: GetTopIpDataResponse
+
   GetTopReferData:
     name: GetTopReferData
     http:
@@ -99,6 +107,7 @@ operations:
       shape: GetTopReferDataRequest
     output:
       shape: GetTopReferDataResponse
+
   GetSrcHttpCodeDetailedData:
     name: GetSrcHttpCodeDetailedData
     http:
@@ -108,6 +117,7 @@ operations:
       shape: GetSrcHttpCodeDetailedRequest
     output:
       shape: GetSrcHttpCodeDetailedResponse
+
   GetProvinceAndIspPvData:
     name: GetProvinceAndIspPvData
     http:
@@ -117,6 +127,7 @@ operations:
       shape: GetProvinceAndIspPvRequest
     output:
       shape: GetProvinceAndIspPvResponse
+
   GetProvinceAndIspHttpCodeData:
     name: GetProvinceAndIspHttpCodeData
     http:
@@ -126,6 +137,7 @@ operations:
       shape: GetProvinceAndIspHttpCodeRequest
     output:
       shape: GetProvinceAndIspHttpCodeResponse
+
   GetProvinceAndIspHttpCodeDetailedData:
     name: GetProvinceAndIspHttpCodeDetailedData
     http:
@@ -135,6 +147,7 @@ operations:
       shape: GetProvinceAndIspHttpCodeDetailedRequest
     output:
       shape: GetProvinceAndIspHttpCodeDetailedResponse
+
   GetProvinceAndIspHitRateDetailedData:
     name: GetProvinceAndIspHitRateDetailedData
     http:
@@ -144,6 +157,7 @@ operations:
       shape: GetProvinceAndIspHitRateDetailedRequest
     output:
       shape: GetProvinceAndIspHitRateDetailedResponse
+
   GetSrcHttpCodeData:
     name: GetSrcHttpCodeData
     http:
@@ -153,7 +167,6 @@ operations:
       shape: GetSrcHttpCodeDataRequest
     output:
       shape: GetSrcHttpCodeDataResponse
-
 
   GetDomainLogs:
     name: GetDomainLogs
@@ -527,6 +540,30 @@ operations:
       shape: GetPeakBandwidthDataRequest
     output:
       shape: GetPeakBandwidthDataResponse
+
+  BlockDomainUrl:
+    name: BlockDomainUrl
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/content/BlockDomainUrl
+
+  GetBlockUrlTask:
+    name: GetBlockUrlTask
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/content/GetBlockUrlTask
+    output:
+      shape: GetBlockUrlTaskResponse
+
+  GetBlockUrlQuota:
+    name: GetBlockUrlQuota
+    http:
+      method: GET
+      requestUri: /2016-09-01/content/GetBlockUrlQuota
+    output:
+      shape: GetBlockUrlQuotaResponse
 
 #####################################
 shapes:
@@ -1347,10 +1384,12 @@ shapes:
         shape: String
       CreateTime:
         shape: Double
+
   ProReTaskUrlDataList:
     type: list
     member:
       shape: ProReTaskUrlData
+
   GetRefreshOrPreloadTaskResponse:
     type: structure
     members:
@@ -3099,12 +3138,6 @@ shapes:
       Datas:
         shape: TopOnlineUserDataByStreamList
 
-
-
-
-
-
-
   GetPlayTimeDataByStreamRequest:
     type: structure
     required:
@@ -3400,7 +3433,6 @@ shapes:
       Regions:
         shape: String
 
-
   GetPeakBandwidthDataResponse:
     type: structure
     members:
@@ -3418,3 +3450,44 @@ shapes:
         shape: Long
       RealTime:
         shape: String
+
+  GetBlockUrlTaskResponse:
+    type: structure
+    members:
+      PageSize:
+        shape: Long
+      PageNumber:
+        shape: Long
+      TotalCount:
+        shape: Long
+      Datas:
+        shape: BlockUrlDataList
+
+  BlockUrlDataList:
+    type: list
+    member:
+      shape: BlockUrlData
+
+  BlockUrlData:
+    type: structure
+    members:
+      Url:
+        shape: String
+      Progress:
+        shape: Double
+      BlockUrlStatus:
+        shape: String
+      BlockTime:
+        shape: String
+      ExpireTime:
+        shape: String
+      Submitter:
+        shape: String
+
+  GetBlockUrlQuotaResponse:
+    type: structure
+    members:
+      BlockUrlQuota:
+        shape: Long
+      BlockUrlSurplus:
+        shape: Long

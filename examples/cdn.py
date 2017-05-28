@@ -1149,11 +1149,58 @@ if __name__ == "__main__":
 
     请求参数：
     Parameters:
-         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
     '''
-    res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
+    #res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
+    #print res
+
+    '''
+    BlockDomainUrl
+        本接口用于屏蔽、解除屏蔽URL。
+    Parameters:
+        BlockType         Url[]    操作接口名，系统规定参数 取值：block：屏蔽URL；unblock：解除屏蔽；
+        Urls              Url[]    URL列表
+        BlockTime         Long     (仅在屏蔽URL动作时生效)，屏蔽的时间，以秒为单位。默认为604800（7天），最大31天，最小1小时。过期后自动解除屏蔽。
+        RefreshOnUnblock  String   (仅在解除屏蔽时生效)，解除屏蔽时，是否联动触发刷新任务 取值：on：触发刷新任务、off：不触发刷新任务 ，默认为off
+        其中url[]为：
+		Url String 需要提交屏蔽/解屏蔽的Url，单条
+    '''
+    # json格式规则
+    # param = {
+	#   "BlockType":"block",
+	#   "BlockTime":3600,
+	#   "Urls":[{"Url":"http://test2282.cdn.ksyun.com/abc.txt"},{"Url":"http://test2282.cdn.ksyun.com/ed.txt"}]
+    # }
+    #
+    # res = client.block_domain_url(**param)
+    # print res
+
+
+    '''
+    GetBlockUrlTask
+        本接口用于获取屏蔽URL任务进度百分比及状态，查看任务是否在全网生效。
+        支持根据URL获取数据
+        所有参数都不指定，默认查第1页20条数据
+        注意：
+            接口仅支持POST请求格式
+            该接口仅返回当前正在屏蔽的生命周期的URL，已解除的不返回
+        Parameters:
+            Urls              Url[]    URL列表
+            PageSize          Long     分页大小，取值为1-50，最大50，默认20
+            PageNumber        String   取得第几页，取值为：1-100000，最大100000，默认1
+            其中url[]为：
+		        Url String 需要提交查询的Url，单条
+    '''
+    # res = client.get_block_url_task()
+    # print res
+
+    '''
+    GetBlockUrlTask
+        获取屏蔽URL最大限制数量，及剩余的条数。
+    '''
+    res = client.get_block_url_quota()
     print res
