@@ -36,7 +36,7 @@ setup(
     name='ksc-sdk-python',
     version=kscore.__version__,
     description='Low-level, data-driven core of ksc.',
-    long_description=open('README.rst').read(),
+    long_description='A low-level interface to a growing number of KSC Web Services.',
     author=AUTHOR,
     url='https://github.com/liuyichen/kscore',
     author_email=AUTHOR_EMAIL,
