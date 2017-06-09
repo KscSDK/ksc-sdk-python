@@ -37,6 +37,7 @@ setup(
     version=kscore.__version__,
     description='Low-level, data-driven core of ksc.',
     long_description='A low-level interface to a growing number of KSC Web Services.',
+    #long_description=open('README.rst', encoding='utf-8').read(),
     author=AUTHOR,
     url='https://github.com/liuyichen/kscore',
     author_email=AUTHOR_EMAIL,
