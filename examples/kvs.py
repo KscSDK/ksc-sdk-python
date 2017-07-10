@@ -1,6 +1,7 @@
 # -*- encoding:utf-8 -*-
 from kscore.kvs import getKvsClient
 import json
+import time
 
 #没有配置kscore.cfg调用方式
 #ks_access_key_id='xxxxxxxxxxxxxxxxxxxx'
@@ -66,6 +67,23 @@ print json.dumps(res)
 res = client.DelPreset(Preset=presetname)
 print json.dumps(res)
 
+#修改任务队列接口调用示例 : UpdatePipeline
+# 该接口需要输入json格式数据
+pipeinfo = {
+    "PipelineName": "usual",
+    "Description": "test pipeline",
+    "State": "Active",
+    "RegularStart": "01:00:00",
+    "RegularDuration":7200
+}
+res = client.UpdatePipeline(pipeinfo)
+print json.dumps(res)
+
+#查询任务队列接口调用示例 : QueryPipeline
+# PipelineName:队列名称
+res = client.QueryPipeline(PipelineName="usual")
+print json.dumps(res)
+
 
 #创建任务接口调用示例 : CreateTask
 #具体参数请参考官方文档
@@ -123,4 +141,29 @@ print json.dumps(res)
 # Marker:请求起始游标，默认为0    
 # Limit:单次请求的记录数，默认为100，最大值为100
 res = client.GetTaskMetaInfo(StartDate=20170100,EndDate=20170112,Marker=0,Limit=50)
+print json.dumps(res)
+
+#查询转码时长统计数据接口调用示例 : GetMediaTransDuration
+#查询转码API调用次数统计数据接口调用示例 : GetInterfaceNumber
+#查询转码截图统计数据接口调用示例 : GetScreenshotNumber
+#参数
+# StartUnixTime:查询起始时间戳秒数
+# EndUnixTime:查询截止时间戳秒数
+# Granularity:统计时间粒度
+# ResultType:返回结果类型
+start = "2017-06-16 00:00:00"
+end = "2017-06-20 00:00:00"
+t0 = time.strptime(start, "%Y-%m-%d %H:%M:%S")
+t1 = time.strptime(end, "%Y-%m-%d %H:%M:%S")
+StartUnixTime = int(time.mktime(t0))
+EndUnixTime = int(time.mktime(t1))
+Granularity = 5
+ResultType = 1
+res = client.GetMediaTransDuration(StartUnixTime, EndUnixTime, Granularity, ResultType)
+print json.dumps(res)
+
+res = client.GetInterfaceNumber(StartUnixTime, EndUnixTime, Granularity, ResultType)
+print json.dumps(res)
+
+res = client.GetScreenshotNumber(StartUnixTime, EndUnixTime, Granularity, ResultType)
 print json.dumps(res)

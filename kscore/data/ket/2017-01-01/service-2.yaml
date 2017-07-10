@@ -90,6 +90,11 @@ operations:
     http:
       method: GET
 
+  GetLiveTransDuration:
+    name: GetLiveTransDuration
+    http:
+      method: GET
+
 shapes:  
   App:
     type: string

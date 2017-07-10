@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from kscore.ket import getKetClient
+import time
 import json
 
 if __name__ == "__main__":
@@ -121,3 +122,19 @@ if __name__ == "__main__":
     res = client.StopLoop(param4)
     print json.dumps(res)
     
+    #查询直播转码时长统计数据接口调用示例 : GetLiveTransDuration
+    #参数
+    # StartUnixTime:查询起始时间戳秒数
+    # EndUnixTime:查询截止时间戳秒数
+    # Granularity:统计时间粒度
+    # ResultType:返回结果类型
+    start = "2017-06-16 00:00:00"
+    end = "2017-06-20 00:00:00"
+    t0 = time.strptime(start, "%Y-%m-%d %H:%M:%S")
+    t1 = time.strptime(end, "%Y-%m-%d %H:%M:%S")
+    StartUnixTime = int(time.mktime(t0))
+    EndUnixTime = int(time.mktime(t1))
+    Granularity = 5
+    ResultType = 1
+    res = client.GetLiveTransDuration(StartUnixTime, EndUnixTime, Granularity, ResultType)
+    print json.dumps(res)

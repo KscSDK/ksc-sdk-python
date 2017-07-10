@@ -56,5 +56,20 @@ class KvsClient:
 		else:
 			return self.client.get_task_meta_info(TaskID = TaskID)
 
+	def UpdatePipeline(self,param):
+		return self.client.update_pipeline(**param)
+
+	def QueryPipeline(self,PipelineName="usual"):
+		return self.client.query_pipeline(PipelineName=PipelineName)
+
+	def GetInterfaceNumber(self,StartUnixTime,EndUnixTime,Granularity=5,ResultType=1):
+		return self.client.get_interface_number(StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime,Granularity=Granularity,ResultType=ResultType)
+
+	def GetMediaTransDuration(self,StartUnixTime=0,EndUnixTime=0,Granularity=5,ResultType=1):
+		return self.client.get_media_trans_duration(StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime,Granularity=Granularity,ResultType=ResultType)
+
+	def GetScreenshotNumber(self,StartUnixTime,EndUnixTime,Granularity=5,ResultType=1):
+		return self.client.get_screenshot_number(StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime,Granularity=Granularity,ResultType=ResultType)
+
 def getKvsClient(service_name,region_name,use_ssl=False,ks_access_key_id=None, ks_secret_access_key=None):
 	return KvsClient(service_name,region_name,use_ssl,ks_access_key_id,	ks_secret_access_key)
