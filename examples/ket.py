@@ -8,32 +8,60 @@ if __name__ == "__main__":
     client = getKetClient("ket", "cn-beijing-6",use_ssl=False)
 
     uniqname = 'mytest'
-    presetname = 'testpreset00'
+    presetname = 'testpreset'
     appname = 'live'
     description = 'just a demo'
-    presetType = 'avop'
+    presettype = 4
     streamid = 'myteststreamid'
+    taskid = 'd41d8cd98f00b204e9800998ecf8427e'
     outpull = 1
     srcurl = "rtmp://qa-ws.test-rtmplive.ks-cdn.com/live/20160819"
 
     # 删除模板
-    res = client.DelPreset(App=appname, UniqName=uniqname, Preset=presetname)
-    print json.dumps(res)
+    #res = client.DelPreset(App=appname, UniqName=uniqname, Preset=presetname)
+    #print json.dumps(res)
 
     # 创建模板
     param = {
        "UniqName": uniqname,
        "Preset": presetname,
+       "PresetType": presettype,
        "Description": description,
        "App": appname,
        "Output": [
          {
-           "format": 
+           "Idx": 0,
+           "Overlay":[
+               {
+                  "inputIdx": 0,
+               }
+           ],
+           "Amix":[
+               {
+                  "inputIdx": 0,
+               }
+           ]
+         },
+         {
+           "Idx": 1,
+           "Overlay":
            {
-              "output_format": 257,
-              "abr": 70000,
-              "vbr": 700000,
-              "fr": 23
+              "inputIdx": 0,
+           },
+           "Amix":
+           {
+              "inputIdx": 0,
+           }
+         },
+         {
+           "Idx": 2,
+           "Video":
+           {
+              "codec": "copy",
+           },
+           "Audio":
+           {
+              "codec": "copy",
            }
          }
        ]
@@ -132,9 +160,55 @@ if __name__ == "__main__":
     end = "2017-06-20 00:00:00"
     t0 = time.strptime(start, "%Y-%m-%d %H:%M:%S")
     t1 = time.strptime(end, "%Y-%m-%d %H:%M:%S")
-    StartUnixTime = int(time.mktime(t0))
-    EndUnixTime = int(time.mktime(t1))
-    Granularity = 5
-    ResultType = 1
-    res = client.GetLiveTransDuration(StartUnixTime, EndUnixTime, Granularity, ResultType)
+    startunixtime = int(time.mktime(t0))
+    endunixtime = int(time.mktime(t1))
+    granularity = 5
+    resulttype = 1
+    res = client.GetLiveTransDuration(startunixtime, endunixtime, uniqname, granularity, resulttype)
+    print json.dumps(res)
+    
+    # 创建选流任务
+    param4 = {
+       "UniqName": uniqname,
+       "App": appname,
+       "Preset": presetname,
+       "SrcInfo": [
+         {
+            "Url": "rtmp://host/app/outernetStreamForSwitch",
+            "Idx": 0
+         },
+         {
+            "Streamid": "streamForSwitch",
+            "Idx": 1
+         }
+       ],
+       "DstInfo": [
+         {
+            "Streamid":"stream0ForMonitor",
+            "Idx": 0
+         },
+         {
+            "Streamid": "stream1ForSwitch",
+            "Idx": 1
+         },
+         {
+            "Streamid": "stream2ForSwitch",
+            "Idx": 2
+         }
+       ]
+    }
+    res = client.CreateDirectorTask(param4)
+    print json.dumps(res)
+    
+    #更新选流任务
+    param4["TaskID"] = taskid
+    res = client.UpdateDirectorTask(param4)
+    print json.dumps(res)
+    
+    #查询选流任务
+    res = client.QueryDirectorTask(App=appname, UniqName=uniqname, TaskID=taskid)
+    print json.dumps(res)
+    
+    #删除选流任务
+    res = client.DelDirectorTask(App=appname, UniqName=uniqname, TaskID=taskid)
     print json.dumps(res)

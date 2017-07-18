@@ -95,7 +95,27 @@ operations:
     http:
       method: GET
 
-shapes:  
+  CreateDirectorTask:
+    name: CreateDirectorTask
+    http:
+      method: POST
+
+  UpdateDirectorTask:
+    name: UpdateDirectorTask
+    http:
+      method: POST
+
+  DelDirectorTask:
+    name: DelDirectorTask
+    http:
+      method: GET
+
+  QueryDirectorTask:
+    name: QueryDirectorTask
+    http:
+      method: GET
+
+shapes:
   App:
     type: string
   UniqName:
