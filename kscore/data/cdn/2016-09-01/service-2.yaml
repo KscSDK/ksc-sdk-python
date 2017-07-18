@@ -565,6 +565,41 @@ operations:
     output:
       shape: GetBlockUrlQuotaResponse
 
+
+  ConfigCertificate:
+    name: ConfigCertificate
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/ConfigCertificate
+    input:
+      shape: HttpsConfCertRequest
+
+  SetCertificate:
+    name: SetCertificate
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/SetCertificate
+    input:
+      shape: HttpsSetCertRequest
+
+  RemoveCertificates:
+    name: HttpsRemoveCertRequest
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/RemoveCertificates
+    input:
+      shape: HttpsRemoveCertRequest
+
+  GetCertificates:
+    name: GetCertificates
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/GetCertificates
+    input:
+      shape: HttpsGetCertRequest
+    output:
+      shape: HttpsGetCertResponse
+
 #####################################
 shapes:
 
@@ -3491,3 +3526,81 @@ shapes:
         shape: Long
       BlockUrlSurplus:
         shape: Long
+
+  #### https ####
+  HttpsConfCertRequest:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      DomainIds:
+        shape: String
+      CertificateId:
+        shape: String
+      CertificateName:
+        shape: String
+      ServerCertificate:
+        shape: String
+      PrivateKey:
+        shape: String
+
+  HttpsSetCertRequest:
+    type: structure
+    members:
+      CertificateId:
+        shape: String
+      CertificateName:
+        shape: String
+      ServerCertificate:
+        shape: String
+      PrivateKey:
+        shape: String
+
+  HttpsRemoveCertRequest:
+    type: structure
+    members:
+      CertificateIds:
+        shape: String
+
+  HttpsGetCertRequest:
+    type: structure
+    members:
+      PageSize:
+        shape: Long
+      PageNum:
+        shape: Long
+
+  HttpsGetCertResponse:
+      type: structure
+      members:
+        TotalCount:
+          shape: Long
+        Certificates:
+          shape: Certificates
+
+  Certificates:
+      type: list
+      member:
+        shape: HttpsCertificate
+
+  HttpsCertificate:
+      type: structure
+      members:
+        CertificateName:
+          shape: String
+        CertificateId:
+          shape: String
+        Enable:
+          shape: String
+        IssueTime:
+          shape: String
+        ExpirationTime:
+          shape: String
+        CertificateContent:
+          shape: String
+        CertificateType:
+          shape: String
+        IssueDomain:
+          shape: String
+        ConfigDomainNames:
+          shape: String

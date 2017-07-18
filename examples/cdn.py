@@ -3,10 +3,8 @@
 from kscore.session import get_session
 
 if __name__ == "__main__":
-    
-
     s = get_session()
-    client = s.create_client("cdn",region_name="cn-shanghai-2",use_ssl=False)
+    client = s.create_client("cdn", region_name="cn-shanghai-2", use_ssl=False)
 
     ''' 
     get_cdn_domains 查询域名列表
@@ -21,10 +19,10 @@ if __name__ == "__main__":
         
     Returns:
         <type 'dict'>
-    '''  
-    #res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
- 
-       
+    '''
+    # res =res client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
+
+
     '''
     add_cdn_domain_request 新增域名
     
@@ -41,10 +39,10 @@ if __name__ == "__main__":
         
     Returns:
         <type 'dict'>
-    '''   
-    #res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='download',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com')
-      
-      
+    '''
+    # res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='download',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com')
+
+
     '''
     GetCdnDomainBasic 查询域名基础信息
     
@@ -54,9 +52,9 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''
-    #domainBasic = client.get_cdn_domain_basic_info(DomainId='2D09NSH')
-    
-    
+    # domainBasic = client.get_cdn_domain_basic_info(DomainId='2D09NSH')
+
+
     '''
     GetDomainConfigs 查询域名详细配置信息
     
@@ -70,8 +68,8 @@ if __name__ == "__main__":
     Returns:
     '''
     # res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
-    
-    
+
+
     '''
     ModifyCdnDomainBasicInfo 修改域名基础配置
     
@@ -83,9 +81,9 @@ if __name__ == "__main__":
         Origin      String  回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。 （此项目若输入，必须保证符合OriginType）
     Returns:
     '''
-    #res = client.modify_cdn_domain_basic_info(DomainId='2D09NSH',Origin='',OriginType='',OriginPort='')
-    
-    
+    # res = client.modify_cdn_domain_basic_info(DomainId='2D09NSH',Origin='',OriginType='',OriginPort='')
+
+
     '''
     StartStopCdnDomain  用于启用、停用某个加速域名
     
@@ -94,9 +92,9 @@ if __name__ == "__main__":
         DomainId    String  需要启用或停用CDN服务的域名ID，只允许输入一个域名ID
         
     '''
-    #res = client.start_stop_cdn_domain(DomainId='2D09NSH', ActionType='stop')
-    
-    
+    # res = client.start_stop_cdn_domain(DomainId='2D09NSH', ActionType='stop')
+
+
     '''
     DeleteCdnDomain  用于删除用户下已添加的加速域名  此操作只允许删除 DomainStatus 为已停止的域名；
     
@@ -105,9 +103,9 @@ if __name__ == "__main__":
     Returns:
         RequestID
     '''
-    #res = client.delete_cdn_domain(DomainId='2D09NSH')
-    
-    
+    # res = client.delete_cdn_domain(DomainId='2D09NSH')
+
+
     '''
     SetIgnoreQueryStringConfig  设置过滤参数
     
@@ -116,9 +114,9 @@ if __name__ == "__main__":
         Enable      String  配置过滤参数功能的开启或关闭 取值：on、off ，默认为on
         
     '''
-    #client.set_ignore_query_string_config(DomainId='2D09NSH', Enable='on')
-    
-    
+    # client.set_ignore_query_string_config(DomainId='2D09NSH', Enable='on')
+
+
     '''
     SetBackOriginHostConfig  设置回源host功能
                              注意： 若源站为KS3域名，需将ks3域名设置为回源host（即源站域名），方可正常回源
@@ -126,9 +124,9 @@ if __name__ == "__main__":
         DomainId        String  域名ID
         BackOriginHost  String  是自定义回源域名，默认为空，表示不需要修改回源Host
     '''
-    #client.set_back_origin_host_config(DomainId='2D09NSH', BackOriginHost='www.a.qunar.com')
-    
-    
+    # client.set_back_origin_host_config(DomainId='2D09NSH', BackOriginHost='www.a.qunar.com')
+
+
     '''
     SetReferProtectionConfig  设置加速域名的Refer防盗链 加速域名创建后，默认不开启refer防盗链功能
     
@@ -139,7 +137,7 @@ if __name__ == "__main__":
         ReferList   String  逗号隔开的域名列表
         AllowEmpty  String  是否允许空refer访问,取值：on：允许；off：不允许；默认值：on。注：仅当选择白名单时，此项才生效
     '''
-    #client.set_refer_protection_config(DomainId='2D09NSH', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
+    # client.set_refer_protection_config(DomainId='2D09NSH', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
 
     '''
     SetIpProtectionConfig  设置加速域名的Ip防盗链 加速域名创建后，默认不开启Ip防盗链功能
@@ -168,7 +166,7 @@ if __name__ == "__main__":
                     IgnoreNoCache   String  是否忽略源站的no－cache头，on表示忽略，off（默认）表示不忽略。 (本期暂不支持此选项)
         
     '''
-    
+
     ''' 
     # json格式规则
     cacheRules = {
@@ -185,10 +183,10 @@ if __name__ == "__main__":
             ]
     }
     '''
-    #client.set_cache_rule_config(**cacheRules)
-    #confs = client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
-    
-    
+    # client.set_cache_rule_config(**cacheRules)
+    # confs = client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
+
+
     '''
     SetTestUrlConfig  设置加速域名的测试URL
     
@@ -197,9 +195,9 @@ if __name__ == "__main__":
         TestUrl     String  测试URL列表，逗号间隔，默认为空
    
     '''
-    #client.set_test_url_config(DomainId='2D09NSH', TestUrl='www.xinfei.cn/1.html')
-    
-    
+    # client.set_test_url_config(DomainId='2D09NSH', TestUrl='www.xinfei.cn/1.html')
+
+
     '''
     SetOriginAdvancedConfig   设置高级回源策略
                               OriginLine为default默认源的线路，是必填项，其他几个源都是选填项。OriginLine不能重复填写。开启高级回源策略后，会关闭掉基础配置中的回源配置                           
@@ -216,8 +214,8 @@ if __name__ == "__main__":
                         OriginLine  String  源站线路，取值: default：默认源； un： 联通源; ct: 电信源; cm: 移动源
                         Origin      String  回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。
     
-    ''' 
-    
+    '''
+
     '''
     # json格式规则
     originParam = {
@@ -238,10 +236,10 @@ if __name__ == "__main__":
                         }
                     ]
                   }
-    '''              
-    #client.set_origin_advanced_config(**originParam)
-    
-    
+    '''
+    # client.set_origin_advanced_config(**originParam)
+
+
     '''
     SetRemarkConfig    设置备注信息
     
@@ -250,11 +248,11 @@ if __name__ == "__main__":
         Remark      String  备注信息，默认为空
         
     '''
-    #client.set_remark_config(DomainId='2D09NSH', Remark=u'备注信息')
-    
-    
+    # client.set_remark_config(DomainId='2D09NSH', Remark=u'备注信息')
+
+
     ####################以下为统计分析API###################
-    
+
     '''
     GetBandwidthData    获取域名带宽数据，包括边缘带宽、回源带宽数据，单位：bit/second
             * 获取域名带宽数据，包括边缘带宽、回源带宽数据，单位：bit/second
@@ -274,9 +272,9 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
         
     '''
-    #res = client.get_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
-    
-    
+    # res = client.get_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
+
+
     '''
     GetFlowData    获取域名流量数据，包括边缘流量、回源流量数据， 单位：byte
             * 获取域名流量数据，包括边缘流量、回源流量数据， 单位：byte
@@ -296,9 +294,9 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
         
     '''
-    #res = client.get_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
-    
-    
+    # res = client.get_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin')
+
+
     '''
     GetPvData       请求数查询  获取域名请求数数据，包括边缘请求数、回源请求数， 单位：次
             * 支持按指定的起止时间查询，两者需要同时指定
@@ -321,9 +319,9 @@ if __name__ == "__main__":
         DataType        String  数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
                
     '''
-    #res = client.get_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
-   
-   
+    # res = client.get_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin')
+
+
     '''
     GetHitRateDetailedData   命中率详情查询
             * 获取域名流量命中率、请求数命中率数据，单位：百分比
@@ -343,9 +341,9 @@ if __name__ == "__main__":
         HitType         String  数据类型， 取值为flowhitrate:流量命中率; reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
         
     '''
-    #res = client.get_hit_rate_detailed_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',HitType='flowhitrate')
-    
-    
+    # res = client.get_hit_rate_detailed_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',HitType='flowhitrate')
+
+
     '''
     GetHitRateData  命中率查询（饼图），获取域名某一时间段内流量命中率、请求数命中率数据，用于绘制命中率饼图。
             * 获取域名某一时间段内流量命中率、请求数命中率数据
@@ -365,9 +363,9 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    #res = client.get_hit_rate_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
-    
-    
+    # res = client.get_hit_rate_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+
+
     '''
     GetProvinceAndIspFlowData  省份+运营商流量查询，获取域名在中国大陆地区各省份及各运营商的流量数据，仅包括边缘节点数据，单位:byte
             * 支持按指定的起止时间查询，两者需要同时指定<p>
@@ -390,9 +388,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    #res = client.get_province_and_isp_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='1', Granularity='1440')
-    
-    
+    # res = client.get_province_and_isp_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='1', Granularity='1440')
+
+
     '''
     GetProvinceAndIspBandwidthData   省份+运营商带宽查询 
             *获取域名在中国大陆地区各省市及各运营商的带宽数据，仅包括边缘节点数据，单位:bit/second
@@ -416,9 +414,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    #res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0', Granularity='1440')
-    
-    
+    # res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0', Granularity='1440')
+
+
     '''
     GetHttpCodeData    状态码统计(饼图)，获取域名一段时间内的Http状态码访问次数及占比数据,用于绘制饼图
             * 客户查询单个域名或多个域名一段时间内各状态码访问次数<p>
@@ -433,9 +431,9 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
                 
     '''
-    #res = client.get_http_code_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
-    
-    
+    # res = client.get_http_code_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+
+
     '''
     GetHttpCodeDetailedData    状态码详情统计，获取域名的Http状态码详细访问次数及占比数据
             * 客户查询单个域名或多个域名各状态码详细访问数据<p>
@@ -453,9 +451,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_http_code_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0')
-    
-    
+    # res = client.get_http_code_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0')
+
+
     '''
     GetTopUrlData  top url 查询
             * 获取单个域名或多个域名某天内某一时段的TOP Url访问数据，仅包含Top200且访问次数大于15次的 Url的访问次数、访问流量，并按次数排序<p>
@@ -471,9 +469,9 @@ if __name__ == "__main__":
         LimitN      String  热门Url条数，取值为1-200，最大200，默认100
     
     '''
-    #res = client.get_top_url_data(DomainIds='2D09RW5',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
-    
-    
+    # res = client.get_top_url_data(DomainIds='2D09RW5',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+
+
     '''
     GetAreaData  用户区域统计
             * 获取国内各省份及运营商流量、访问次数、流量占比，请求数占比，海外地区的流量、访问次数、流量占比、请求数占比。<p>
@@ -491,9 +489,9 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    #res = client.get_area_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
-    
-    
+    # res = client.get_area_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+
+
     '''
     GetIspData  运营商占比统计
             * 获取各运营商流量、访问次数、流量占比、访问次数占比<p>
@@ -510,9 +508,9 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
             
     '''
-    #res = client.get_isp_data(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
-    
-    
+    # res = client.get_isp_data(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+
+
     '''
     GetDomainRankingListData         域名排行查询
              * 获取用户维度下所有域名的流量、流量占比、带宽峰值、峰值时间、访问次数，并按流量排行
@@ -527,9 +525,9 @@ if __name__ == "__main__":
         CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
         
     '''
-    #res = client.get_domain_ranking_list_data(StartTime='2016-11-20T08:00+0800',EndTime='2016-11-20T12:00+0800',CdnType='download')
-    
-    
+    # res = client.get_domain_ranking_list_data(StartTime='2016-11-20T08:00+0800',EndTime='2016-11-20T12:00+0800',CdnType='download')
+
+
     '''
     GetLiveFlowDataByStream    直播按流维度查询流量
             * 直播业务，获取按流为维度的流量数据<P>
@@ -548,9 +546,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_flow_data_by_stream(StartTime='2016-12-18T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
-    
-    
+    # res = client.get_live_flow_data_by_stream(StartTime='2016-12-18T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
+
+
     '''
     GetLiveBandwidthDataByStream   直播按流维度查询带宽
             * 直播业务，获取按流为维度的带宽数据，带宽单位bit/second<p>
@@ -569,9 +567,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    #res = client.get_live_bandwidth_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
-    
-    
+    # res = client.get_live_bandwidth_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='1',Regions='CN',Granularity='1440')
+
+
     '''
     GetLiveOnlineUserDataByDomain    直播按域名维度统计在线人数
             * 获取按域名维度的直播在线人数数据， 单位：每分钟的在线人数<p>
@@ -591,9 +589,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
             
     '''
-    #res = client.get_live_online_user_data_by_domain(DomainIds='2D09W0V',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',Regions='CN',Granularity='1440',ResultType='1')
-    
-    
+    # res = client.get_live_online_user_data_by_domain(DomainIds='2D09W0V',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',Regions='CN',Granularity='1440',ResultType='1')
+
+
     '''
     GetLiveOnlineUserDataByStream    直播按流维度统计在线人数
             * 获取按流维度的直播在线人数数据， 单位：每分钟的在线人数<p>
@@ -614,9 +612,9 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
        
     '''
-    #res = client.get_live_online_user_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='0',Regions='CN',Granularity='5')
-    
-    
+    # res = client.get_live_online_user_data_by_stream(StartTime='2016-12-19T08:00+0800',EndTime='2016-12-20T08:00+0800',StreamUrls='rtmp://realflv3.plu.cn/live/ce781fecb2f6447d82d03590e520872f',ResultType='0',Regions='CN',Granularity='5')
+
+
     '''
     GetLiveTopOnlineUserData    获取按流维度的直播在线人数排行， 单位：每分钟的在线人数<p>
             * 只设置起始时间，代表起始时间这1分钟的数据。<p>
@@ -633,8 +631,8 @@ if __name__ == "__main__":
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         LimitN 否 Int Top条数，取值为1-200，最大200，默认100
     '''
-    #res = client.get_live_top_online_user_data(StartTime='2016-11-19T08:00+0800',ResultType='1',Regions='CN',LimitN='100')
-    
+    # res = client.get_live_top_online_user_data(StartTime='2016-11-19T08:00+0800',ResultType='1',Regions='CN',LimitN='100')
+
     ''' 
     get_domain_logs 日志下载接口
         
@@ -644,16 +642,16 @@ if __name__ == "__main__":
         DomainId      string  按域名过滤，默认为空，代表当前用户下所有域名 
         StartTime    string  查询开始时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
 		EndTime    string  查询结束时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
-    '''  
-    #res = client.get_domain_logs(PageSize=20,PageNumber=1,DomainId='2D09X6F',StartTime='2017-01-01',EndTime='2017-02-23')
-    
-    
-    #print '****************************cdn test*****************:'
-    #print client.get_domain_configs(DomainId='2D09NSH', ConfigList='src_advanced')
-    #print type(res)   
-    #print res
-    #print client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,cc,page_compress,ignore_query_string,src_host,test_url,http_header,range,src_advanced')
-    
+    '''
+    # res = client.get_domain_logs(PageSize=20,PageNumber=1,DomainId='2D09X6F',StartTime='2017-01-01',EndTime='2017-02-23')
+
+
+    # print '****************************cdn test*****************:'
+    # print client.get_domain_configs(DomainId='2D09NSH', ConfigList='src_advanced')
+    # print type(res)
+    # print res
+    # print client.get_domain_configs(DomainId='2D09NSH', ConfigList='cache_expired,cc,page_compress,ignore_query_string,src_host,test_url,http_header,range,src_advanced')
+
     ''' 
     refresh_caches 刷新
         同一个 ID每日设有提交刷新类请求条数限制额度，与控制台共享此额度，具体额度可查看控制台或调用GetRefreshOrPreloadQuota接口获取
@@ -670,7 +668,7 @@ if __name__ == "__main__":
         Dirs         Url[]    需要文件类型刷新的Url列表
         其中url[]为：
 		Url String 需要提交刷新的Url，单条
-    '''  
+    '''
     '''
     # json格式规则
     param = {
@@ -690,8 +688,8 @@ if __name__ == "__main__":
                  }]
             }
     '''
-    #res = client.refresh_caches(**param)
-	
+    # res = client.refresh_caches(**param)
+
     ''' 
     preload_caches 预热
         同一个 ID 每日设有提交预热类请求条数限制额度，与控制台共享此额度，具体额度可查看控制台或调用GetRefreshOrPreloadQuota接口获取
@@ -706,7 +704,7 @@ if __name__ == "__main__":
         Urls         Url[]    需要文件类型预热的Url列表
         其中url[]为：
 		Url String 需要提交预热的Url，单条
-    '''  
+    '''
     '''
     # json格式规则
     param = {
@@ -716,7 +714,7 @@ if __name__ == "__main__":
                  }]
             }
     '''
-    #res = client.preload_caches(**param)
+    # res = client.preload_caches(**param)
     ''' 
     get_refresh_or_preload_task 预热进度查询
         本接口用于获取刷新、预热任务进度百分比及状态，查看任务是否在全网生效。
@@ -739,7 +737,7 @@ if __name__ == "__main__":
         Urls         Url[]    需要文件类型预热的Url列表
         其中url[]为：
 		Url String 需要提交预热的Url，单条
-    '''  
+    '''
     '''
     # json格式规则
     param = {
@@ -754,15 +752,15 @@ if __name__ == "__main__":
              ]
            }
     '''
-    #res = client.get_refresh_or_preload_task(**param)
-    
+    # res = client.get_refresh_or_preload_task(**param)
+
     ''' 
     get_refresh_or_preload_quota 预热进度查询
         获取刷新、预热URL及目录的最大限制数量，及当日剩余刷新、预热URL及目录的条数
         刷新预热类接口包含 RefreshCaches刷新接口和PreloadCaches 预热接口
-    '''  
+    '''
 
-    #res = client.get_refresh_or_preload_quota()
+    # res = client.get_refresh_or_preload_quota()
     ''' 
     set_domain_log_service 设置日志服务接口
         本接口用于启用、停用某个加速域名的日志服务。
@@ -774,9 +772,9 @@ if __name__ == "__main__":
         ActionType      string  操作类型，取值为start：启用；stop：停用
         DomainIds    string  需要启用或停用日志服务的域名ID，支持批量域名开启或停用，多个域名ID用逗号（半角）分隔
 		Granularity    Long  日志存储粒度，取值为60：按小时粒度存储；1440：按天粒度存储，当前暂不支持按小时粒度存储；开启时为必填，关闭时可不填
-    ''' 
-    #res = client.set_domain_log_service(ActionType="start",DomainIds="2D09SHE",Granularity=1440)
-	
+    '''
+    # res = client.set_domain_log_service(ActionType="start",DomainIds="2D09SHE",Granularity=1440)
+
     ''' 
     get_domain_log_service_status 设置日志服务接口
         本接口用于获取域名日志服务状态。
@@ -784,10 +782,10 @@ if __name__ == "__main__":
 		     
     Parameters:
         DomainIds    string  需要查询日志服务的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-    ''' 
-    #res = client.get_domain_log_service_status(DomainIds="2D09SHE")
-    
-	
+    '''
+    # res = client.get_domain_log_service_status(DomainIds="2D09SHE")
+
+
     '''
     GetUvData    获取域名独立请求的IP个数，单位：个
             支持按指定的起止时间查询，两者需要同时指定
@@ -810,7 +808,7 @@ if __name__ == "__main__":
         ResultType      Long    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
         Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；
     '''
-    #res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
     '''
     GetTopReferData 获取域名某天内某一时段的热门页面访问数据排名，仅包含Top200且访问数大于15次的热门页面的访问次数、访问流量，并按次数排名
             支持批量域名查询，多个域名ID用逗号（半角）分隔
@@ -826,8 +824,8 @@ if __name__ == "__main__":
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
     '''
-    #res = client.get_top_refer_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
-    #res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    # res = client.get_top_refer_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
+    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
     '''
     GetTopIpData 
 	本接口用于获取域名某天内某一时段的TOP IP访问数据，仅包含Top200且访问次数大于15次的独立请求的IP的访问次数、访问流量，并按次数排序
@@ -844,7 +842,7 @@ if __name__ == "__main__":
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
     '''
-    #res = client.get_top_ip_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
+    # res = client.get_top_ip_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
     '''
     GetProvinceAndIspHitRateDetailedData 
 	获取域名流量命中率、请求数命中率数据，单位：百分比
@@ -873,8 +871,8 @@ if __name__ == "__main__":
 		Granularity     Long     热统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度；以上粒度均取该粒度时间段的流量之和、请求数之和
 		HitType     String     数据类型， 取值为flowhitrate:流量命中率;reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
     '''
-    #res = client.get_province_and_isp_hit_rate_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='live',Provinces='liaoning',Isps='UN',ResultType=1,Granularity=5,HitType='reqhitrate,flowhitrate')
-    
+    # res = client.get_province_and_isp_hit_rate_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='live',Provinces='liaoning',Isps='UN',ResultType=1,Granularity=5,HitType='reqhitrate,flowhitrate')
+
     '''
     GetProvinceAndIspHttpCodeData 
 	获取域名一段时间内在中国大陆地区各省份及各运营商的Http状态码访问次数及占比数据（用于绘制饼图）
@@ -894,7 +892,7 @@ if __name__ == "__main__":
         Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
 		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
     '''
-    #res = client.get_province_and_isp_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN')
+    # res = client.get_province_and_isp_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN')
     '''
     GetProvinceAndIspHttpCodeDetailedData 
         获取域名在中国大陆地区各省份及各运营商的Http状态码详细访问次数及占比数据（用于绘制状态码线图）
@@ -916,8 +914,8 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
     '''
-    #res = client.get_province_and_isp_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
-	
+    # res = client.get_province_and_isp_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
+
     '''
     GetProvinceAndIspPvData 
         获取域名在中国大陆地区各省份及各运营商的请求数数据，包括边缘请求数， 单位：次
@@ -942,8 +940,8 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
     '''
-    #res = client.get_province_and_isp_pv_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
-    
+    # res = client.get_province_and_isp_pv_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
+
     '''
     GetSrcHttpCodeData 
         获取域名一段时间内的回源Http状态码访问次数及占比数据（用于绘制饼图）
@@ -959,8 +957,8 @@ if __name__ == "__main__":
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
     '''
-    #res = client.get_src_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download')
-	
+    # res = client.get_src_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download')
+
     '''
     GetSrcHttpCodeDetailedData 
         获取域名的回源Http状态码详细访问次数及占比数据（用于绘制状态码线图）
@@ -978,8 +976,8 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 	'''
-    #res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
-    
+    # res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
+
     '''
     GetBandwidthDataByDir 
         本接口用于获取某段时间内按一级目录为维度下消耗的带宽，单位bit\/second
@@ -1005,7 +1003,7 @@ if __name__ == "__main__":
 		Regions       String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 		Dirs       String  目录名称，支持统计域名下一级目录，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容;支持批量查询，多个目录用逗号（半角）分隔，缺省为该域名下所有一级目录及“\/”；若输入\/，则查询该域名下所有无一级目录的URL带宽合并值
 	'''
-    #res = client.get_bandwidth_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=1,Regions='')
+    # res = client.get_bandwidth_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=1,Regions='')
     '''
     GetFlowDataByDir 
         本接口用于获取某段时间内按一级目录为维度下消耗的流量，单位byte
@@ -1031,7 +1029,7 @@ if __name__ == "__main__":
 		Regions       String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 		Dirs       String  目录名称，支持统计域名下一级目录，即请求URL中域名后的第一个“\/”和第二个“\/”之间的内容;支持批量查询，多个目录用逗号（半角）分隔，缺省为该域名下所有一级目录及“\/”；若输入\/，则查询该域名下所有无一级目录的URL带宽合并值
 	'''
-    #res = client.get_flow_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=0,Regions='')
+    # res = client.get_flow_data_by_dir(DomainId='2D09NMS',StartTime='2017-02-23T10:00+0800',EndTime='2017-02-23T10:21+0800',Dirs='',Granularity=5,ResultType=0,Regions='')
 
 
 
@@ -1058,8 +1056,8 @@ if __name__ == "__main__":
 		ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 		Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 	'''
-    #res = client.get_play_time_data_by_stream(StreamUrls='http://c.gdown.baidu.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
-    #print res
+    # res = client.get_play_time_data_by_stream(StreamUrls='http://c.gdown.baidu.com/live/m_defa5e0dd0d324101472363734966100.flv',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:21+0800',Granularity=5,ResultType=1,Regions='')
+    # print res
 
     '''
     GetPlayTimeDataByDomain
@@ -1082,8 +1080,8 @@ if __name__ == "__main__":
         ResultType      integer     取值为0：多域名数据做合并；1：每个域名的数据分别返回
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
     '''
-    #res = client.get_play_time_data_by_domain(DomainIds='',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
-    #print res
+    # res = client.get_play_time_data_by_domain(DomainIds='',StartTime='2017-04-23T10:00+0800',EndTime='2017-04-23T10:20+0800',Granularity=20,ResultType=1,Regions='')
+    # print res
 
 
 
@@ -1097,8 +1095,8 @@ if __name__ == "__main__":
     Parameters:
         CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
     '''
-    #res = client.get_billing_mode(CdnType='live')
-    #print res
+    # res = client.get_billing_mode(CdnType='live')
+    # print res
 
 
 
@@ -1123,9 +1121,9 @@ if __name__ == "__main__":
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
     '''
-    #res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',DomainIds='',BillingMode='monthflow',Regions='CN,AS,NA,AU')
-    #print res
-	
+    # res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',DomainIds='',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    # print res
+
     '''
     GetServiceIpData
         获取域名当前的服务节点IP列表，用于分析域名服务节点运行状况，便于故障排查
@@ -1155,8 +1153,8 @@ if __name__ == "__main__":
         CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
     '''
-    #res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
-    #print res
+    # res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
+    # print res
 
     '''
     BlockDomainUrl
@@ -1171,9 +1169,9 @@ if __name__ == "__main__":
     '''
     # json格式规则
     # param = {
-	#   "BlockType":"block",
-	#   "BlockTime":3600,
-	#   "Urls":[{"Url":"http://test2282.cdn.ksyun.com/abc.txt"},{"Url":"http://test2282.cdn.ksyun.com/ed.txt"}]
+    #   "BlockType":"block",
+    #   "BlockTime":3600,
+    #   "Urls":[{"Url":"http://test2282.cdn.ksyun.com/abc.txt"},{"Url":"http://test2282.cdn.ksyun.com/ed.txt"}]
     # }
     #
     # res = client.block_domain_url(**param)
@@ -1202,5 +1200,153 @@ if __name__ == "__main__":
     GetBlockUrlTask
         获取屏蔽URL最大限制数量，及剩余的条数。
     '''
-    res = client.get_block_url_quota()
-    print res
+    # res = client.get_block_url_quota()
+    # print res
+
+    '''
+    ConfigCertificate
+        为单域名或者多域名配置证书，多域名用英文半角逗号隔开
+        
+        Parameters:
+            Enable            String    开启、关闭设置服务证书，取值：on：开启，off：关闭，默认为off，当选择开启时，以下为必填
+            DomainIds         String    domainid列表，英文半角逗号隔开
+            CertificateId     String    金山云生成的证书唯一性ID，若输入证书ID，则以下内容可不填写，若无证书ID，则以下内容为必填
+            CertificateName   String    证书名称    
+            ServerCertificate String    域名对应的证书内容    
+            PrivateKey        String    证书对应的私钥内容
+    '''
+
+    # client.config_certificate(Enable='on',
+    #                           DomainIds='2D09VN9',
+    #                           CertificateName='2D09VN9_test1',
+    #                           ServerCertificate="-----BEGIN CERTIFICATE-----\n" +
+    #                                             "MIIDiTCCAnGgAwIBAgIJANF7PDOT9Wm8MA0GCSqGSIb3DQEBCwUAMFsxCzAJBgNV\n" +
+    #                                             "BAYTAmFoMQswCQYDVQQIDAJiajELMAkGA1UEBwwCYmoxETAPBgNVBAoMCGtpbmdz\n" +
+    #                                             "b2Z0MQowCAYDVQQLDAFzMRMwEQYDVQQDDAphYWEuY29tLmNuMB4XDTE3MDcxMzA4\n" +
+    #                                             "MTA1NFoXDTE3MDgxMjA4MTA1NFowWzELMAkGA1UEBhMCYWgxCzAJBgNVBAgMAmJq\n" +
+    #                                             "MQswCQYDVQQHDAJiajERMA8GA1UECgwIa2luZ3NvZnQxCjAIBgNVBAsMAXMxEzAR\n" +
+    #                                             "BgNVBAMMCmFhYS5jb20uY24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\n" +
+    #                                             "AQCwp3KNrIW288L93DGyuBQ1eVL2XVW2IsCW3SKuntiTtFxA5+xecKN1xoTbNrJp\n" +
+    #                                             "oWjIHUow/DRyH2k0j1zHrWs7mHfx/1LR2G6PfCGUgvA2EDNaoDia3gIPmmt6QUVh\n" +
+    #                                             "l2XFqUrjmcaDk870dy8o5VMwblaC/mFhEFwlxGAjM6GqHHVlZ0AeXR+NJ7F3Fu85\n" +
+    #                                             "8dP/zFfb2kSzpjgsBuAQ2W5+fxtvlKHZlMfLE4OuQiME8JhvL/czzOVK9q2wGUzl\n" +
+    #                                             "/IkbyG3SwLoLFrTry2TsSibdfZe8ZrpS3gKaNqwSg1RVvShDlyvLfjm6nLgV7l2i\n" +
+    #                                             "fO9vHsaHjdmb9mUwK/soRvNFAgMBAAGjUDBOMB0GA1UdDgQWBBTK3MSboh5vOtTF\n" +
+    #                                             "/i7ly75c7uHPJjAfBgNVHSMEGDAWgBTK3MSboh5vOtTF/i7ly75c7uHPJjAMBgNV\n" +
+    #                                             "HRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQCtVHjp0C94iHqXS2E1e2gdP8eU\n" +
+    #                                             "qg2naXxMRCXo2hSLEcPmNhv2Z8SfCpu54CInEyINxZg58z7KxNFD3AmNcj1/r67L\n" +
+    #                                             "lVmkZzZrNsLT3Ti3SYiPgRUOSTiABZZrr0HRRbD+N32mLJ/2IeuBneBM6o0ER3Lp\n" +
+    #                                             "HDD+hVcB15+MmC0uj68kWCbYcfd3go6XiPpmVyaPkTkhYQDHufW0SZ+dILvDNIVy\n" +
+    #                                             "rAh7ZEUiP81LxYZcsf8fPKA/MmscQ4wZ2Owxt0KecgrkXcPTeOBdFUQAanmdsyLt\n" +
+    #                                             "+U+EGOF31pUgw7FLg5Tb0ejhE1aOmjYybWCt6FTldPBHHEDCcQZjOEXn56YG\n" +
+    #                                             "-----END CERTIFICATE-----\n",
+    #                           PrivateKey="-----BEGIN PRIVATE KEY-----\n" +
+    #                                      "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCwp3KNrIW288L9\n" +
+    #                                      "3DGyuBQ1eVL2XVW2IsCW3SKuntiTtFxA5+xecKN1xoTbNrJpoWjIHUow/DRyH2k0\n" +
+    #                                      "j1zHrWs7mHfx/1LR2G6PfCGUgvA2EDNaoDia3gIPmmt6QUVhl2XFqUrjmcaDk870\n" +
+    #                                      "dy8o5VMwblaC/mFhEFwlxGAjM6GqHHVlZ0AeXR+NJ7F3Fu858dP/zFfb2kSzpjgs\n" +
+    #                                      "BuAQ2W5+fxtvlKHZlMfLE4OuQiME8JhvL/czzOVK9q2wGUzl/IkbyG3SwLoLFrTr\n" +
+    #                                      "y2TsSibdfZe8ZrpS3gKaNqwSg1RVvShDlyvLfjm6nLgV7l2ifO9vHsaHjdmb9mUw\n" +
+    #                                      "K/soRvNFAgMBAAECggEBAIOw0Jz899GjdsF43TO2NpqGj2pJuhPFZH0S7T/v+tRh\n" +
+    #                                      "qERaoMLmhXTPQUuKQwar5UkJTL2nxhEtiWg9V5UjmsUarJAjHsKA7irZBs+HrTsg\n" +
+    #                                      "aKguuQP6bN7k5yqEbgyKqLvpsIJrqKl+DtH/55A9JP79wlB1AnMxlwAwnNqhKut8\n" +
+    #                                      "flwaeO6719IexNXb4WF9TZtKoW/XTqr0HOeiasaltJ/3tZBEXrIoC0Qvxa0534Nf\n" +
+    #                                      "RfrBc2Kq86wFVl1P47JoaKv7obpZndAVrRWif1CVrtzQzIG+WhIfIhNPEYJniAWH\n" +
+    #                                      "8UtVhcGT3Eiiq8HfZEiqklNnG++oWKGfsx98mkb2SgECgYEA3Ohjxyhb8bFazC9h\n" +
+    #                                      "hvF/GytKzbhCKfGM2cjD+OvGT17pEUma7QvLMA20Sm3f27e/Sw5NZtyGx9a3fGGf\n" +
+    #                                      "dY0jEQ6y3R+4dhcf4ZfKkkBL4R8jA29wRiACRc3rpYFqYB+GsiI3A6IZHfnKUU2S\n" +
+    #                                      "DTOjxQJJvuzM5Ppjs0OmLToXQDECgYEAzLdnC8FfAG3P4JpT0trrnxax7nBCo6d3\n" +
+    #                                      "RKvz320W1dGtfECVe60DaaYB0W8AFEIsmakdWBsWNdCBaYxQ1spC1mNUyo7sIwme\n" +
+    #                                      "OSyZ+Cxdg/r4e02zyFPtHKd7ar7o3CpkSQIcM0Zk/m2eMG6C7m0ChjJY8934NBYb\n" +
+    #                                      "PhsN6BG7E1UCgYEAwdWDn3/xVVzan+k/OSnz7sII7AOuwqD5hysbkfJH2uMbvJiK\n" +
+    #                                      "QU8k5bBQrzJDx8YuKsyM7CG6feUQsSnzwjCqQVBVb6NitvPJfKg1Dikuq4Unst74\n" +
+    #                                      "c/+oHtn12A57aYagKPPOs/hq85t3g+l9qunR3I8KaGXdz1lJXEWSrYKYXjECgYB7\n" +
+    #                                      "YQWf1hk1nvksOpbOe9aJ+RmfxNTE4UdGggPm4k5i644NVrdA5JMr9zsdSDLaAs/y\n" +
+    #                                      "hDQFR73pDRMR09lcumXx48fUlLLIoyFTAAiDw+lQg8+CMOBrmflLzbzaJtkc6Aes\n" +
+    #                                      "4LKyTHjNxq8SLWiH3fcpfeqSf3L5oWEl2xRUi2seSQKBgQCvlZnes+BmikpJTUsY\n" +
+    #                                      "ZeRym1Ojw/Dlmf90sHQRPOn+SXq3Nxi4Qye+TO0aLsey4+6S1CZ8q8iwzV8RZoLS\n" +
+    #                                      "Uh7RZC32iKP+TdxeXlTpHKxfCfp5NvXRoH5BBnI2kcwvmEMKKToWYppv99/jmXQA\n" +
+    #                                      "bT7gY3gln0TZI6WyJTxCZ7NJIg==\n" +
+    #                                      "-----END PRIVATE KEY-----\n")
+
+    '''
+    SetCertificate
+        更新证书信息
+        Parameters:
+            CertificateId     String  证书对应的唯一ID
+            CertificateName   String  安全证书名称
+            ServerCertificate String  域名对应的安全证书内容
+            PrivateKey        String  安全证书对应的私钥内容
+    '''
+    # client.set_certificate(CertificateId='917',
+    #                        CertificateName='2D09VN9_test1',
+    #                        ServerCertificate="-----BEGIN CERTIFICATE-----\n" +
+    #                                          "MIIDpzCCAo+gAwIBAgIJAJVYqjMp0Oo+MA0GCSqGSIb3DQEBCwUAMGoxCzAJBgNV\n" +
+    #                                          "BAYTAmFmMQswCQYDVQQIDAJhZjELMAkGA1UEBwwCYWYxCzAJBgNVBAoMAmFmMQsw\n" +
+    #                                          "CQYDVQQLDAJhZjETMBEGA1UEAwwKYWFhLmNvbS5jbjESMBAGCSqGSIb3DQEJARYD\n" +
+    #                                          "ZmFmMB4XDTE3MDcxODA2MjAxMloXDTE3MDgxNzA2MjAxMlowajELMAkGA1UEBhMC\n" +
+    #                                          "YWYxCzAJBgNVBAgMAmFmMQswCQYDVQQHDAJhZjELMAkGA1UECgwCYWYxCzAJBgNV\n" +
+    #                                          "BAsMAmFmMRMwEQYDVQQDDAphYWEuY29tLmNuMRIwEAYJKoZIhvcNAQkBFgNmYWYw\n" +
+    #                                          "ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDR7nPaWm73enLhkzjw06oA\n" +
+    #                                          "bE50Jqi4OaHKnurLX3byFVbkJU9NA5N4vQ4hXD0HDGqN87ruJVfrSOdCkPxFD95m\n" +
+    #                                          "M4W60R2NSBNeDM3AiXPmn5Ghey4ittkLiVcArEiyGoLMt3dQPxChVUK2YrtP2XzN\n" +
+    #                                          "+XmHTrez4N+ttV+xhia/TTNb9A0iCaFPzs/CGsqYhhd6AKt4QRzRIR3s5v8Rz8Pq\n" +
+    #                                          "eytmkGuzV3q9l1sTTbBenbWyGv3T2zbUNFHDOwazzZXvU94pniC3xuOjB9KcNiXb\n" +
+    #                                          "2fD9tVLKLppHf7Ei8KJAYDrSX8F0GXePpfHD7e7eHWVOwjuQZJFvvzRioiENc8oH\n" +
+    #                                          "AgMBAAGjUDBOMB0GA1UdDgQWBBT1IUW+CaMjIbD4yLab19fkXUfYPTAfBgNVHSME\n" +
+    #                                          "GDAWgBT1IUW+CaMjIbD4yLab19fkXUfYPTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3\n" +
+    #                                          "DQEBCwUAA4IBAQCx1ET/0bGKn3WHoCMnTeEa9JD7AbPn1FWCSxVsnqxSh4OB0G0e\n" +
+    #                                          "KRdPNIVY2keQp2NFM0qOic5bd+a5+WCVz+/p4v0HhmhiEo9z1NNOs6FvHGa1mAIk\n" +
+    #                                          "9u/9Mx3ijKb19MLC/was9WzoxuW7BqxjAT3cyuKZ1eGQPu2aEwTHYTiZL0Qm9n5n\n" +
+    #                                          "SwCh4R5bgw1sZ9f6W0EAG2sfkUdiSa1auBxNn+cMiDtLnUCLM4lXHT8kSylKJcwX\n" +
+    #                                          "XKThusYHxWhMCn/iKK3SWMvmlf9P3luXXxa1ZRP3aAoh2DsKIB4wJwTxVoTaw7D4\n" +
+    #                                          "kMHUsjuJKOh/GwFKK6vWGmxUkSsGK1m+Z/I9\n" +
+    #                                          "-----END CERTIFICATE-----\n",
+    #                        PrivateKey="-----BEGIN PRIVATE KEY-----\n" +
+    #                                   "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDR7nPaWm73enLh\n" +
+    #                                   "kzjw06oAbE50Jqi4OaHKnurLX3byFVbkJU9NA5N4vQ4hXD0HDGqN87ruJVfrSOdC\n" +
+    #                                   "kPxFD95mM4W60R2NSBNeDM3AiXPmn5Ghey4ittkLiVcArEiyGoLMt3dQPxChVUK2\n" +
+    #                                   "YrtP2XzN+XmHTrez4N+ttV+xhia/TTNb9A0iCaFPzs/CGsqYhhd6AKt4QRzRIR3s\n" +
+    #                                   "5v8Rz8PqeytmkGuzV3q9l1sTTbBenbWyGv3T2zbUNFHDOwazzZXvU94pniC3xuOj\n" +
+    #                                   "B9KcNiXb2fD9tVLKLppHf7Ei8KJAYDrSX8F0GXePpfHD7e7eHWVOwjuQZJFvvzRi\n" +
+    #                                   "oiENc8oHAgMBAAECggEBAJdOOPwAwAfonlJM7PZOaDHj3evDTUlyaFUEkw+/n5g9\n" +
+    #                                   "nyHSbkSAtlKIWF3dADNLVKU5LNql2adAJUYJ/3i7Rjz9F36dZ6JDd4oKymTh7MIk\n" +
+    #                                   "8i6j/I2Sof65nxZiFgcgKnPoK7uPqKnPLMUNhhm4FEbUby4Bo0+nXS/zEKR/nv+z\n" +
+    #                                   "EobjYt+WTbydGu1Bbg0l47yYzEg6k37CG/CekMtldhCBThYfAX1T+Lt5na+K9Wqr\n" +
+    #                                   "06s00jPP//0aYFWjC56zFGDOiuhNm5Ba1/sWDPIAoxnuVOAMQqFv2pVICegCD4Tx\n" +
+    #                                   "TnbhZUssENdi6+UGHyz3egVGWZjE+4Gae8UBWWm3sRECgYEA+qYGir45356+cItd\n" +
+    #                                   "nEOKxK4xveakvpu+Gn9edHbzaRk4qrzHHHWjijM359nZCxMpnSVbGcwlc1/P3esj\n" +
+    #                                   "o8PUC96aNDyr0BYKaZS9BwywPvIPHqizhSMZJoN9R1FROQcPIdNXcEFMeuaIU9tQ\n" +
+    #                                   "pCtfWq4dRsXs4j/KdhnaaNxEi+kCgYEA1mng/biQYzn/y6ej9LvLQE/xgEDK+TzO\n" +
+    #                                   "+cQYH6GCZVqAR1YucYTVhnVHByu6vS/T8nGSjt3lVrqzR6KtlN16mpc0dxFen4g5\n" +
+    #                                   "NERAKVkyuaOrcq1zV7MidZuNp9CMviEJlRW7IleLXtYRa8QKyPzhZPQo+yXGkRPh\n" +
+    #                                   "yd52CAeOIG8CgYBEbLyOdb3Q2UI98R3eAeZJKRC1OdixnEy6aRj9DFgI0fTRT3W/\n" +
+    #                                   "xDGgEblqVuNUjaenmcIT+dIje/2AJKf3Fge2Mc/BAOsahFnVVuB/oyweEvCjuwQ/\n" +
+    #                                   "DUTZab3ykTVuLwonfs14/KqHRpXi5pVOK/T9CVk+r9uqLCX2NbqVM8SWuQKBgQDT\n" +
+    #                                   "G/aR+fn4KPAJheqxmYF6tfuzapgupEeptgCGjFBGGMB6/IjH7qEKPUiM7+pyQbgu\n" +
+    #                                   "WtKRZjtblIHWg37jNtpzgXL/1RNUghzIsHZ3/8Io89RoGg2aCN9h6qGj3Hvm68Jy\n" +
+    #                                   "jq3tF0M7QgxvDdwMnqgR7TC4by4+Q9QpHacbKs0ucwKBgCiZmZPmcHJakRo3QBJn\n" +
+    #                                   "aer4yRIgY3gXbRchdSb0vzKIyW2l/dcLMtyQGOnFNbgj+Q4Ir4VaSZ9xFyV6eamQ\n" +
+    #                                   "T107FjVUdU5/ANBbJA/23vpDFKmepY4j+rNZFDnTTSbUCGsYQcjICrgx7I7FmNKq\n" +
+    #                                   "5b107+7UJDA20d5/MGBIBLIU\n" +
+    #                                   "-----END PRIVATE KEY-----\n")
+
+    '''
+    RemoveCertificates
+        批量删除证书列表
+        注意：
+            仅当证书状态为未启用状态时方可删除证书
+        Parameters:
+            CertificateIds   String  证书id列表，英文半角逗号隔开
+    '''
+    # client.remove_certificates(CertificateIds = '910,911')
+
+    '''
+    GetCertificates
+        分页获得用户证书列表参数
+        Parameters:
+            PageSize        Long    一页展示条数
+            PageNum         Long    当前页码
+    '''
+    # res = client.get_certificates(PageSize=1, PageNum=5)
+    # print res
