@@ -26,6 +26,12 @@ partitions:
     cn-beijing-5:
       description: China Beijing (ZaoJunMiao)
 
+    cn-hongkong-2:
+      description: China HongKong 2
+
+    cn-hongkong-1:
+      description: China HongKong 1
+
     cn-beijing-1:
       description: China Beijing (YiZhuang)
 
@@ -67,7 +73,24 @@ partitions:
       endpoints:
         cn-beijing-6:
           hostname: iam.api.ksyun.com
-
+    ket:
+      defaults:
+        protocols:
+        - http
+        credentialScope:
+          # eg: [ket].cn-beijing-6.api.ksyun.com
+          service: ket
+      # eg: ket.[cn-beijing-6].api.ksyun.com
+      # partitionEndpoint: cn-beijing-6
+      endpoints:
+        cn-beijing-6:
+          protocols:
+          - http
+          - https
+        cn-shanghai-2:
+          protocols:
+          - http
+          - https
     kec:
       defaults:
         credentialScope:

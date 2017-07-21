@@ -735,6 +735,7 @@ if __name__ == "__main__":
 		EndTime    string  查询结束时间，格式yyyy-MM-dd，开始时间和结束时间均不指定时，默认是当天
 		TaskId    string   支持按任务ID查询，只允许输入单个任务ID
         Urls         Url[]    需要文件类型预热的Url列表
+        Type       String  任务类别，取值为：refresh，刷新任务；取值为:preload,预热任务
         其中url[]为：
 		Url String 需要提交预热的Url，单条
     '''
@@ -749,7 +750,8 @@ if __name__ == "__main__":
            "Urls":[
               {"Url": "http://test.dxz.ksyun.8686c.com/1.html"},
               {"Url": "http://test.dxz.ksyun.8686c.com/abc"}
-             ]
+             ],
+           "Type":"refresh"
            }
     '''
     # res = client.get_refresh_or_preload_task(**param)
@@ -1167,7 +1169,7 @@ if __name__ == "__main__":
         其中url[]为：
 		Url String 需要提交屏蔽/解屏蔽的Url，单条
     '''
-    # json格式规则
+    # # json格式规则
     # param = {
     #   "BlockType":"block",
     #   "BlockTime":3600,
