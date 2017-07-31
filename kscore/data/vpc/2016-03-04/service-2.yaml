@@ -153,6 +153,10 @@ operations:
     name: DisassociateNat
     http:
       method: GET
+  DescribeAvailabilityZones:
+    name: DescribeAvailabilityZones
+    http:
+      method: GET
 
 shapes:
   Id:
