@@ -88,6 +88,31 @@ operations:
       requestUri: /
     input:
       shape: GetTaskByTaskIDInstance
+  
+  UpdatePipeline:
+    name: UpdatePipeline
+    http:
+      method: POST
+  
+  QueryPipeline:
+    name: QueryPipeline
+    http:
+      method: GET
+
+  GetInterfaceNumber:
+    name: GetInterfaceNumber
+    http:
+      method: GET
+
+  GetMediaTransDuration:
+    name: GetMediaTransDuration
+    http:
+      method: GET
+
+  GetScreenshotNumber:
+    name: GetScreenshotNumber
+    http:
+      method: GET
 
 shapes:  
   Preset:
@@ -107,6 +132,16 @@ shapes:
   Marker:
     type: integer
   Limit:
+    type: integer
+  PipelineName:
+    type: string
+  StartUnixTime:
+    type: integer
+  EndUnixTime:
+    type: integer
+  Granularity:
+    type: integer
+  ResultType:
     type: integer
   PresetInstance:
     type: structure
@@ -152,4 +187,15 @@ shapes:
       Limit:
         shape: Limit
 
-  
+  StatisticsInstance:
+    type: structure
+    members:
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+      Granularity:
+        shape: Granularity
+      ResultType:
+        shape: ResultType
+
