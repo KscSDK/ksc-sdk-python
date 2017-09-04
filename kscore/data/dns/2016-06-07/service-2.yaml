@@ -1,0 +1,90 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-06-07'
+  endpointPrefix: dns
+  jsonVersion: '1.1'
+  serviceFullName: dns Service
+  signatureVersion: v4
+  targetPrefix: dns
+  protocol: query-json
+
+operations:
+  RegionList:
+    name: RegionList
+    http:
+      method: GET
+    input:
+      shape: Empty
+  CreateHostedZone:
+    name: CreateHostedZone
+    http:
+      method: GET
+  DeleteHostedZone:
+    name: DeleteHostedZone
+    http:
+      method: GET  
+  DescribeHostedZones:
+    name: DescribeHostedZones
+    http:
+      method: GET  
+  CreateResourceRecord:
+    name: CreateResourceRecord
+    http:
+      method: GET
+  ModifyResourceRecord:
+    name: ModifyResourceRecord
+    http:
+      method: GET      
+  DeleteResourceRecord:
+    name: DeleteResourceRecord
+    http:
+      method: GET
+  DescribeResourceRecords:
+    name: DescribeResourceRecords
+    http:
+      method: GET
+  ResourceRecordChangeType:
+    name: ResourceRecordChangeType
+    http:
+      method: GET
+  GetGeolocations:
+    name: GetGeolocations
+    http:
+      method: GET
+
+
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: long
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""
