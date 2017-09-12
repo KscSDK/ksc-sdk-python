@@ -1164,15 +1164,12 @@ if __name__ == "__main__":
     Parameters:
         BlockType         Url[]    操作接口名，系统规定参数 取值：block：屏蔽URL；unblock：解除屏蔽；
         Urls              Url[]    URL列表
-        BlockTime         Long     (仅在屏蔽URL动作时生效)，屏蔽的时间，以秒为单位。默认为604800（7天），最大31天，最小1小时。过期后自动解除屏蔽。
-        RefreshOnUnblock  String   (仅在解除屏蔽时生效)，解除屏蔽时，是否联动触发刷新任务 取值：on：触发刷新任务、off：不触发刷新任务 ，默认为off
         其中url[]为：
 		Url String 需要提交屏蔽/解屏蔽的Url，单条
     '''
     # # json格式规则
     # param = {
     #   "BlockType":"block",
-    #   "BlockTime":3600,
     #   "Urls":[{"Url":"http://test2282.cdn.ksyun.com/abc.txt"},{"Url":"http://test2282.cdn.ksyun.com/ed.txt"}]
     # }
     #
