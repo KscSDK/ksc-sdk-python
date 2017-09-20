@@ -1,0 +1,270 @@
+---
+version: '1.0'
+metadata:
+  apiVersion: '2017-01-01'
+  endpointPrefix: kls
+  jsonVersion: '1.1'
+  serviceFullName: KSC KLS Service
+  signatureVersion: v4
+  targetPrefix: kls
+  protocol: json2
+
+operations:
+  ForbidStream:
+    name: ForbidStream
+    http:
+      method: POST
+       requestUri: /
+    input:
+      shape: ForbidStreamInstance
+
+  ResumeStream:
+    name: ResumeStream
+    http:
+      method: POST
+       requestUri: /
+    input:
+      shape: ResumeStreamInstance
+
+  GetBlacklist:
+    name: GetBlacklist
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: GetBlacklistInstance
+
+  CheckBlacklist:
+    name: CheckBlacklist
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: CheckBlacklistInstance
+
+  ListRealtimePubStreamsInfo:
+    name: ListRealtimePubStreamsInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListRealtimePubStreamsInfoInstance
+
+  ListHistoryPubStreamsInfo:
+    name: ListHistoryPubStreamsInfo
+    http:
+      method: GET
+
+  ListHistoryPubStreamsErrInfo:
+    name: ListHistoryPubStreamsErrInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryPubStreamsErrInfoInstance
+
+  CreateRecordTask:
+    name: CreateRecordTask 
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: CreateRecordTaskInstance
+
+  CancelRecordTask:
+    name: CancelRecordTask
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: CancelRecordTaskInstance
+
+  StartStreamRecord:
+    name: StartStreamRecord
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: StartStreamRecordInstance
+  
+  StopStreamRecord:
+    name: StopStreamRecord
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: StopStreamRecordInstance
+
+  ListRecordingTasks:
+    name: ListRecordingTasks
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListRecordingTasksInstance
+
+  ListHistoryRecordTasks:
+    name: ListHistoryRecordTasks
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryRecordTasksInstance
+
+  GetRecordTask:
+    name: GetRecordTask
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: GetRecordTaskIsnstance
+
+  ListStreamDurations:
+    name: ListStreamDurations
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListStreamDurationsInstance
+
+  KillStreamCache:
+    name: KillStreamCache
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: KillStreamCacheInstance
+
+shapes:  
+  uniqueName:
+    type: string
+  app:
+    type: string
+  pubdomain:
+    type: string
+  stream:
+    type: string
+  startUnixTime:
+    type: integer
+  endUnixTime:
+    type: integer
+  orderTime:
+    type: integer
+  recType:
+    type: integer
+  marker:
+    type: integer
+  limit:
+    type: integer
+  EndDate:
+    type: integer
+  Marker:
+    type: integer
+  Limit:
+    type: integer
+  recID:
+     type: integer
+  duration:
+    type: integer
+  #后面的结构体没有改
+  CreateRecordTaskInstance:
+    type: structure
+    members:
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+      mp4VodEnable:
+        shape: Mp4VodEnable
+      ks3FileNameM3U8:
+        shape: Ks3FileNameM3U8
+      ks3FullPathMP4:
+        shape: Ks3FullPathMP4
+      startUnixTime:
+        shape: StartUnixTime
+      endUnixTime:
+        shape: EndUnixTime
+  CancelRecordTaskInstance:
+    type: structure
+    members:
+      recID:
+        shape: RecID
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+  StartStreamRecordInstance:
+    type: structure
+    members:
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+      mp4VodEnable:
+        shape: Mp4VodEnable
+      ks3FileNameM3U8:
+        shape: Ks3FileNameM3U8
+      ks3FullPathMP4:
+        shape: Ks3FullPathMP4
+  StopStreamRecordInstance:
+    type: structure
+    members:
+      recID:
+        shape: RecID
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+  ForbidStreamInstance:
+    type: structure
+    members:
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+      forbidTillUnixTime:
+        shape: ForbidTillUnixTime
+  ResumeStreamInstance:
+    type: structure
+    members:
+      uniqueName:
+        shape: UniqueName
+      app:
+        shape: App
+      pubdomain:
+        shape: Pubdomain
+      stream:
+        shape: Stream
+  KillStreamCacheInstance:
+    type: structure
+    members:
+      app:
+        shape: App
+      pullDomain:
+        shape: PullDomain
+      stream:
+        shape: Stream
+      deviceOrNode:
+        shape: DeviceOrNode
+      nodeIPs:
+        shape: NodeIPs
