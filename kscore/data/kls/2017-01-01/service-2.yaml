@@ -14,17 +14,11 @@ operations:
     name: ForbidStream
     http:
       method: POST
-       requestUri: /
-    input:
-      shape: ForbidStreamInstance
 
   ResumeStream:
     name: ResumeStream
     http:
       method: POST
-       requestUri: /
-    input:
-      shape: ResumeStreamInstance
 
   GetBlacklist:
     name: GetBlacklist
@@ -54,6 +48,9 @@ operations:
     name: ListHistoryPubStreamsInfo
     http:
       method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryPubStreamsInfoInstance
 
   ListHistoryPubStreamsErrInfo:
     name: ListHistoryPubStreamsErrInfo
@@ -63,37 +60,33 @@ operations:
     input:
       shape: ListHistoryPubStreamsErrInfoInstance
 
+  ListStreamDurations:
+    name: ListStreamDurations
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListStreamDurationsInstance
+
   CreateRecordTask:
     name: CreateRecordTask 
     http:
       method: POST
-      requestUri: /
-    input:
-      shape: CreateRecordTaskInstance
 
   CancelRecordTask:
     name: CancelRecordTask
     http:
       method: POST
-      requestUri: /
-    input:
-      shape: CancelRecordTaskInstance
 
   StartStreamRecord:
     name: StartStreamRecord
     http:
       method: POST
-      requestUri: /
-    input:
-      shape: StartStreamRecordInstance
   
   StopStreamRecord:
     name: StopStreamRecord
     http:
       method: POST
-      requestUri: /
-    input:
-      shape: StopStreamRecordInstance
 
   ListRecordingTasks:
     name: ListRecordingTasks
@@ -119,152 +112,181 @@ operations:
     input:
       shape: GetRecordTaskIsnstance
 
-  ListStreamDurations:
-    name: ListStreamDurations
-    http:
-      method: GET
-      requestUri: /
-    input:
-      shape: ListStreamDurationsInstance
-
   KillStreamCache:
     name: KillStreamCache
     http:
       method: POST
-      requestUri: /
-    input:
-      shape: KillStreamCacheInstance
 
 shapes:  
-  uniqueName:
+  UniqueName:
     type: string
-  app:
+  App:
     type: string
-  pubdomain:
+  Pubdomain:
     type: string
-  stream:
+  Stream:
     type: string
-  startUnixTime:
-    type: integer
-  endUnixTime:
-    type: integer
-  orderTime:
-    type: integer
-  recType:
-    type: integer
-  marker:
-    type: integer
-  limit:
-    type: integer
-  EndDate:
+  OrderTime:
     type: integer
   Marker:
     type: integer
   Limit:
     type: integer
-  recID:
-     type: integer
-  duration:
+  Marker:
     type: integer
-  #后面的结构体没有改
-  CreateRecordTaskInstance:
+  Limit:
+    type: integer
+  StartUnixTime:
+    type: integer
+  EndUnixTime:
+    type: integer
+  RecType:
+    type: integer
+  RecStatusType:
+    type: integer
+  
+  GetBlacklistInstance:
     type: structure
     members:
-      uniqueName:
+      UniqueName:
         shape: UniqueName
-      app:
+      App:
         shape: App
-      pubdomain:
+      Pubdomain:
         shape: Pubdomain
-      stream:
+
+  CheckBlacklistInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
         shape: Stream
-      mp4VodEnable:
-        shape: Mp4VodEnable
-      ks3FileNameM3U8:
-        shape: Ks3FileNameM3U8
-      ks3FullPathMP4:
-        shape: Ks3FullPathMP4
-      startUnixTime:
+
+  ListRealtimePubStreamsInfoInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+
+  ListHistoryPubStreamsInfoInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      StartUnixTime:
         shape: StartUnixTime
-      endUnixTime:
+      EndUnixTime:
         shape: EndUnixTime
-  CancelRecordTaskInstance:
+
+  ListHistoryPubStreamsErrInfoInstance:
     type: structure
     members:
-      recID:
-        shape: RecID
-      uniqueName:
+      UniqueName:
         shape: UniqueName
-      app:
+      App:
         shape: App
-      pubdomain:
+      Pubdomain:
         shape: Pubdomain
-      stream:
+      Stream:
         shape: Stream
-  StartStreamRecordInstance:
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+  
+  ListStreamDurationsInstance:
     type: structure
     members:
-      uniqueName:
+      UniqueName:
         shape: UniqueName
-      app:
+      App:
         shape: App
-      pubdomain:
+      Pubdomain:
         shape: Pubdomain
-      stream:
+      Stream:
         shape: Stream
-      mp4VodEnable:
-        shape: Mp4VodEnable
-      ks3FileNameM3U8:
-        shape: Ks3FileNameM3U8
-      ks3FullPathMP4:
-        shape: Ks3FullPathMP4
-  StopStreamRecordInstance:
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+
+  ListRecordingTasksInstance:
     type: structure
     members:
-      recID:
-        shape: RecID
-      uniqueName:
+      UniqueName:
         shape: UniqueName
-      app:
+      App:
         shape: App
-      pubdomain:
+      Pubdomain:
         shape: Pubdomain
-      stream:
+      Stream:
         shape: Stream
-  ForbidStreamInstance:
+      RecType:
+        shape: RecType
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      RecStatusType:
+        shape: RecStatusType
+
+  ListHistoryRecordTasksInstance:
     type: structure
     members:
-      uniqueName:
+      UniqueName:
         shape: UniqueName
-      app:
+      App:
         shape: App
-      pubdomain:
+      Pubdomain:
         shape: Pubdomain
-      stream:
+      Stream:
         shape: Stream
-      forbidTillUnixTime:
-        shape: ForbidTillUnixTime
-  ResumeStreamInstance:
-    type: structure
-    members:
-      uniqueName:
-        shape: UniqueName
-      app:
-        shape: App
-      pubdomain:
-        shape: Pubdomain
-      stream:
-        shape: Stream
-  KillStreamCacheInstance:
-    type: structure
-    members:
-      app:
-        shape: App
-      pullDomain:
-        shape: PullDomain
-      stream:
-        shape: Stream
-      deviceOrNode:
-        shape: DeviceOrNode
-      nodeIPs:
-        shape: NodeIPs
+      RecType:
+        shape: RecType
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
