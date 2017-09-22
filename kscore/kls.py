@@ -2,72 +2,65 @@
 from kscore.session import get_session
 import time
 class KlsClient:
-    def __init__(self,service_name,region_name,use_ssl,ks_access_key_id,ks_secret_access_key):
-        s = get_session()
-        if ks_access_key_id != None and  ks_secret_access_key != None:
-            self.client = s.create_client(service_name, region_name, use_ssl = use_ssl,
-            ks_access_key_id=ks_access_key_id, ks_secret_access_key=ks_secret_access_key)
-        else:
-            self.client = s.create_client(service_name, region_name, use_ssl = use_ssl)
+  def __init__(self,service_name,region_name,use_ssl,ks_access_key_id,ks_secret_access_key):
+    s = get_session()
+    if ks_access_key_id != None and  ks_secret_access_key != None:
+      self.client = s.create_client(service_name, region_name, use_ssl = use_ssl,
+      ks_access_key_id=ks_access_key_id, ks_secret_access_key=ks_secret_access_key)
+    else:
+      self.client = s.create_client(service_name, region_name, use_ssl = use_ssl)
 
-    def CreateRecordTask(self,param):
-        return self.client.CreateRecordTask(**param)
+  def CreateRecordTask(self,param):
+    return self.client.create_record_task(**param)
 
-    def CancelRecordTask(self,param):
-        return self.client.CancelRecordTask(**param)
+  def CancelRecordTask(self,param):
+    return self.client.cancel_record_task(**param)
 
-    def GetRecordTask(self,recID):
-        return self.client.GetRecordTask(RecID = recID)
+  def StartStreamRecord(self,param):
+    return self.client.start_stream_record(**param)
 
-    def ListHistoryRecordTasks(self,uniqueName,app,pubdomain,stream,recType,limit,marker,orderTime,startUnixTime,endUnixTime):
-        return self.client.ListHistoryRecordTasks(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,RecType=recType,Limit=limit,
-            Marker=marker,OrderTime=orderTime,StartUnixTime=startUnixTime,EndUnixTime=endUnixTime)
+  def StopStreamRecord(self,param):
+    return self.client.stop_stream_record(**param)
 
-    def StartStreamRecord(self,param):
-        return self.client.StartStreamRecord(**param)
+  def ListRecordingTasks(self,UniqueName="",App="",Pubdomain="",Stream="",RecType=0,Limit=1,Marker=1,OrderTime=0,RecStatusType=0):
+    return self.client.list_recording_tasks(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,RecType=RecType,Limit=Limit,
+            Marker=Marker,OrderTime=OrderTime,RecStatusType=RecStatusType)
 
-    def StopStreamRecord(self,param):
-        return self.client.StopStreamRecord(**param)
+  def ListHistoryRecordTasks(self,UniqueName="",App="",Pubdomain="",Stream="",RecType=0,Limit=1,Marker=1,OrderTime=0,StartUnixTime=0,EndUnixTime=0):
+    return self.client.list_history_record_tasks(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,RecType=RecType,Limit=Limit,
+            Marker=Marker,OrderTime=OrderTime,StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime)
 
-    def ListRecordingTasks(self,uniqueName,app,pubdomain,stream,recType,limit,marker,orderTime,recStatusType):
-        return self.client.ListRecordingTasks(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,RecType=recType,Limit=limit,
-            Marker=marker,OrderTime=orderTime,RecStatusType=recStatusType)
+  def GetRecordTask(self,RecID=0):
+    return self.client.get_record_task(RecID = RecID)
 
-     def ListStreamDurations(self,uniqueName,app,pubdomain,stream,startUnixTime,endUnixTime):
-        return self.client.ListStreamDurations(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,StartUnixTime=startUnixTime,EndUnixTime=endUnixTime)
+  def ListRealtimePubStreamsInfo(self,UniqueName="",App="",Pubdomain="",Stream="",Limit=1,Marker=0,OrderTime=0):
+    return self.client.list_realtime_pub_streams_info(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,Limit=Limit,
+            Marker=Marker,OrderTime=OrderTime)
 
-    def ListRealtimePubStreamsInfo(self,uniqueName,app,pubdomain,stream,limit,marker,orderTime):
-        return self.client.ListRealtimePubStreamsInfo(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,Limit=limit,
-            Marker=marker,OrderTime=orderTime)
+  def ListHistoryPubStreamsInfo(self,UniqueName="",App="",Pubdomain="",Stream="",Limit=1,Marker=0,OrderTime=0,StartUnixTime=0,EndUnixTime=0):
+    return self.client.list_history_pub_streams_info(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,Limit=Limit,Marker=Marker,OrderTime=OrderTime,StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime)
 
-    def ListHistoryPubStreamsInfo(self,uniqueName,app,pubdomain,stream,limit,marker,orderTime,startUnixTime,endUnixTime):
-        return self.client.ListHistoryPubStreamsInfo(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,Limit=limit,
-            Marker=marker,OrderTime=orderTime,StartUnixTime=startUnixTime,EndUnixTime=endUnixTime)
+  def ListHistoryPubStreamsErrInfo(self,UniqueName="",App="",Pubdomain="",Stream="",Limit=1,Marker=0,OrderTime=0,StartUnixTime=0,EndUnixTime=0):
+    return self.client.list_history_pub_streams_err_info(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,Limit=Limit,
+            Marker=Marker,OrderTime=OrderTime,StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime)
 
-    def ListHistoryPubStreamsErrInfo(self,uniqueName,app,pubdomain,stream,limit,marker,orderTime,startUnixTime,endUnixTime):
-        return self.client.ListHistoryPubStreamsErrInfo(UniqueName = uniqueName,App=app,Pubdomain=pubdomain,Stream=stream,Limit=limit,
-            Marker=marker,OrderTime=orderTime,StartUnixTime=startUnixTime,EndUnixTime=endUnixTime)
+  def ListStreamDurations(self,UniqueName="",App="",Pubdomain="",Stream="",StartUnixTime=0,EndUnixTime=0):
+    return self.client.list_stream_durations(UniqueName = UniqueName,App=App,Pubdomain=Pubdomain,Stream=Stream,StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime)
 
-    def ForbidStream(self,param):
-        return self.client.ForbidStream(**param)
+  def ForbidStream(self,param):
+    return self.client.forbid_stream(**param)
 
-    def ResumeStream(self,param):
-        return self.client.ResumeStream(**param)
+  def ResumeStream(self,param):
+    return self.client.resume_stream(**param)
 
-    def GetBlacklist(self,uniqueName,app,pubdomain):
-        return self.client.GetBlacklist(UniqueName = uniqueName,App = app, Pubdomain = pubdomain)
+  def GetBlacklist(self,UniqueName="",App="",Pubdomain=""):
+    return self.client.get_blacklist(UniqueName = UniqueName,App = App, Pubdomain = Pubdomain)
 
-    def CheckBlacklist(self,uniqueName,app,pubdomain,stream):
-        return self.client.CheckBlacklist(UniqueName = uniqueName,App = app, Pubdomain = pubdomain,Stream = stream)
+  def CheckBlacklist(self,UniqueName="",App="",Pubdomain="",Stream=""):
+    return self.client.check_blacklist(UniqueName = UniqueName,App = App, Pubdomain = Pubdomain,Stream = Stream)
 
-    def listRelayStreamsInfo(self,uniqueName,app,limit,marker):
-        return self.client.listRelayStreamsInfo(uniquename = uniqueName,app = app, marker = marker,limit = limit)
-
-    def listRelayErrInfo(self,uniqueName,app,limit,marker,starttime,duration):
-        return self.client.listRelayErrInfo(uniquename = uniqueName,app = app, marker = marker,limit = limit,starttime=starttime,duration=duration)
-
-    def KillStreamCache(self,param):
-        return self.client.KillStreamCache(**param)
+  def KillStreamCache(self,param):
+    return self.client.kill_stream_cache(**param)
 
 def getKlsClient(service_name,region_name,use_ssl=False,ks_access_key_id=None, ks_secret_access_key=None):
     return KlsClient(service_name,region_name,use_ssl,ks_access_key_id, ks_secret_access_key)
