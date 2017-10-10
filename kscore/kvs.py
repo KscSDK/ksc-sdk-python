@@ -28,6 +28,12 @@ class KvsClient:
 	def CreateTask(self,task):
 		return self.client.create_task(**task)
 
+	def CreateFlowTask(self,task):
+		return self.client.create_flow_task(**task)
+
+	def FetchObjectMediaProcess(self,task):
+		return self.client.fetch_object_media_process(**task)
+
 	def GetTaskByTaskID(self,TaskID=''):
 		return self.client.get_task_by_task_id(TaskID=TaskID)
 

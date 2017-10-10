@@ -44,8 +44,18 @@ operations:
     input:
       shape: PresetInstance
 
+  CreateFlowTask:
+    name: CreateFlowTask
+    http:
+      method: POST
+
   CreateTask:
     name: CreateTask
+    http:
+      method: POST
+
+  FetchObjectMediaProcess:
+    name: FetchObjectMediaProcess
     http:
       method: POST
 
@@ -114,6 +124,22 @@ operations:
     http:
       method: GET
 
+  ListFetchObjectMediaProcess:
+    name: ListFetchObjectMediaProcess
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListFetchObjectMediaProcessInstance
+
+  GetFetchObjectMediaProcess:
+    name: GetFetchObjectMediaProcess
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: GetFetchObjectMediaProcessInstance
+
 shapes:  
   Preset:
     type: string
@@ -131,6 +157,8 @@ shapes:
     type: integer
   Marker:
     type: integer
+  Marker1:
+    type: string
   Limit:
     type: integer
   PipelineName:
@@ -143,6 +171,8 @@ shapes:
     type: integer
   ResultType:
     type: integer
+  ProcessTaskId:
+    type: string
   PresetInstance:
     type: structure
     members:
@@ -198,4 +228,20 @@ shapes:
         shape: Granularity
       ResultType:
         shape: ResultType
+  ListFetchObjectMediaProcessInstance:
+    type: structure
+    members:
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+      Marker:
+        shape: Marker1
+      Limit:
+        shape: Limit
 
+  GetFetchObjectMediaProcessInstance:
+    type: structure
+    members:
+      ProcessTaskId:
+        shape: ProcessTaskId

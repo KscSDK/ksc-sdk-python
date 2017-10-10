@@ -7,7 +7,7 @@ import time
 #ks_access_key_id='xxxxxxxxxxxxxxxxxxxx'
 #ks_secret_access_key='xxxxxxxxxxxxxxxxxxxxxxx'
 # 参数：服务service_name,大区region_name 
-#client = getOfflineClient("offline", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
+#client = getKvsClient("offline", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
 
 #配置kscore.cfg调用方式
 
@@ -108,6 +108,10 @@ task = {
 res = client.CreateTask(task)
 print json.dumps(res)
 
+#该接口需要输入json格式数据
+res = client.CreateFlowTask(task)
+print json.dumps(res)
+
 #查看任务状态接口调用示例 : GetTaskByTaskID
 taskid = "40d309d3b2bf373cd3f08e5b5e1bddf720160816"
 # TaskID:任务ID
@@ -166,4 +170,17 @@ res = client.GetInterfaceNumber(StartUnixTime, EndUnixTime, Granularity, ResultT
 print json.dumps(res)
 
 res = client.GetScreenshotNumber(StartUnixTime, EndUnixTime, Granularity, ResultType)
+print json.dumps(res)
+
+#控制台专用
+#发起媒体转码
+res = client.FetchObjectMediaProcess(task)
+print json.dumps(res)
+
+#查询任务列表
+res = client.ListFetchObjectMediaProcess(StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime)
+print json.dumps(res)
+
+#查询单个任务详情
+res = client.GetFetchObjectMediaProcess(ProcessTaskId="12121212")
 print json.dumps(res)
