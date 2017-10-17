@@ -4,7 +4,10 @@ from kscore.kls import getKlsClient
 import json
 
 if __name__ == "__main__":
+	#ks_access_key_id='xxxxxxxxxxxxxxxxxxxxxxxxxx'
+	#ks_secret_access_key='xxxxxxxxxxxxxxxxxxxxxxxxxx'
 	client = getKlsClient("kls", "cn-beijing-6",use_ssl=False)
+	#client = getKlsClient("kls", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
 	
 	param = {
 		"UniqueName":"test",
@@ -77,5 +80,9 @@ if __name__ == "__main__":
 
 	#踢拉流接口 : KillStreamCache
 	res = client.KillStreamCache(param)
+	print json.dumps(res)
+
+	#查询主播汇总实时信息接口 : ListRealtimeStreamsInfo
+	res = client.ListRealtimeStreamsInfo(param)
 	print json.dumps(res)
 

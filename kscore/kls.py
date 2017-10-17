@@ -59,6 +59,9 @@ class KlsClient:
   def CheckBlacklist(self,UniqueName="",App="",Pubdomain="",Stream=""):
     return self.client.check_blacklist(UniqueName = UniqueName,App = App, Pubdomain = Pubdomain,Stream = Stream)
 
+  def ListRealtimeStreamsInfo(self,param):
+    return self.client.list_realtime_streams_info(**param)
+
   def KillStreamCache(self,param):
     return self.client.kill_stream_cache(**param)
 
