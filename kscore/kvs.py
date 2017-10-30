@@ -37,13 +37,13 @@ class KvsClient:
 	def GetTaskByTaskID(self,TaskID=''):
 		return self.client.get_task_by_task_id(TaskID=TaskID)
 
-	def GetTaskList(self,StartDate=0,EndDate=0,Marker=0,Limit=100):
+	def GetTaskList(self,StartDate=0,EndDate=0,Marker=0,Limit=100,StartTime=0,EndTime=0,ErrorCode='',TaskStatus=''):
 		if StartDate == 0:
 			StartDate = int(time.strftime('%Y%m',time.localtime(time.time()))+"01")
 		if EndDate == 0:
-			return self.client.get_task_list(StartDate=StartDate,Marker=Marker,Limit=Limit)
+			return self.client.get_task_list(StartDate=StartDate,Marker=Marker,Limit=Limit,StartTime=StartTime,EndTime=EndTime,ErrorCode=ErrorCode,TaskStatus=TaskStatus)
 		else:
-			return self.client.get_task_list(StartDate=StartDate,EndDate=EndDate,Marker=Marker,Limit=Limit)
+			return self.client.get_task_list(StartDate=StartDate,EndDate=EndDate,Marker=Marker,Limit=Limit,StartTime=StartTime,EndTime=EndTime,ErrorCode=ErrorCode,TaskStatus=TaskStatus)
 
 	def DelTaskByTaskID(self,TaskID = ''):
 		return self.client.del_task_by_task_id(TaskID = TaskID)

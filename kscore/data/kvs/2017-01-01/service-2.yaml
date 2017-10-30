@@ -173,6 +173,14 @@ shapes:
     type: integer
   ProcessTaskId:
     type: string
+  ErrorCode:
+    type: string
+  TaskStatus:
+    type: string
+  StartTime:
+    type: integer
+  EndTime:
+    type: integer
   PresetInstance:
     type: structure
     members:
@@ -203,6 +211,14 @@ shapes:
         shape: Marker
       Limit:
         shape: Limit
+      ErrorCode:
+        shape: ErrorCode
+      TaskStatus:
+        shape: TaskStatus
+      StartTime:
+        shape: StartTime
+      EndTime:
+        shape: EndTime  
   GetTaskByTaskIDInstance:
     type: structure
     members:
