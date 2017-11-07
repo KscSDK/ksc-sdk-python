@@ -256,9 +256,3 @@ BUG FIXED 问题修正
 ::
 
     yum install python-devel
-
---------------------
-Contact Information
---------------------
-
-服 务 群 号: 580681922
