@@ -8,9 +8,6 @@ A low-level interface to a growing number of KSC Web Services.
 Install 安装
 ----------------
 
-+ pip 安装
-    + pip install ksc-sdk-python
-
 + github 安装
     + 通过 `GitHub <https://github.com/KscSDK/ksc-sdk-python>`__ 下载
     + 通过命令 python setup.py install 安装
@@ -21,7 +18,7 @@ Config 配置
 
 + 申请安全凭证：
 
-    在第一次使用云API之前，用户首先需要在金山云控制台IAM服务申请安全凭证，安全凭证包括access_key_id和secret_access_key,access_key_id 是用于标识API调用者的身份，secret_access_key是用于加密签名字符串和服务器端验证签名字符串的密钥。secret_access_key 必须严格保管，避免泄露。
+    在第一次使用云API之前，用户首先需要在金山云控制台申请安全凭证，安全凭证包括access_key_id和secret_access_key,access_key_id 是用于标识API调用者的身份，secret_access_key是用于加密签名字符串和服务器端验证签名字符串的密钥。secret_access_key 必须严格保管，避免泄露。
 
 + 通过文件配置及管理密钥，参考examples内示例：
 
@@ -259,9 +256,3 @@ BUG FIXED 问题修正
 ::
 
     yum install python-devel
-
---------------------
-Contact Information
---------------------
-
-服 务 群 号: 580681922
