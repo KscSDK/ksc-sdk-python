@@ -40,8 +40,8 @@ Config 配置
 
     from kscore.session import get_session
     # 密钥
-    ACCESS_KEY_ID = "AKLTyW1V6ZWET7aIvdeeIH1cwQ"
-    SECRET_ACCESS_KEY = "OEoTK4IgEBIq3rlFsbpcESs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ=="
+    ACCESS_KEY_ID = "your ak"
+    SECRET_ACCESS_KEY = "your sk"
 
     s = get_session()
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
