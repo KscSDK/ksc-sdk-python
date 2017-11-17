@@ -7,15 +7,15 @@ import json
 if __name__ == "__main__":
     client = getKetClient("ket", "cn-beijing-6",use_ssl=False)
 
-    uniqname = 'mytest'
-    presetname = 'testpreset'
-    appname = 'live'
-    description = 'just a demo'
+    uniqname = 'xxxx'
+    presetname = 'xxxx'
+    appname = 'xxxx'
+    description = 'xxxx'
     presettype = 4
-    streamid = 'myteststreamid'
-    taskid = 'd41d8cd98f00b204e9800998ecf8427e'
+    streamid = 'xxxx'
+    taskid = 'xxxx'
     outpull = 1
-    srcurl = "rtmp://qa-ws.test-rtmplive.ks-cdn.com/live/20160819"
+    srcurl = "xxxx"
 
     # 删除模板
     #res = client.DelPreset(App=appname, UniqName=uniqname, Preset=presetname)
@@ -115,11 +115,11 @@ if __name__ == "__main__":
        "App": appname,
        "StreamID": streamid,
        "Preset": presetname,
-       "PubDomain": "test.uplive.ksyun.com",
+       "PubDomain": "xxxx",
        "DurationHour":168,
        "SrcInfo": [
          {
-            "Path": "http://wangshuai9.ks3-cn-beijing.ksyun.com/ksyun.flv",
+            "Path": "xxxx",
             "Index": 0
          }
        ]
