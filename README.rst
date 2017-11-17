@@ -28,8 +28,8 @@ Config 配置
 ::
 
     [Credentials]
-    ks_access_key_id=AKLTyW1V6ZWET7aIvdeeIH1cwQ
-    ks_secret_access_key=OEoTK4IgEBIq3rlFsbpcESs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ==
+    ks_access_key_id=your ak
+    ks_secret_access_key=your sk
 
 + 或在程序运行时配置：
 
@@ -37,8 +37,8 @@ Config 配置
 
     from kscore.session import get_session
     # 密钥
-    ACCESS_KEY_ID = "AKLTyW1V6ZWET7aIvdeeIH1cwQ"
-    SECRET_ACCESS_KEY = "OEoTK4IgEBIq3rlFsbpcESs87w513D6aOwdXxP6QHuvWlonSRYeKQyTzqc1XkUvpuQ=="
+    ACCESS_KEY_ID = "your ak"
+    SECRET_ACCESS_KEY = "your sk"
 
     s = get_session()
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
@@ -177,14 +177,14 @@ Examples 示例
 
     from kscore.session import get_session
     import json
-    
+
     if __name__=="__main__":
-        
+
         #初始化
         s = get_session()
         client = s.create_client("offline", "cn-beijing-6", use_ssl=False)
-        
-        #创建模板接口调用示例 : preset  
+
+        #创建模板接口调用示例 : preset
         presetname = 'testpreset'
         description = 'just a demo'
         presetType = 'avop'
@@ -210,11 +210,11 @@ Examples 示例
         }
         res = client.preset(**param)
         print json.dumps(res)
-        
+
         #获取模板信息接口调用示例 : get_preset_detail
         res = client.get_preset_detail(preset = presetname)
         print json.dumps(res)
-        
+
 + CDN
 
 ::
@@ -230,7 +230,7 @@ Examples 示例
         res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainStatus='online',CdnType='download')
 
         print res
-        
+
 + 更多
 
 --------------------
