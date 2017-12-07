@@ -1385,7 +1385,7 @@ shapes:
   BpsDataByHostList:
     type: list
     member:
-      shape: BpsDataByHostList
+      shape: BpsDataByHost
     
   BpsDataByHostTime:
     type: structure

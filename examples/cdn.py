@@ -9,7 +9,7 @@ if __name__ == "__main__":
     client = s.create_client("cdn", use_ssl=False)
 
     ''' 
-    get_cdn_domains 查询域名列表
+    GetCdnDomains 查询域名列表
         
     Parameters:
         PageSize        long    分页大小，默认20，最大500，取值1～500间整数 
@@ -18,14 +18,13 @@ if __name__ == "__main__":
         DomainStatus    string  按域名状态过滤，默认为空，代表当前用户下所有域名状态全部
         CdnType         string  产品类型，取值为download:下载类加速,live:直播加速，多个产品类型之间用逗号（半角）间隔，默认为空，代表当前用户下全部产品类型
         FuzzyMatch      string  域名过滤是否使用模糊匹配，取值为on：开启，off：关闭，默认为on
-        
     Returns:
         <type 'dict'>
     '''
     #res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
        
     '''
-    add_cdn_domain_request 新增域名
+    AddCdnDomain 新增域名
     
     Parameters:
         DomainName      string      需要接入CDN的域名
@@ -1141,7 +1140,6 @@ if __name__ == "__main__":
         1、峰值带宽计算方法：在选定时间段内，取每5分钟有效带宽值进行降序排列，最高带宽就是峰值带宽
         2、realtime，峰值时间点，取每5分钟一个时间点，最高峰出现的时间点即为峰值时间
         最多可获取最近一年内93天跨度的数据
-
     请求参数：
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
@@ -1170,7 +1168,7 @@ if __name__ == "__main__":
     #
     # res = client.block_domain_url(**param)
     # print res
-
+    '''
     GetBlockUrlTask
         本接口用于获取屏蔽URL任务进度百分比及状态，查看任务是否在全网生效。
         支持根据URL获取数据
@@ -1357,7 +1355,7 @@ if __name__ == "__main__":
 	# json格式规则
     '''
     configs = {
-		"DomainId":"2D09NA6",
+		"DomainId":"2D09W48",
 		"CacheRuleConfig":{
 			"CacheRules":[
 				{ 
@@ -1391,8 +1389,7 @@ if __name__ == "__main__":
 				"IpList":"10.1.1.1" 
 			}
 	}
-    '''
-	
+    '''	
     #res = client.set_domain_configs(**configs)
 	
     '''
@@ -1416,7 +1413,8 @@ if __name__ == "__main__":
 		DataType	否	String	数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
 		ProtocolType	否	String	协议类型， 取值为http:http协议数据; https:https协议数据
     '''
-    #res = client.get_sub_domains_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    #res = client.get_sub_domains_bandwidth_data(DomainId='2D09W48',Domains='www.cmcm.com',StartTime='2017-11-06T00:00+0800',EndTime='2017-11-06T11:00+0800',Granularity='5',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    #print res
     
     '''
     GetSubDomainsFlowData 
@@ -1438,6 +1436,8 @@ if __name__ == "__main__":
 		DataType	否	String	数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
 		ProtocolType	否	String	协议类型， 取值为http:http协议数据; https:https协议数据
     '''
+    #res = client.get_sub_domains_flow_data(DomainId='2D09VK5',Domains='www.qq.com',StartTime='2017-11-19T08:00+0800',EndTime='2017-11-20T08:00+0800',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    '''
     GetBillingMode
         获取用户当前的计费方式。
         支持按产品类型查询
@@ -1449,7 +1449,7 @@ if __name__ == "__main__":
     '''
     # res = client.get_billing_mode(CdnType='live')
     # print res
-    #res = client.get_sub_domains_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    
     '''
     GetSubDomainsPvData 
 		获取泛域名次级域名请求数数据，包括边缘请求数、回源请求数数据，** 单位：byte***  支持按指定的起止时间查询，两者需要同时指定
@@ -1470,7 +1470,8 @@ if __name__ == "__main__":
 		DataType	否	String	数据类型， 取值为edge:边缘数据; origin:回源数据; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为 edge
 		ProtocolType	否	String	协议类型， 取值为http:http协议数据; https:https协议数据
     '''
-    #res = client.get_sub_domains_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    #res = client.get_sub_domains_pv_data(DomainId='2D09W48',Domains='www.cmcm.com',StartTime='2017-11-06T00:00+0800',EndTime='2017-11-06T11:00+0800',Granularity='5',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+   
     '''
     GetDomainsByOrigin 
 		此接口用于根据源站地址获取相应加速域名的列表。
@@ -1486,5 +1487,7 @@ if __name__ == "__main__":
 		此接口用于获取我们公司在CDN平台已配置的加速域名的CNAME后缀列表。
     '''
     res = client.get_cname_suffixs()
+    print res
+    
 	
 
