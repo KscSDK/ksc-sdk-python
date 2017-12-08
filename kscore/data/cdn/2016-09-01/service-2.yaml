@@ -3815,6 +3815,8 @@ shapes:
         shape: String
       Regions:
         shape: String
+      ProtocolType:
+        shape: String
 
   GetPeakBandwidthDataResponse:
     type: structure

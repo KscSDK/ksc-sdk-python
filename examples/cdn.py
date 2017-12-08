@@ -1147,9 +1147,10 @@ if __name__ == "__main__":
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+		
     '''
-    # res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU')
-    # print res
+    #res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU',ProtocolType='http')
+    #print res
 
     '''
     BlockDomainUrl
