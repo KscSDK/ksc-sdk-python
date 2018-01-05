@@ -629,6 +629,51 @@ operations:
       shape: HttpsGetCertRequest
     output:
       shape: HttpsGetCertResponse
+
+  SetVideoSeekConfig:
+    name: SetVideoSeekConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetVideoSeekConfig
+    input:
+      shape: SetVideoSeekConfigRequest
+
+  GetVideoSeekConfig:
+    name: GetVideoSeekConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/GetVideoSeekConfig
+    input:
+      shape: GetVideoSeekConfigRequest
+    output:
+      shape: VideoSeekConfigShape
+
+  SetHttpHeadersConfig:
+    name: SetHttpHeadersConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetHttpHeadersConfig
+    input:
+      shape: SetHttpHeadersConfigRequest
+
+  DeleteHttpHeadersConfig:
+    name: DeleteHttpHeadersConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/DeleteHttpHeadersConfig
+    input:
+      shape: DeleteHttpHeadersConfigRequest
+
+  GetHttpHeaderList:
+    name: GetHttpHeaderList
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/GetHttpHeaderList
+    input:
+      shape: GetHttpHeaderListRequest
+    output:
+      shape: HttpHeadListResponse
+
 #####################################
 shapes:
 
@@ -698,6 +743,64 @@ shapes:
     type: list
     member:
       shape: Domain
+
+  SetVideoSeekConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+
+  GetVideoSeekConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+
+  SetHttpHeadersConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - HeaderKey
+    - HeaderValue
+    members:
+      DomainId:
+        shape: String
+      HeaderKey:
+        shape: String
+      HeaderValue:
+        shape: String
+
+  DeleteHttpHeadersConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - HeaderKey
+    members:
+      DomainId:
+        shape: String
+      HeaderKey:
+        shape: String
+
+  GetHttpHeaderListRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+
+  HttpHeadListResponse:
+    type: structure
+    members:
+      HttpHeadList:
+        shape: HttpHeaderRuleList
   
   GetDomainLogsRequest:
     type: structure
