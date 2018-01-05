@@ -1484,11 +1484,61 @@ if __name__ == "__main__":
     #res = client.get_domains_by_origin(Origin='10.33.33.33')
 	
     '''
-    GetCnameSuffixs 
+    GetCnameSuffixs
 		此接口用于获取我们公司在CDN平台已配置的加速域名的CNAME后缀列表。
     '''
-    res = client.get_cname_suffixs()
-    print res
-    
-	
+    #res = client.get_cname_suffixs()
+    #print res
+
+    '''
+    SetVideoSeekConfig
+		此接口用于设置视频拖拽
+	Parameters:
+        DomainId	是	String	表示域名
+		Enable	是	枚举值为:on,off 表示开关
+    '''
+    #res = client.set_video_seek_config(DomainId="2D09HG3",Enable='off')
+    #print res
+
+    '''
+    GetVideoSeekConfig
+		此接口用于获取域名拖拽信息
+	Parameters:
+        DomainId	是	String	表示域名
+    '''
+    #res = client.get_video_seek_config(DomainId="2D09HG3")
+    #print res
+
+    '''
+    SetHttpHeadersConfig
+		此接口用于设置Http响应头
+	Parameters:
+        DomainId	是	String 表示域名
+        HeaderKey   是  String 表示设置的http头 只支持 Content-Type，Cache-Control，Content-Disposition，Content-Language，Expires，Access-Control-Allow-Origin，Access-Control-Allow-Methods，Access-Control-Max-Age，Access-Control-Expose-Headers 这9种
+        HeaderValue 是  String 表示设置http头vaule值
+    '''
+    #res = client.set_http_headers_config(DomainId='2D09HG3',HeaderKey='Expires',HeaderValue='20')
+    #print res
+
+    '''
+    DeleteHttpHeadersConfig
+		此接口用于删除Http响应头
+	Parameters:
+        DomainId	是	String 表示域名
+        HeaderKey   是  String 表示设置的http头 只支持 Content-Type，Cache-Control，Content-Disposition，Content-Language，Expires，Access-Control-Allow-Origin，Access-Control-Allow-Methods，Access-Control-Max-Age，Access-Control-Expose-Headers 这9种
+    '''
+    #res = client.delete_http_headers_config(DomainId='2D09HG3',HeaderKey='Expires')
+    #print res
+
+    '''
+    GetHttpHeaderList
+        此接口用于获取http响应头
+    Parameters:
+        DomainId	是	String 表示域名
+    '''
+    #res = client.get_http_header_list(DomainId='2D09HG3')
+    #print res
+
+
+
 
