@@ -20,6 +20,10 @@ Config 配置
 
     在第一次使用云API之前，用户首先需要在金山云控制台申请安全凭证，安全凭证包括access_key_id和secret_access_key,access_key_id 是用于标识API调用者的身份，secret_access_key是用于加密签名字符串和服务器端验证签名字符串的密钥。secret_access_key 必须严格保管，避免泄露。
 
++ 获取安全凭证方法：
+
+参见金山云文档： https://docs.ksyun.com/directories/1600
+
 + 通过文件配置及管理密钥，参考examples内示例：
 
     + 所在位置: '/etc/kscore.cfg' 或 './.kscore.cfg' 或 'C:\\kscore.cfg'
