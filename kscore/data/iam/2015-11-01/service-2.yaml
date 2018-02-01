@@ -60,6 +60,18 @@ operations:
       documentation: ""
     documentation: ""
 
+  GetAccountAllProjectList:
+    name: GetAccountAllProjectList
+    http:
+      method: GET
+      requestUri: /
+
+  GetProjectInstanceList:
+    name: GetProjectInstanceList
+    http:
+      method: GET
+      requestUri: /
+
 shapes:
 
   Id:
