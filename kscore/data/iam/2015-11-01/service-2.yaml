@@ -15,188 +15,277 @@ metadata:
 documentation: ''
 
 operations:
-
   CreateUser:
     name: CreateUser
     http:
       method: GET
-      requestUri: /
-    input:
-      shape: CreateUserRequest
-    output:
-      shape: UserResponse
-
-  DeleteUser:
-    name: DeleteUser
+  ListUsers:
+    name: ListUsers
     http:
       method: GET
-      requestUri: /
-    input:
-      shape: DeleteUserRequest
-
-
   UpdateUser:
     name: UpdateUser
     http:
       method: GET
-      requestUri: /
-    input:
-      shape: IamUser
-
-  ListUsers:
-    http:
-      method: GET
-
   GetUser:
     name: GetUser
     http:
       method: GET
-      requestUri: /
-    input:
-      shape: Id
-      documentation: ""
-    output:
-      shape: IamUser
-      documentation: ""
-    documentation: ""
-
+  DeleteUser:
+    name: DeleteUser
+    http:
+      method: GET
+  DetachUserPolicy:
+    name: DetachUserPolicy
+    http:
+      method: GET
+  ListAttachedUserPolicies:
+    name: ListAttachedUserPolicies
+    http:
+      method: GET
+  ListPolicyVersions:
+    name: ListPolicyVersions
+    http:
+      method: GET
+  SetDefaultPolicyVersion:
+    name: SetDefaultPolicyVersion
+    http:
+      method: GET
+  AttachUserPolicy:
+    name: AttachUserPolicy
+    http:
+      method: GET
+  DeletePolicyVersion:
+    name: DeletePolicyVersion
+    http:
+      method: GET
+  GetPolicyVersion:
+    name: GetPolicyVersion
+    http:
+      method: GET
+  CreatePolicyVersion:
+    name: CreatePolicyVersion
+    http:
+      method: GET
+  ListPolicies:
+    name: ListPolicies
+    http:
+      method: GET
+  GetPolicy:
+    name: GetPolicy
+    http:
+      method: GET
+  DeletePolicy:
+    name: DeletePolicy
+    http:
+      method: GET
+  CreatePolicy:
+    name: CreatePolicy
+    http:
+      method: GET
+  ChangePassword:
+    name: ChangePassword
+    http:
+      method: GET
+  UpdateLoginProfile:
+    name: UpdateLoginProfile
+    http:
+      method: GET
+  GetLoginProfile:
+    name: GetLoginProfile
+    http:
+      method: GET
+  CreateLoginProfile:
+    name: CreateLoginProfile
+    http:
+      method: GET
+  DeleteLoginProfile:
+    name: DeleteLoginProfile
+    http:
+      method: GET
+  GetAccountSummary:
+    name: GetAccountSummary
+    http:
+      method: GET
+  CreateAccessKey:
+    name: CreateAccessKey
+    http:
+      method: GET
+  ListAccessKeys:
+    name: ListAccessKeys
+    http:
+      method: GET
+  UpdateAccessKey:
+    name: UpdateAccessKey
+    http:
+      method: GET
+  DeleteAccessKey:
+    name: DeleteAccessKey
+    http:
+      method: GET
+  CreateVirtualMFADevice:
+    name: CreateVirtualMFADevice
+    http:
+      method: GET
+  ListVirtualMFADevices:
+    name: ListVirtualMFADevices
+    http:
+      method: GET
+  EnableMFADevice:
+    name: EnableMFADevice
+    http:
+      method: GET
+  DeactivateMFADevice:
+    name: DeactivateMFADevice
+    http:
+      method: GET
+  DeleteVirtualMFADevice:
+    name: DeleteVirtualMFADevice
+    http:
+      method: GET
+  GetVirtualMFADevice:
+    name: GetVirtualMFADevice
+    http:
+      method: GET
+  CreateRole:
+    name: CreateRole
+    http:
+      method: GET
+  DeleteRole:
+    name: DeleteRole
+    http:
+      method: GET
+  GetRole:
+    name: GetRole
+    http:
+      method: GET
+  ListRoles:
+    name: ListRoles
+    http:
+      method: GET
+  AttachRolePolicy:
+    name: AttachRolePolicy
+    http:
+      method: GET
+  DetachRolePolicy:
+    name: DetachRolePolicy
+    http:
+      method: GET
+  ListAttachedRolePolicies:
+    name: ListAttachedRolePolicies
+    http:
+      method: GET
+  UpdateRoleTrustAccounts:
+    name: UpdateRoleTrustAccounts
+    http:
+      method: GET
+  ListEntityForPolicy:
+    name: ListEntityForPolicy
+    http:
+      method: GET
+  GetAccountAllProjectList:
+    name: GetAccountAllProjectList
+    http:
+      method: GET
+  GetProjectInstanceList:
+    name: GetProjectInstanceList
+    http:
+      method: GET
+  ListEntitiesForPolicy:
+    name: ListEntitiesForPolicy
+    http:
+      method: GET
+  AssumeRole:
+    name: AssumeRole
+    http:
+      method: GET
+  GetUserSession:
+    name: GetUserSession
+    http:
+      method: GET
+  UpdateRole:
+    name: UpdateRole
+    http:
+      method: GET
+  UpdatePolicy:
+    name: UpdatePolicy
+    http:
+      method: GET
+  AccountListRoles:
+    name: AccountListRoles
+    http:
+      method: GET
+  CreateGroup:
+    name: CreateGroup
+    http:
+      method: GET
+  DeleteGroup:
+    name: DeleteGroup
+    http:
+      method: GET
+  DetachGroupPolicy:
+    name: DetachGroupPolicy
+    http:
+      method: GET
+  AttachGroupPolicy:
+    name: AttachGroupPolicy
+    http:
+      method: GET
+  ListGroupPolicies:
+    name: ListGroupPolicies
+    http:
+      method: GET
+  AddUserToGroup:
+    name: AddUserToGroup
+    http:
+      method: GET
+  GetGroup:
+    name: GetGroup
+    http:
+      method: GET
+  ListGroupsForUser:
+    name: ListGroupsForUser
+    http:
+      method: GET
+  ListGroups:
+    name: ListGroups
+    http:
+      method: GET
+  RemoveUserFromGroup:
+    name: RemoveUserFromGroup
+    http:
+      method: GET
+  UpdateGroup:
+    name: UpdateGroup
+    http:
+      method: GET
+  CreateAccount:
+    name: CreateAccount
+    http:
+      method: GET
+  VerificateCompany:
+    name: VerificateCompany
+    http:
+      method: GET
+  VerificatePerson:
+    name: VerificatePerson
+    http:
+      method: GET
 shapes:
-
   Id:
     type: string #list/map/structure
-
   Bool:
     type: bool
-
   Int:
     type: int
-
   DataTime:
     type: timestamp
-
   Empty:
     type: structure
     members: {}
     documentation: ""
-
   NonEmptyString:
     type: string
     min: 1
-
   Message:
     type: string
-
-  InstanceId:
-    type: structure
-    required:
-    - id
-    members:
-      id:
-        shape: Id
-    documentation: ""
-
-  ListUserResponse:
-    type: structure
-    members:
-      ListUserResult:
-        shape: ListUserResult
-      ResponseMetadata:
-        shape: ResponseMetadata
-
-  UserResponse:
-    type: structure
-    members:
-      User:
-        shape: IamUser
-      ErrNo:
-        shape: Int
-      ErrMsg:
-        shape: Message
-
-  CreateUserRequest:
-    type: structure
-    required:
-    - UserName
-    members:
-      UserName:
-        shape: NonEmptyString
-        documentation: ""
-      RealName:
-        shape: NonEmptyString
-        documentation: ""
-      NeedKey:
-        shape: Bool
-        documentation: ""
-
-  DeleteUserRequest:
-    type: structure
-    members:
-      UserName:
-        shape: DeleteUserList
-
-  DeleteUserList:
-    type: list
-    member:
-      shape: UserOnlyName
-
-  UserOnlyName:
-    type: structure
-    required:
-    - UserName
-    members:
-      UserName:
-        shape: NonEmptyString
-        documentation: ""
-
-  IamUser:
-    type: structure
-    required:
-    - UserName
-    - Id
-    members:
-      UserId:
-        shape: Id
-        documentation: ""
-      UserName:
-        shape: NonEmptyString
-        documentation: ""
-      RealName:
-        shape: NonEmptyString
-        documentation: ""
-      Path:
-        shape: NonEmptyString
-        documentation: ""
-      Krn:
-        shape: NonEmptyString
-        documentation: ""
-      CreateDate:
-        shape: DataTime
-        documentation: ""
-
-  ListUserResult:
-    type: structure
-    members:
-      Users:
-        shape: IamUserDict
-        documentation: ""
-      IsTruncated:
-        shape: Bool
-        documentation: ""
-
-  ResponseMetadata:
-    type: structure
-    members:
-      RequestId:
-        shape: Id
-        documentation: ""
-
-  IamUserDict:
-    type: structure
-    members:
-      member:
-        shape: IamUserList
-
-  IamUserList:
-    type: list
-    member:
-      shape: IamUser
