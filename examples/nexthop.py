@@ -17,7 +17,7 @@ vip = "172.18.0.253" #改成您的本机内网 VIP
 DestinationCidrBlock = '172.18.0.253/32' #修改为VIP 
 thisInstanceId = '1cf963ff-7847-4859-8462-5405f0facc1d' #当前主机的Id
 thatInstanceId = 'b141da5f-8e3e-44c0-ac0f-a0feccba78c7' #迁移前所在主机Id
-interface = {"eth0":"172.18.0.13"} #当前机器主网卡和主IP
+thisInstanceIp = "172.18.0.13" #当前机器IP
 ##################需修改部分End######################
 
 log = open('/var/log/keepalived.log', 'a+')
@@ -29,57 +29,26 @@ def get_now_time():
 def log_write(message=''):
     log.write(get_now_time() + " " + str(message) + "\n")
 
-def get_ip():
-    f = os.popen('ip addr show dev %s | grep %s | awk \'{print $2}\' | awk -F/ \'{print $1}\'' % (interface.keys()[0] , interface.values()[0]))
-    return f.read().strip()
 
 def findRoute():
 	for route in vpcClient.describe_routes()['RouteSet']:
 		if route['DestinationCidrBlock'] == DestinationCidrBlock:
-			print 'current route found'
+			log_write('an existing route found')
 			return route['RouteId']
-
-        print 'route not found'
+        log_write('route not found')
 def migrateVip():
-    params = {
-        'vpcId': vpcId,             
-        'privateIpAddress': vip,      
-        'thatInstanceId': thatInstanceId, 
-        'thisInstanceId': thisInstanceId 
-    }
-
-    log_write(" try set vip.")
-    retry_times_when_mgr_ip_got = 4
-    exceptimes = 0
-    get_ip_times = 0
+    param={'VpcId':vpcId,
+            'DestinationCidrBlock':DestinationCidrBlock,
+            'RouteType':'Host',
+            'InstanceId':thisInstanceId}
+    log_write("migrating vip to another host.")
     time.sleep(0.5)
     r = findRoute()
     if r:
-        vpcClient.delete_route(**{'RouteId':r})	
-    log_write(" now change the nexthop of vip to this host." + get_ip())
-    vpcClient.create_route(**{'VpcId':vpcId,'DestinationCidrBlock':DestinationCidrBlock,'RouteType':'Host','InstanceId':thisInstanceId})
-    while get_ip_times < 5:
-        log_write(" get_ip=" + get_ip())
-        if get_ip()==interface.values()[0]:
-            try:
-                i = 0
-                while i < retry_times_when_mgr_ip_got:
-                    state_file.seek(0)
-                    state = state_file.readline()
-                    if state == 'MASTER':
-                        break 
-                    i = i + 1
-                    time.sleep(2)
-                if i >= retry_times_when_mgr_ip_got:
-                    log_write(" set vip failed")
-                break
-            except Exception, e:
-                log_write(' exception:' + str(e))
-                exceptimes = exceptimes + 1
-                if exceptimes > 3:
-                    break
-        time.sleep(0.5)
-        get_ip_times = get_ip_times + 1
+        print vpcClient.delete_route(RouteId=r)
+    log_write(" now change the nexthop of vip to this host." + thisInstanceIp)
+    if vpcClient.create_route(**param):
+                log_write('migrating vip success')
 
 def print_help():
     log_write(
