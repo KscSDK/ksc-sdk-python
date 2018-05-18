@@ -1868,6 +1868,8 @@ shapes:
         shape: Double
       ReqHitRate:
         shape: Double
+      DomainId:
+        shape: String
       Provinces:
         shape: HitRateDataByProvinceList
   ProvHitRateDataByDomainList:
@@ -2531,6 +2533,38 @@ shapes:
         shape: Long
       Regions:
         shape: PvDataByRegionList
+      Provinces:
+        shape: PvDataProvincesList
+
+  PvDataProvincesList:
+    type: list
+    member:
+      shape: PvDataProvinces
+
+
+  PvDataProvinces:
+    type: structure
+    members:
+      Province:
+        shape: String
+      Pv:
+        shape: Long
+      Isps:
+        shape: PvDataIspsList
+
+  PvDataIspsList:
+    type: list
+    member:
+      shape: PvDataIsp
+
+  PvDataIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Pv:
+        shape: Long
+
   PvDataByDomainList:
     type: list
     member:
