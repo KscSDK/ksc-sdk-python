@@ -44,7 +44,18 @@ operations:
     name: ModifyAddress
     http:
       method: GET
-
+  AssociateAddressPortfwd:
+    name: AssociateAddressPortfwd
+    http:
+      method: GET
+  DisassociateAddressPortfwd:
+    name: DisassociateAddressPortfwd
+    http:
+      method: GET
+  DescribeAddressPortfwds:
+    name: DescribeAddressPortfwds
+    http:
+     method: GET
 
 shapes:
   Id:
