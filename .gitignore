@@ -1,0 +1,5 @@
+.idea*
+**/*.pyc
+build/
+dist/
+ksc_sdk_python.egg-info/

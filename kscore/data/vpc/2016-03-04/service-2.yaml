@@ -25,6 +25,10 @@ operations:
     name: DeleteVpc
     http:
       method: GET
+  ModifyVpc:
+    name: ModifyVpc
+    http:
+      method: GET
   DescribeVpcs:
     name: DescribeVpcs
     http:
@@ -55,6 +59,10 @@ operations:
       method: GET
   DescribeSubnetAvailableAddresses:
     name: DescribeSubnetAvailableAddresses
+    http:
+      method: GET
+  DescribeSubnetAllocatedIpAddresses:
+    name: DescribeSubnetAllocatedIpAddresses
     http:
       method: GET
   CreateRoute:
@@ -89,6 +97,10 @@ operations:
     name: DeleteNetworkAclEntry
     http:
       method: GET
+  ModifyNetworkAclEntry:
+    name: ModifyNetworkAclEntry
+    http:
+      method: GET
   DescribeNetworkAcls:
     name: DescribeNetworkAcls
     http:
@@ -111,6 +123,10 @@ operations:
       method: GET
   RevokeSecurityGroupEntry:
     name: RevokeSecurityGroupEntry
+    http:
+      method: GET
+  ModifySecurityGroupEntry:
+    name: ModifySecurityGroupEntry
     http:
       method: GET
   DescribeSecurityGroups:
@@ -141,8 +157,32 @@ operations:
     name: ModifyNat
     http:
       method: GET
+  AddNatIp:
+    name: AddNatIp
+    http:
+      method: GET
+  DeleteNatIp:
+    name: DeleteNatIp
+    http:
+      method: GET
   DescribeNats:
     name: DescribeNats
+    http:
+      method: GET
+  AssociateDirectConnectGateway:
+    name: AssociateDirectConnectGateway
+    http:
+      method: GET
+  DisassociateDirectConnectGateway:
+    name: DisassociateDirectConnectGateway
+    http:
+      method: GET
+  AssociateVpnGateway:
+    name: AssociateVpnGateway
+    http:
+      method: GET
+  DisassociateVpnGateway:
+    name: DisassociateVpnGateway
     http:
       method: GET
   AssociateNat:
@@ -157,16 +197,168 @@ operations:
     name: DescribeAvailabilityZones
     http:
       method: GET
+  CreateDirectConnect:
+    name: CreateDirectConnect
+    http:
+      method: GET
+  ModifyDirectConnect:
+    name: ModifyDirectConnect
+    http:
+      method: GET
+  DeleteDirectConnect:
+    name: DeleteDirectConnect
+    http:
+      method: GET
+  DescribeDirectConnects:
+    name: DescribeDirectConnects
+    http:
+      method: GET
+  CreateDirectConnectInterface:
+    name: CreateDirectConnectInterface
+    http:
+      method: GET
+  ModifyDirectConnectInterface:
+    name: ModifyDirectConnectInterface
+    http:
+      method: GET
+  DeleteDirectConnectInterface:
+    name: DeleteDirectConnectInterface
+    http:
+      method: GET
+  DescribeDirectConnectInterfaces:
+    name: DescribeDirectConnectInterfaces
+    http:
+      method: GET
+  CreateDirectConnectGateway:
+    name: CreateDirectConnectGateway
+    http:
+      method: GET
+  ModifyDirectConnectGateway:
+    name: ModifyDirectConnectGateway
+    http:
+      method: GET
+  DeleteDirectConnectGateway:
+    name: DeleteDirectConnectGateway
+    http:
+      method: GET
+  DescribeDirectConnectGateways:
+    name: DescribeDirectConnectGateways
+    http:
+      method: GET
+  AttachDirectConnectGateway:
+    name: AttachDirectConnectGateway
+    http:
+      method: GET
+  DetachDirectConnectGateway:
+    name: DetachDirectConnectGateway
+    http:
+      method: GET
+  CreateVpnGateway:
+    name: CreateVpnGateway
+    http:
+      method: GET
+  ModifyVpnGateway:
+    name: ModifyVpnGateway
+    http:
+      method: GET
+  DeleteVpnGateway:
+    name: DeleteVpnGateway
+    http:
+      method: GET
+  DescribeVpnGateways:
+    name: DescribeVpnGateways
+    http:
+      method: GET
+  CreateVpnTunnel:
+    name: CreateVpnTunnel
+    http:
+      method: POST
+  ModifyVpnTunnel:
+    name: ModifyVpnTunnel
+    http:
+      method: GET
+  DeleteVpnTunnel:
+    name: DeleteVpnTunnel
+    http:
+      method: GET
+  DescribeVpnTunnels:
+    name: DescribeVpnTunnels
+    http:
+      method: GET
+  CreateCustomerGateway:
+    name: CreateCustomerGateway
+    http:
+      method: GET
+  ModifyCustomerGateway:
+    name: ModifyCustomerGateway
+    http:
+      method: GET
+  DeleteCustomerGateway:
+    name: DeleteCustomerGateway
+    http:
+      method: GET
+  DescribeCustomerGateways:
+    name: DescribeCustomerGateways
+    http:
+      method: GET
+  DescribeTunnels:
+    name: DescribeTunnels
+    http:
+      method: GET
+  ModifyTunnel:
+    name: ModifyTunnel
+    http:
+      method: GET
+  AssociateSubnet:
+    name: AssociateSubnet
+    http:
+      method: GET
+  DisassociateSubnet:
+    name: DisassociateSubnet
+    http:
+      method: GET
+  AssociateRemoteCidr:
+    name: AssociateRemoteCidr
+    http:
+      method: GET
+  DisassociateRemoteCidr:
+    name: DisassociateRemoteCidr
+    http:
+      method: GET
+  CreateVpcPeeringConnection:
+    name: CreateVpcPeeringConnection
+    http:
+      method: GET
+  AcceptVpcPeeringConnection:
+    name: AcceptVpcPeeringConnection
+    http:
+      method: GET
+  RejectVpcPeeringConnection:
+    name: RejectVpcPeeringConnection
+    http:
+      method: GET
+  DeleteVpcPeeringConnection:
+    name: DeleteVpcPeeringConnection
+    http:
+      method: GET
+  ModifyVpcPeeringConnection:
+    name: ModifyVpcPeeringConnection
+    http:
+      method: GET
+  DescribeVpcPeeringConnections:
+    name: DescribeVpcPeeringConnections
+    http:
+      method: GET
 
 shapes:
   Id:
     type: string #list/map/structure
 
   Bool:
-    type: bool
+    type: boolean
 
   Int:
-    type: int
+    type: integer
 
   DataTime:
     type: timestamp

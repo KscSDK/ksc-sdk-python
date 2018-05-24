@@ -15,15 +15,22 @@ metadata:
 documentation: ''
 
 operations:
-  GetServiceIpData:
-    name: GetServiceIpData
+  GetCnameSuffixs:
+    name: GetCnameSuffixs
     http:
       method: GET
-      requestUri: /2016-09-01/domain/GetServiceIpData
-    input:
-      shape: GetServiceIpRequest
+      requestUri: /2016-09-01/domain/GetCnameSuffixs
     output:
-      shape: GetServiceIpResponse
+      shape: GetCnameSuffixsResponse
+  GetDomainsByOrigin:
+    name: GetDomainsByOrigin
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetDomainsByOrigin
+    input:
+      shape: GetDomainsByOriginRequest
+    output:
+      shape: GetDomainsByOriginResponse
   GetDomainLogServiceStatus:
     name: GetDomainLogServiceStatus
     http:
@@ -153,8 +160,34 @@ operations:
       shape: GetSrcHttpCodeDataRequest
     output:
       shape: GetSrcHttpCodeDataResponse
-
-
+  GetSubDomainsBandwidthData:
+    name: GetSubDomainsBandwidthData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetSubDomainsBandwidthData
+    input:
+      shape: GetSubDomainsBandwidthDataRequest
+    output:
+      shape: GetSubDomainsBandwidthDataResponse
+  GetSubDomainsFlowData:
+    name: GetSubDomainsFlowData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetSubDomainsFlowData
+    input:
+      shape: GetSubDomainsFlowDataRequest
+    output:
+      shape: GetSubDomainsFlowDataResponse
+  GetSubDomainsPvData:
+    name: GetSubDomainsPvData
+    http:
+      method: GET
+      requestUri: /2016-09-01/statistics/GetSubDomainsPvData
+    input:
+      shape: GetSubDomainsPvDataRequest
+    output:
+      shape: GetSubDomainsPvDataResponse
+      
   GetDomainLogs:
     name: GetDomainLogs
     http:
@@ -204,7 +237,17 @@ operations:
       shape: GetDomainConfigsRequest
     output:
       shape: GetDomainConfigsResponse
-      
+
+  SetDomainConfigs:
+    name: SetDomainConfigs
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetDomainConfigs
+    input:
+      shape: SetDomainConfigsRequest
+    output:
+      shape: SetDomainConfigsResponse
   ModifyCdnDomainBasicInfo:
     name: ModifyCdnDomainBasicInfo
     http:
@@ -528,6 +571,109 @@ operations:
     output:
       shape: GetPeakBandwidthDataResponse
 
+  BlockDomainUrl:
+    name: BlockDomainUrl
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/content/BlockDomainUrl
+
+  GetBlockUrlTask:
+    name: GetBlockUrlTask
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/content/GetBlockUrlTask
+    output:
+      shape: GetBlockUrlTaskResponse
+
+  GetBlockUrlQuota:
+    name: GetBlockUrlQuota
+    http:
+      method: GET
+      requestUri: /2016-09-01/content/GetBlockUrlQuota
+    output:
+      shape: GetBlockUrlQuotaResponse
+
+
+  ConfigCertificate:
+    name: ConfigCertificate
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/ConfigCertificate
+    input:
+      shape: HttpsConfCertRequest
+
+  SetCertificate:
+    name: SetCertificate
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/SetCertificate
+    input:
+      shape: HttpsSetCertRequest
+
+  RemoveCertificates:
+    name: HttpsRemoveCertRequest
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/RemoveCertificates
+    input:
+      shape: HttpsRemoveCertRequest
+
+  GetCertificates:
+    name: GetCertificates
+    http:
+      method: POST
+      requestUri: /2016-09-01/cert/GetCertificates
+    input:
+      shape: HttpsGetCertRequest
+    output:
+      shape: HttpsGetCertResponse
+
+  SetVideoSeekConfig:
+    name: SetVideoSeekConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetVideoSeekConfig
+    input:
+      shape: SetVideoSeekConfigRequest
+
+  GetVideoSeekConfig:
+    name: GetVideoSeekConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/GetVideoSeekConfig
+    input:
+      shape: GetVideoSeekConfigRequest
+    output:
+      shape: VideoSeekConfigShape
+
+  SetHttpHeadersConfig:
+    name: SetHttpHeadersConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetHttpHeadersConfig
+    input:
+      shape: SetHttpHeadersConfigRequest
+
+  DeleteHttpHeadersConfig:
+    name: DeleteHttpHeadersConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/DeleteHttpHeadersConfig
+    input:
+      shape: DeleteHttpHeadersConfigRequest
+
+  GetHttpHeaderList:
+    name: GetHttpHeaderList
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/GetHttpHeaderList
+    input:
+      shape: GetHttpHeaderListRequest
+    output:
+      shape: HttpHeadListResponse
+
 #####################################
 shapes:
 
@@ -597,6 +743,65 @@ shapes:
     type: list
     member:
       shape: Domain
+
+  SetVideoSeekConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+
+  GetVideoSeekConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+
+  SetHttpHeadersConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - HeaderKey
+    - HeaderValue
+    members:
+      DomainId:
+        shape: String
+      HeaderKey:
+        shape: String
+      HeaderValue:
+        shape: String
+
+  DeleteHttpHeadersConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - HeaderKey
+    members:
+      DomainId:
+        shape: String
+      HeaderKey:
+        shape: String
+
+  GetHttpHeaderListRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+
+  HttpHeadListResponse:
+    type: structure
+    members:
+      HttpHeadList:
+        shape: HttpHeaderRuleList
+  
   GetDomainLogsRequest:
     type: structure
     required:
@@ -644,7 +849,45 @@ shapes:
         shape: String
       DomainLogs:
         shape: DomainLogList
-        
+  GetCnameSuffixsResponse:
+    type: structure
+    members:
+      CnameSuffixs:
+        shape: CnameSuffixList
+  KscCnameSuffix:
+    type: structure
+    members:
+      CnameSuffix:
+        shape: String
+  CnameSuffixList:
+    type: list
+    member:
+      shape: KscCnameSuffix
+  
+  GetDomainsByOriginRequest:
+    type: structure
+    members:
+      Origin:
+        shape: String
+  GetDomainsByOriginResponse:
+    type: structure
+    members:
+      Domains:
+        shape: DomainsByOriginList
+  DomainsByOrigin:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      DomainName:
+        shape: String
+      CdnType:
+        shape: String
+  DomainsByOriginList:
+    type: list
+    member:
+      shape: DomainsByOrigin
+  
   GetCdnDomainsRequest:
     type: structure
     members:
@@ -701,11 +944,13 @@ shapes:
         shape: Integer
       Origin:  
         shape: String
+      SearchUrl:
+        shape: String
   
   AddCdnDomainResponse:
     type: structure
     members:
-      DomainID:   
+      DomainId:   
         shape: String
       DomainStatus:   
         shape: String
@@ -753,6 +998,8 @@ shapes:
         shape: String
       Origin:
         shape: String
+      SearchUrl:
+        shape: String
       CreatedTime:
         shape: String
       ModifiedTime:
@@ -772,6 +1019,8 @@ shapes:
   CacheRule:
     type: structure
     members:
+      CacheRuleType:
+        shape: String      
       Value:
         shape: String
       CacheTime:
@@ -793,7 +1042,9 @@ shapes:
   IpProtectionConfigShape:
     type: structure
     members:
-      IpProtectionType:
+      Enable:
+        shape: String
+      IpType:
         shape: String
       IpList:
         shape: String
@@ -824,6 +1075,8 @@ shapes:
       ReferType:
         shape: String
       ReferList:
+        shape: String
+      AllowEmpty:
         shape: String
         
   UrlAuthConfigShape:
@@ -945,7 +1198,28 @@ shapes:
         shape: TestUrlConfigShape
       HttpHeadersConfig:
         shape: HttpHeadersConfigShape
-        
+  SetDomainConfigsRequest:
+    type: structure
+    required:
+    - DomainId
+    members:
+      DomainId:
+        shape: String
+      IgnoreQueryStringConfig:
+        shape: IgnoreQueryStringConfigShape
+      BackOriginHostConfig:
+        shape: BackOriginHostConfigShape
+      ReferProtectionConfig:
+        shape: ReferProtectionConfigShape
+      CacheRuleConfig:
+        shape: CacheRuleConfigShape
+      IpProtectionConfig:
+        shape: IpProtectionConfigShape
+  SetDomainConfigsResponse:
+    type: structure
+    members:
+      RequestID:
+        shape: String
   ModifyCdnDomainBasicInfoRequest:
     type: structure
     required:
@@ -960,6 +1234,8 @@ shapes:
       OriginPort:
         shape: String
       Origin:
+        shape: String
+      SearchUrl:
         shape: String
         
   ModifyCdnDomainBasicInfoResponse:
@@ -1100,6 +1376,8 @@ shapes:
         shape: String
       DataType:
         shape: String
+      ProtocolType:
+        shape: String
     
   BpsDataByRegion: 
     type: structure
@@ -1168,7 +1446,87 @@ shapes:
         shape: String
       Datas:
         shape: BpsDataByTimeList
-        
+  ######查询子域名带宽封装######  
+  GetSubDomainsBandwidthDataRequest:
+    type: structure
+    required:
+    - Domains
+    - DomainId
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      ProtocolType:
+        shape: String
+  BpsDataByHost:
+    type: structure
+    members:
+      Domain:
+        shape: String
+      Bw:
+        shape: String
+      SrcBw:
+        shape: String
+      Regions:
+        shape: BpsDataByRegionList
+  BpsDataByHostList:
+    type: list
+    member:
+      shape: BpsDataByHost
+    
+  BpsDataByHostTime:
+    type: structure
+    members:
+      Time:
+        shape: String
+      Bw:
+        shape: Long
+      SrcBw:
+        shape: Long
+      Domains:
+        shape: BpsDataByHostList
+  BpsDataByHostTimeList:
+    type: list
+    member:
+      shape: BpsDataByHostTime
+      
+  GetSubDomainsBandwidthDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: BpsDataByHostTimeList
   #####流量查询封装#####
   GetFlowDataRequest:
     type: structure
@@ -1193,6 +1551,8 @@ shapes:
       Granularity:
         shape: String
       DataType:
+        shape: String
+      ProtocolType:
         shape: String
    
   FlowDataByRegion:
@@ -1262,7 +1622,88 @@ shapes:
         shape: String
       Datas:
         shape: FlowDataByTimeList
-        
+  #####子域名流量查询封装#####
+  GetSubDomainsFlowDataRequest:
+    type: structure
+    required:
+    - Domains
+    - DomainId
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      ProtocolType:
+        shape: String
+      
+  FlowDataByHost:
+    type: structure
+    members:
+      Domain:
+        shape: String
+      Flow:
+        shape: Long
+      SrcFlow:
+        shape: Long
+      Regions:
+        shape: FlowDataByRegionList
+  FlowDataByHostList:
+    type: list
+    member:
+      shape: FlowDataByHost
+  
+  FlowDataByHostTime:
+    type: structure
+    members:
+      Time: 
+        shape: String
+      Flow:
+        shape: Long
+      SrcFlow:
+        shape: Long
+      Domains:
+        shape: FlowDataByHostList
+  FlowDataByHostTimeList:
+    type: list
+    member:
+      shape: FlowDataByHostTime
+    
+  GetSubDomainsFlowDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: FlowDataByHostTimeList   
   ####查询日志设置####
   GetDomainLogServiceStatusRequest:
     type: structure
@@ -1427,6 +1868,8 @@ shapes:
         shape: Double
       ReqHitRate:
         shape: Double
+      DomainId:
+        shape: String
       Provinces:
         shape: HitRateDataByProvinceList
   ProvHitRateDataByDomainList:
@@ -1955,6 +2398,88 @@ shapes:
         shape: Long
       Datas:
         shape: UvDataByTimeList
+  ####子账号请求数查询####
+  GetSubDomainsPvDataRequest:
+    type: structure
+    required:
+    - Domains
+    - DomainId
+    - StartTime
+    - EndTime
+    - ResultType
+    members:
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      ProtocolType:
+        shape: String
+      
+  PvDataByHost:
+    type: structure
+    members:
+      Domain:
+        shape: String
+      Pv:
+        shape: Long
+      SrcPv:
+        shape: Long
+      Regions:
+        shape: PvDataByRegionList
+  PvDataByHostList:
+    type: list
+    member:
+      shape: PvDataByHost
+      
+  PvDataByHostTime:
+    type: structure
+    members:
+      Time: 
+        shape: String
+      Pv:
+        shape: Long
+      SrcPv:
+        shape: Long
+      Domains:
+        shape: PvDataByHostList
+  PvDataByHostTimeList:
+    type: list
+    member:
+      shape: PvDataByHostTime     
+  
+  GetSubDomainsPvDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      DomainId:
+        shape: String
+      Domains:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      Granularity:
+        shape: String
+      DataType:
+        shape: String
+      Datas:
+        shape: PvDataByHostTimeList
   ####请求数查询####
   GetPvDataRequest:
     type: structure
@@ -1979,6 +2504,8 @@ shapes:
       Granularity:
         shape: String
       DataType:
+        shape: String
+      ProtocolType:
         shape: String
         
   PvDataByRegion:
@@ -2006,6 +2533,38 @@ shapes:
         shape: Long
       Regions:
         shape: PvDataByRegionList
+      Provinces:
+        shape: PvDataProvincesList
+
+  PvDataProvincesList:
+    type: list
+    member:
+      shape: PvDataProvinces
+
+
+  PvDataProvinces:
+    type: structure
+    members:
+      Province:
+        shape: String
+      Pv:
+        shape: Long
+      Isps:
+        shape: PvDataIspsList
+
+  PvDataIspsList:
+    type: list
+    member:
+      shape: PvDataIsp
+
+  PvDataIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Pv:
+        shape: Long
+
   PvDataByDomainList:
     type: list
     member:
@@ -3099,12 +3658,6 @@ shapes:
       Datas:
         shape: TopOnlineUserDataByStreamList
 
-
-
-
-
-
-
   GetPlayTimeDataByStreamRequest:
     type: structure
     required:
@@ -3399,7 +3952,8 @@ shapes:
         shape: String
       Regions:
         shape: String
-
+      ProtocolType:
+        shape: String
 
   GetPeakBandwidthDataResponse:
     type: structure
@@ -3418,3 +3972,122 @@ shapes:
         shape: Long
       RealTime:
         shape: String
+
+  GetBlockUrlTaskResponse:
+    type: structure
+    members:
+      PageSize:
+        shape: Long
+      PageNumber:
+        shape: Long
+      TotalCount:
+        shape: Long
+      Datas:
+        shape: BlockUrlDataList
+
+  BlockUrlDataList:
+    type: list
+    member:
+      shape: BlockUrlData
+
+  BlockUrlData:
+    type: structure
+    members:
+      Url:
+        shape: String
+      Progress:
+        shape: Double
+      BlockUrlStatus:
+        shape: String
+      BlockTime:
+        shape: String
+      ExpireTime:
+        shape: String
+      Submitter:
+        shape: String
+
+  GetBlockUrlQuotaResponse:
+    type: structure
+    members:
+      BlockUrlQuota:
+        shape: Long
+      BlockUrlSurplus:
+        shape: Long
+
+  #### https ####
+  HttpsConfCertRequest:
+    type: structure
+    members:
+      Enable:
+        shape: String
+      DomainIds:
+        shape: String
+      CertificateId:
+        shape: String
+      CertificateName:
+        shape: String
+      ServerCertificate:
+        shape: String
+      PrivateKey:
+        shape: String
+
+  HttpsSetCertRequest:
+    type: structure
+    members:
+      CertificateId:
+        shape: String
+      CertificateName:
+        shape: String
+      ServerCertificate:
+        shape: String
+      PrivateKey:
+        shape: String
+
+  HttpsRemoveCertRequest:
+    type: structure
+    members:
+      CertificateIds:
+        shape: String
+
+  HttpsGetCertRequest:
+    type: structure
+    members:
+      PageSize:
+        shape: Long
+      PageNum:
+        shape: Long
+
+  HttpsGetCertResponse:
+      type: structure
+      members:
+        TotalCount:
+          shape: Long
+        Certificates:
+          shape: Certificates
+
+  Certificates:
+      type: list
+      member:
+        shape: HttpsCertificate
+
+  HttpsCertificate:
+      type: structure
+      members:
+        CertificateName:
+          shape: String
+        CertificateId:
+          shape: String
+        Enable:
+          shape: String
+        IssueTime:
+          shape: String
+        ExpirationTime:
+          shape: String
+        CertificateContent:
+          shape: String
+        CertificateType:
+          shape: String
+        IssueDomain:
+          shape: String
+        ConfigDomainNames:
+          shape: String

@@ -18,10 +18,6 @@ definitions:
     applies_when:
       socket_errors:
       - GENERAL_CONNECTION_ERROR
-  general_server_error:
-    applies_when:
-      response:
-        http_status_code: 500
   bad_gateway:
     applies_when:
       response:
@@ -44,8 +40,6 @@ retry:
     policies:
       general_socket_errors:
         "$ref": general_socket_errors
-      general_server_error:
-        "$ref": general_server_error
       service_unavailable:
         "$ref": service_unavailable
       limit_exceeded:

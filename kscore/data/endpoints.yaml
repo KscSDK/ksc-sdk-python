@@ -4,10 +4,10 @@ partitions:
 - partition: ksc
   partitionName: KSC China
   dnsSuffix: api.ksyun.com
-  regionRegex: "^cn\\-\\w+\\-\\d+$"
+  regionRegex: "^[a-z]{2,5}\\-\\w+\\-\\d+$"
   defaults:
     # eg: iam.cn-beijing-6.api.ksyun.com
-    hostname: "{service}.{region}.{dnsSuffix}"
+    hostname: "{service}.{dnsSuffix}"
     protocols:
     - http
     - https
@@ -43,6 +43,7 @@ partitions:
 
     cn-shanghai-3:
       description: China ShangHai (PengBoShiVPC)
+      
   # services
   services:
 

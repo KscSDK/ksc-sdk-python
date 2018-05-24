@@ -1,0 +1,170 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2015-11-01'
+  endpointPrefix: epc
+  jsonVersion: '1.1'
+  serviceFullName: epc Service
+  signatureVersion: v4
+  targetPrefix: epc
+  protocol: query-json
+
+operations:
+ CreateEpc:
+    name: CreateEpc
+    http:
+      method: GET
+ DeleteEpc:
+    name: DeleteEpc
+    http:
+      method: GET
+ ModifyEpc:
+    name: ModifyEpc
+    http:
+      method: GET
+ DescribeEpcs:
+    name: DescribeEpcs
+    http:
+      method: GET
+ StartEpc:
+    name: StartEpc
+    http:
+      method: GET
+ StopEpc:
+    name: StopEpc
+    http:
+      method: GET
+ RebootEpc:
+    name: RebootEpc
+    http:
+      method: GET
+ ReinstallEpc:
+    name: ReinstallEpc
+    http:
+      method: GET
+ ReinstallCustomerEpc:
+    name: ReinstallCustomerEpc
+    http:
+      method: GET
+ CreateImage:
+    name: CreateImage
+    http:
+      method: GET
+ ModifyImage:
+    name: ModifyImage
+    http:
+      method: GET
+ DeleteImage:
+    name: DeleteImage
+    http:
+      method: GET
+ DescribeImages:
+    name: DescribeImages
+    http:
+      method: GET
+ ModifyNetworkInterfaceAttribute:
+    name: ModifyNetworkInterfaceAttribute
+    http:
+      method: GET
+ ModifyDns:
+    name: ModifyDns
+    http:
+      method: GET
+ ModifySecurityGroup:
+    name: ModifySecurityGroup
+    http:
+      method: GET
+ ImportKey:
+    name: ImportKey
+    http:
+      method: GET
+ DeleteKey:
+    name: DeleteKey
+    http:
+      method: GET
+ CreateKey:
+    name: CreateKey
+    http:
+      method: GET
+ DescribeKeys:
+    name: DescribeKeys
+    http:
+      method: GET
+ DescribePhysicalMonitor:
+    name: DescribePhysicalMonitor
+    http:
+      method: GET
+ CreateRemoteManagement:
+    name: CreateRemoteManagement
+    http:
+      method: GET
+ ModifyRemoteManagement:
+    name: ModifyRemoteManagement
+    http:
+      method: GET
+ DeleteRemoteManagement:
+     name: DeleteRemoteManagement
+     http:
+       method: GET
+ GetDynamicCode:
+    name: GetDynamicCode
+    http:
+      method: GET
+ DescribeRemoteManagements:
+    name: DescribeRemoteManagements
+    http:
+      method: GET
+ DescribeEpcManagements:
+    name: DescribeEpcManagements
+    http:
+      method: GET
+ DescribeVpns:
+    name: DescribeVpns
+    http:
+      method: GET
+ DescribeCertificates:
+    name: DescribeCertificates
+    http:
+      method: GET
+ ModifyHyperThreading:
+     name: ModifyHyperThreading
+     http:
+       method: GET
+ ResetPassword:
+      name: ResetPassword
+      http:
+        method: GET
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: int
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""

@@ -11,10 +11,8 @@ if __name__ == "__main__":
 
     region='cn-beijing-6'
     #region='cn-shanghai-2'
-    vpcClient = s.create_client("vpc", region, use_ssl=True)
+    epcClient = s.create_client("epc", region, use_ssl=True)
+    allEpcs=epcClient.describe_epcs()
 
-    allVpcs=vpcClient.describe_vpcs()
-    #allNics=vpcClient.describe_network_interfaces()
+    prettyPrinter().pprint(allEpcs)
 
-
-    prettyPrinter().pprint(allVpcs)

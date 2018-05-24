@@ -1,0 +1,297 @@
+---
+version: '1.0'
+metadata:
+  apiVersion: '2017-01-01'
+  endpointPrefix: kls
+  jsonVersion: '1.1'
+  serviceFullName: KSC KLS Service
+  signatureVersion: v4
+  targetPrefix: kls
+  protocol: json2
+
+operations:
+  ForbidStream:
+    name: ForbidStream
+    http:
+      method: POST
+
+  ResumeStream:
+    name: ResumeStream
+    http:
+      method: POST
+
+  GetBlacklist:
+    name: GetBlacklist
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: GetBlacklistInstance
+
+  CheckBlacklist:
+    name: CheckBlacklist
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: CheckBlacklistInstance
+
+  ListRealtimePubStreamsInfo:
+    name: ListRealtimePubStreamsInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListRealtimePubStreamsInfoInstance
+
+  ListHistoryPubStreamsInfo:
+    name: ListHistoryPubStreamsInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryPubStreamsInfoInstance
+
+  ListHistoryPubStreamsErrInfo:
+    name: ListHistoryPubStreamsErrInfo
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryPubStreamsErrInfoInstance
+
+  ListStreamDurations:
+    name: ListStreamDurations
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListStreamDurationsInstance
+
+  CreateRecordTask:
+    name: CreateRecordTask 
+    http:
+      method: POST
+
+  CancelRecordTask:
+    name: CancelRecordTask
+    http:
+      method: POST
+
+  StartStreamRecord:
+    name: StartStreamRecord
+    http:
+      method: POST
+  
+  StopStreamRecord:
+    name: StopStreamRecord
+    http:
+      method: POST
+
+  ListRecordingTasks:
+    name: ListRecordingTasks
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListRecordingTasksInstance
+
+  ListHistoryRecordTasks:
+    name: ListHistoryRecordTasks
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: ListHistoryRecordTasksInstance
+
+  GetRecordTask:
+    name: GetRecordTask
+    http:
+      method: GET
+      requestUri: /
+    input:
+      shape: GetRecordTaskIsnstance
+
+  KillStreamCache:
+    name: KillStreamCache
+    http:
+      method: POST
+
+  ListRealtimeStreamsInfo:
+    name: ListRealtimeStreamsInfo
+    http:
+      method: POST
+
+shapes:  
+  UniqueName:
+    type: string
+  App:
+    type: string
+  Pubdomain:
+    type: string
+  Stream:
+    type: string
+  OrderTime:
+    type: integer
+  Marker:
+    type: integer
+  Limit:
+    type: integer
+  Marker:
+    type: integer
+  Limit:
+    type: integer
+  StartUnixTime:
+    type: integer
+  EndUnixTime:
+    type: integer
+  RecType:
+    type: integer
+  RecStatusType:
+    type: integer
+  
+  GetBlacklistInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+
+  CheckBlacklistInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+
+  ListRealtimePubStreamsInfoInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+
+  ListHistoryPubStreamsInfoInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+
+  ListHistoryPubStreamsErrInfoInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+  
+  ListStreamDurationsInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+
+  ListRecordingTasksInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      RecType:
+        shape: RecType
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
+      RecStatusType:
+        shape: RecStatusType
+
+  ListHistoryRecordTasksInstance:
+    type: structure
+    members:
+      UniqueName:
+        shape: UniqueName
+      App:
+        shape: App
+      Pubdomain:
+        shape: Pubdomain
+      Stream:
+        shape: Stream
+      RecType:
+        shape: RecType
+      StartUnixTime:
+        shape: StartUnixTime
+      EndUnixTime:
+        shape: EndUnixTime
+      OrderTime:
+        shape: OrderTime
+      Marker:
+        shape: Marker
+      Limit:
+        shape: Limit
