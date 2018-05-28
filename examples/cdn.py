@@ -7,6 +7,7 @@ if __name__ == "__main__":
 
     s = get_session()
     client = s.create_client("cdn", use_ssl=False)
+    clientv2 = s.create_client("cdnv2", use_ssl=False)
 
     ''' 
     GetCdnDomains 查询域名列表
@@ -42,6 +43,35 @@ if __name__ == "__main__":
     '''
     #res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='download',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com',SearchUrl="www.ksyun.com/test.html")
 
+    '''
+    AddCdnDomainV2 新增域名
+    
+    Parameters:
+        DomainName      string      需要接入CDN的域名
+        CdnType         string      加速域名的产品类型 download:下载类加速,live:直播加速
+        CdnSubType      string      加速业务子类型（业务子类型是为了细分业务，默认不填写）
+        CdnProtocol     string      客户访问边缘节点的协议。默认http，直播必须填写：http＋flv， hls，rtmp
+        BillingRegions  string      加速区域，默认CN， 可以输入多个，以逗号间隔
+        OriginType      string      源站类型 取值：ipaddr、 domain、KS3、ksvideo分别表示：IP源站、域名源站、KS3为源站、金山云视频云源站
+        OriginProtocol  string      回源协议，取值：http，rtmp，hls，https（当前版本不支持https回源)
+        OriginPort      integer     可以指定 443, 80。默认值80。
+        Origin          string      回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个
+        SearchUrl	String	是	用于探测的url,有且只能输入一个。前提是当用户输入了泛域名,客户域名不允许出现kingsoftspark单词，精确域名忽略
+    Returns:
+        <type 'dict'>
+    '''
+
+    data = {
+        "DomainName": "yxy1.baidu.com",
+        "CdnType": "download",
+        "CdnProtocol": "http",
+        "OriginType": "ipaddr",
+        "OriginProtocol": "http",
+        "Origin": "110.110.110.110",
+
+    }
+    res = clientv2.add_cdn_domain(**data)
+    print res
 
     '''
     GetCdnDomainBasic 查询域名基础信息

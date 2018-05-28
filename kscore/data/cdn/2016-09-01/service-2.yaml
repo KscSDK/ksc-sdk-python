@@ -9,7 +9,7 @@ metadata:
   jsonVersion: '1.1'
   serviceFullName: cdn Service
   signatureVersion: v4
-  targetPrefix: cdn
+  targetPrefix: cdnv2
   protocol: query-json
 
 documentation: ''
@@ -217,7 +217,7 @@ operations:
       shape: AddCdnDomainRequest
     output:
       shape: AddCdnDomainResponse
-  
+
   GetCdnDomainBasicInfo:
     name: GetCdnDomainBasicInfo
     http:
