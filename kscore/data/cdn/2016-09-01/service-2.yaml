@@ -674,6 +674,16 @@ operations:
     output:
       shape: HttpHeadListResponse
 
+  GetLivePlayStatData:
+    name: GetLivePlayStatData
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: GetLivePlayStatDataRequest
+    output:
+      shape: GetLivePlayStatDataResponse
+
 #####################################
 shapes:
 
@@ -4091,3 +4101,72 @@ shapes:
           shape: String
         ConfigDomainNames:
           shape: String
+
+  GetLivePlayStatDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String
+
+  GetLivePlayStatDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String
+      Datas:
+        shape: PlayStatDataByDomainList
+
+  PlayStatDataByDomainList:
+    type: list
+    member:
+      shape: PlayStatDataByDomain
+
+  PlayStatDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Bw:
+        shape: Long
+      Flow:
+        shape: Long
+      OnlineUser:
+        shape: Long
+      Streams:
+        shape: PlayStatDataByStreamList
+
+  PlayStatDataByStreamList:
+    type: list
+    member:
+      shape: PlayStatDataByStream
+
+  PlayStatDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      Bw:
+        shape: Long
+      Flow:
+        shape: Long
+      OnlineUser:
+        shape: Long

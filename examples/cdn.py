@@ -61,17 +61,17 @@ if __name__ == "__main__":
         <type 'dict'>
     '''
 
-    data = {
-        "DomainName": "yxy1.baidu.com",
-        "CdnType": "download",
-        "CdnProtocol": "http",
-        "OriginType": "ipaddr",
-        "OriginProtocol": "http",
-        "Origin": "110.110.110.110",
-
-    }
-    res = clientv2.add_cdn_domain(**data)
-    print res
+    # data = {
+    #     "DomainName": "yxy1.baidu.com",
+    #     "CdnType": "download",
+    #     "CdnProtocol": "http",
+    #     "OriginType": "ipaddr",
+    #     "OriginProtocol": "http",
+    #     "Origin": "110.110.110.110",
+    #
+    # }
+    # res = clientv2.add_cdn_domain(**data)
+    # print res
 
     '''
     GetCdnDomainBasic 查询域名基础信息
@@ -965,8 +965,8 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
     '''
-    res = client.get_province_and_isp_pv_data(StartTime='2018-05-17T13:45+0800',EndTime='2018-05-17T13:55+0800',CdnType='download',Isps='UN',Granularity=5,ResultType=1)
-    print res
+    # res = client.get_province_and_isp_pv_data(StartTime='2018-05-17T13:45+0800',EndTime='2018-05-17T13:55+0800',CdnType='download',Isps='UN',Granularity=5,ResultType=1)
+    # print res
     '''
     GetSrcHttpCodeData 
         获取域名一段时间内的回源Http状态码访问次数及占比数据（用于绘制饼图）
@@ -1571,5 +1571,30 @@ if __name__ == "__main__":
     #print res
 
 
+    '''
+    GetLivePlayStatData    本接口用于获取某个时间点的播放统计信息，包括带宽、流量、在线人数，包括流维度和域名维度的数据。单位：带宽bps，流量：byte，在线人数：个<p>
+            * 只设置起始时间，代表起始时间这5分钟的数据。
+              支持批量域名过滤查询，多个域名ID用逗号（半角）分隔
+              最多可获取最近62天内的数据
+              时效性：5-10分钟延迟
+              接口性能：接口最大吞吐量为10000，即所有DomainId下的流总数<= 10000。
+              只支持直播业务
+              使用场景：
 
+              客户查询一个单位时间（5分钟）内的直播总量数据、流维度数据，进行数据保存及数据分析
+              说明：
+
+              本接口的流维度数据仅支持HDL、RTMP协议，不支持HLS协议。如果输入中含有HLS协议的域名，HLS协议的域名仅返回域名级数据，不包含流维度数据。
+              仅能返回在线人数Top 1万的流记录。如果您的单域名下同时存在的流数量超过1万个，建议在应用场景上分域名处理，保障每个域名下同时存在的流数小于1万个。
+              由于域名维度的数据与流维度的数据计算方式不同，域名维度的数据，与流维度的数据的加和，二者会有一定偏差。<p>
+
+    Parameters:
+        StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
+        DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
+        Regions     String  计费区域名称，取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多计费区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+        ResultType  String  取值为0：只返回域名级别的汇总数据；1：返回域名级别+流维度的详细数据；
+        LimitN 否 Int Top条数，取值为1-200，最大200，默认100
+    '''
+    res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='1', Regions='CN', LimitN='100')
+    print(res)
 
