@@ -684,6 +684,16 @@ operations:
     output:
       shape: GetLivePlayStatDataResponse
 
+  IpCheck:
+    name: IpCheck
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: IpCheckRequest
+    output:
+      shape: IpCheckResponse
+
 #####################################
 shapes:
 
@@ -4170,3 +4180,23 @@ shapes:
         shape: Long
       OnlineUser:
         shape: Long
+
+  IpCheckRequest:
+    type: structure
+    members:
+      Ip:
+        shape: String
+
+  IpCheckResponse:
+    type: structure
+    members:
+      CdnIp:
+        shape: String
+      Isp:
+        shape: String
+      Region:
+        shape: String
+      Province:
+        shape: String
+      City:
+        shape: String
