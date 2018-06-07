@@ -13,15 +13,12 @@ region='cn-beijing-6'   #region code
 vpcId = '1858a08a-6cc9-4278-8d0c-d536f441fe8e'  #vpcId
 ks_access_key_id = '您的ak'
 ks_secret_access_key = '您的sk'
-vip = "172.18.0.253" #改成您的本机内网 VIP
 DestinationCidrBlock = '172.18.0.253/32' #修改为VIP 
 thisInstanceId = '1cf963ff-7847-4859-8462-5405f0facc1d' #当前主机的Id
-thatInstanceId = 'b141da5f-8e3e-44c0-ac0f-a0feccba78c7' #迁移前所在主机Id
-thisInstanceIp = "172.18.0.13" #当前机器IP
 ##################需修改部分End######################
 
 log = open('/var/log/keepalived.log', 'a+')
-state_file = open('/var/keepalived/state', 'r')
+#state_file = open('/var/keepalived/state', 'r')
 
 def get_now_time():
     return time.strftime('[%Y-%m-%d %H:%M:%S]',time.localtime(time.time())) + '[pid' + str(os.getpid()) + ']' 
@@ -46,7 +43,7 @@ def migrateVip():
     r = findRoute()
     if r:
         print vpcClient.delete_route(RouteId=r)
-    log_write(" now change the nexthop of vip to this host." + thisInstanceIp)
+    log_write(" now change the nexthop of vip to this host." + thisInstanceId)
     if vpcClient.create_route(**param):
                 log_write('migrating vip success')
 
