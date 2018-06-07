@@ -4,7 +4,7 @@ from kscore.session import get_session
 
 if __name__ == "__main__":
     s = get_session()
-    #client = s.create_client("cdn", use_ssl=False)
+    client = s.create_client("cdn", use_ssl=False)
     clientv2 = s.create_client("cdnv2", use_ssl=False)
 
     ''' 
@@ -1596,5 +1596,5 @@ if __name__ == "__main__":
     #res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='0', Regions='CN', LimitN='100')
     #print(res)
 
-    #res = client.ip_check(Ip='1.0.0.1')
-    #print(res)
+    res = client.ip_check(Ip='1.0.0.1')
+    print(res)
