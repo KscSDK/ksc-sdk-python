@@ -4,7 +4,7 @@ from kscore.session import get_session
 
 if __name__ == "__main__":
     s = get_session()
-    client = s.create_client("cdn", use_ssl=False)
+    #client = s.create_client("cdn", use_ssl=False)
     clientv2 = s.create_client("cdnv2", use_ssl=False)
 
     ''' 
@@ -15,19 +15,19 @@ if __name__ == "__main__":
         PageNumber      long    取第几页。默认为1，取值1～10000 
         DomainName      string  按域名过滤，默认为空，代表当前用户下所有域名 
         DomainStatus    string  按域名状态过滤，默认为空，代表当前用户下所有域名状态全部
-        CdnType         string  产品类型，取值为download:下载类加速,live:直播加速，多个产品类型之间用逗号（半角）间隔，默认为空，代表当前用户下全部产品类型
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，多个产品类型之间用逗号（半角）间隔，默认为空，代表当前用户下全部产品类型
         FuzzyMatch      string  域名过滤是否使用模糊匹配，取值为on：开启，off：关闭，默认为on
     Returns:
         <type 'dict'>
     '''
-    # res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='download')
+    # res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='video')
 
     '''
     AddCdnDomain 新增域名
     
     Parameters:
         DomainName      string      需要接入CDN的域名
-        CdnType         string      加速域名的产品类型 download:下载类加速,live:直播加速
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载
         CdnSubType      string      加速业务子类型（业务子类型是为了细分业务，默认不填写）
         CdnProtocol     string      客户访问边缘节点的协议。默认http，直播必须填写：http＋flv， hls，rtmp
         BillingRegions  string      加速区域，默认CN， 可以输入多个，以逗号间隔
@@ -39,14 +39,14 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''
-    # res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='download',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com',SearchUrl="www.ksyun.com/test.html")
+     #res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='video',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com',SearchUrl="www.ksyun.com/test.html")
 
     '''
     AddCdnDomainV2 新增域名
     
     Parameters:
         DomainName      string      需要接入CDN的域名
-        CdnType         string      加速域名的产品类型 download:下载类加速,live:直播加速
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载
         CdnSubType      string      加速业务子类型（业务子类型是为了细分业务，默认不填写）
         CdnProtocol     string      客户访问边缘节点的协议。默认http，直播必须填写：http＋flv， hls，rtmp
         BillingRegions  string      加速区域，默认CN， 可以输入多个，以逗号间隔
@@ -59,17 +59,17 @@ if __name__ == "__main__":
         <type 'dict'>
     '''
 
-    # data = {
-    #     "DomainName": "yxy1.baidu.com",
-    #     "CdnType": "download",
-    #     "CdnProtocol": "http",
-    #     "OriginType": "ipaddr",
-    #     "OriginProtocol": "http",
-    #     "Origin": "110.110.110.110",
-    #
-    # }
-    # res = clientv2.add_cdn_domain(**data)
-    # print res
+    data = {
+        "DomainName": "cyw3.test.com",
+        "CdnType": "video",
+        "CdnProtocol": "http",
+        "OriginType": "ipaddr",
+        "OriginProtocol": "http",
+        "Origin": "110.110.110.110",
+
+    }
+    #res = clientv2.add_cdn_domain(**data)
+    #print res
 
     '''
     GetCdnDomainBasic 查询域名基础信息
@@ -290,7 +290,7 @@ if __name__ == "__main__":
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         Regions         String  区域名称，缺省为 CN;  取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         ResultType      String    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
@@ -299,7 +299,7 @@ if __name__ == "__main__":
 		ProtocolType	否	String	协议类型， 取值为http:htts协议数据; https:https协议数据
         
     '''
-    # res = client.get_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    # res = client.get_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
 
 
     '''
@@ -313,7 +313,7 @@ if __name__ == "__main__":
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         Regions         String  区域名称，缺省为 CN;  取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         ResultType      String    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
@@ -322,7 +322,7 @@ if __name__ == "__main__":
 		ProtocolType	否	String	协议类型， 取值为http:htts协议数据; https:https协议数据
         
     '''
-    # res = client.get_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
+    # res = client.get_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',Granularity='240',ResultType='1',Regions='CN',DataType='origin',ProtocolType='http')
 
 
     '''
@@ -339,7 +339,7 @@ if __name__ == "__main__":
     Parameters:        
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         Regions         String  区域名称，缺省为 CN;  取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         ResultType      String    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
@@ -348,7 +348,7 @@ if __name__ == "__main__":
 		ProtocolType	否	String	协议类型， 取值为http:htts协议数据; https:https协议数据
                
     '''
-    # res = client.get_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',Regions='CN',DataType='origin',ProtocolType='http')
+    # res = client.get_pv_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',Granularity='240',ResultType='0',Regions='CN',DataType='origin',ProtocolType='http')
 
 
     '''
@@ -363,14 +363,14 @@ if __name__ == "__main__":
     Parameters: 
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速  
+        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         ResultType      String  取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
         Granularity     String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度；以上粒度的带宽值均取该粒度时间段的峰值
         HitType         String  数据类型， 取值为flowhitrate:流量命中率; reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
         
     '''
-    # res = client.get_hit_rate_detailed_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',Granularity='240',ResultType='0',HitType='flowhitrate')
+    # res = client.get_hit_rate_detailed_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',Granularity='240',ResultType='0',HitType='flowhitrate')
 
 
     '''
@@ -388,11 +388,11 @@ if __name__ == "__main__":
     Parameters:    
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    # res = client.get_hit_rate_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    # res = client.get_hit_rate_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -409,7 +409,7 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         Provinces   String  省份区域名称， 取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
         Isps        String  运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
@@ -417,7 +417,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    # res = client.get_province_and_isp_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='1', Granularity='1440')
+    # res = client.get_province_and_isp_flow_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',ResultType='1', Granularity='1440')
 
 
     '''
@@ -435,7 +435,7 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         Provinces   String  省份区域名称， 取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
         Isps        String  运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
@@ -443,7 +443,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
        
     '''
-    # res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0', Granularity='1440')
+    # res = client.get_province_and_isp_bandwidth_data(DomainIds='2D09VK5',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',ResultType='0', Granularity='1440')
 
 
     '''
@@ -456,11 +456,11 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
                 
     '''
-    # res = client.get_http_code_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    # res = client.get_http_code_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -474,13 +474,13 @@ if __name__ == "__main__":
     Parameters:    
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         ResultType  String  取值为0：多域名多省份区域多运营商数据做合并；1：每个域名每个省份区域的每个运营商数据分别返回
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    # res = client.get_http_code_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download',ResultType='0')
+    # res = client.get_http_code_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',ResultType='0')
 
 
     '''
@@ -493,12 +493,12 @@ if __name__ == "__main__":
     Parameters:        
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         LimitN      String  热门Url条数，取值为1-200，最大200，默认100
     
     '''
-    # res = client.get_top_url_data(DomainIds='2D09RW5',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    # res = client.get_top_url_data(DomainIds='2D09RW5',LimitN='100',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -514,11 +514,11 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    # res = client.get_area_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    # res = client.get_area_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -533,11 +533,11 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
             
     '''
-    # res = client.get_isp_data(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='download')
+    # res = client.get_isp_data(StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -551,10 +551,10 @@ if __name__ == "__main__":
     Parameters:
         StartTime   String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime     String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType     String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         
     '''
-    # res = client.get_domain_ranking_list_data(StartTime='2016-11-20T08:00+0800',EndTime='2016-11-20T12:00+0800',CdnType='download')
+    # res = client.get_domain_ranking_list_data(StartTime='2016-11-20T08:00+0800',EndTime='2016-11-20T12:00+0800',CdnType='video')
 
 
     '''
@@ -824,13 +824,13 @@ if __name__ == "__main__":
     
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播,当前不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         ResultType      Long    取值为0：多域名多区域数据做合并；1：每个域名每个区域的数据分别返回
         Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；
     '''
-    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='video',Granularity=5,ResultType=1)
     '''
     GetTopReferData 获取域名某天内某一时段的热门页面访问数据排名，仅包含Top200且访问数大于15次的热门页面的访问次数、访问流量，并按次数排名
             支持批量域名查询，多个域名ID用逗号（半角）分隔
@@ -841,13 +841,13 @@ if __name__ == "__main__":
  
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，当前不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
     '''
-    # res = client.get_top_refer_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
-    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='download',Granularity=5,ResultType=1)
+    # res = client.get_top_refer_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='video',LimitN=5)
+    # res = client.get_uv_data(DomainIds='2D09QXN,2D09NRU',StartTime='2017-02-08T04:40+0800',EndTime='2017-02-08T07:26+0800',CdnType='video',Granularity=5,ResultType=1)
     '''
     GetTopIpData 
 	本接口用于获取域名某天内某一时段的TOP IP访问数据，仅包含Top200且访问次数大于15次的独立请求的IP的访问次数、访问流量，并按次数排序
@@ -859,12 +859,12 @@ if __name__ == "__main__":
  
     Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，当前不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         LimitN     Long     热门Refer条数，取值为1-200，最大200，默认100
     '''
-    # res = client.get_top_ip_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='download',LimitN=5)
+    # res = client.get_top_ip_data(DomainIds='2D09QJU',StartTime='2016-11-11T05:00+0800',EndTime='2016-11-11T05:05+0800',CdnType='video',LimitN=5)
     '''
     GetProvinceAndIspHitRateDetailedData 
 	获取域名流量命中率、请求数命中率数据，单位：百分比
@@ -884,7 +884,7 @@ if __name__ == "__main__":
 			 
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
@@ -894,7 +894,7 @@ if __name__ == "__main__":
 		HitType     String     数据类型， 取值为flowhitrate:流量命中率;reqhitrate:请求数命中率; 支持多类型选择，多个类型用逗号（半角）分隔，缺省为reqhitrate
     '''
 
-    # res = client.get_province_and_isp_hit_rate_detailed_data(StartTime='2018-05-16T10:50+0800',EndTime='2018-05-16T11:00+0800',CdnType='download',DomainIds="2D09FBW",ResultType=1,Granularity=5,HitType='reqhitrate,flowhitrate')
+    # res = client.get_province_and_isp_hit_rate_detailed_data(StartTime='2018-05-16T10:50+0800',EndTime='2018-05-16T11:00+0800',CdnType='video',DomainIds="2D09FBW",ResultType=1,Granularity=5,HitType='reqhitrate,flowhitrate')
     # print str(res)
     '''
     GetProvinceAndIspHttpCodeData 
@@ -909,13 +909,13 @@ if __name__ == "__main__":
 			 
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播,当前不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
 		Isps     String     运营商名称，取值详见枚举列表，支持多运营商查询，多个运营商用逗号（半角）分隔，缺省为全部运营商
     '''
-    # res = client.get_province_and_isp_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN')
+    # res = client.get_province_and_isp_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='video',Provinces='liaoning',Isps='UN')
     '''
     GetProvinceAndIspHttpCodeDetailedData 
         获取域名在中国大陆地区各省份及各运营商的Http状态码详细访问次数及占比数据（用于绘制状态码线图）
@@ -929,7 +929,7 @@ if __name__ == "__main__":
             客户查询单个域名的详细状态码数据，进行数据保存及数据分析
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,live:直播加速，当前不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，当前不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
@@ -937,7 +937,7 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
     '''
-    # res = client.get_province_and_isp_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
+    # res = client.get_province_and_isp_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='video',Provinces='liaoning',Isps='UN',Granularity=5,ResultType=1)
 
     '''
     GetProvinceAndIspPvData 
@@ -955,7 +955,7 @@ if __name__ == "__main__":
         注意： 此处的请求数，仅包含边缘层的请求数。
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
         Provinces     String     省份区域名称，取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
@@ -963,7 +963,7 @@ if __name__ == "__main__":
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
     '''
-    # res = client.get_province_and_isp_pv_data(StartTime='2018-05-17T13:45+0800',EndTime='2018-05-17T13:55+0800',CdnType='download',Isps='UN',Granularity=5,ResultType=1)
+    # res = client.get_province_and_isp_pv_data(StartTime='2018-05-17T13:45+0800',EndTime='2018-05-17T13:55+0800',CdnType='video',Isps='UN',Granularity=5,ResultType=1)
     # print res
     '''
     GetSrcHttpCodeData 
@@ -976,11 +976,11 @@ if __name__ == "__main__":
             客户查询单个域名或多个域名一段时间内各回源状态码访问次数，用于绘制状态码饼图。
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速，当前暂不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，当前暂不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
     '''
-    # res = client.get_src_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download')
+    # res = client.get_src_http_code_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='video')
 
     '''
     GetSrcHttpCodeDetailedData 
@@ -993,13 +993,13 @@ if __name__ == "__main__":
                 客户查询单个域名或多个域名回源状态码详细访问数据，用于绘制回源状态码线图
 	Parameters:
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
-        CdnType         String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速，当前暂不支持直播类型
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播,当前暂不支持直播类型
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
 		Granularity     Long     统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
 		ResultType     Long     取值为0：多域名数据做合并；1：每个域名的数据分别返回
 	'''
-    # res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='download',Granularity=5,ResultType=1)
+    # res = client.get_src_http_code_detailed_data(DomainIds='2D09SXW',StartTime='2017-02-08T10:00+0800',EndTime='2017-02-08T10:20+0800',CdnType='video',Granularity=5,ResultType=1)
 
 
     '''
@@ -1142,11 +1142,11 @@ if __name__ == "__main__":
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
         BillingMode     String  计费方式， 取值为 peakbw:峰值计费;peak95bw:95峰值计费;averagebw：日峰值平均值计费；monthflow：流量按月，只允许输入一种计费方式，缺省为 peakbw ；
     '''
-    # res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',DomainIds='',BillingMode='monthflow',Regions='CN,AS,NA,AU')
+    # res = client.get_billing_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='video',DomainIds='',BillingMode='monthflow',Regions='CN,AS,NA,AU')
     # print res
 
     '''
@@ -1174,11 +1174,11 @@ if __name__ == "__main__":
         DomainIds       String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         StartTime       String  获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如：2016-08-01T21:14+0800
         EndTime         String  结束时间需大于起始时间；获取日期格式按照ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
-        CdnType         String  产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
         Regions         String  区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
 		
     '''
-    # res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='download',Regions='CN,AS,NA,AU',ProtocolType='http')
+    # res = client.get_peak_bandwidth_data(StartTime='2017-02-01T00:00+0800',EndTime='2017-02-28T23:56+0800',CdnType='video',Regions='CN,AS,NA,AU',ProtocolType='http')
     # print res
 
     '''
@@ -1475,7 +1475,7 @@ if __name__ == "__main__":
            客户查询当前时刻用户维度下各产品类型的计费方式
     请求参数：
     Parameters:
-        CdnType   String   产品类型，只允许输入一种类型，取值为download:下载类加速,；live:直播加速
+        CdnType     String  产品类型，只允许输入一种类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播
     '''
     # res = client.get_billing_mode(CdnType='live')
     # print res
@@ -1565,8 +1565,8 @@ if __name__ == "__main__":
     Parameters:
         DomainId	是	String 表示域名
     '''
-    # res = client.get_http_header_list(DomainId='2D09HG3')
-    # print res
+    #res = client.get_http_header_list(DomainId='2D09HG3')
+    #print res
 
 
     '''
@@ -1593,8 +1593,8 @@ if __name__ == "__main__":
         ResultType  String  取值为0：只返回域名级别的汇总数据；1：返回域名级别+流维度的详细数据；
         LimitN 否 Int Top条数，取值为1-200，最大200，默认100
     '''
-    # res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='0', Regions='CN', LimitN='100')
-    # print(res)
+    #res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='0', Regions='CN', LimitN='100')
+    #print(res)
 
-    res = client.ip_check(Ip='1.0.0.1')
-    print(res)
+    #res = client.ip_check(Ip='1.0.0.1')
+    #print(res)
