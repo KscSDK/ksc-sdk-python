@@ -9,7 +9,7 @@ metadata:
   jsonVersion: '1.1'
   serviceFullName: cdn Service
   signatureVersion: v4
-  targetPrefix: cdn
+  targetPrefix: cdnv2
   protocol: query-json
 
 documentation: ''
@@ -217,7 +217,7 @@ operations:
       shape: AddCdnDomainRequest
     output:
       shape: AddCdnDomainResponse
-  
+
   GetCdnDomainBasicInfo:
     name: GetCdnDomainBasicInfo
     http:
@@ -673,6 +673,26 @@ operations:
       shape: GetHttpHeaderListRequest
     output:
       shape: HttpHeadListResponse
+
+  GetLivePlayStatData:
+    name: GetLivePlayStatData
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: GetLivePlayStatDataRequest
+    output:
+      shape: GetLivePlayStatDataResponse
+
+  IpCheck:
+    name: IpCheck
+    http:
+      method: POST
+      requestUri: /
+    input:
+      shape: IpCheckRequest
+    output:
+      shape: IpCheckResponse
 
 #####################################
 shapes:
@@ -4091,3 +4111,92 @@ shapes:
           shape: String
         ConfigDomainNames:
           shape: String
+
+  GetLivePlayStatDataRequest:
+    type: structure
+    required:
+    - StartTime
+    - ResultType
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String
+
+  GetLivePlayStatDataResponse:
+    type: structure
+    members:
+      StartTime:
+        shape: String
+      DomainIds:
+        shape: String
+      Regions:
+        shape: String
+      ResultType:
+        shape: String
+      LimitN:
+        shape: String
+      Datas:
+        shape: PlayStatDataByDomainList
+
+  PlayStatDataByDomainList:
+    type: list
+    member:
+      shape: PlayStatDataByDomain
+
+  PlayStatDataByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Bw:
+        shape: Long
+      Flow:
+        shape: Long
+      OnlineUser:
+        shape: Long
+      Streams:
+        shape: PlayStatDataByStreamList
+
+  PlayStatDataByStreamList:
+    type: list
+    member:
+      shape: PlayStatDataByStream
+
+  PlayStatDataByStream:
+    type: structure
+    members:
+      StreamUrl:
+        shape: String
+      Bw:
+        shape: Long
+      Flow:
+        shape: Long
+      OnlineUser:
+        shape: Long
+
+  IpCheckRequest:
+    type: structure
+    members:
+      Ip:
+        shape: String
+
+  IpCheckResponse:
+    type: structure
+    members:
+      CdnIp:
+        shape: String
+      Isp:
+        shape: String
+      Region:
+        shape: String
+      Province:
+        shape: String
+      City:
+        shape: String
