@@ -2,10 +2,13 @@
 #coding=utf-8
 
 from kscore.session import get_session
+from kscore.exceptions import ClientError
 import sys
+
 
 #使用方法
 '''
+专属宿主机批量创建
 python python DedicatedVmCreate.py inputfile.csv
 '''
 
@@ -14,6 +17,7 @@ python python DedicatedVmCreate.py inputfile.csv
 InstanceName,Vcpus,Memory,DataDiskSize,InstancePassword,PrivateIpAddress,SubnetId,SecurityGroupId,DedicatedHostId,ImageId
 Vm-1,4,8,100,123@123,10.0.0.1,9c29fe3e-6a16-41d0-85e3-94c52ffb1038,2d0ab207-6fa5-451c-b0f5-34d7244fd424,ac5a9f97-ab38-40ce-b284-df14282e0916,3dc0a83e-2dbf-4fd4-99c4-e620fcf4d849
 '''
+#可以参考 DedicatedVmCreate.csv
 #属性解释
 '''
 InstanceName 主机名称
@@ -41,7 +45,7 @@ def createSdkClinet(service,region):
     client = s.create_client(service, region, use_ssl=True)
     return client
 
-def createDedicatedVm(contents):
+def createDedicatedVm(contents,content):
     try:
         client = createSdkClinet("kec", region)
         param = {
@@ -64,21 +68,23 @@ def createDedicatedVm(contents):
         }
         client.run_instances(**param)
         print param["InstanceName"]+" create success "
-    except Exception:
-        print contents+" process error,please check"
+    except ClientError, e:
+      print content+" process error,please check error is "+str(e)
 
 
 def readConfigFileAndProcess():
     try:
         f = open(sys.argv[1])
-        content = f.readline()
-        while content:
-            content = f.readline()
-            if content != '':
-                createDedicatedVm(content.split(','))
-    except Exception:
+    except IOError:
         print 'File load Error'
         sys.exit(0)
+    content = f.readline()
+    content = content.replace("\n", "")
+    while content:
+        content = f.readline()
+        content = content.replace("\n", "")
+        if content != '':
+            createDedicatedVm(content.split(','),content)
 
 
 
