@@ -22,7 +22,7 @@ import re
 from kscore.exceptions import NoRegionError
 
 LOG = logging.getLogger(__name__)
-DEFAULT_URI_TEMPLATE = '{service}.{region}.{dnsSuffix}'
+DEFAULT_URI_TEMPLATE = '{service}.{dnsSuffix}'
 DEFAULT_SERVICE_DATA = {'endpoints': {}}
 
 
@@ -167,8 +167,8 @@ class EndpointResolver(BaseEndpointResolver):
         self._merge_keys(service_data.get('defaults', {}), result)
         self._merge_keys(partition.get('defaults', {}), result)
         hostname = result.get('hostname', DEFAULT_URI_TEMPLATE)
-        result['hostname'] = self._expand_template(
-            partition, result['hostname'], service_name, endpoint_name)
+        result['hostname'] = self._expand_domain_template(
+            partition,hostname, service_name)
         if 'sslCommonName' in result:
             result['sslCommonName'] = self._expand_template(
                 partition, result['sslCommonName'], service_name,
@@ -179,6 +179,10 @@ class EndpointResolver(BaseEndpointResolver):
         for key in from_data:
             if key not in result:
                 result[key] = from_data[key]
+
+    def _expand_domain_template(self, partition, template, service_name):
+        return template.format(
+            service=service_name, dnsSuffix=partition['dnsSuffix'])
 
     def _expand_template(self, partition, template, service_name,
                          endpoint_name):
