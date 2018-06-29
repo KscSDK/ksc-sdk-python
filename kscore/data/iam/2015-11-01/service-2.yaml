@@ -191,6 +191,10 @@ operations:
     name: GetProjectInstanceList
     http:
       method: GET
+  UpdateInstanceProjectId:
+    name: UpdateInstanceProjectId
+    http:
+      method: GET
   ListEntitiesForPolicy:
     name: ListEntitiesForPolicy
     http:
