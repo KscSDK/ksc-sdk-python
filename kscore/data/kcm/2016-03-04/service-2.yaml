@@ -1,0 +1,55 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: kcm
+  jsonVersion: '1.1'
+  serviceFullName: kcm Service
+  signatureVersion: v4
+  targetPrefix: kcm
+  protocol: query-json
+
+operations:
+  DescribeCertificates:
+    name: DescribeCertificates
+    http:
+      method: POST
+  CreateCertificate:
+    name: CreateCertificate
+    http:
+      method: POST
+
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: long
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""
