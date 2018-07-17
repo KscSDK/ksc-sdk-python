@@ -49,6 +49,14 @@ shapes:
 
   Message:
     type: string
+    
+  Dict:
+    type: map
+    key:
+      shape: String
+    value:
+      shape: String
+
 
   Metric:
     type: structure
@@ -67,6 +75,8 @@ shapes:
         documentation: ""
       MetricName:
         shape: String
+      Dimensions:
+        shape: Dict
 
   Project:
     type: structure
@@ -85,3 +95,5 @@ shapes:
         shape: String
       Aggregate:
         shape: String
+      Dimensions:
+        shape: Dict
