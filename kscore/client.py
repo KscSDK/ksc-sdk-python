@@ -528,6 +528,9 @@ class BaseClient(object):
             model=operation_model, context=request_context
         )
 
+        if operation_name == 'ListMetrics' or operation_name == 'GetMetricStatistics' or operation_name == 'GetMetricStatisticsBatch':
+            return parsed_response
+
         if http.status_code >= 300:
             raise ClientError(parsed_response, operation_name)
         else:
