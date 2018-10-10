@@ -16,7 +16,7 @@ URL = "https://github.com/kscsdk/ksc-sdk-python/"
 requires = ['jmespath>=0.7.1,<1.0.0',
             'python-dateutil>=2.1,<3.0.0',
             'docutils>=0.10',
-            'pyyaml==3.11']
+            'pyyaml==3.13']
 
 
 if sys.version_info[:2] == (2, 6):
@@ -42,7 +42,7 @@ setup(
     url='https://github.com/liuyichen/kscore',
     author_email=AUTHOR_EMAIL,
     scripts=[],
-    packages=find_packages(exclude=['tests*']),
+    packages=find_packages(exclude=['tests*','examples']),
     package_data={'kscore': ['data/*.json', 'data/*/*.json'],
                   'kscore.vendored.requests': ['*.pem']},
     include_package_data=True,
@@ -66,5 +66,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ),
 )
