@@ -15,13 +15,21 @@ operations:
     http:
       method: GET
     input:
-      shape: Metric
+      shape: MetricShape
   GetMetricStatistics:
     name: GetMetricStatistics
     http:
       method: GET
     input:
       shape: Project
+  GetMetricStatisticsBatch:
+    name: GetMetricStatisticsBatch
+    protocol: json
+    http:
+      method: POST
+      requestUri: ?Action=GetMetricStatisticsBatch&Version=2018-09-29
+    input:
+      shape: ProjectBatch
 
 shapes:
   Id:
@@ -58,7 +66,7 @@ shapes:
       shape: String
 
 
-  Metric:
+  MetricShape:
     type: structure
     members:
       InstanceID:
@@ -97,3 +105,40 @@ shapes:
         shape: String
       Dimensions:
         shape: Dict
+
+  Apps:
+    type: list
+    member:
+      shape: String
+
+
+  Metric:
+    type: structure
+    members:
+      InstanceID:
+        shape: String
+      MetricName:
+        shape: String
+#      Dimensions:
+#        shape: Dict
+
+  Metrics:
+    type: list
+    member:
+      shape: Metric
+
+  ProjectBatch:
+    type: structure
+    members:
+      Namespace:
+        shape: String
+      StartTime:
+        shape: String
+      EndTime:
+        shape: String
+      Period:
+        shape: String
+      Aggregate:
+        shape: Apps
+      Metrics:
+        shape: Metrics
