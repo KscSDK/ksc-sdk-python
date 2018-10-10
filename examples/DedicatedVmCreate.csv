@@ -1,0 +1,3 @@
+InstanceName,Vcpus,Memory,DataDiskSize,InstancePassword,PrivateIpAddress,SubnetId,SecurityGroupId,DedicatedHostId,ImageId
+Vm-1,4,8,100,123@123,10.0.0.1,9c29fe3e-6a16-41d0-85e3-94c52ffb1038,2d0ab207-6fa5-451c-b0f5-34d7244fd424,ac5a9f97-ab38-40ce-b284-df14282e0916,3dc0a83e-2dbf-4fd4-99c4-e620fcf4d849
+Vm-1,4,8,100,123@123,10.0.0.1,9c29fe3e-6a16-41d0-85e3-94c52ffb1038,2d0ab207-6fa5-451c-b0f5-34d7244fd424,ac5a9f97-ab38-40ce-b284-df14282e0916,3dc0a83e-2dbf-4fd4-99c4-e620fcf4d849

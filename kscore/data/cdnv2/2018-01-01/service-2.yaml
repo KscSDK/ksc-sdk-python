@@ -1,0 +1,134 @@
+---
+version: '2.1'
+
+metadata:
+  # Version 
+  apiVersion: '2018-01-01'
+  endpointPrefix: cdn
+  globalEndpoint: cdn.api.ksyun.com
+  jsonVersion: '1.1'
+  serviceFullName: cdn Service
+  signatureVersion: v4
+  targetPrefix: cdnv2
+  protocol: query-json
+
+documentation: ''
+
+operations:
+
+  
+  AddCdnDomain:
+    name: AddCdnDomain
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/AddCdnDomain
+    input:
+      shape: AddCdnDomainRequest
+    output:
+      shape: AddCdnDomainResponse
+
+#####################################
+shapes:
+
+  String:
+    type: string
+
+  Bool:
+    type: bool
+    
+  Integer:
+    type: integer
+    
+  Long:
+    type: long
+    
+  DataTime:
+    type: timestamp
+
+  Double:
+    type: double  
+  
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    
+  Domain:
+    type: structure
+    members:
+      DomainName:
+        shape: String
+      DomainId:
+        shape: String
+      Cname:
+        shape: String
+      CdnType:
+        shape: String
+      CdnSubType:
+        shape: String
+      IcpRegistration:
+        shape: String
+      DomainStatus:
+        shape: String
+      CreatedTime:
+        shape: String
+      ModifiedTime:
+        shape: String
+      Description:
+        shape: String
+  
+
+  AddCdnDomainRequest:
+    type: structure
+    required:
+    - DomainName
+    - CdnType
+    - CdnProtocol
+    - OriginType
+    - OriginProtocol
+    - Origin
+    members:
+      DomainName: 
+        shape: String
+      CdnType:  
+        shape: String
+      CdnSubType:  
+        shape: String
+      CdnProtocol:  
+        shape: String
+      BillingRegions:  
+        shape: String
+      OriginType:  
+        shape: String
+      OriginProtocol:  
+        shape: String
+      OriginPort: 
+        shape: Integer
+      Origin:  
+        shape: String
+      SearchUrl:
+        shape: String
+  
+  AddCdnDomainResponse:
+    type: structure
+    members:
+      DomainId:   
+        shape: String
+      DomainStatus:   
+        shape: String

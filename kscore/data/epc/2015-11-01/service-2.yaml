@@ -102,6 +102,10 @@ operations:
     name: ModifyRemoteManagement
     http:
       method: GET
+ DeleteRemoteManagement:
+     name: DeleteRemoteManagement
+     http:
+       method: GET
  GetDynamicCode:
     name: GetDynamicCode
     http:
@@ -122,6 +126,14 @@ operations:
     name: DescribeCertificates
     http:
       method: GET
+ ModifyHyperThreading:
+     name: ModifyHyperThreading
+     http:
+       method: GET
+ ResetPassword:
+      name: ResetPassword
+      http:
+        method: GET
 
 shapes:
   Id:
