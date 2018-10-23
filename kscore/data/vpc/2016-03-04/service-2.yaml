@@ -141,10 +141,6 @@ operations:
     name: DescribeNetworkInterfaces
     http:
       method: GET
-  DescribeSubnetAvailableAddresses:
-    name: DescribeSubnetAvailableAddresses
-    http:
-      method: GET
   CreateNat:
     name: CreateNat
     http:
@@ -195,18 +191,6 @@ operations:
       method: GET
   DescribeAvailabilityZones:
     name: DescribeAvailabilityZones
-    http:
-      method: GET
-  CreateDirectConnect:
-    name: CreateDirectConnect
-    http:
-      method: GET
-  ModifyDirectConnect:
-    name: ModifyDirectConnect
-    http:
-      method: GET
-  DeleteDirectConnect:
-    name: DeleteDirectConnect
     http:
       method: GET
   DescribeDirectConnects:
