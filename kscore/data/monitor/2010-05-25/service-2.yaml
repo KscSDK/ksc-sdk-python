@@ -30,6 +30,15 @@ operations:
       requestUri: ?Action=GetMetricStatisticsBatch&Version=2018-09-29
     input:
       shape: ProjectBatch
+  GetMetricStatisticsBatchV2:
+    name: GetMetricStatisticsBatchV2
+    protocol: json
+    http:
+      method: POST
+      requestUri: ?Action=GetMetricStatisticsBatch&Version=2018-11-14
+    input:
+      shape: ProjectBatch
+
 
 shapes:
   Id:
