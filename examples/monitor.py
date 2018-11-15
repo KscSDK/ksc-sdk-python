@@ -20,7 +20,7 @@ if __name__ == "__main__":
     m=client.get_metric_statistics(InstanceID="6f582c78-5d49-438e-bf2d-db4345daf503",Namespace="eip",MetricName="qos.bps_in",StartTime="2016-08-16T17:09:00Z",EndTime="2016-08-16T23:56:00Z",Period="600",Aggregate="Average,Max,Min,Count,Sum")
     print json.dumps(m,sort_keys=True,indent=4)
     '''
-    #GetMetricStatisticsBatch
+    #GetMetricStatisticsBatch       version=2018-09-29
     client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
     param={
            "Namespace": "eip",
@@ -46,7 +46,34 @@ if __name__ == "__main__":
     m=client.get_metric_statistics_batch(**param)
     print json.dumps(m,sort_keys=True,indent=4)
     '''
-
+   
+    '''
+    #GetMetricStatisticsBatch      version=2018-11-14
+    client = s.create_client("monitor", "cn-shanghai-3", use_ssl=True)
+    param={
+           "Namespace": "krds",
+           "StartTime": "2018-10-24T14:00:00Z",
+           "EndTime": "2018-10-24T16:59:00Z",
+           "Period": "1800",
+           "Aggregate": ["Max","Min","Avg"],
+           "Metrics": [
+                       {
+                        "InstanceID": "ee321b50-1d9b-474c-92d0-ba007f0c01f61",
+                        "MetricName":"rds.tps"
+                       },
+                       {
+                        "InstanceID": "ee321b50-1d9b-474c-92d0-ba007f0c01f6",
+                        "MetricName":"rds.qps"
+                       },
+                       {
+                        "InstanceID": "ee321b50-1d9b-474c-92d0-ba007f0c01f6",
+                        "MetricName":"rds.qpss"
+                       }
+                     ]
+          }
+    m=client.get_metric_statistics_batch_v2(**param)
+    print json.dumps(m,sort_keys=True,indent=4)
+    '''
 
     '''
     docker（kce） 没有InstanceId，需要设置Dimensions。且Dimensions只支持docker（kce）产品线，其余产品线不支持。
