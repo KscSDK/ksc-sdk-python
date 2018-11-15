@@ -529,9 +529,9 @@ class BaseClient(object):
         )
         
         if (operation_name == 'ListMetrics' or 
-	operation_name == 'GetMetricStatistics' or 
-	operation_name == 'GetMetricStatisticsBatch' or 
-	operation_name == 'GetMetricStatisticsBatchV2'):
+        operation_name == 'GetMetricStatistics' or 
+        operation_name == 'GetMetricStatisticsBatch' or 
+        operation_name == 'GetMetricStatisticsBatchV2'):
             return parsed_response
 
         if http.status_code >= 300:
