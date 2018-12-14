@@ -694,6 +694,14 @@ operations:
     output:
       shape: IpCheckResponse
 
+  SetRequestAuthConfig:
+    name: SetRequestAuthConfig
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetRequestAuthConfig
+    input:
+      shape: SetRequestAuthConfigRequest
+
 #####################################
 shapes:
 
@@ -1188,6 +1196,21 @@ shapes:
     members:
       HttpHeaderRules:
         shape: HttpHeaderRuleList
+  RequestAuthConfigShape:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+      AuthType:
+        shape: String
+      Key1:
+        shape: String
+      Key2:
+        shape: String
+      ExpirationTime:
+        shape: String
   ##
   GetDomainConfigsResponse:    
     type: structure
@@ -1218,6 +1241,8 @@ shapes:
         shape: TestUrlConfigShape
       HttpHeadersConfig:
         shape: HttpHeadersConfigShape
+      RequestAuthConfig:
+        shape: RequestAuthConfigShape
   SetDomainConfigsRequest:
     type: structure
     required:
@@ -4199,4 +4224,23 @@ shapes:
       Province:
         shape: String
       City:
+        shape: String
+
+  SetRequestAuthConfigRequest:
+    type: structure
+    required:
+    - DomainId
+    - Enable
+    members:
+      DomainId:
+        shape: String
+      Enable:
+        shape: String
+      AuthType:
+        shape: String
+      Key1:
+        shape: String
+      Key2:
+        shape: String
+      ExpirationTime:
         shape: String
