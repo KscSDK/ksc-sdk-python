@@ -694,6 +694,16 @@ operations:
     output:
       shape: IpCheckResponse
 
+   GetServiceIpData:
+    name: GetServiceIpData
+    http:
+      method: GET
+      requestUri: /2016-09-01/domain/GetServiceIpData
+    input:
+      shape: GetServiceIpRequest
+    output:
+      shape: GetServiceIpResponse
+
   SetRequestAuthConfig:
     name: SetRequestAuthConfig
     http:
