@@ -694,7 +694,7 @@ operations:
     output:
       shape: IpCheckResponse
 
-   GetServiceIpData:
+  GetServiceIpData:
     name: GetServiceIpData
     http:
       method: GET
