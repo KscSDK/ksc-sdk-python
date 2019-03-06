@@ -28,6 +28,9 @@ class KvsClient:
 	def CreateTask(self,task):
 		return self.client.create_task(**task)
 
+	def FetchMetaInfo(self,task):
+		return self.client.fetch_meta_info(**task)
+
 	def CreateFlowTask(self,task):
 		return self.client.create_flow_task(**task)
 
