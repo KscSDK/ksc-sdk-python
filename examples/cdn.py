@@ -91,12 +91,12 @@ if __name__ == "__main__":
         ConfigList  String  需要查询的配置，多个配置用逗号（半角）分隔，不填代表查询所有 
                             当前支持  cache_expired、ip、error_page、http_header、optimize、page_compress、
                             ignore_query_string、range、referer、req_auth、src_host、video_seek、waf,notify_url, 
-                            redirect_type 
+                            redirect_type,request_auth
         
     Returns:
     '''
-    # res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
-
+    res = client.get_domain_configs(DomainId='2D093GC',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced,request_auth')
+    print(res)
 
     '''
     ModifyCdnDomainBasicInfo 修改域名基础配置
@@ -1596,5 +1596,17 @@ if __name__ == "__main__":
     #res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='0', Regions='CN', LimitN='100')
     #print(res)
 
-    res = client.ip_check(Ip='1.0.0.1')
-    print(res)
+    #res = client.ip_check(Ip='1.0.0.1')
+    #print(res)
+    '''
+    SetRequestAuthConfig  设置时间戳+共享秘钥防盗链
+
+    Parameters:
+        DomainId        String  域名ID
+        Enable          String  配置是否开启或关闭 取值：on、off，默认值为off关闭。开启时，下述必须项为必填项；关闭时，只更改此标识，忽略后面的项目。
+        AuthType        String  类型，取值：typeA, typeB
+        Key1            String  主密钥
+        Key2            String  副密钥  多个逗号分隔
+        ExpirationTime  Long    有效时间
+    '''
+    #client.set_request_auth_config(DomainId='2D093GC', Enable='on', AuthType='typeB', Key1='111111', Key2='222222,333333', ExpirationTime='1000')

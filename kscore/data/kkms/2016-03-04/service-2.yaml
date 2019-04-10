@@ -1,0 +1,44 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: kkms
+  jsonVersion: '1.1'
+  serviceFullName: KSC VM Service
+  signatureVersion: v4
+  targetPrefix: kkms
+  protocol: query-json
+
+operations:
+
+  CreateKey:
+    http:
+      method: GET
+
+  ModifyKey:
+    http:
+      method: GET
+
+  ModifyKeyState:
+    http:
+      method: GET
+
+  DeleteKey:
+    http:
+      method: GET
+
+  DescribeKeys:
+    http:
+      method: GET
+
+  Encrypt:
+    http:
+      method: GET
+
+  Decrypt:
+    http:
+      method: GET
+
+  GenerateDataKey:
+    http:
+      method: GET
