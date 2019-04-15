@@ -19,3 +19,4 @@ operations:
   GetProductCode:
     http:
       method: GET
+      
