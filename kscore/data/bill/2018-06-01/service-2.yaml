@@ -6,7 +6,7 @@ metadata:
   jsonVersion: '1.1'
   serviceFullName: Bill Service
   signatureVersion: v4
-  targetPrefix: tag
+  targetPrefix: bill
   protocol: query-json
 
 operations:
