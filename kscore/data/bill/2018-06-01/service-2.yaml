@@ -1,0 +1,21 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2018-06-01'
+  endpointPrefix: bill
+  jsonVersion: '1.1'
+  serviceFullName: Bill Service
+  signatureVersion: v4
+  targetPrefix: bill
+  protocol: query-json
+
+operations:
+  GetMonthBill:
+    http:
+      method: GET
+  GetPostpayDetailBill:
+    http:
+      method: GET
+  GetProductCode:
+    http:
+      method: GET
