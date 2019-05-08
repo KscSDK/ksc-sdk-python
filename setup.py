@@ -5,7 +5,7 @@ import sys
 
 from setuptools import setup, find_packages
 
-AUTHOR = "liuyicheng,xuyaming"
+AUTHOR = "liuyichen,xuyaming"
 
 AUTHOR_EMAIL = "ksc_sdk@kingsoft.com,xuyaming@kingsoft.com"
 
