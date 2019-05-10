@@ -1157,16 +1157,25 @@ shapes:
   OriginAdvancedConfigShape:
     type: structure
     members:
+      DomainId:
+        shape: String
       Enable:
         shape: String
       OriginType:
+        shape: String
+      Origin:
         shape: String
       OriginPolicy:
         shape: String
       OriginPolicyBestCount:
         shape: Long
-      OriginAdvancedItems:
-        shape: OriginAdvancedItemList
+      BackupOriginType:
+        shape: String
+      BackupOrigin:
+        shape: String
+
+
+
    
   DetectOriginConfigShape:
     type: structure

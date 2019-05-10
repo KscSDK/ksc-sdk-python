@@ -247,20 +247,12 @@ if __name__ == "__main__":
     originParam = {
                     "DomainId":"2D09NSH",
                     "Enable":"on",
-                    "OriginPort":80,
                     "OriginPolicy":"quality",
                     "OriginPolicyBestCount":1,
                     "OriginType":"domain",
-                    "OriginAdvancedItems":[
-                        {
-                            "OriginLine":"default",
-                            "Origin":"www.b.xunfei.cn"
-                        },
-                        {
-                            "OriginLine":"cm",
-                            "Origin":"www.c.xunfei.cn"
-                        }
-                    ]
+                    "Origin":"www.b.xunfei.cn",
+                    "BackupOriginType":"ipaddr",
+                    "BackupOrigin":"1.1.1.1,2.2.2.2"
                   }
     '''
     # client.set_origin_advanced_config(**originParam)
