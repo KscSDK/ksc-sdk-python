@@ -5,13 +5,13 @@ import sys
 
 from setuptools import setup, find_packages
 
-AUTHOR = "liuyichen"
+AUTHOR = "liuyichen,xuyaming"
 
-AUTHOR_EMAIL = "ksc_sdk@kingsoft.com"
+AUTHOR_EMAIL = "ksc_sdk@kingsoft.com,xuyaming@kingsoft.com"
 
 KEYWORDS = "ksc-sdk-python"
 
-URL = "https://github.com/kscsdk/ksc-sdk-python/"
+URL = "https://github.com/KscSDK/ksc-sdk-python"
 
 requires = ['jmespath>=0.7.1,<1.0.0',
             'python-dateutil>=2.1,<3.0.0',
@@ -39,7 +39,7 @@ setup(
     long_description='A low-level interface to a growing number of KSC Web Services.',
     #long_description=open('README.rst', encoding='utf-8').read(),
     author=AUTHOR,
-    url='https://github.com/liuyichen/kscore',
+    url='https://github.com/KscSDK/ksc-sdk-python',
     author_email=AUTHOR_EMAIL,
     scripts=[],
     packages=find_packages(exclude=['tests*','examples']),
@@ -54,7 +54,7 @@ setup(
         ]
     },
     license="Apache License 2.0",
-    classifiers=(
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
@@ -68,5 +68,5 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-    ),
+    ],
 )
