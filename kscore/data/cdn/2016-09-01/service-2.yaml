@@ -15,6 +15,30 @@ metadata:
 documentation: ''
 
 operations:
+  SetPageCompressConfig:
+    name: SetPageCompressConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetPageCompressConfig
+  SetHttp2OptionConfig:
+    name: SetHttp2OptionConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetHttp2OptionConfig
+  SetForceRedirectConfig:
+    name: SetForceRedirectConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetForceRedirectConfig
+  SetErrorPageConfig:
+    name: SetErrorPageConfig
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2016-09-01/domain/SetErrorPageConfig
   GetCnameSuffixs:
     name: GetCnameSuffixs
     http:
@@ -1087,7 +1111,7 @@ shapes:
       IpList:
         shape: String
         
-  GzipConfigShape:   
+  PageCompressConfigShape:   
     type: structure
     members:
       Enable:
@@ -1097,6 +1121,8 @@ shapes:
     type: structure
     members:
       Enable:
+        shape: String
+      HashKeyArgs:
         shape: String
    
   BackOriginConfigShape:
@@ -1157,16 +1183,25 @@ shapes:
   OriginAdvancedConfigShape:
     type: structure
     members:
+      DomainId:
+        shape: String
       Enable:
         shape: String
       OriginType:
+        shape: String
+      Origin:
         shape: String
       OriginPolicy:
         shape: String
       OriginPolicyBestCount:
         shape: Long
-      OriginAdvancedItems:
-        shape: OriginAdvancedItemList
+      BackupOriginType:
+        shape: String
+      BackupOrigin:
+        shape: String
+
+
+
    
   DetectOriginConfigShape:
     type: structure
@@ -1209,8 +1244,6 @@ shapes:
   RequestAuthConfigShape:
     type: structure
     members:
-      DomainId:
-        shape: String
       Enable:
         shape: String
       AuthType:
@@ -1221,6 +1254,32 @@ shapes:
         shape: String
       ExpirationTime:
         shape: String
+  Http2OptionConfigShape:
+    type: structure
+    members:
+      Enable:
+        shape: String
+  ForceRedirectConfigShape:
+    type: structure
+    members:
+      RedirectType:
+        shape: String
+  ErrorPageConfigShape:
+    type: structure
+    members:
+      ErrorPages:
+        shape: ErrorPagesList
+  ErrorPagesList:
+    type: list
+    member:
+      shape: ErrorPageShape
+  ErrorPageShape:
+    type: structure
+    members:
+      ErrorHttpCode:
+        shape: String
+      CustomPageUrl:
+        shape: String
   ##
   GetDomainConfigsResponse:    
     type: structure
@@ -1229,30 +1288,32 @@ shapes:
         shape: CacheRuleConfigShape
       IpProtectionConfig:
         shape: IpProtectionConfigShape
-      GzipConfig:
-        shape: GzipConfigShape
+      PageCompressConfig:
+        shape: PageCompressConfigShape
       IgnoreQueryStringConfig:
         shape: IgnoreQueryStringConfigShape
       BackOriginConfig:
         shape: BackOriginConfigShape
       ReferProtectionConfig:
         shape: ReferProtectionConfigShape
-      UrlAuthConfig:
-        shape: UrlAuthConfigShape
       BackOriginHostConfig:
         shape: BackOriginHostConfigShape
       VideoSeekConfig:
         shape: VideoSeekConfigShape
       OriginAdvancedConfig:
         shape: OriginAdvancedConfigShape
-      DetectOriginConfig:
-        shape: DetectOriginConfigShape
       TestUrlConfig:
         shape: TestUrlConfigShape
       HttpHeadersConfig:
         shape: HttpHeadersConfigShape
       RequestAuthConfig:
         shape: RequestAuthConfigShape
+      Http2OptionConfig:
+        shape: Http2OptionConfigShape
+      ForceRedirectConfig:
+        shape: ForceRedirectConfigShape
+      ErrorPageConfig:
+        shape: ErrorPageConfigShape
   SetDomainConfigsRequest:
     type: structure
     required:
@@ -1339,6 +1400,8 @@ shapes:
       DomainId:
         shape: String
       Enable:
+        shape: String
+      HashKeyArgs:
         shape: String
         
   SetBackOriginHostConfigRequest:
