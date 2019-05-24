@@ -4,14 +4,14 @@ import json
 import time
 
 #没有配置kscore.cfg调用方式
-#ks_access_key_id='xxxxxxxxxxxxxxxxxxxx'
-#ks_secret_access_key='xxxxxxxxxxxxxxxxxxxxxxx'
+ks_access_key_id='xxxxx'
+ks_secret_access_key='xxxxxx'
 # 参数：服务service_name,大区region_name 
-#client = getKvsClient("offline", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
+client = getKvsClient("kvs", "cn-beijing-6",use_ssl=False,ks_access_key_id=ks_access_key_id,ks_secret_access_key=ks_secret_access_key)
 
 #配置kscore.cfg调用方式
 
-client = getKvsClient("kvs", "cn-beijing-6",use_ssl=False)
+#client = getKvsClient("kvs", "cn-beijing-6",use_ssl=False)
 
 #创建模板接口调用示例 : preset  
 presetname = 'xxxx'
@@ -181,4 +181,11 @@ print json.dumps(res)
 
 #查询单个任务详情
 res = client.GetFetchObjectMediaProcess(ProcessTaskId="12121212")
+print json.dumps(res)
+
+#同步获取视频源信息
+task = {
+    "SrcPath":"/xxx/000bab6c0ade5f816eef4a2f44a2a6cd.mp4"
+}
+res = client.FetchMetaInfo(task)
 print json.dumps(res)
