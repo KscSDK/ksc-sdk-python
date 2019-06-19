@@ -1,0 +1,62 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2017-04-01'
+  endpointPrefix: kcs
+  jsonVersion: '1.1'
+  serviceFullName: KCS Service
+  signatureVersion: v4
+  targetPrefix: kcs
+  protocol: kcs
+
+operations:
+  DescribeCacheReadonlyNode:
+    name: DescribeCacheReadonlyNode
+    http:
+      method: GET
+    input:
+      shape: CommonCacheRequest
+
+shapes:
+  Id:
+    type: string
+
+  Bool:
+    type: bool
+
+  Int:
+    type: integer
+
+  String:
+    type: string
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  CommonCacheRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    - CacheId
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      CacheId:
+        shape: NonEmptyString
+      SetCacheParameters:
+        shape: String
