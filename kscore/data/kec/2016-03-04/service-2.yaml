@@ -86,3 +86,7 @@ operations:
   ModifyImageAttribute:
     http:
       method: GET
+
+  DescribeRegions:
+    http:
+      method: GET
