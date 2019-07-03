@@ -105,6 +105,20 @@ operations:
     input:
       shape: CommonCacheRequest
 
+  DescribeRegions:
+    name: DescribeRegions
+    http:
+      method: GET
+    input:
+      shape: RegionRequest
+
+  DescribeAvailabilityZones:
+     name: DescribeAvailabilityZones
+     http:
+       method: GET
+     input:
+       shape: RegionRequest
+
 shapes:
   Id:
     type: string
@@ -145,6 +159,8 @@ shapes:
         shape: NonEmptyString
       CacheId:
         shape: NonEmptyString
+      SetCacheParameters:
+        shape: String
 
   CreateCacheRequest:
     type: structure
@@ -172,6 +188,16 @@ shapes:
         shape: NonEmptyString
       VnetId:
         shape: NonEmptyString
+      AvailableZone:
+        shape: String
+      IamProjectId:
+        shape: String
+      Protocol:
+        shape: String
+      PassWord:
+        shape: String
+      AvailableZone:
+        shape: String
 
   DescribeCachesRequest:
     type: structure
@@ -199,6 +225,12 @@ shapes:
         shape: Int
       OrderBy:
         shape: NonEmptyString
+      IamProjectId:
+        shape: String
+      Protocol:
+        shape: String
+      AvailableZone:
+        shape: String
 
   RenameCacheRequest:
     type: structure
@@ -216,6 +248,8 @@ shapes:
         shape: NonEmptyString
       CacheId:
         shape: NonEmptyString
+      AvailableZone:
+        shape: String
 
   ResizeCacheRequest:
     type: structure
@@ -233,6 +267,8 @@ shapes:
         shape: NonEmptyString
       Capacity:
         shape: Int
+      AvailableZone:
+        shape: String
 
   DelSecurityRuleRequest:
     type: structure
@@ -250,3 +286,20 @@ shapes:
         shape: NonEmptyString
       SecurityRuleId:
         shape: Int
+      AvailableZone:
+        shape: String
+
+  RegionRequest:
+    type: structure
+    required:
+    - Action
+    - Version
+    members:
+      Action:
+        shape: NonEmptyString
+      Version:
+        shape: NonEmptyString
+      Engine:
+        shape: NonEmptyString
+      Mode:
+        shape: String

@@ -49,3 +49,12 @@ if __name__ == "__main__":
 
     # 删除缓存服务安全规则
     #print(kcsClient.delete_cache_security_rule(**{'Action': 'DeleteCacheSecurityRule', 'Version': '2016-07-01', 'CacheId': '01988fc0-6041-49d2-b6b5-e2385e5d5edb', 'SecurityRuleId': 105}))
+
+    # 查询实例只读节点
+    # print(kcsClient.describe_cache_readonly_node(**{'Action': 'DescribeCacheReadonlyNode', 'Version': '2017-04-01', 'CacheId': '01988fc0-6041-49d2-b6b5-e2385e5d5edb'}))
+
+    # 查询可用区
+    # print(kcsClient.describe_az(**{'Action': 'DescribeAvailabilityZones', 'Version': '2017-04-01', 'Engine': 'redis', 'Mode':1}))
+
+    # 查询机房
+    # print(kcsClient.describe_region(**{'Action': 'DescribeRegions', 'Version': '2017-04-01', 'Engine': 'redis', 'Mode':1}))
