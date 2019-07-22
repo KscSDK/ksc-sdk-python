@@ -77,7 +77,7 @@ operations:
   SetCacheParameters:
     name: SetCacheParameters
     http:
-      method: PUT
+      method: PUTs
 
   DescribeCacheParameters:
     name: DescribeCacheParameters
@@ -197,6 +197,12 @@ shapes:
       PassWord:
         shape: String
       AvailableZone:
+        shape: String
+      BillType:
+        shape: Int
+      Duration:
+        shape: Int
+      DurationUnit:
         shape: String
 
   DescribeCachesRequest:
