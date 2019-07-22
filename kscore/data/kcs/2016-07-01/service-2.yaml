@@ -77,7 +77,7 @@ operations:
   SetCacheParameters:
     name: SetCacheParameters
     http:
-      method: PUTs
+      method: PUT
 
   DescribeCacheParameters:
     name: DescribeCacheParameters
