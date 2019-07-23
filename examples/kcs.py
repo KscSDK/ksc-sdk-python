@@ -7,6 +7,8 @@ if __name__ == "__main__":
 
     #确定服务名称以及机房
     kcsClient = s.create_client("kcs", "cn-shanghai-3", use_ssl=False)
+    # 调用DescribeCacheReadonlyNode接口需要传入kcsv2
+    # kcsClient = s.create_client("kcsv2", "cn-shanghai-3", use_ssl=False)
 
     # 创建缓存服务
     #print(kcsClient.create_cache_cluster(**{'Action': 'CreateCacheCluster', 'Version': '2016-07-01', 'Name': 'pjl_sdk_test0921', 'Capacity': 1, 'NetType': 2, 'VpcId': '3c12ccdf-9b8f-4d9b-8aa6-a523897e97a1', 'VnetId': '293c16a5-c757-405c-a693-3b2a3adead50'}))
