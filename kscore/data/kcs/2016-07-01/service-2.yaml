@@ -198,6 +198,12 @@ shapes:
         shape: String
       AvailableZone:
         shape: String
+      BillType:
+        shape: Int
+      Duration:
+        shape: Int
+      DurationUnit:
+        shape: String
 
   DescribeCachesRequest:
     type: structure
