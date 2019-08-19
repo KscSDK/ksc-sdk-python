@@ -90,3 +90,11 @@ operations:
   DescribeRegions:
     http:
       method: GET
+
+  DescribeInstanceTypeConfigs:
+    http:
+      method: GET
+
+  DescribeInstanceFamilys:
+    http:
+      method: GET
