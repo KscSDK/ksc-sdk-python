@@ -11,9 +11,13 @@
 # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
+
 from __future__ import unicode_literals
 from kscore.vendored.requests.exceptions import ConnectionError
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 class KSCoreError(Exception):
     """
@@ -334,7 +338,7 @@ class ClientError(Exception):
     def __init__(self, error_response, operation_name):
         msg = self.MSG_TEMPLATE.format(
             error_code=error_response['Error'].get('Code', 'Unknown'),
-            error_message=error_response['Error'].get('Message', 'Unknown'),
+            error_message=error_response['Error'].get('Message', 'Unknown').encode("utf-8"),
             operation_name=operation_name)
         super(ClientError, self).__init__(msg)
         self.response = error_response
