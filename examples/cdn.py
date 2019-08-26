@@ -538,7 +538,7 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
                 
     '''
-    # res = client.get_http_code_data(DomainIds='2D09555',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
+    # res = client.get_http_co de_data(DomainIds='2D09555',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
