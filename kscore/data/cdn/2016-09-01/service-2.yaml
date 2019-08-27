@@ -2242,7 +2242,7 @@ shapes:
       ResultType:
         shape: Long
       Datas:
-        shape: PvDataByTimeList
+        shape: String
   ####回源状态码统计详情####    
   GetSrcHttpCodeDetailedRequest:
     type: structure
@@ -2956,7 +2956,7 @@ shapes:
       Granularity:
         shape: String
       Datas:
-        shape: ProvinceAndIspFlowDataByTimeList
+        shape: String
 
   #### 省份+运营商带宽查询 #### 
   GetProvinceAndIspBandwidthDataRequest:
@@ -3058,7 +3058,7 @@ shapes:
       Granularity:
         shape: String 
       Datas:
-        shape: BwDataByTimeList
+        shape: String
         
   #### GetHttpCodeData ####
   GetHttpCodeDataRequest:
