@@ -98,3 +98,11 @@ operations:
   DescribeInstanceFamilys:
     http:
       method: GET
+
+  DescribeLocalVolumes:
+    http:
+      method: GET
+
+  DescribeLocalVolumeSnapshots:
+    http:
+      method: GET
