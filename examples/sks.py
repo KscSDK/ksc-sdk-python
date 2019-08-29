@@ -11,18 +11,22 @@ if __name__ == "__main__":
 
     region='cn-beijing-6'
     # region='cn-shanghai-2'
-    sksClient = s.create_client("epc", region, use_ssl=True)
+    sksClient = s.create_client("sks", region, use_ssl=True)
     #query
     allKeys=sksClient.describe_keys()
     prettyPrinter().pprint(allKeys)
     #create
-    # createKey = sksClient.create_key(**{"KeyName":"j-test-1"})
+    # createKey = sksClient.create_key(**{"KeyName":"j-test-3"})
     # prettyPrinter().pprint(createKey)
      #import
-    # importKey = sksClient.import_key(**{"KeyName":"j-test-3","PublicKey":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCcHn2MLBZ8qVpa/eBY/k6YR7pPNgqBqznZ6PBu818PXkcHYq4KrYAOmMwQG4rZgqLp9lGnYdX7WVGpmG0ulO+maDjt7CKViOGHDzXQt4d/G0mi0LKzn0xUMXr9Jcgjn9hkrDoXzg9ztfyxvBrnicd/t/12nah6CPJGyY5Fna4tpQ== root"})
+    # importKey = sksClient.import_key(**{"KeyName":"j-test-5","PublicKey":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCcbmgQsS4zM43iFsCo31GtUfp1/cdTXhFha4MkvWnSQaz4Z7ehDHqx9nT2fadY1f0hBD4aNDO3bf+3zUSejOcJw15xlTtiNQ57ttH4LsG+6CP03h9WYYwcCtsnlaPfVr0LldSpLSiHa2UrhuAVItGe6v54+6e8ncueiA6fUW1jUw== root"})
     # prettyPrinter().pprint(importKey)
 
+    #modify
+    # modifyKey = sksClient.modify_key(**{"KeyId":"005d19f6-774d-4631-9eda-3dbbd34100d1","KeyName":"modify-test"})
+    # prettyPrinter().pprint(modifyKey)
+
      #delete
-    # deleteKey = sksClient.delete_key(**{"KeyId":"d1805cdf-f98e-4580-a74d-88481c2fb5b7"})
+    # deleteKey = sksClient.delete_key(**{"KeyId":"a748558d-8994-4f5e-add1-9c4230115608"})
     # prettyPrinter().pprint(deleteKey)
 
