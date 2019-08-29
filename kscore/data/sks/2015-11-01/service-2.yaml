@@ -22,6 +22,10 @@ operations:
     name: CreateKey
     http:
       method: GET
+ ModifyKey:
+    name: ModifyKey
+    http:
+      method: GET
  DescribeKeys:
     name: DescribeKeys
     http:
