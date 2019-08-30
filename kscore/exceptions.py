@@ -14,6 +14,7 @@
 
 from __future__ import unicode_literals
 from kscore.vendored.requests.exceptions import ConnectionError
+from imp import reload
 
 import sys
 reload(sys)
