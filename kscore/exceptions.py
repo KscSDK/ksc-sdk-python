@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2012-2013 LiuYC https://github.com/liuyichen/
 # Copyright 2012-2014 ksyun.com, Inc. or its affiliates. All Rights Reserved.
 #
@@ -14,11 +15,13 @@
 
 from __future__ import unicode_literals
 from kscore.vendored.requests.exceptions import ConnectionError
-from imp import reload
 
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+if sys.version_info[0] < 3 :
+    from imp import reload
+    reload(sys)
+    sys.setdefaultencoding('utf8')
+
 
 class KSCoreError(Exception):
     """
@@ -337,10 +340,17 @@ class ClientError(Exception):
         'operation: {error_message}')
 
     def __init__(self, error_response, operation_name):
-        msg = self.MSG_TEMPLATE.format(
-            error_code=error_response['Error'].get('Code', 'Unknown'),
-            error_message=error_response['Error'].get('Message', 'Unknown').encode("utf-8"),
-            operation_name=operation_name)
+        if sys.version_info[0] < 3:
+            msg = self.MSG_TEMPLATE.format(
+                error_code=error_response['Error'].get('Code', 'Unknown'),
+                error_message=error_response['Error'].get('Message', 'Unknown').encode("utf-8"),
+                operation_name=operation_name)
+        else:
+            msg = self.MSG_TEMPLATE.format(
+                error_code=error_response['Error'].get('Code', 'Unknown'),
+                error_message=error_response['Error'].get('Message', 'Unknown'),
+                operation_name=operation_name)
+
         super(ClientError, self).__init__(msg)
         self.response = error_response
 
