@@ -80,3 +80,38 @@ operations:
      name: DescribeAvailabilityZones
      http:
        method: GET
+
+  CreateSnapshot:
+     name: CreateSnapshot
+     http:
+       method: POST
+
+  DeleteSnapshot:
+     name: DeleteSnapshot
+     http:
+       method: DELETE
+
+  RestoreSnapshot:
+     name: RestoreSnapshot
+     http:
+       method: PUT
+
+  DescribeSnapshot:
+     name: DescribeSnapshot
+     http:
+       method: GET
+
+  DownloadSnapshot:
+     name: DownloadSnapshot
+     http:
+       method: GET
+
+  ExportSnapshot:
+     name: ExportSnapshot
+     http:
+       method: GET
+
+  SetTimingSnapshot:
+     name: SetTimingSnapshot
+     http:
+       method: PUT
