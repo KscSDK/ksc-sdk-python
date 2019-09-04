@@ -77,7 +77,7 @@ operations:
  ImportKey:
     name: ImportKey
     http:
-      method: GET
+      method: POST
  DeleteKey:
     name: DeleteKey
     http:

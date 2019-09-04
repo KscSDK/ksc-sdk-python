@@ -86,3 +86,23 @@ operations:
   ModifyImageAttribute:
     http:
       method: GET
+
+  DescribeRegions:
+    http:
+      method: GET
+
+  DescribeInstanceTypeConfigs:
+    http:
+      method: GET
+
+  DescribeInstanceFamilys:
+    http:
+      method: GET
+
+  DescribeLocalVolumes:
+    http:
+      method: GET
+
+  DescribeLocalVolumeSnapshots:
+    http:
+      method: GET
