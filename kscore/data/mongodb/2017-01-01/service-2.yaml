@@ -90,3 +90,18 @@ operations:
      name: DescribeRegions
      http:
        method: GET
+
+  DescribeMongoDBShardNode:
+     name: DescribeMongoDBShardNode
+     http:
+       method: GET
+
+  AddSecondaryInstance:
+     name: AddSecondaryInstance
+     http:
+       method: PUT
+
+  CreateMongoDBShardInstance:
+     name: CreateMongoDBShardInstance
+     http:
+       method: POST
