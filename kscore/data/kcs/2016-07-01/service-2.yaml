@@ -115,3 +115,8 @@ operations:
      name: SetTimingSnapshot
      http:
        method: PUT
+
+  StatisticDBInstances:
+       name: StatisticDBInstances
+     http:
+       method: GET
