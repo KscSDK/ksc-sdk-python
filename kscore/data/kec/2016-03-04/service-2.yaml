@@ -106,3 +106,7 @@ operations:
   DescribeLocalVolumeSnapshots:
     http:
       method: GET
+
+  DescribeDedicatedHosts:
+    http:
+      method: GET
