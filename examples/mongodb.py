@@ -53,3 +53,12 @@ if __name__ == "__main__":
 
     # 查询机房
     #print(mongoClient.describe_regions(**{}))
+
+    # 查询mongodb分片节点
+    #print(mongoClient.describe_mongo_db_shard_node(**{'InstanceId': 'pjl_sdk_test0921'}))
+
+    # 副本集添加secondary节点
+    #print(mongoClient.add_secondary_instance(**{'InstanceId': 'pjl_sdk_test0921', 'NodeNum': 5}))
+
+    # 创建MongoDB分片实例
+    #print(mongoClient.create_mongo_db_shard_instance(**{'Name': 'pjl_sdk_test0921', 'Capacity': 1, 'NetType': 2, 'VpcId': '3c12ccdf-9b8f-4d9b-8aa6-a523897e97a1', 'VnetId': '293c16a5-c757-405c-a693-3b2a3adead50'}))
