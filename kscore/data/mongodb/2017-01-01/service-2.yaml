@@ -1,0 +1,107 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2017-01-01'
+  endpointPrefix: mongodb
+  jsonVersion: '1.1'
+  serviceFullName: mongodb Service
+  signatureVersion: v4
+  targetPrefix: mongodb
+  protocol: kcs
+
+operations:
+  CreateMongoDBInstance:
+    name: CreateMongoDBInstance
+    http:
+      method: POST
+
+  DeleteMongoDBInstance:
+    name: DeleteMongoDBInstance
+    http:
+      method: DELETE
+
+  DescribeMongoDBInstances:
+    name: DescribeMongoDBInstances
+    http:
+      method: GET
+
+  DescribeMongoDBInstance:
+    name: DescribeMongoDBInstance
+    http:
+      method: GET
+
+  RenameMongoDBInstance:
+    name: RenameMongoDBInstance
+    http:
+      method: PUT
+
+  RestartMongoDBInstance:
+    name: RestartMongoDBInstance
+    http:
+      method: PUT
+
+  DescribeMongoDBInstanceNode:
+    name: DescribeMongoDBInstanceNode
+    http:
+      method: GET
+
+  AddSecurityGroupRule:
+    name: AddSecurityGroupRule
+    http:
+      method: POST
+
+  DeleteSecurityGroupRules:
+    name: DeleteSecurityGroupRules
+    http:
+      method: DELETE
+
+  ListSecurityGroupRules:
+    name: ListSecurityGroupRules
+    http:
+      method: GET
+
+  CreateMongoDBSnapshot:
+    name: CreateMongoDBSnapshot
+    http:
+      method: POST
+
+  SetMongoDBTimingSnapshot:
+    name: SetMongoDBTimingSnapshot
+    http:
+      method: PUT
+
+  DeleteMongoDBSnapshot:
+    name: DeleteMongoDBSnapshot
+    http:
+      method: DELETE
+
+  DescribeMongoDBSnapshot:
+    name: DescribeMongoDBSnapshot
+    http:
+      method: GET
+
+  RenameMongoDBSnapshot:
+    name: RenameMongoDBSnapshot
+    http:
+      method: PUT
+
+  DescribeRegions:
+     name: DescribeRegions
+     http:
+       method: GET
+
+  DescribeMongoDBShardNode:
+     name: DescribeMongoDBShardNode
+     http:
+       method: GET
+
+  AddSecondaryInstance:
+     name: AddSecondaryInstance
+     http:
+       method: PUT
+
+  CreateMongoDBShardInstance:
+     name: CreateMongoDBShardInstance
+     http:
+       method: POST

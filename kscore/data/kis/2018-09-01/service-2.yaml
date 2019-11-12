@@ -1,0 +1,240 @@
+---
+version: '1.0'
+metadata:
+  apiVersion: '2018-09-01'
+  endpointPrefix: kis
+  jsonVersion: '1.1'
+  serviceFullName: kis Service
+  signatureVersion: v4
+  targetPrefix: kis
+  protocol: query-json
+
+operations:
+  listRegion:
+    name: listRegion
+    http:
+      method: POST
+  listIdc:
+    name: listIdc
+    http:
+      method: POST
+  listIsp:
+    name: listIsp
+    http:
+      method: POST
+  listBandwidthType:
+    name: listBandwidthType
+    http:
+      method: POST
+  listDpClassify:
+    name: listDpClassify
+    http:
+      method: POST
+  listDpAddress:
+    name: listDpAddress
+    http:
+      method: POST
+  listDeviceProductType:
+    name: listDeviceProductType
+    http:
+      method: POST
+  listStep:
+    name: listStep
+    http:
+      method: POST
+  getCabinet:
+    name: getCabinet
+    http:
+      method: POST
+    input:
+      shape: getCabinetRequest
+  getDevice:
+    name: getDevice
+    http:
+      method: POST
+    input:
+      shape: getDeviceRequest
+  getBandwidth:
+    name: getBandwidth
+    http:
+      method: POST
+    input:
+      shape: getBandwidthRequest
+  getSubnet:
+    name: getSubnet
+    http:
+      method: POST
+    input:
+      shape: getSubnetRequest
+  getDp:
+    name: getDp
+    http:
+      method: POST
+    input:
+      shape: getDpRequest
+  getVpcAccess:
+    name: getVpcAccess
+    http:
+      method: POST
+    input:
+      shape: getBaseRequest
+  getInternetPort:
+    name: getInternetPort
+    http:
+      method: POST
+    input:
+      shape: getBaseRequest
+  getMonitorData:
+    name: getMonitorData
+    http:
+      method: POST
+    input:
+      shape: getMonitorDataRequest
+shapes:
+  InstanceId:
+    type: string
+  Idc:
+    type: string
+  WithDeleted:
+    type: integer
+  Limit:
+    type: integer
+  Offset:
+    type: Offset
+  CabinetName:
+    type: string
+  ProductType:
+    type: string
+  Sn:
+    type: string
+  Suit:
+    type: string
+  Isp:
+    type: string
+  SgwGroupId:
+    type: integer
+  Ip:
+    type: string
+  Classify:
+    type: string
+  Step:
+    type: integer
+  StartTime:
+    type: string
+  EndTime:
+    type: string
+
+  getBaseRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+
+  getCabinetRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      Name:
+        shape: CabinetName
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+
+  getDeviceRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      ProductType:
+        shape: ProductType
+      Suit:
+        shape: Suit
+      Sn:
+        shape: Sn
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+  getBandwidthRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      Isp:
+        shape: Isp
+      SgwGroupId:
+        shape: SgwGroupId
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+  getSubnetRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      Isp:
+        shape: Isp
+      SgwGroupId:
+        shape: SgwGroupId
+      Ip:
+        shape: Ip
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+  getDpRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Idc:
+        shape: Idc
+      Classify:
+        shape: Classify
+      WithDeleted:
+        shape: WithDeleted
+      Offset:
+        shape: Offset
+      Limit:
+        shape: Limit
+  getMonitorDataRequest:
+    type: structure
+    members:
+      InstanceId:
+        shape: InstanceId
+      Step:
+        shape: Step
+      StartTime:
+        shape: StartTime
+      EndTime:
+        shape: EndTime
+
+
+

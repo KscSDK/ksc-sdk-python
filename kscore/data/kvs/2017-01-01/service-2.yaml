@@ -139,6 +139,11 @@ operations:
       requestUri: /
     input:
       shape: GetFetchObjectMediaProcessInstance
+  
+  FetchMetaInfo:
+    name: FetchMetaInfo
+    http:
+      method: POST
 
 shapes:  
   Preset:

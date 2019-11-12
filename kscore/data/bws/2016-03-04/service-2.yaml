@@ -1,0 +1,70 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: bws
+  jsonVersion: '1.1'
+  serviceFullName: bws Service
+  signatureVersion: v4
+  targetPrefix: bws
+  protocol: query-json
+
+operations:
+  CreateBandWidthShare:
+    name: CreateBandWidthShare
+    http:
+      method: GET
+  DeleteBandWidthShare:
+    name: DeleteBandWidthShare
+    http:
+      method: GET
+  AssociateBandWidthShare:
+    name: AssociateBandWidthShare
+    http:
+      method: GET
+  DisassociateBandWidthShare:
+    name: DisassociateBandWidthShare
+    http:
+      method: GET
+  DescribeBandWidthShares:
+    name: DescribeBandWidthShares
+    http:
+      method: GET
+  ModifyBandWidthShare:
+    name: ModifyBandWidthShare
+    http:
+      method: GET
+
+shapes:
+  Id:
+    type: string #list/map/structure
+
+  Bool:
+    type: bool
+
+  Int:
+    type: int
+
+  DataTime:
+    type: timestamp
+
+  Empty:
+    type: structure
+    members: {}
+    documentation: ""
+
+  NonEmptyString:
+    type: string
+    min: 1
+
+  Message:
+    type: string
+
+  InstanceId:
+    type: structure
+    required:
+    - id
+    members:
+      id:
+        shape: Id
+    documentation: ""
