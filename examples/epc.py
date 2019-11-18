@@ -12,7 +12,8 @@ if __name__ == "__main__":
     region='cn-beijing-6'
     #region='cn-shanghai-2'
     epcClient = s.create_client("epc", region, use_ssl=True)
-    allEpcs=epcClient.describe_epcs()
-
-    prettyPrinter().pprint(allEpcs)
+    #query epc
+    resp=epcClient.describe_epcs(MaxResults=7)
+    #resp=epcClient.describe_epcs(**{'Filter.1.Name':'host-type','Filter.1.Value.1':'CAL'})
+    prettyPrinter().pprint(resp)
 
