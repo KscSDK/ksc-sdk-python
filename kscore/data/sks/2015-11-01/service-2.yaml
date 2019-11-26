@@ -1,0 +1,32 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2015-11-01'
+  endpointPrefix: sks
+  jsonVersion: '1.1'
+  serviceFullName: sks Service
+  signatureVersion: v4
+  targetPrefix: sks
+  protocol: query-json
+
+operations:
+ ImportKey:
+    name: ImportKey
+    http:
+      method: POST
+ DeleteKey:
+    name: DeleteKey
+    http:
+      method: GET
+ CreateKey:
+    name: CreateKey
+    http:
+      method: GET
+ ModifyKey:
+    name: ModifyKey
+    http:
+      method: GET
+ DescribeKeys:
+    name: DescribeKeys
+    http:
+      method: GET

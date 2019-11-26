@@ -80,7 +80,7 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''
-    # domainBasic = client.get_cdn_domain_basic_info(DomainId='2D09NSH')
+    # domainBasic = client.get_cdn_domain_basic_info(DomainId='2D09555')
 
 
     '''
@@ -90,13 +90,13 @@ if __name__ == "__main__":
         DomainId    String  域名ID
         ConfigList  String  需要查询的配置，多个配置用逗号（半角）分隔，不填代表查询所有 
                             当前支持  cache_expired、ip、error_page、http_header、optimize、page_compress、
-                            ignore_query_string、range、referer、req_auth、src_host、video_seek、waf,notify_url, 
-                            redirect_type 
+                            ignore_query_string、range、referer、src_host、video_seek、waf,notify_url, 
+                            redirect_type,request_auth
         
     Returns:
     '''
-    # res = client.get_domain_configs(DomainId='2D09NSH',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced')
-
+    #res = client.get_domain_configs(DomainId='2D09555',ConfigList='cache_expired,ignore_query_string,src_host,referer,test_url,src_advanced,request_auth')
+    #print(res)
 
     '''
     ModifyCdnDomainBasicInfo 修改域名基础配置
@@ -109,7 +109,7 @@ if __name__ == "__main__":
         Origin      String  回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。 （此项目若输入，必须保证符合OriginType）
     Returns:
     '''
-    # res = client.modify_cdn_domain_basic_info(DomainId='2D09NSH',Origin='',OriginType='',OriginPort='')
+    # res = client.modify_cdn_domain_basic_info(DomainId='2D09555',Origin='',OriginType='',OriginPort='')
 
 
     '''
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         DomainId    String  需要启用或停用CDN服务的域名ID，只允许输入一个域名ID
         
     '''
-    # res = client.start_stop_cdn_domain(DomainId='2D09NSH', ActionType='stop')
+    # res = client.start_stop_cdn_domain(DomainId='2D09555', ActionType='stop')
 
 
     '''
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     Returns:
         RequestID
     '''
-    # res = client.delete_cdn_domain(DomainId='2D09NSH')
+    # res = client.delete_cdn_domain(DomainId='2D09555')
 
 
     '''
@@ -140,10 +140,11 @@ if __name__ == "__main__":
     Parameters:
         DomainId    String  域名ID
         Enable      String  配置过滤参数功能的开启或关闭 取值：on、off ，默认为on
+		HashKeyArgs String 保留参数，多个用逗号（英文、半角）分隔。
         
     '''
-    # client.set_ignore_query_string_config(DomainId='2D09NSH', Enable='on')
-
+    #client.set_ignore_query_string_config(DomainId='2D09555', Enable='on',HashKeyArgs='abcd')
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='ignore_query_string'); 
 
     '''
     SetBackOriginHostConfig  设置回源host功能
@@ -152,7 +153,7 @@ if __name__ == "__main__":
         DomainId        String  域名ID
         BackOriginHost  String  是自定义回源域名，默认为空，表示不需要修改回源Host
     '''
-    # client.set_back_origin_host_config(DomainId='2D09NSH', BackOriginHost='www.a.qunar.com')
+    # client.set_back_origin_host_config(DomainId='2D09555', BackOriginHost='www.a.qunar.com')
 
 
     '''
@@ -165,7 +166,7 @@ if __name__ == "__main__":
         ReferList   String  逗号隔开的域名列表
         AllowEmpty  String  是否允许空refer访问,取值：on：允许；off：不允许；默认值：on。注：仅当选择白名单时，此项才生效
     '''
-    # client.set_refer_protection_config(DomainId='2D09NSH', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
+    # client.set_refer_protection_config(DomainId='2D09555', Enable='on', ReferType='block', ReferList='www.baidu.com,www.sina.com')
 
 
     '''
@@ -199,7 +200,7 @@ if __name__ == "__main__":
     ''' 
     # json格式规则
     cacheRules = {
-            "DomainId":"2D09NSH",
+            "DomainId":"2D09555",
             "CacheRules":
             [
                 {
@@ -221,7 +222,7 @@ if __name__ == "__main__":
         TestUrl     String  测试URL列表，逗号间隔，默认为空
    
     '''
-    # client.set_test_url_config(DomainId='2D09NSH', TestUrl='www.xinfei.cn/1.html')
+    # client.set_test_url_config(DomainId='2D09555', TestUrl='www.xinfei.cn/1.html')
 
 
     '''
@@ -244,26 +245,20 @@ if __name__ == "__main__":
 
     '''
     # json格式规则
+    
+    '''
     originParam = {
-                    "DomainId":"2D09NSH",
+                    "DomainId":"2D09555",
                     "Enable":"on",
-                    "OriginPort":80,
                     "OriginPolicy":"quality",
                     "OriginPolicyBestCount":1,
                     "OriginType":"domain",
-                    "OriginAdvancedItems":[
-                        {
-                            "OriginLine":"default",
-                            "Origin":"www.b.xunfei.cn"
-                        },
-                        {
-                            "OriginLine":"cm",
-                            "Origin":"www.c.xunfei.cn"
-                        }
-                    ]
+                    "Origin":"www.b.xunfei.cn",
+                    "BackupOriginType":"ipaddr",
+                    "BackupOrigin":"1.1.1.1,2.2.2.2"
                   }
-    '''
-    # client.set_origin_advanced_config(**originParam)
+    #client.set_origin_advanced_config(**originParam)
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='origin_advanced_config');
 
 
     '''
@@ -274,9 +269,92 @@ if __name__ == "__main__":
         Remark      String  备注信息，默认为空
         
     '''
-    # client.set_remark_config(DomainId='2D09NSH', Remark=u'备注信息')
+    # client.set_remark_config(DomainId='2D09555', Remark=u'备注信息')
 
+    '''
+    SetRequestAuthConfig  设置时间戳+共享秘钥防盗链
 
+    Parameters:
+        DomainId        String  域名ID
+        Enable          String  配置是否开启或关闭 取值：on、off，默认值为off关闭。开启时，下述必须项为必填项；关闭时，只更改此标识，忽略后面的项目。
+        AuthType        String  类型，取值：typeA, typeB
+        Key1            String  主密钥
+        Key2            String  副密钥  多个逗号分隔
+        ExpirationTime  Long    有效时间
+    '''
+    #client.set_request_auth_config(DomainId='2D093GC', Enable='on', AuthType='typeB', Key1='111111', Key2='222222,333333', ExpirationTime='1000')
+	
+    '''
+    SetForceRedirectConfig 设置强制跳转
+    
+    Parameters:
+        DomainId      string      域名ID
+        RedirectType  string  配置强制跳转类型, 取值: off、 https，默认为off 。其中https表示http → https，当选择https时需保证域名已配置证书
+    Returns:
+        <type 'dict'>
+    '''
+
+    data = {
+        "DomainId": "2D09555",
+        "RedirectType": "off"
+    }
+    #res = client.set_force_redirect_config(**data)
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='force_redirect');
+    
+    '''
+    SetHttp2OptionConfig 设置HTTP 2.0
+    Parameters:
+        DomainId      string      域名ID
+        Enable  string  配置HTTP 2.0功能的开启或关闭 取值：on、off ，默认为off ；开启需保证域名已配置证书。
+    Returns:
+        <type 'dict'>
+    '''
+
+    data = {
+        "DomainId": "2D09555",
+        "Enable": "off"
+    }
+    #res = client.set_http_2_option_config(**data)
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='http2_option');
+	
+    '''
+    SetPageCompressConfig 设置设置智能压缩
+    Parameters:
+        DomainId      string      域名ID
+        Enable  string  	配置智能压缩的开启或关闭 取值：on、off ，默认为off 。
+    Returns:
+        <type 'dict'>
+    '''
+
+    data = {
+        "DomainId": "2D09555",
+        "Enable": "off"
+    }
+    #res = client.set_page_compress_config(**data)
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='page_compress');
+	
+    '''
+    SetErrorPageConfig 设置设置智能压缩
+    Parameters:
+        DomainId      string      域名ID
+        ErrorPages  List<ErrorPage>  	由ErrorPage组成的数组，表示自定义错误页面列表。注意：该数组是有序的，如果一个相同状态码在数组里有配置子集，则以最后面的子集为准。
+	ErrorPage:
+	    ErrorHttpCode	String	错误的状态码。
+        CustomPageUrl	String	自定义发生错误后跳转的页面URL。注：需要检验URL的合法性，如果URL不是以https://或者http://开头，则报错，提示输入url有误。
+    Returns:
+        <type 'dict'>
+    '''
+
+    data = {
+        "DomainId": "2D09555",
+        "ErrorPages": [{
+		  "ErrorHttpCode":"400",
+		  "CustomPageUrl":"https://www.test.com/error400.html"
+		
+		}]
+    }
+    #res = client.set_error_page_config(**data)
+    #print client.get_domain_configs(DomainId='2D09555',ConfigList='error_page');
     ####################以下为统计分析API###################
 
     '''
@@ -460,7 +538,7 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
                 
     '''
-    # res = client.get_http_code_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
+    # res = client.get_http_code_data(DomainIds='2D09555',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -480,7 +558,7 @@ if __name__ == "__main__":
         Granularity String  统计粒度，取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度     
         
     '''
-    # res = client.get_http_code_detailed_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',ResultType='0')
+    # res = client.get_http_code_detailed_data(DomainIds='2D09555',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video',ResultType='0')
 
 
     '''
@@ -518,7 +596,7 @@ if __name__ == "__main__":
         DomainIds   String  域名ID，缺省为当前产品类型下的全部域名，可输入需要查询的域名ID，支持批量域名查询，多个域名ID用逗号（半角）分隔
         
     '''
-    # res = client.get_area_data(DomainIds='2D09NSH',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
+    # res = client.get_area_data(DomainIds='2D09555',StartTime='2016-11-19T08:00+0800',EndTime='2016-11-20T08:00+0800',CdnType='video')
 
 
     '''
@@ -1596,5 +1674,7 @@ if __name__ == "__main__":
     #res = client.get_live_play_stat_data(StartTime='2018-05-29T08:00+0800',ResultType='0', Regions='CN', LimitN='100')
     #print(res)
 
-    res = client.ip_check(Ip='1.0.0.1')
-    print(res)
+    #res = client.ip_check(Ip='1.0.0.1')
+    #print(res)
+	
+    
