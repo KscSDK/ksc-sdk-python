@@ -12,7 +12,6 @@
 # language governing permissions and limitations under the License.
 import copy
 import logging
-
 import kscore.serialize
 import kscore.validate
 from kscore import waiter, xform_name
@@ -506,7 +505,6 @@ class BaseClient(object):
         operation_model = self._service_model.operation_model(operation_name)
         request_dict = self._convert_to_request_dict(
             api_params, operation_model, context=request_context)
-
         handler, event_response = self.meta.events.emit_until_response(
             'before-call.{endpoint_prefix}.{operation_name}'.format(
                 endpoint_prefix=self._service_model.endpoint_prefix,
@@ -531,7 +529,9 @@ class BaseClient(object):
         if (operation_name == 'ListMetrics' or 
         operation_name == 'GetMetricStatistics' or 
         operation_name == 'GetMetricStatisticsBatch' or 
-        operation_name == 'GetMetricStatisticsBatchV2'):
+        operation_name == 'GetMetricStatisticsBatchV2' or
+        operation_name == 'ListMetricsV3' or
+        operation_name == 'GetMetricStatisticsV3'):
             return parsed_response
 
         if http.status_code >= 300:
