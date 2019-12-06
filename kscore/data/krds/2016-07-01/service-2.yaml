@@ -1,0 +1,177 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2016-07-01'
+  endpointPrefix: krds
+  jsonVersion: '1.1'
+  serviceFullName: krds Service
+  signatureVersion: v4
+  targetPrefix: krds
+  protocol: query-json
+
+operations:
+  DescribeDBInstances:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  CreateDBInstance:
+    name: CreateDBInstance
+    http:
+      method: GET
+
+  RebootDBInstance:
+    name: RebootDBInstance
+    http:
+      method: GET
+
+  DeleteDBInstance:
+    name: DeleteDBInstance
+    http:
+      method: GET
+
+  CreateDBInstanceReadReplica:
+    name: CreateDBInstanceReadReplica
+    http:
+      method: GET
+
+  ModifyDBInstanceSpec:
+    name: ModifyDBInstanceSpec
+    http:
+      method: GET
+
+  DescribeDBEngineVersions:
+    name: DescribeDBEngineVersions
+    http:
+      method: GET
+
+  UpgradeDBInstanceEngineVersion:
+    name: UpgradeDBInstanceEngineVersion
+    http:
+      method: GET
+
+  ModifyDBInstanceType:
+    name: ModifyDBInstanceType
+    http:
+      method: GET
+
+  AllocateDBInstanceEip:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ReleaseDBInstanceEip:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ModifyDBInstanceAvailabilityZone:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  CreateSecurityGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeSecurityGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DeleteSecurityGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ModifySecurityGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  CloneSecurityGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ModifySecurityGroupRule:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  SecurityGroupRelation:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ModifySecurityGroupRuleName:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ModifyDBParameterGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  ResetDBParameterGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeDBParameterGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeEngineDefaultParameters:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  CreateDBParameterGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DeleteDBParameterGroup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeDBBackups:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  RestoreDBInstanceFromDBBackup:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  RestoreDBInstanceToPointInTime:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeDBInstanceRestorableTime:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  OverrideDBInstance:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  SwitchDBInstanceHA:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  DescribeDBLogFiles:
+    name: DescribeDBInstances
+    http:
+      method: GET
