@@ -795,3 +795,8 @@ def _switch_hosts(request, new_endpoint, use_new_scheme=True):
     final_endpoint = urlunsplit(final_endpoint_components)
     logger.debug('Updating URI from %s to %s' % (request.url, final_endpoint))
     request.url = final_endpoint
+
+
+def set_logger_level(level=logging.DEBUG):
+    for name in logging.Logger.manager.loggerDict.keys():
+        logging.getLogger(name).setLevel(level)
