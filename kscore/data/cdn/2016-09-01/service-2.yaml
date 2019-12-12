@@ -959,6 +959,8 @@ shapes:
         shape: Long
       DomainName:
         shape: String
+      ProjectId:
+        shape: String
       DomainStatus:
         shape: String
       CdnType:
@@ -991,6 +993,8 @@ shapes:
       DomainName: 
         shape: String
       CdnType:  
+        shape: String
+      ProjectId:
         shape: String
       CdnSubType:  
         shape: String
@@ -1043,6 +1047,8 @@ shapes:
       CdnType:
         shape: String
       CdnSubType:
+        shape: String
+      ProjectId:
         shape: String
       IcpRegistration:
         shape: String

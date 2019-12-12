@@ -14,20 +14,22 @@ if __name__ == "__main__":
         PageSize        long    分页大小，默认20，最大500，取值1～500间整数 
         PageNumber      long    取第几页。默认为1，取值1～10000 
         DomainName      string  按域名过滤，默认为空，代表当前用户下所有域名 
+        ProjectId		String	查询指定的项目下面的域名，不指定默认为全部
         DomainStatus    string  按域名状态过滤，默认为空，代表当前用户下所有域名状态全部
         CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载,live:流媒体直播，多个产品类型之间用逗号（半角）间隔，默认为空，代表当前用户下全部产品类型
         FuzzyMatch      string  域名过滤是否使用模糊匹配，取值为on：开启，off：关闭，默认为on
     Returns:
         <type 'dict'>
     '''
-    # res = client.get_cdn_domains(PageSize=20,PageNumber=0,DomainName='www.xunfei.cn',DomainStatus='online',CdnType='video')
-
+    # res = client.get_cdn_domains(PageSize=20,ProjectId='0',PageNumber=0,DomainStatus='online',CdnType='video')
+    # print res;
     '''
     AddCdnDomain 新增域名
     
     Parameters:
         DomainName      string      需要接入CDN的域名
         CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载
+        ProjectId		String	    加速域名所属的项目，非必填项，默认归属为【默认项目】，若输入项目ID，可指定域名归属为已经创建好的项目ID下面
         CdnSubType      string      加速业务子类型（业务子类型是为了细分业务，默认不填写）
         CdnProtocol     string      客户访问边缘节点的协议。默认http，直播必须填写：http＋flv， hls，rtmp
         BillingRegions  string      加速区域，默认CN， 可以输入多个，以逗号间隔
@@ -39,14 +41,15 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''
-     #res = client.add_cdn_domain(DomainName='www.qidian.com',CdnType='video',CdnProtocol='http',OriginType='domain',OriginProtocol='http',Origin='www.ksyun.com',SearchUrl="www.ksyun.com/test.html")
-
+    # res = client.add_cdn_domain(DomainName='ntj122122.test.com',CdnType='video',ProjectId='0',CdnProtocol='http',OriginType='ipaddr',OriginProtocol='http',Origin='110.111.110.110')
+    # print res;
     '''
     AddCdnDomainV2 新增域名
     
     Parameters:
         DomainName      string      需要接入CDN的域名
-        CdnType         string  产品类型，取值为video:音视频点播,file:大文件下载
+        CdnType         string      产品类型，取值为video:音视频点播,file:大文件下载
+        ProjectId		String	    加速域名所属的项目，非必填项，默认归属为【默认项目】，若输入项目ID，可指定域名归属为已经创建好的项目ID下面
         CdnSubType      string      加速业务子类型（业务子类型是为了细分业务，默认不填写）
         CdnProtocol     string      客户访问边缘节点的协议。默认http，直播必须填写：http＋flv， hls，rtmp
         BillingRegions  string      加速区域，默认CN， 可以输入多个，以逗号间隔
@@ -60,16 +63,17 @@ if __name__ == "__main__":
     '''
 
     data = {
-        "DomainName": "cyw3.test.com",
+        "DomainName": "ntj1332.test.com",
         "CdnType": "video",
         "CdnProtocol": "http",
+        "ProjectId": "0",
         "OriginType": "ipaddr",
         "OriginProtocol": "http",
-        "Origin": "110.110.110.110",
+        "Origin": "110.111.110.110",
 
     }
-    #res = clientv2.add_cdn_domain(**data)
-    #print res
+    # res = clientv2.add_cdn_domain(**data)
+    # print res
 
     '''
     GetCdnDomainBasic 查询域名基础信息
@@ -80,8 +84,8 @@ if __name__ == "__main__":
     Returns:
         <type 'dict'>
     '''
-    # domainBasic = client.get_cdn_domain_basic_info(DomainId='2D09555')
-
+    # domainBasic = client.get_cdn_domain_basic_info(DomainId='2D08RFE')
+    # print domainBasic
 
     '''
     GetDomainConfigs 查询域名详细配置信息
@@ -1675,6 +1679,6 @@ if __name__ == "__main__":
     #print(res)
 
     #res = client.ip_check(Ip='1.0.0.1')
-    #print(res)
+    # print(res)
 	
     
