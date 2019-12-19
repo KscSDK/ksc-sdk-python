@@ -110,3 +110,11 @@ operations:
   DescribeDedicatedHosts:
     http:
       method: GET
+
+  DescribeAvailabilityZones:
+    http:
+      method: GET
+
+  ModifyInstanceAutoDeleteTime:
+    http:
+      method: GET
