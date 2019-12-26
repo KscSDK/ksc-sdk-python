@@ -80,6 +80,38 @@ operations:
     name: DescribeInstancesWithListener
     http:
       method: GET
+  CreateLoadBalancerAcl:
+    name: CreateLoadBalancerAcl
+    http:
+      method: GET
+  DeleteLoadBalancerAcl:
+    name: DeleteLoadBalancerAcl
+    http:
+      method: GET
+  ModifyLoadBalancerAcl:
+    name: ModifyLoadBalancerAcl
+    http:
+      method: GET
+  DescribeLoadBalancerAcls:
+    name: DescribeLoadBalancerAcls
+    http:
+      method: GET
+  CreateLoadBalancerAclEntry:
+    name: CreateLoadBalancerAclEntry
+    http:
+      method: GET
+  DeleteLoadBalancerAclEntry:
+    name: DeleteLoadBalancerAclEntry
+    http:
+      method: GET
+  AssociateLoadBalancerAcl:
+    name: AssociateLoadBalancerAcl
+    http:
+      method: GET
+  DisassociateLoadBalancerAcl:
+    name: DisassociateLoadBalancerAcl
+    http:
+      method: GET
 
 shapes:
   Id:

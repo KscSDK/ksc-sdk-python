@@ -110,6 +110,8 @@ shapes:
         shape: String
       CdnSubType:  
         shape: String
+      ProjectId:
+        shape: String
       CdnProtocol:  
         shape: String
       BillingRegions:  

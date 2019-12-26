@@ -48,6 +48,15 @@ Config 配置
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
 
 ----------------
+日志级别配置方法
+----------------
+    from kscore.utils import set_logger_level
+    
+    import logging
+
+    set_logger_level(logging.WARNING)
+
+----------------
 Service 服务
 ----------------
 

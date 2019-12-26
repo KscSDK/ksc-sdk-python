@@ -27,7 +27,6 @@ from kscore.compat import json, quote, zip_longest, urlsplit, urlunsplit
 from kscore.vendored import requests
 from kscore.compat import OrderedDict
 
-
 logger = logging.getLogger(__name__)
 DEFAULT_METADATA_SERVICE_TIMEOUT = 1
 METADATA_SECURITY_CREDENTIALS_URL = (
@@ -394,7 +393,7 @@ def datetime2timestamp(dt, default_timezone=None):
     d = dt.replace(tzinfo=None) - dt.utcoffset() - epoch
     if hasattr(d, "total_seconds"):
         return d.total_seconds()  # Works in Python 2.7+
-    return (d.microseconds + (d.seconds + d.days * 24 * 3600) * 10**6) / 10**6
+    return (d.microseconds + (d.seconds + d.days * 24 * 3600) * 10 ** 6) / 10 ** 6
 
 
 def calculate_sha256(body, as_hex=False):
@@ -519,6 +518,7 @@ class ArgumentGenerator(object):
         print("Sample input for dynamodb.CreateTable: %s" % sample_input)
 
     """
+
     def __init__(self):
         pass
 
@@ -602,6 +602,7 @@ def is_valid_endpoint_url(endpoint_url):
         "^((?!-)[A-Z\d-]{1,63}(?<!-)\.)*((?!-)[A-Z\d-]{1,63}(?<!-))$",
         re.IGNORECASE)
     return allowed.match(hostname)
+
 
 def check_dns_name(bucket_name):
     """
@@ -754,6 +755,7 @@ def instance_cache(func):
         result = func(self, *args, **kwargs)
         self._instance_cache[cache_key] = result
         return result
+
     return _cache_guard
 
 
@@ -767,7 +769,7 @@ def switch_host_s3_accelerate(request, operation_name, **kwargs):
     endpoint = 'https://' + S3_ACCELERATE_ENDPOINT
     if operation_name in ['ListBuckets', 'CreateBucket', 'DeleteBucket']:
         return
-    _switch_hosts(request, endpoint,  use_new_scheme=False)
+    _switch_hosts(request, endpoint, use_new_scheme=False)
 
 
 def switch_host_with_param(request, param_name):
@@ -795,3 +797,9 @@ def _switch_hosts(request, new_endpoint, use_new_scheme=True):
     final_endpoint = urlunsplit(final_endpoint_components)
     logger.debug('Updating URI from %s to %s' % (request.url, final_endpoint))
     request.url = final_endpoint
+
+
+def set_logger_level(level=logging.DEBUG):
+    for name in logging.Logger.manager.loggerDict.keys():
+        if name.find('kscore') == 0:
+            logging.getLogger(name).setLevel(level)
