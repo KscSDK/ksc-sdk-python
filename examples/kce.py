@@ -19,13 +19,8 @@ if __name__ == "__main__":
         "NetworkType": "Flannel",
         "K8sVersion": "v1.13.4",
         "ReserveSubnetId": "9729f4c0-93ee-4e2a-9b2a-xxxxx",
-        "PublicApiServer": {
-            "LineId": "5fc2595f-1bfd-481b-bf64-2d08f116d800",
-            "BandWidth": "10",
-            "ChargeType": "PostPaidByDay"
-        },
+        "PublicApiServer": "{\"LineId\":\"5fc2595f-1bfd-481b-bf64-2d08f116d800\",\"BandWidth\": \"10\",\"ChargeType\": \"PostPaidByDay\"}",
         "InstanceSet.0.NodeRole": "Master_Etcd",
-
         "InstanceSet.0.NodePara.0": "{\"MaxCount\":3,\"MinCount\":3,\"ImageId\":\"a0699172-76c6-4885-a4e9-0799a9cb811d\",\"SubnetId\":\"4a077fa8-a239-47bf-a18f-xxxxx\",\"InstancePassword\":\"Root23123\",\"SecurityGroupId\":\"0dcd8356-9e7e-43ae-897b-xxxxx\",\"DataDiskGb\":0,\"ChargeType\":\"Daily\",\"InstanceType\":\"I3.2A\",\"PurchaseTime\":0,\"InstanceName\":\"kce-py\",\"InstanceNameSuffix\":1}",
         "InstanceSet.1.NodeRole": "Worker",
         "InstanceSet.1.NodePara.0": "{\"MaxCount\":1,\"MinCount\":1,\"ImageId\":\"a0699172-76c6-4885-a4e9-0799a9cb811d\",\"SubnetId\":\"4a077fa8-a239-47bf-a18f-xxxxx\",\"InstancePassword\":\"Root23123\",\"SecurityGroupId\":\"0dcd8356-9e7e-43ae-897b-xxxxx\",\"DataDiskGb\":0,\"ChargeType\":\"Daily\",\"InstanceType\":\"I3.2A\",\"PurchaseTime\":0,\"InstanceName\":\"kce-py\",\"InstanceNameSuffix\":1}",
