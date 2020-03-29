@@ -14,140 +14,29 @@ operations:
     name: ListMetrics
     http:
       method: GET
-    input:
-      shape: MetricShape
   GetMetricStatistics:
     name: GetMetricStatistics
     http:
       method: GET
-    input:
-      shape: Project
   GetMetricStatisticsBatch:
     name: GetMetricStatisticsBatch
     protocol: json
     http:
       method: POST
       requestUri: ?Action=GetMetricStatisticsBatch&Version=2018-09-29
-    input:
-      shape: ProjectBatch
   GetMetricStatisticsBatchV2:
     name: GetMetricStatisticsBatchV2
     protocol: json
     http:
       method: POST
       requestUri: ?Action=GetMetricStatisticsBatch&Version=2018-11-14
-    input:
-      shape: ProjectBatch
+  ListMetricsV3:
+    name: ListMetricsV3
+    http:
+      method: GET
+  GetMetricStatisticsV3:
+    name: GetMetricStatisticsV3
+    http:
+      method: GET
 
 
-shapes:
-  Id:
-    type: string #list/map/structure
-
-  Bool:
-    type: bool
-
-  Int:
-    type: int
-  String:
-    type: string
-
-  DataTime:
-    type: timestamp
-
-  Empty:
-    type: structure
-    members: {}
-    documentation: ""
-
-  NonEmptyString:
-    type: string
-    min: 1
-
-  Message:
-    type: string
-    
-  Dict:
-    type: map
-    key:
-      shape: String
-    value:
-      shape: String
-
-
-  MetricShape:
-    type: structure
-    members:
-      InstanceID:
-        shape: String
-        documentation: ""
-      Namespace:
-        shape: String
-        documentation: ""
-      PageIndex:
-        shape: String
-        documentation: ""
-      PageSize:
-        shape: String
-        documentation: ""
-      MetricName:
-        shape: String
-      Dimensions:
-        shape: Dict
-
-  Project:
-    type: structure
-    members:
-      InstanceID:
-        shape: String
-      MetricName:
-        shape: String
-      Namespace:
-        shape: String
-      StartTime:
-        shape: String
-      EndTime:
-        shape: String
-      Period:
-        shape: String
-      Aggregate:
-        shape: String
-      Dimensions:
-        shape: Dict
-
-  Apps:
-    type: list
-    member:
-      shape: String
-
-
-  Metric:
-    type: structure
-    members:
-      InstanceID:
-        shape: String
-      MetricName:
-        shape: String
-#      Dimensions:
-#        shape: Dict
-
-  Metrics:
-    type: list
-    member:
-      shape: Metric
-
-  ProjectBatch:
-    type: structure
-    members:
-      Namespace:
-        shape: String
-      StartTime:
-        shape: String
-      EndTime:
-        shape: String
-      Period:
-        shape: String
-      Aggregate:
-        shape: Apps
-      Metrics:
-        shape: Metrics

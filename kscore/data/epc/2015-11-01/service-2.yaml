@@ -134,6 +134,23 @@ operations:
       name: ResetPassword
       http:
         method: GET
+ DescribeEpcStocks:
+      name: DescribeEpcStocks
+      http:
+        method: GET
+ DescribeEpcDeviceAttributes:
+      name: DescribeEpcDeviceAttributes
+      http:
+        method: GET
+ DescribeProcesses:
+      name: DescribeProcesses
+      http:
+        method: GET
+ CreateProcess:
+      name: CreateProcess
+      http:
+        method: GET
+
 
 shapes:
   Id:
