@@ -13,7 +13,7 @@ operations:
 
   RunInstances:
     http:
-      method: GET
+      method: POST
 
   TerminateInstances:
     http:
