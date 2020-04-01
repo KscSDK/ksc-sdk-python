@@ -1,0 +1,56 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2019-08-06'
+  endpointPrefix: kce
+  jsonVersion: '1.1'
+  serviceFullName: KSC Kce Service
+  signatureVersion: v4
+  targetPrefix: kce
+  protocol: query-json
+
+operations:
+  CreateCluster:
+    name: CreateCluster
+    http:
+      method: POST
+  DescribeCluster:
+    name: DescribeCluster
+    http:
+      method: GET
+  DescribeClusterInstance:
+    name: DescribeClusterInstance
+    http:
+      method: GET
+  AddClusterInstances:
+    name: AddClusterInstances
+    http:
+      method: POST
+  DeleteClusterInstances:
+    name: DeleteClusterInstances
+    http:
+      method: GET
+  ModifyClusterInfo:
+    name: ModifyClusterInfo
+    http:
+      method: GET
+  DownloadClusterConfig:
+    name: DownloadClusterConfig
+    http:
+      method: GET
+  DeleteCluster:
+    name: DeleteCluster
+    http:
+      method: GET
+  DescribeInstanceImage:
+    name: DescribeInstanceImage
+    http:
+      method: GET
+  DescribeEpcForCluster:
+    name: DescribeEpcForCluster
+    http:
+      method: GET
+  AddClusterEpcInstances:
+    name: AddClusterEpcInstances
+    http:
+      method: GET
