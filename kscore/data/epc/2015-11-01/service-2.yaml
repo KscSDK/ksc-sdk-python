@@ -150,6 +150,53 @@ operations:
       name: CreateProcess
       http:
         method: GET
+ DescribeInspections:
+      name: DescribeInspections
+      http:
+        method: GET
+ CreateCabinet:
+      name: CreateCabinet
+      http:
+        method: GET
+ DescribeCabinets:
+      name: DescribeCabinets
+      http:
+        method: GET
+ DeleteProcess:
+      name: DeleteProcess
+      http:
+        method: GET
+ ReplyProcess:
+      name: ReplyProcess
+      http:
+        method: GET
+ CreateAccessory:
+      name: CreateAccessory
+      http:
+        method: GET
+ BuyAccessory:
+      name: BuyAccessory
+      http:
+        method: GET
+ DeleteAccessory:
+      name: DeleteAccessory
+      http:
+        method: GET
+ DescribeAccessorys:
+      name: DescribeAccessorys
+      http:
+        method: GET
+ AssociateCluster:
+      name: AssociateCluster
+      http:
+        method: GET
+ DisassociateCluster:
+      name: DisassociateCluster
+      http:
+        method: GET
+
+
+
 
 
 shapes:

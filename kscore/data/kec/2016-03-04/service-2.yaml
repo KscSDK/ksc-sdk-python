@@ -118,3 +118,7 @@ operations:
   ModifyInstanceAutoDeleteTime:
     http:
       method: GET
+
+  DistributeIpv6:
+    http:
+      method: POST
