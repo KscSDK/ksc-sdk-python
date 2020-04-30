@@ -48,6 +48,35 @@ Config 配置
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
 
 ----------------
+金山云-私有云域名配置 SDK版本 >1.3.32
+----------------
+
++ 通过文件配置及管理密钥，参考examples内示例：
+
+    + 所在位置: '/etc/kscore.cfg' 或 './.kscore.cfg' 或 'C:\\kscore.cfg'
+
+    + 注意: 使用相对路径时，需与运行目录保持一致。
+
+    + 注意 域名不要带引号 示例 ks_domain = api.ksyun.com
+::
+
+    [Domain]
+    ks_domain = your domain
+
++ 或在程序运行时配置：
+
+::
+
+    from kscore.session import get_session
+    # 密钥
+    ks_domain = "your domain"
+
+
+    s = get_session()
+    s.set_domain(ks_domain)
+
+
+----------------
 日志级别配置方法
 ----------------
     from kscore.utils import set_logger_level
