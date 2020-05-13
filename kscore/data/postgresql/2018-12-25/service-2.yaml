@@ -2,12 +2,12 @@
 version: '2.0'
 
 metadata:
-  apiVersion: '2016-07-01'
-  endpointPrefix: krds
+  apiVersion: '2018-12-25'
+  endpointPrefix: postgresql
   jsonVersion: '1.1'
-  serviceFullName: krds Service
+  serviceFullName: postgresql Service
   signatureVersion: v4
-  targetPrefix: krds
+  targetPrefix: postgresql
   protocol: query-json
 
 operations:
@@ -156,52 +156,12 @@ operations:
     http:
       method: GET
 
-  RestoreDBInstanceToPointInTime:
-    name: RestoreDBInstanceToPointInTime
-    http:
-      method: GET
-
-  DescribeDBInstanceRestorableTime:
-    name: DescribeDBInstanceRestorableTime
-    http:
-      method: GET
-
   OverrideDBInstance:
     name: OverrideDBInstance
     http:
       method: GET
 
-  SwitchDBInstanceHA:
-    name: SwitchDBInstanceHA
-    http:
-      method: GET
-
   DescribeDBLogFiles:
     name: DescribeDBLogFiles
-    http:
-      method: GET
-
-  ListAccount:
-    name: ListAccount
-    http:
-      method: GET
-
-  ListAccountSupportPrivileges:
-    name: ListAccountSupportPrivileges
-    http:
-      method: GET
-
-  CreateAccount:
-    name: CreateAccount
-    http:
-      method: GET
-
-  DeleteAccount:
-    name: DeleteAccount
-    http:
-      method: GET
-
-  ModifyAccount:
-    name: ModifyAccount
     http:
       method: GET
