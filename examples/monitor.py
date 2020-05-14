@@ -11,7 +11,7 @@ if __name__ == "__main__":
     #ListMetrics
 
     client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m=client.list_metrics(InstanceID="3f092bb4-7461-4dac-9ee5-c60b75eeae22",Namespace="kec",PageIndex="1",PageSize="10")
+    m=client.list_metrics(InstanceID="3f092bb4-7461-4dac-9ee5-xxxxx",Namespace="kec",PageIndex="1",PageSize="10")
     print json.dumps(m,sort_keys=True,indent=4)
 
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     #GetMetricStatistics
     
     client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m=client.get_metric_statistics(InstanceID="227d550e-88d4-428e-8b90-a9bc2ce16fc7",Namespace="eip",MetricName="qos.bps_in",StartTime="2019-11-27T20:09:00Z",EndTime="2019-11-27T20:19:00Z",Period="60",Aggregate="Average,Max,Min,Count,Sum")
+    m=client.get_metric_statistics(InstanceID="227d550e-88d4-428e-8b90-xxxxx",Namespace="eip",MetricName="eip.bps.in",StartTime="2019-11-27T20:09:00Z",EndTime="2019-11-27T20:19:00Z",Period="60",Aggregate="Average,Max,Min")
     print json.dumps(m,sort_keys=True,indent=4)
     
     #GetMetricStatisticsBatch      version=2018-11-14
@@ -32,16 +32,16 @@ if __name__ == "__main__":
            "Aggregate": ["Max","Min","Avg"],
            "Metrics": [
                        {
-                        "InstanceID": "3f092bb4-7461-4dac-9ee5-c60b75eeae22",
+                        "InstanceID": "3f092bb4-7461-4dac-9ee5-xxxxx",
                         "MetricName":"net.if.in"
                        },
                        {
-                        "InstanceID": "3f092bb4-7461-4dac-9ee5-c60b75eeae22",
+                        "InstanceID": "3f092bb4-7461-4dac-9ee5-xxxxx",
                         "MetricName":"cpu.utilizition.total"
                        },
                        {
-                        "InstanceID": "ee321b50-1d9b-474c-92d0-ba007f0c01f6",
-                        "MetricName":"rds.qpss"
+                        "InstanceID": "ee321b50-1d9b-474c-92d0-xxxxx",
+                        "MetricName":"net.if.out"
                        }
                      ]
           }
@@ -60,17 +60,17 @@ if __name__ == "__main__":
     "PageIndex":"1",
     "PageSize":"10",
     "Dimensions.0.Name":"ClusterId",
-    "Dimensions.0.Value":"807a4149-b7e2-4e05-8a35-b77221ce5bb8",
+    "Dimensions.0.Value":"807a4149-b7e2-4e05-8a35-xxxxx",
     "Dimensions.1.Name":"NamespaceName",
-    "Dimensions.1.Value":"kube-system",
+    "Dimensions.1.Value":"xxxxx",
     "Dimensions.2.Name":"WorkloadType",
     "Dimensions.2.Value":"deployment",
     "Dimensions.3.Name":"WorkloadName",
-    "Dimensions.3.Value":"system-monitor",
+    "Dimensions.3.Value":"xxxxx",
     "Dimensions.4.Name":"PodName",
-    "Dimensions.4.Value":"system-monitor-69f6d456bf-r7khs",
+    "Dimensions.4.Value":"xxxxx-xxxxx-xxxxx",
    # "Dimensions.5.Name":"ContainerName",
-   # "Dimensions.5.Value":"ksc-metrics-pusher"
+   # "Dimensions.5.Value":"kxxxxx"
     }
 
     client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
@@ -88,19 +88,19 @@ if __name__ == "__main__":
     "StartTime":"2019-11-26T17:09:00Z",
     "EndTime":"2019-11-26T17:19:00Z",
     "Period":"60",
-    "Aggregate":"Average,Max,Min,Count,Sum",
+    "Aggregate":"Average,Max,Min",
     "Dimensions.0.Name":"ClusterId",
-    "Dimensions.0.Value":"807a4149-b7e2-4e05-8a35-b77221ce5bb8",
+    "Dimensions.0.Value":"807a4149-b7e2-4e05-8a35-xxxxx",
     "Dimensions.1.Name":"NamespaceName",
-    "Dimensions.1.Value":"kube-system",
+    "Dimensions.1.Value":"xxxxx",
     "Dimensions.2.Name":"WorkloadType",
     "Dimensions.2.Value":"deployment",
     "Dimensions.3.Name":"WorkloadName",
-    "Dimensions.3.Value":"system-monitor",
+    "Dimensions.3.Value":"xxxxx",
     "Dimensions.4.Name":"PodName",
-    "Dimensions.4.Value":"system-monitor-69f6d456bf-r7khs",
+    "Dimensions.4.Value":"xxxxx",
    # "Dimensions.5.Name":"ContainerName",
-   # "Dimensions.5.Value":"ksc-metrics-pusher"
+   # "Dimensions.5.Value":"xxxxx"
     }
 
     client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
