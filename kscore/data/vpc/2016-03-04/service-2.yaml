@@ -333,6 +333,26 @@ operations:
     name: DescribeVpcPeeringConnections
     http:
       method: GET
+  DescribeIpv6PublicIpAddresses:
+    name: DescribeIpv6PublicIpAddresses
+    http:
+      method: GET
+  CreateIpv6PublicIp:
+    name: CreateIpv6PublicIp
+    http:
+      method: GET
+  ModifyIpv6PublicIp:
+    name: ModifyIpv6PublicIp
+    http:
+      method: GET
+  ReleaseIpv6PublicIp:
+    name: ReleaseIpv6PublicIp
+    http:
+      method: GET
+  DescribeIpv6NetworkInterfaces:
+    name: DescribeIpv6NetworkInterfaces
+    http:
+      method: GET
 
 shapes:
   Id:
