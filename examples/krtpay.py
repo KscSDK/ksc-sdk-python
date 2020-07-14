@@ -5,6 +5,7 @@ import json
 
 if __name__ == "__main__":
     s = get_session()
+
     client = s.create_client("krtpay","cn-beijing-6",use_ssl=False,ks_access_key_id=ak,
                              ks_secret_access_key=sk)
 
