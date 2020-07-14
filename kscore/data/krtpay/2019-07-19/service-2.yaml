@@ -1,0 +1,24 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2019-07-19'
+  endpointPrefix: krtpay
+  jsonVersion: '1.1'
+  serviceFullName: krtpay Service
+  signatureVersion: v4
+  targetPrefix: krtpay
+  protocol: query-json
+
+operations:
+  DescribeBillSummary:
+    http:
+      method: GET
+  DescribeBills:
+    http:
+      method: GET
+  DescribeBillDetail:
+    http:
+      method: GET
+  DescribeProductCode:
+    http:
+      method: GET
