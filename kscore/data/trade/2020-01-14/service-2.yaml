@@ -1,0 +1,15 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2020-01-14'
+  endpointPrefix: trade
+  jsonVersion: '1.1'
+  serviceFullName: Trade Service
+  signatureVersion: v4
+  targetPrefix: trade
+  protocol: query-json
+
+operations:
+  DescribeInstances:
+    http:
+      method: POST

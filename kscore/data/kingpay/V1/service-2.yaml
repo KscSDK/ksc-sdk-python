@@ -1,0 +1,15 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: 'V1'
+  endpointPrefix: kingpay
+  jsonVersion: '1.1'
+  serviceFullName: Kingpay Service
+  signatureVersion: v4
+  targetPrefix: kingpay
+  protocol: query-json
+
+operations:
+  QueryCashWalletAction:
+    http:
+      method: GET
