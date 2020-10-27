@@ -173,6 +173,6 @@ operations:
       method: PUT
   # 备份详情
   DescribeSnapshot:
-     name: DescribeSnapshot
-     http:
-       method: GET
+    name: DescribeSnapshot
+    http:
+      method: GET
