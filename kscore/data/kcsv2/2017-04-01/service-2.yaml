@@ -11,6 +11,17 @@ metadata:
   protocol: kcs
 
 operations:
+  # 添加只读实例
+  AddCacheSlaveNode:
+    name: AddCacheSlaveNode
+    http:
+      method: PUT
+  # 删除只读实例
+  DeleteCacheSlaveNode:
+    name: DeleteCacheSlaveNode
+    http:
+      method: PUT
+  # 查询缓存服务只读实例列表
   DescribeCacheReadonlyNode:
     name: DescribeCacheReadonlyNode
     http:
