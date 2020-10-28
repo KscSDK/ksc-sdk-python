@@ -63,9 +63,9 @@ operations:
       method: GET
   # 查询概览页
   StatisticDBInstances:
-     name: StatisticDBInstances
-     http:
-       method: GET
+    name: StatisticDBInstances
+    http:
+      method: GET
   # 查询缓存服务参数
   DescribeCacheParameters:
     name: DescribeCacheParameters
@@ -76,51 +76,6 @@ operations:
     name: SetCacheParameters
     http:
       method: PUT
-  # 添加安全规则
-  SetCacheSecurityRules:
-    name: SetCacheSecurityRules
-    http:
-      method: PUT
-  # 查询实例安全规则
-  DescribeCacheSecurityRules:
-    name: DescribeCacheSecurityRules
-    http:
-      method: GET
-  # 删除实例安全规则
-  DeleteCacheSecurityRule:
-    name: DeleteCacheSecurityRule
-    http:
-      method: DELETE
-  # 安全组创建
-  CreateCacheSecurityGroup:
-    name: CreateCacheSecurityGroup
-    http:
-      method: POST
-  # 安全组删除
-  DeleteCacheSecurityGroup:
-    name: DeleteCacheSecurityGroup
-    http:
-      method: DELETE
-  # 安全组应用到实例
-  SetCacheSecurityGroup:
-    name: SetCacheSecurityGroup
-    http:
-      method: PUT
-  # 安全组修改
-  ModifyCacheSecurityGroup:
-    name: ModifyCacheSecurityGroup
-    http:
-      method: PUT
-  # 安全组删除安全规则
-  DeleteCacheSecurityGroupRule:
-    name: DeleteCacheSecurityGroupRule
-    http:
-      method: DELETE
-  # 安全组详情
-  DescribeCacheSecurityGroups:
-    name: DescribeCacheSecurityGroups
-    http:
-      method: GET
   # 查询地域列表
   DescribeRegions:
     name: DescribeRegions
@@ -128,44 +83,44 @@ operations:
       method: GET
   # 查询可用区列表
   DescribeAvailabilityZones:
-     name: DescribeAvailabilityZones
-     http:
-       method: GET
+    name: DescribeAvailabilityZones
+    http:
+      method: GET
   # 创建备份
   CreateSnapshot:
-     name: CreateSnapshot
-     http:
-       method: POST
+    name: CreateSnapshot
+    http:
+      method: POST
   # 备份删除
   DeleteSnapshot:
-     name: DeleteSnapshot
-     http:
-       method: DELETE
+    name: DeleteSnapshot
+    http:
+      method: DELETE
   # 备份恢复
   RestoreSnapshot:
-     name: RestoreSnapshot
-     http:
-       method: PUT
+    name: RestoreSnapshot
+    http:
+      method: PUT
   # 备份列表
   DescribeSnapshots:
-     name: DescribeSnapshots
-     http:
-       method: GET
+    name: DescribeSnapshots
+    http:
+      method: GET
   # 备份下载
   DownloadSnapshot:
-     name: DownloadSnapshot
-     http:
-       method: GET
+    name: DownloadSnapshot
+    http:
+      method: GET
   # 备份导出
   ExportSnapshot:
-     name: ExportSnapshot
-     http:
-       method: GET
+    name: ExportSnapshot
+    http:
+      method: GET
   # 备份定时设置
   SetTimingSnapshot:
-     name: SetTimingSnapshot
-     http:
-       method: PUT
+    name: SetTimingSnapshot
+    http:
+      method: PUT
   # 备份名称修改
   RenameSnapshot:
     name: RenameSnapshot
@@ -173,6 +128,56 @@ operations:
       method: PUT
   # 备份详情
   DescribeSnapshot:
-     name: DescribeSnapshot
-     http:
-       method: GET
+    name: DescribeSnapshot
+    http:
+      method: GET
+
+  CreateSecurityGroup:
+    name: CreateSecurityGroup
+    http:
+      method: POST
+
+  CloneSecurityGroup:
+    name: CloneSecurityGroup
+    http:
+      method: POST
+
+  DeleteSecurityGroup:
+    name: DeleteSecurityGroup
+    http:
+      method: POST
+
+  ModifySecurityGroup:
+    name: ModifySecurityGroup
+    http:
+      method: POST
+
+  DescribeSecurityGroups:
+    name: DescribeSecurityGroups
+    http:
+      method: GET
+
+  DescribeSecurityGroup:
+    name: DescribeSecurityGroup
+    http:
+      method: GET
+
+  AllocateSecurityGroup:
+    name: AllocateSecurityGroup
+    http:
+      method: POST
+
+  DeallocateSecurityGroup:
+    name: DeallocateSecurityGroup
+    http:
+      method: POST
+
+  CreateSecurityGroupRule:
+    name: CreateSecurityGroupRule
+    http:
+      method: POST
+
+  DeleteSecurityGroupRule:
+    name: DeleteSecurityGroupRule
+    http:
+      method: POST
