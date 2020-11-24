@@ -54,3 +54,11 @@ operations:
     name: AddClusterEpcInstances
     http:
       method: GET
+  DescribeExistedInstances:
+    name: DescribeExistedInstances
+    http:
+      method: GET
+  AddExistedInstances:
+    name: AddExistedInstances
+    http:
+      method: POST
