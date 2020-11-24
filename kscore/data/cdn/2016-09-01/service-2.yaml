@@ -2,7 +2,7 @@
 version: '2.1'
 
 metadata:
-  # Version 
+  # Version
   apiVersion: '2016-09-01'
   endpointPrefix: cdn
   globalEndpoint: cdn.api.ksyun.com
@@ -111,7 +111,7 @@ operations:
       shape: GetUvDataRequest
     output:
       shape: GetUvDataResponse
-      
+
   GetTopIpData:
     name: GetTopIpData
     http:
@@ -211,7 +211,7 @@ operations:
       shape: GetSubDomainsPvDataRequest
     output:
       shape: GetSubDomainsPvDataResponse
-      
+
   GetDomainLogs:
     name: GetDomainLogs
     http:
@@ -231,7 +231,7 @@ operations:
       shape: GetCdnDomainsRequest
     output:
       shape: GetCdnDomainsResponse
-  
+
   AddCdnDomain:
     name: AddCdnDomain
     http:
@@ -251,7 +251,7 @@ operations:
       shape: GetCdnDomainBasicRequest
     output:
       shape: GetCdnDomainBasicResponse
-      
+
   GetDomainConfigs:
     name: GetDomainConfigs
     http:
@@ -281,7 +281,7 @@ operations:
       shape: ModifyCdnDomainBasicInfoRequest
     output:
       shape: ModifyCdnDomainBasicInfoResponse
-    
+
   StartStopCdnDomain:
     name: StartStopCdnDomain
     http:
@@ -291,7 +291,7 @@ operations:
       shape: StartStopCdnDomainRequest
     output:
       shape: StartStopCdnDomainResponse
-      
+
   DeleteCdnDomain:
     name: DeleteCdnDomain
     http:
@@ -301,7 +301,7 @@ operations:
       shape: DeleteCdnDomainRequest
     output:
       shape: DeleteCdnDomainResponse
-  
+
   SetIgnoreQueryStringConfig:
     name: SetIgnoreQueryStringConfig
     http:
@@ -317,7 +317,7 @@ operations:
       requestUri: /2016-09-01/domain/SetBackOriginHostConfig
     input:
       shape: SetBackOriginHostConfigRequest
-  
+
   SetReferProtectionConfig:
     name: SetReferProtectionConfig
     http:
@@ -333,14 +333,14 @@ operations:
       requestUri: /2016-09-01/domain/SetIpProtectionConfig
     input:
       shape: SetIpProtectionConfigRequest
- 
+
   SetCacheRuleConfig:
     name: SetCacheRuleConfig
     protocol: json
     http:
       method: POST
       requestUri: /2016-09-01/domain/SetCacheRuleConfig
-  
+
   SetTestUrlConfig:
     name: SetTestUrlConfig
     http:
@@ -348,14 +348,14 @@ operations:
       requestUri: /2016-09-01/domain/SetTestUrlConfig
     input:
       shape: SetTestUrlConfigRequest
-  
+
   SetOriginAdvancedConfig:
     name: SetOriginAdvancedConfig
     protocol: json
     http:
       method: POST
       requestUri: /2016-09-01/domain/SetOriginAdvancedConfig
-      
+
   SetRemarkConfig:
     name: SetRemarkConfig
     http:
@@ -363,7 +363,7 @@ operations:
       requestUri: /2016-09-01/domain/SetRemarkConfig
     input:
       shape: SetRemarkConfigRequest
-      
+
   GetBandwidthData:
     name: GetBandwidthData
     http:
@@ -373,7 +373,7 @@ operations:
       shape: GetBandwidthDataRequest
     output:
       shape: GetBandwidthDataResponse
-      
+
   GetFlowData:
     name: GetFlowData
     http:
@@ -383,7 +383,7 @@ operations:
       shape: GetFlowDataRequest
     output:
       shape: GetFlowDataResponse
-      
+
   GetPvData:
     name: GetPvData
     http:
@@ -393,7 +393,7 @@ operations:
       shape: GetPvDataRequest
     output:
       shape: GetPvDataResponse
-    
+
   GetHitRateDetailedData:
     name: GetHitRateDetailedData
     http:
@@ -403,7 +403,7 @@ operations:
       shape: GetHitRateDetailedDataRequest
     output:
       shape: GetHitRateDetailedDataResponse
-  
+
   GetHitRateData:
     name: GetHitRateData
     http:
@@ -413,7 +413,7 @@ operations:
       shape: GetHitRateDataRequest
     output:
       shape: GetHitRateDataResponse
- 
+
   GetProvinceAndIspFlowData:
     name: GetProvinceAndIspFlowData
     http:
@@ -423,7 +423,7 @@ operations:
       shape: GetProvinceAndIspFlowDataRequest
     output:
       shape: GetProvinceAndIspFlowDataResponse
-  
+
   GetProvinceAndIspBandwidthData:
     name: GetProvinceAndIspBandwidthData
     http:
@@ -433,17 +433,17 @@ operations:
       shape: GetProvinceAndIspBandwidthDataRequest
     output:
       shape: GetProvinceAndIspBandwidthDataResponse
-      
+
   GetHttpCodeData:
     name: GetHttpCodeData
     http:
       method: GET
       requestUri: /2016-09-01/statistics/GetHttpCodeData
-    input: 
+    input:
       shape: GetHttpCodeDataRequest
     output:
       shape: GetHttpCodeDataResponse
-      
+
   GetHttpCodeDetailedData:
     name: GetHttpCodeDetailedData
     http:
@@ -453,7 +453,7 @@ operations:
       shape: GetHttpCodeDetailedDataRequest
     output:
       shape: GetHttpCodeDetailedDataResponse
-    
+
   GetTopUrlData:
     name: GetTopUrlData
     http:
@@ -463,7 +463,7 @@ operations:
       shape: GetTopUrlDataRequest
     output:
       shape: GetTopUrlDataResponse
-  
+
   GetAreaData:
     name: GetAreaData
     http:
@@ -473,7 +473,7 @@ operations:
       shape: GetAreaDataRequest
     output:
       shape: GetAreaDataResponse
-      
+
   GetIspData:
     name: GetIspData
     http:
@@ -483,7 +483,7 @@ operations:
       shape: GetIspDataRequest
     output:
       shape: GetIspDataResponse
- 
+
   GetDomainRankingListData:
     name: GetDomainRankingListData
     http:
@@ -493,7 +493,7 @@ operations:
       shape: GetDomainRankingListDataRequest
     output:
       shape: GetDomainRankingListDataResponse
-  
+
   GetLiveFlowDataByStream:
     name: GetLiveFlowDataByStream
     http:
@@ -503,7 +503,7 @@ operations:
       shape: GetLiveFlowDataByStreamRequest
     output:
       shape: GetLiveFlowDataByStreamResponse
-  
+
   GetLiveBandwidthDataByStream:
     name: GetLiveBandwidthDataByStream
     http:
@@ -513,7 +513,7 @@ operations:
       shape: GetLiveBandwidthDataByStreamRequest
     output:
       shape: GetLiveBandwidthDataByStreamResponse
-  
+
   GetLiveOnlineUserDataByDomain:
     name: GetLiveOnlineUserDataByDomain
     http:
@@ -523,7 +523,7 @@ operations:
       shape: GetLiveOnlineUserDataByDomainRequest
     output:
       shape: GetLiveOnlineUserDataByDomainResponse
-      
+
   GetLiveOnlineUserDataByStream:
     name: GetLiveOnlineUserDataByStream
     http:
@@ -533,7 +533,7 @@ operations:
       shape: GetLiveOnlineUserDataByStreamRequest
     output:
       shape: GetLiveOnlineUserDataByStreamResponse
-  
+
   GetLiveTopOnlineUserData:
     name: GetLiveTopOnlineUserData
     http:
@@ -744,19 +744,19 @@ shapes:
 
   Bool:
     type: bool
-    
+
   Integer:
     type: integer
-    
+
   Long:
     type: long
-    
+
   DataTime:
     type: timestamp
 
   Double:
-    type: double  
-  
+    type: double
+
   Empty:
     type: structure
     members: {}
@@ -776,7 +776,7 @@ shapes:
     members:
       id:
         shape: Id
-    
+
   Domain:
     type: structure
     members:
@@ -800,7 +800,7 @@ shapes:
         shape: String
       Description:
         shape: String
-  
+
   DomainList:
     type: list
     member:
@@ -863,7 +863,7 @@ shapes:
     members:
       HttpHeadList:
         shape: HttpHeaderRuleList
-  
+
   GetDomainLogsRequest:
     type: structure
     required:
@@ -879,7 +879,7 @@ shapes:
         shape: String
       EndTime:
         shape: String
-        
+
   DomainLogData:
     type: structure
     members:
@@ -897,7 +897,7 @@ shapes:
     type: list
     member:
       shape: DomainLogData
-      
+
   GetDomainLogsResponse:
     type: structure
     members:
@@ -925,7 +925,7 @@ shapes:
     type: list
     member:
       shape: KscCnameSuffix
-  
+
   GetDomainsByOriginRequest:
     type: structure
     members:
@@ -949,7 +949,7 @@ shapes:
     type: list
     member:
       shape: DomainsByOrigin
-  
+
   GetCdnDomainsRequest:
     type: structure
     members:
@@ -959,13 +959,15 @@ shapes:
         shape: Long
       DomainName:
         shape: String
+      ProjectId:
+        shape: String
       DomainStatus:
         shape: String
       CdnType:
         shape: String
       FuzzyMatch:
         shape: String
-        
+
   GetCdnDomainsResponse:
     type: structure
     members:
@@ -977,7 +979,7 @@ shapes:
         shape: Long
       Domains:
         shape: DomainList
-        
+
   AddCdnDomainRequest:
     type: structure
     required:
@@ -988,43 +990,45 @@ shapes:
     - OriginProtocol
     - Origin
     members:
-      DomainName: 
+      DomainName:
         shape: String
-      CdnType:  
+      CdnType:
         shape: String
-      CdnSubType:  
+      ProjectId:
         shape: String
-      CdnProtocol:  
+      CdnSubType:
         shape: String
-      BillingRegions:  
+      CdnProtocol:
         shape: String
-      OriginType:  
+      BillingRegions:
         shape: String
-      OriginProtocol:  
+      OriginType:
         shape: String
-      OriginPort: 
+      OriginProtocol:
+        shape: String
+      OriginPort:
         shape: Integer
-      Origin:  
+      Origin:
         shape: String
       SearchUrl:
         shape: String
-  
+
   AddCdnDomainResponse:
     type: structure
     members:
-      DomainId:   
+      DomainId:
         shape: String
-      DomainStatus:   
+      DomainStatus:
         shape: String
-  
+
   GetCdnDomainBasicRequest:
     type: structure
     required:
     - DomainId
     members:
-      DomainId:   
+      DomainId:
         shape: String
-          
+
   GetCdnDomainBasicResponse:
     type: structure
     members:
@@ -1043,6 +1047,8 @@ shapes:
       CdnType:
         shape: String
       CdnSubType:
+        shape: String
+      ProjectId:
         shape: String
       IcpRegistration:
         shape: String
@@ -1066,7 +1072,7 @@ shapes:
         shape: String
       ModifiedTime:
         shape: String
-        
+
   GetDomainConfigsRequest:
     type: structure
     required:
@@ -1076,13 +1082,13 @@ shapes:
         shape: String
       ConfigList:
         shape: String
- 
+
   #Configs response 各项封装
   CacheRule:
     type: structure
     members:
       CacheRuleType:
-        shape: String      
+        shape: String
       Value:
         shape: String
       CacheTime:
@@ -1100,7 +1106,7 @@ shapes:
     members:
       CacheRules:
         shape: CacheRuleList
-  
+
   IpProtectionConfigShape:
     type: structure
     members:
@@ -1110,13 +1116,13 @@ shapes:
         shape: String
       IpList:
         shape: String
-        
-  PageCompressConfigShape:   
+
+  PageCompressConfigShape:
     type: structure
     members:
       Enable:
         shape: String
-        
+
   IgnoreQueryStringConfigShape:
     type: structure
     members:
@@ -1124,13 +1130,13 @@ shapes:
         shape: String
       HashKeyArgs:
         shape: String
-   
+
   BackOriginConfigShape:
     type: structure
     members:
       Enable:
         shape: String
-        
+
   ReferProtectionConfigShape:
     type: structure
     members:
@@ -1142,7 +1148,7 @@ shapes:
         shape: String
       AllowEmpty:
         shape: String
-        
+
   UrlAuthConfigShape:
     type: structure
     members:
@@ -1156,19 +1162,19 @@ shapes:
         shape: String
       Timeout:
         shape: String
-  
+
   BackOriginHostConfigShape:
     type: structure
     members:
-      BackOriginHost: 
+      BackOriginHost:
         shape: String
-      
-  VideoSeekConfigShape:    
+
+  VideoSeekConfigShape:
     type: structure
     members:
       Enable:
         shape: String
-        
+
   OriginAdvancedItem:
     type: structure
     members:
@@ -1202,7 +1208,7 @@ shapes:
 
 
 
-   
+
   DetectOriginConfigShape:
     type: structure
     members:
@@ -1216,13 +1222,13 @@ shapes:
         shape: String
       Frequency:
         shape: String
-        
+
   TestUrlConfigShape:
     type: structure
     members:
       TestUrl:
         shape: String
-        
+
   HttpHeaderRule:
     type: structure
     members:
@@ -1281,7 +1287,7 @@ shapes:
       CustomPageUrl:
         shape: String
   ##
-  GetDomainConfigsResponse:    
+  GetDomainConfigsResponse:
     type: structure
     members:
       CacheRuleConfig:
@@ -1353,13 +1359,13 @@ shapes:
         shape: String
       SearchUrl:
         shape: String
-        
+
   ModifyCdnDomainBasicInfoResponse:
     type: structure
     members:
       RequestID:
         shape: String
-      
+
   StartStopCdnDomainRequest:
     type: structure
     required:
@@ -1370,27 +1376,27 @@ shapes:
         shape: String
       ActionType:
         shape: String
-        
+
   StartStopCdnDomainResponse:
     type: structure
     members:
       RequestID:
         shape: String
-        
-  DeleteCdnDomainRequest:  
+
+  DeleteCdnDomainRequest:
     type: structure
     required:
     - DomainId
     members:
       DomainId:
         shape: String
-        
+
   DeleteCdnDomainResponse:
     type: structure
     members:
       RequestID:
         shape: String
-        
+
   SetIgnoreQueryStringConfigRequest:
     type: structure
     required:
@@ -1403,7 +1409,7 @@ shapes:
         shape: String
       HashKeyArgs:
         shape: String
-        
+
   SetBackOriginHostConfigRequest:
     type: structure
     required:
@@ -1414,7 +1420,7 @@ shapes:
         shape: String
       BackOriginHost:
         shape: String
-        
+
   SetReferProtectionConfigRequest:
     type: structure
     required:
@@ -1422,7 +1428,7 @@ shapes:
     - Enable
     members:
       DomainId:
-        shape: String   
+        shape: String
       Enable:
         shape: String
       ReferType:
@@ -1447,7 +1453,7 @@ shapes:
       IpList:
         shape: String
 
-  SetTestUrlConfigRequest:       
+  SetTestUrlConfigRequest:
     type: structure
     required:
     - DomainId
@@ -1457,7 +1463,7 @@ shapes:
         shape: String
       TestUrl:
         shape: String
-        
+
   SetRemarkConfigRequest:
     type: structure
     required:
@@ -1468,8 +1474,8 @@ shapes:
         shape: String
       Remark:
         shape: String
-        
-  ######查询带宽封装######  
+
+  ######查询带宽封装######
   GetBandwidthDataRequest:
     type: structure
     required:
@@ -1496,8 +1502,8 @@ shapes:
         shape: String
       ProtocolType:
         shape: String
-    
-  BpsDataByRegion: 
+
+  BpsDataByRegion:
     type: structure
     members:
       Region:
@@ -1510,7 +1516,7 @@ shapes:
     type: list
     member:
       shape: BpsDataByRegion
-      
+
   BpsDataByDomain:
     type: structure
     members:
@@ -1526,7 +1532,7 @@ shapes:
     type: list
     member:
       shape: BpsDataByDomain
-    
+
   BpsDataByTime:
     type: structure
     members:
@@ -1542,7 +1548,7 @@ shapes:
     type: list
     member:
       shape: BpsDataByTime
-      
+
   GetBandwidthDataResponse:
     type: structure
     members:
@@ -1564,7 +1570,7 @@ shapes:
         shape: String
       Datas:
         shape: BpsDataByTimeList
-  ######查询子域名带宽封装######  
+  ######查询子域名带宽封装######
   GetSubDomainsBandwidthDataRequest:
     type: structure
     required:
@@ -1607,7 +1613,7 @@ shapes:
     type: list
     member:
       shape: BpsDataByHost
-    
+
   BpsDataByHostTime:
     type: structure
     members:
@@ -1623,7 +1629,7 @@ shapes:
     type: list
     member:
       shape: BpsDataByHostTime
-      
+
   GetSubDomainsBandwidthDataResponse:
     type: structure
     members:
@@ -1672,7 +1678,7 @@ shapes:
         shape: String
       ProtocolType:
         shape: String
-   
+
   FlowDataByRegion:
     type: structure
     members:
@@ -1686,7 +1692,7 @@ shapes:
     type: list
     member:
       shape: FlowDataByRegion
-      
+
   FlowDataByDomain:
     type: structure
     members:
@@ -1702,11 +1708,11 @@ shapes:
     type: list
     member:
       shape: FlowDataByDomain
-  
+
   FlowDataByTime:
     type: structure
     members:
-      Time: 
+      Time:
         shape: String
       Flow:
         shape: Long
@@ -1718,7 +1724,7 @@ shapes:
     type: list
     member:
       shape: FlowDataByTime
-    
+
   GetFlowDataResponse:
     type: structure
     members:
@@ -1768,7 +1774,7 @@ shapes:
         shape: String
       ProtocolType:
         shape: String
-      
+
   FlowDataByHost:
     type: structure
     members:
@@ -1784,11 +1790,11 @@ shapes:
     type: list
     member:
       shape: FlowDataByHost
-  
+
   FlowDataByHostTime:
     type: structure
     members:
-      Time: 
+      Time:
         shape: String
       Flow:
         shape: Long
@@ -1800,7 +1806,7 @@ shapes:
     type: list
     member:
       shape: FlowDataByHostTime
-    
+
   GetSubDomainsFlowDataResponse:
     type: structure
     members:
@@ -1821,7 +1827,7 @@ shapes:
       DataType:
         shape: String
       Datas:
-        shape: FlowDataByHostTimeList   
+        shape: FlowDataByHostTimeList
   ####查询日志设置####
   GetDomainLogServiceStatusRequest:
     type: structure
@@ -1836,7 +1842,7 @@ shapes:
       DomainId:
         shape: String
       Status:
-        shape: String    
+        shape: String
       Granularity:
         shape: Long
   DomainLogServiceStatusList:
@@ -1848,7 +1854,7 @@ shapes:
     members:
       Datas:
         shape: DomainLogServiceStatusList
-  ####日志设置#### 
+  ####日志设置####
   SetDomainLogServiceRequest:
     type: structure
     required:
@@ -1861,8 +1867,8 @@ shapes:
         shape: String
       Granularity:
         shape: Long
-  
-  ####刷新预热操作剩余量####   
+
+  ####刷新预热操作剩余量####
   GetRefreshOrPreloadQuotaResponse:
     type: structure
     members:
@@ -1878,26 +1884,26 @@ shapes:
         shape: Long
       PreloadUrlSurplus:
         shape: Long
-  ####预热####   
+  ####预热####
   PreloadCachesResponse:
     type: structure
     members:
       PreloadTaskId:
-        shape: String     
-  ####刷新####             
+        shape: String
+  ####刷新####
   RefreshCachesResponse:
     type: structure
     members:
       RefreshTaskId:
-        shape: String 
-  ####刷新预热进度查询#### 
+        shape: String
+  ####刷新预热进度查询####
   ProReTaskUrlData:
     type: structure
     members:
       Type:
         shape: String
       Url:
-        shape: String    
+        shape: String
       Progress:
         shape: Double
       Status:
@@ -1921,8 +1927,8 @@ shapes:
         shape: Long
       Datas:
         shape: ProReTaskUrlDataList
-  
-  ####省份运营商命中率详情查询####    
+
+  ####省份运营商命中率详情查询####
   GetProvinceAndIspHitRateDetailedRequest:
     type: structure
     required:
@@ -2032,7 +2038,7 @@ shapes:
         shape: String
       Datas:
         shape: ProvHitRateDataByTimeList
-  ####省份运营商状态码详情####    
+  ####省份运营商状态码详情####
   GetProvinceAndIspHttpCodeDetailedRequest:
     type: structure
     required:
@@ -2097,8 +2103,58 @@ shapes:
       Isps:
         shape: String
       Datas:
-        shape: ProvinceAndIspHttpCodeDataList
-  ####省份运营商状态码查询####    
+        shape: ProvinceAndIspHttpCodeDetailDataList
+  ProvinceAndIspHttpCodeDetailDataList:
+    type: list
+    member:
+      shape: ProvinceAndIspHttpCodeDetailData
+  ProvinceAndIspHttpCodeDetailData:
+    type: structure
+    members:
+      Time:
+        shape: String
+      CodeSum:
+        shape: ProvinceAndIspHttpCodeList
+      Domains:
+        shape: ProvinceAndIspHttpCodeByDomainList
+  ProvinceAndIspHttpCodeByDomainList:
+    type: list
+    member:
+      shape: ProvinceAndIspHttpCodeByDomain
+  ProvinceAndIspHttpCodeByDomain:
+    type: structure
+    members:
+      DomainId:
+        shape: String
+      Codes:
+        shape: ProvinceAndIspHttpCodeList
+      Provinces:
+        shape: ProvinceAndIspHttpCodeByProvinceList
+  ProvinceAndIspHttpCodeByProvinceList:
+    type: list
+    member:
+      shape: ProvinceAndIspHttpCodeByProvince
+  ProvinceAndIspHttpCodeByProvince:
+    type: structure
+    members:
+      Province:
+        shape: String
+      Codes:
+        shape: ProvinceAndIspHttpCodeList
+      Isps:
+        shape: ProvinceAndIspHttpCodeByIspList
+  ProvinceAndIspHttpCodeByIspList:
+    type: list
+    member:
+      shape: ProvinceAndIspHttpCodeByIsp
+  ProvinceAndIspHttpCodeByIsp:
+    type: structure
+    members:
+      Isp:
+        shape: String
+      Codes:
+        shape: ProvinceAndIspHttpCodeList
+  ####省份运营商状态码查询####
   GetProvinceAndIspHttpCodeRequest:
     type: structure
     required:
@@ -2115,7 +2171,7 @@ shapes:
       DomainIds:
         shape: String
       Provinces:
-        shape: String  
+        shape: String
       Isps:
         shape: String
   ProvinceAndIspHttpCode:
@@ -2148,7 +2204,7 @@ shapes:
         shape: String
       Datas:
         shape: ProvinceAndIspHttpCodeDataList
-  ####省份运营商请求数查询####    
+  ####省份运营商请求数查询####
   GetProvinceAndIspPvRequest:
     type: structure
     required:
@@ -2167,7 +2223,7 @@ shapes:
       Provinces:
         shape: String
       Granularity:
-        shape: Long  
+        shape: Long
       Isps:
         shape: String
       ResultType:
@@ -2243,7 +2299,7 @@ shapes:
         shape: Long
       Datas:
         shape: String
-  ####回源状态码统计详情####    
+  ####回源状态码统计详情####
   GetSrcHttpCodeDetailedRequest:
     type: structure
     required:
@@ -2286,7 +2342,7 @@ shapes:
   SrcHttpCodeDataByTimeList:
     type: list
     member:
-      shape: SrcHttpCodeDataByTime 
+      shape: SrcHttpCodeDataByTime
   GetSrcHttpCodeDetailedResponse:
     type: structure
     members:
@@ -2304,7 +2360,7 @@ shapes:
         shape: Long
       Datas:
         shape: SrcHttpCodeDataByTimeList
-  ####回源状态码统计####    
+  ####回源状态码统计####
   GetSrcHttpCodeDataRequest:
     type: structure
     required:
@@ -2361,8 +2417,8 @@ shapes:
         shape: String
       Datas:
         shape: SrcHttpCodeDataList
-  
-  ####top refer统计####    
+
+  ####top refer统计####
   GetTopReferDataRequest:
     type: structure
     required:
@@ -2408,7 +2464,7 @@ shapes:
         shape: Long
       Datas:
         shape: TopReferDataList
-  ####top ip统计####    
+  ####top ip统计####
   GetTopIpDataRequest:
     type: structure
     required:
@@ -2454,7 +2510,7 @@ shapes:
         shape: Long
       Datas:
         shape: TopIpDataList
-  ####独立IP的请求个数####    
+  ####独立IP的请求个数####
   GetUvDataRequest:
     type: structure
     required:
@@ -2544,7 +2600,7 @@ shapes:
         shape: String
       ProtocolType:
         shape: String
-      
+
   PvDataByHost:
     type: structure
     members:
@@ -2560,11 +2616,11 @@ shapes:
     type: list
     member:
       shape: PvDataByHost
-      
+
   PvDataByHostTime:
     type: structure
     members:
-      Time: 
+      Time:
         shape: String
       Pv:
         shape: Long
@@ -2575,8 +2631,8 @@ shapes:
   PvDataByHostTimeList:
     type: list
     member:
-      shape: PvDataByHostTime     
-  
+      shape: PvDataByHostTime
+
   GetSubDomainsPvDataResponse:
     type: structure
     members:
@@ -2625,7 +2681,7 @@ shapes:
         shape: String
       ProtocolType:
         shape: String
-        
+
   PvDataByRegion:
     type: structure
     members:
@@ -2639,7 +2695,7 @@ shapes:
     type: list
     member:
       shape: PvDataByRegion
-      
+
   PvDataByDomain:
     type: structure
     members:
@@ -2687,11 +2743,11 @@ shapes:
     type: list
     member:
       shape: PvDataByDomain
-      
+
   PvDataByTime:
     type: structure
     members:
-      Time: 
+      Time:
         shape: String
       Pv:
         shape: Long
@@ -2702,8 +2758,8 @@ shapes:
   PvDataByTimeList:
     type: list
     member:
-      shape: PvDataByTime     
-  
+      shape: PvDataByTime
+
   GetPvDataResponse:
     type: structure
     members:
@@ -2725,9 +2781,9 @@ shapes:
         shape: String
       Datas:
         shape: PvDataByTimeList
-  
+
   ####命中率详情####
-  GetHitRateDetailedDataRequest:        
+  GetHitRateDetailedDataRequest:
     type: structure
     required:
     - StartTime
@@ -2748,8 +2804,8 @@ shapes:
       Granularity:
         shape: String
       HitType:
-        shape: String        
-  
+        shape: String
+
   HitRateDataByDomain:
     type: structure
     members:
@@ -2763,7 +2819,7 @@ shapes:
     type: list
     member:
       shape: HitRateDataByDomain
-      
+
   HitRateDataByTime:
     type: structure
     members:
@@ -2779,10 +2835,10 @@ shapes:
     type: list
     member:
       shape: HitRateDataByTime
-   
-  GetHitRateDetailedDataResponse:        
+
+  GetHitRateDetailedDataResponse:
     type: structure
-    members:    
+    members:
       DomainIds:
         shape: String
       CdnType:
@@ -2796,9 +2852,9 @@ shapes:
       Granularity:
         shape: String
       HitType:
-        shape: String 
+        shape: String
       Datas:
-        shape: HitRateDataByTimeList      
+        shape: HitRateDataByTimeList
 
   #### 命中率查询（饼图） ####
   GetHitRateDataRequest:
@@ -2809,11 +2865,11 @@ shapes:
     - CdnType
     members:
       StartTime:
-        shape: String      
+        shape: String
       EndTime:
-        shape: String  
+        shape: String
       CdnType:
-        shape: String  
+        shape: String
       DomainIds:
         shape: String
 
@@ -2840,22 +2896,22 @@ shapes:
     type: list
     member:
       shape: HitRateData
-        
-  GetHitRateDataResponse:      
+
+  GetHitRateDataResponse:
     type: structure
     members:
       StartTime:
-        shape: String      
+        shape: String
       EndTime:
-        shape: String  
+        shape: String
       CdnType:
-        shape: String  
+        shape: String
       DomainIds:
-        shape: String 
+        shape: String
       Datas:
         shape: HitRateDataList
- 
-  #### 省份+运营商流量查询 #### 
+
+  #### 省份+运营商流量查询 ####
   GetProvinceAndIspFlowDataRequest:
     type: structure
     required:
@@ -2892,7 +2948,7 @@ shapes:
     type: list
     member:
       shape: ProvinceAndIspFlowDataByIsp
-      
+
   ProvinceAndIspFlowDataByProvince:
     type: structure
     members:
@@ -2906,7 +2962,7 @@ shapes:
     type: list
     member:
       shape: ProvinceAndIspFlowDataByProvince
-  
+
   ProvinceAndIspFlowDataByDomain:
     type: structure
     members:
@@ -2916,12 +2972,12 @@ shapes:
         shape: Long
       Provinces:
         shape: ProvinceAndIspFlowDataByProvinceList
-        
+
   ProvinceAndIspFlowDataByDomainList:
     type: list
     member:
       shape: ProvinceAndIspFlowDataByDomain
-      
+
   ProvinceAndIspFlowDataByTime:
     type: structure
     members:
@@ -2935,7 +2991,7 @@ shapes:
     type: list
     member:
       shape: ProvinceAndIspFlowDataByTime
-  
+
   GetProvinceAndIspFlowDataResponse:
     type: structure
     members:
@@ -2949,7 +3005,7 @@ shapes:
         shape: String
       Provinces:
         shape: String
-      Isps: 
+      Isps:
         shape: String
       ResultType:
         shape: String
@@ -2958,7 +3014,7 @@ shapes:
       Datas:
         shape: String
 
-  #### 省份+运营商带宽查询 #### 
+  #### 省份+运营商带宽查询 ####
   GetProvinceAndIspBandwidthDataRequest:
     type: structure
     required:
@@ -2982,8 +3038,8 @@ shapes:
       ResultType:
         shape: String
       Granularity:
-        shape: String 
-  
+        shape: String
+
   BwDataByIsp:
     type: structure
     members:
@@ -2995,7 +3051,7 @@ shapes:
     type: list
     member:
       shape: BwDataByIsp
-      
+
   BwDataByProvince:
     type: structure
     members:
@@ -3009,7 +3065,7 @@ shapes:
     type: list
     member:
       shape: BwDataByProvince
-      
+
   BwDataByDomain:
     type: structure
     members:
@@ -3037,7 +3093,7 @@ shapes:
     type: list
     member:
       shape: BwDataByTime
-    
+
   GetProvinceAndIspBandwidthDataResponse:
     type: structure
     members:
@@ -3056,10 +3112,10 @@ shapes:
       ResultType:
         shape: String
       Granularity:
-        shape: String 
+        shape: String
       Datas:
         shape: String
-        
+
   #### GetHttpCodeData ####
   GetHttpCodeDataRequest:
     type: structure
@@ -3090,7 +3146,7 @@ shapes:
     type: list
     member:
       shape: HttpCode
-      
+
   HttpCodeData:
     type: structure
     members:
@@ -3105,8 +3161,8 @@ shapes:
   HttpCodeDataList:
     type: list
     member:
-      shape: HttpCodeData   
-    
+      shape: HttpCodeData
+
   GetHttpCodeDataResponse:
     type: structure
     members:
@@ -3120,7 +3176,7 @@ shapes:
         shape: String
       Datas:
         shape: HttpCodeDataList
-        
+
   #### GetHttpCodeDetailedData ####
   GetHttpCodeDetailedDataRequest:
     type: structure
@@ -3137,12 +3193,12 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String   
+        shape: String
       Granularity:
         shape: String
       ResultType:
         shape: String
-  
+
   HttpCodeDataByDomain:
     type: structure
     members:
@@ -3154,7 +3210,7 @@ shapes:
     type: list
     member:
       shape: HttpCodeDataByDomain
-      
+
   HttpCodeDataByTime:
     type: structure
     members:
@@ -3168,7 +3224,7 @@ shapes:
     type: list
     member:
       shape: HttpCodeDataByTime
-      
+
   GetHttpCodeDetailedDataResponse:
     type: structure
     members:
@@ -3179,15 +3235,15 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String   
+        shape: String
       Granularity:
         shape: String
       ResultType:
-        shape: String 
+        shape: String
       Datas:
         shape: HttpCodeDataByTimeList
- 
-  #### GetTopUrlData封装 #### 
+
+  #### GetTopUrlData封装 ####
   GetTopUrlDataRequest:
     type: structure
     required:
@@ -3202,10 +3258,10 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String 
+        shape: String
       LimitN:
         shape: String
-  
+
   UrlList:
     type: structure
     members:
@@ -3219,7 +3275,7 @@ shapes:
     type: list
     member:
       shape: UrlList
-  
+
   GetTopUrlDataResponse:
     type: structure
     members:
@@ -3230,13 +3286,13 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String 
+        shape: String
       LimitN:
         shape: String
       Datas:
         shape: UrlListList
 
-  #### GetAreaData ####        
+  #### GetAreaData ####
   GetAreaDataRequest:
     type: structure
     required:
@@ -3270,7 +3326,7 @@ shapes:
     type: list
     member:
       shape: AreaDataByIsp
-      
+
   AreaDataByArea:
     type: structure
     members:
@@ -3290,7 +3346,7 @@ shapes:
     type: list
     member:
       shape: AreaDataByArea
-        
+
   GetAreaDataResponse:
     type: structure
     members:
@@ -3301,10 +3357,10 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String      
+        shape: String
       Datas:
         shape: AreaDataByAreaList
-        
+
   #### GetIspData ####
   GetIspDataRequest:
     type: structure
@@ -3320,8 +3376,8 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String  
-  
+        shape: String
+
   IspData:
     type: structure
     members:
@@ -3338,8 +3394,8 @@ shapes:
   IspDataList:
     type: list
     member:
-      shape: IspData     
-  
+      shape: IspData
+
   GetIspDataResponse:
     type: structure
     members:
@@ -3350,11 +3406,11 @@ shapes:
       CdnType:
         shape: String
       DomainIds:
-        shape: String      
+        shape: String
       Datas:
         shape: IspDataList
 
-  #### GetDomainRankingListData ####        
+  #### GetDomainRankingListData ####
   GetDomainRankingListDataRequest:
     type: structure
     required:
@@ -3367,8 +3423,8 @@ shapes:
       EndTime:
         shape: String
       CdnType:
-        shape: String  
-        
+        shape: String
+
   DomainRankingList:
     type: structure
     members:
@@ -3390,8 +3446,8 @@ shapes:
     type: list
     member:
       shape: DomainRankingList
-  
-  GetDomainRankingListDataResponse: 
+
+  GetDomainRankingListDataResponse:
     type: structure
     members:
       StartTime:
@@ -3399,11 +3455,11 @@ shapes:
       EndTime:
         shape: String
       CdnType:
-        shape: String     
+        shape: String
       Datas:
-        shape: DomainRankingListList  
-  
-  #### GetLiveFlowDataByStream #### 
+        shape: DomainRankingListList
+
+  #### GetLiveFlowDataByStream ####
   GetLiveFlowDataByStreamRequest:
     type: structure
     required:
@@ -3424,7 +3480,7 @@ shapes:
         shape: String
       Granularity:
         shape: String
-  
+
   LiveFlowDataByRegion:
     type: structure
     members:
@@ -3436,7 +3492,7 @@ shapes:
     type: list
     member:
       shape: LiveFlowDataByRegion
-  
+
   LiveFlowDataByStream:
     type: structure
     members:
@@ -3450,7 +3506,7 @@ shapes:
     type: list
     member:
       shape: LiveFlowDataByStream
-  
+
   LiveFlowDataByTime:
     type: structure
     members:
@@ -3463,9 +3519,9 @@ shapes:
   LiveFlowDataByTimeList:
     type: list
     member:
-      shape: LiveFlowDataByTime    
-  
-  GetLiveFlowDataByStreamResponse:  
+      shape: LiveFlowDataByTime
+
+  GetLiveFlowDataByStreamResponse:
     type: structure
     members:
       StartTime:
@@ -3480,9 +3536,9 @@ shapes:
         shape: String
       Datas:
         shape: LiveFlowDataByTimeList
-  
+
   #### GetLiveBandwidthDataByStream ####
-  GetLiveBandwidthDataByStreamRequest:  
+  GetLiveBandwidthDataByStreamRequest:
     type: structure
     required:
     - StartTime
@@ -3501,8 +3557,8 @@ shapes:
       ResultType:
         shape: String
       Granularity:
-        shape: String  
-  
+        shape: String
+
   BWDataByRegion:
     type: structure
     members:
@@ -3514,8 +3570,8 @@ shapes:
     type: list
     member:
       shape: BWDataByRegion
-  
-  BWDataByStream: 
+
+  BWDataByStream:
     type: structure
     members:
       StreamUrl:
@@ -3528,7 +3584,7 @@ shapes:
     type: list
     member:
       shape: BWDataByStream
-      
+
   BWDataByTime:
     type: structure
     members:
@@ -3542,8 +3598,8 @@ shapes:
     type: list
     member:
       shape: BWDataByTime
-  
-  GetLiveBandwidthDataByStreamResponse: 
+
+  GetLiveBandwidthDataByStreamResponse:
     type: structure
     members:
       StartTime:
@@ -3558,8 +3614,8 @@ shapes:
         shape: String
       Datas:
         shape: BWDataByTimeList
-        
-  ####GetLiveOnlineUserDataByDomain####        
+
+  ####GetLiveOnlineUserDataByDomain####
   GetLiveOnlineUserDataByDomainRequest:
     type: structure
     required:
@@ -3580,10 +3636,10 @@ shapes:
       Granularity:
         shape: String
 
-  DomainOnlineUserDataByRegion: 
+  DomainOnlineUserDataByRegion:
     type: structure
     members:
-        Region: 
+        Region:
           shape: String
         OnlineUser:
           shape: Long
@@ -3591,7 +3647,7 @@ shapes:
     type: list
     member:
       shape: DomainOnlineUserDataByRegion
-  
+
   DomainOnlineUserDataByDomain:
     type: structure
     members:
@@ -3605,7 +3661,7 @@ shapes:
     type: list
     member:
       shape: DomainOnlineUserDataByDomain
-      
+
   DomainOnlineUserDataByTime:
     type: structure
     members:
@@ -3618,9 +3674,9 @@ shapes:
   DomainOnlineUserDataByTimeList:
     type: list
     member:
-      shape: DomainOnlineUserDataByTime   
-  
-  GetLiveOnlineUserDataByDomainResponse:  
+      shape: DomainOnlineUserDataByTime
+
+  GetLiveOnlineUserDataByDomainResponse:
     type: structure
     members:
       StartTime:
@@ -3634,11 +3690,11 @@ shapes:
       ResultType:
         shape: String
       Granularity:
-        shape: String  
+        shape: String
       Datas:
         shape: DomainOnlineUserDataByTimeList
-  
-  #### GetLiveOnlineUserDataByStream ####  
+
+  #### GetLiveOnlineUserDataByStream ####
   GetLiveOnlineUserDataByStreamRequest:
     type: structure
     required:
@@ -3658,8 +3714,8 @@ shapes:
       ResultType:
         shape: String
       Granularity:
-        shape: String 
-        
+        shape: String
+
   StreamOnlineUserDataByByRegion:
     type: structure
     members:
@@ -3671,7 +3727,7 @@ shapes:
     type: list
     member:
       shape: StreamOnlineUserDataByByRegion
-  
+
   StreamOnlineUserDataByStream:
     type: structure
     members:
@@ -3685,7 +3741,7 @@ shapes:
     type: list
     member:
       shape: StreamOnlineUserDataByStream
-      
+
   StreamOnlineUserDataByTime:
     type: structure
     members:
@@ -3699,7 +3755,7 @@ shapes:
     type: list
     member:
       shape: StreamOnlineUserDataByTime
-  
+
   GetLiveOnlineUserDataByStreamResponse:
     type: structure
     members:
@@ -3716,7 +3772,7 @@ shapes:
       Datas:
         shape: StreamOnlineUserDataByTimeList
 
-  #### GetLiveTopOnlineUserData ####        
+  #### GetLiveTopOnlineUserData ####
   GetLiveTopOnlineUserDataRequest:
     type: structure
     required:
@@ -3733,7 +3789,7 @@ shapes:
         shape: String
       LimitN:
         shape: String
-  
+
   TopOnlineUserDataByByRegion:
     type: structure
     members:
@@ -3745,7 +3801,7 @@ shapes:
     type: list
     member:
       shape: TopOnlineUserDataByByRegion
-  
+
   TopOnlineUserDataByStream:
     type: structure
     members:
@@ -3758,9 +3814,9 @@ shapes:
   TopOnlineUserDataByStreamList:
     type: list
     member:
-      shape: TopOnlineUserDataByStream    
-  
-  GetLiveTopOnlineUserDataResponse:  
+      shape: TopOnlineUserDataByStream
+
+  GetLiveTopOnlineUserDataResponse:
     type: structure
     members:
       StartTime:
@@ -3772,7 +3828,7 @@ shapes:
       ResultType:
         shape: String
       LimitN:
-        shape: String      
+        shape: String
       Datas:
         shape: TopOnlineUserDataByStreamList
 

@@ -1,0 +1,167 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2018-12-25'
+  endpointPrefix: postgresql
+  jsonVersion: '1.1'
+  serviceFullName: postgresql Service
+  signatureVersion: v4
+  targetPrefix: postgresql
+  protocol: query-json
+
+operations:
+  DescribeDBInstances:
+    name: DescribeDBInstances
+    http:
+      method: GET
+
+  CreateDBInstance:
+    name: CreateDBInstance
+    http:
+      method: GET
+
+  RebootDBInstance:
+    name: RebootDBInstance
+    http:
+      method: GET
+
+  DeleteDBInstance:
+    name: DeleteDBInstance
+    http:
+      method: GET
+
+  CreateDBInstanceReadReplica:
+    name: CreateDBInstanceReadReplica
+    http:
+      method: GET
+
+  ModifyDBInstanceSpec:
+    name: ModifyDBInstanceSpec
+    http:
+      method: GET
+
+  DescribeDBEngineVersions:
+    name: DescribeDBEngineVersions
+    http:
+      method: GET
+
+  UpgradeDBInstanceEngineVersion:
+    name: UpgradeDBInstanceEngineVersion
+    http:
+      method: GET
+
+  ModifyDBInstanceType:
+    name: ModifyDBInstanceType
+    http:
+      method: GET
+
+  AllocateDBInstanceEip:
+    name: AllocateDBInstanceEip
+    http:
+      method: GET
+
+  ReleaseDBInstanceEip:
+    name: ReleaseDBInstanceEip
+    http:
+      method: GET
+
+  ModifyDBInstanceAvailabilityZone:
+    name: ModifyDBInstanceAvailabilityZone
+    http:
+      method: GET
+
+  CreateSecurityGroup:
+    name: CreateSecurityGroup
+    http:
+      method: GET
+
+  DescribeSecurityGroup:
+    name: DescribeSecurityGroup
+    http:
+      method: GET
+
+  DeleteSecurityGroup:
+    name: DeleteSecurityGroup
+    http:
+      method: GET
+
+  ModifySecurityGroup:
+    name: ModifySecurityGroup
+    http:
+      method: GET
+
+  CloneSecurityGroup:
+    name: CloneSecurityGroup
+    http:
+      method: GET
+
+  ModifySecurityGroupRule:
+    name: ModifySecurityGroupRule
+    http:
+      method: GET
+
+  SecurityGroupRelation:
+    name: SecurityGroupRelation
+    http:
+      method: GET
+
+  ModifySecurityGroupRuleName:
+    name: ModifySecurityGroupRuleName
+    http:
+      method: GET
+
+  ModifyDBParameterGroup:
+    name: ModifyDBParameterGroup
+    http:
+      method: GET
+
+  ResetDBParameterGroup:
+    name: ResetDBParameterGroup
+    http:
+      method: GET
+
+  DescribeDBParameterGroup:
+    name: DescribeDBParameterGroup
+    http:
+      method: GET
+
+  DescribeEngineDefaultParameters:
+    name: DescribeEngineDefaultParameters
+    http:
+      method: GET
+
+  CreateDBParameterGroup:
+    name: CreateDBParameterGroup
+    http:
+      method: GET
+
+  DeleteDBParameterGroup:
+    name: DeleteDBParameterGroup
+    http:
+      method: GET
+
+  DescribeDBBackups:
+    name: DescribeDBBackups
+    http:
+      method: GET
+
+  CreateDBBackup:
+    name: CreateDBBackup
+    http:
+      method: GET
+
+  RestoreDBInstanceFromDBBackup:
+    name: RestoreDBInstanceFromDBBackup
+    http:
+      method: GET
+
+  OverrideDBInstance:
+    name: OverrideDBInstance
+    http:
+      method: GET
+
+  DescribeDBLogFiles:
+    name: DescribeDBLogFiles
+    http:
+      method: GET

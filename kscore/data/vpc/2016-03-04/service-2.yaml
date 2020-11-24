@@ -333,6 +333,42 @@ operations:
     name: DescribeVpcPeeringConnections
     http:
       method: GET
+  DescribeIpv6PublicIpAddresses:
+    name: DescribeIpv6PublicIpAddresses
+    http:
+      method: GET
+  CreateIpv6PublicIp:
+    name: CreateIpv6PublicIp
+    http:
+      method: POST
+  ModifyIpv6PublicIp:
+    name: ModifyIpv6PublicIp
+    http:
+      method: POST
+  ReleaseIpv6PublicIp:
+    name: ReleaseIpv6PublicIp
+    http:
+      method: POST
+  DescribeIpv6NetworkInterfaces:
+    name: DescribeIpv6NetworkInterfaces
+    http:
+      method: GET
+  AssociateVpcCidrBlock:
+    name: AssociateVpcCidrBlock
+    http:
+      method: POST
+  AllocateSubnetIpv6CidrBlock:
+    name: AllocateSubnetIpv6CidrBlock
+    http:
+      method: POST
+  CreateNetworkInterface:
+    name: CreateNetworkInterface
+    http:
+      method: POST
+  DeleteNetworkInterface:
+    name: DeleteNetworkInterface
+    http:
+      method: POST
 
 shapes:
   Id:

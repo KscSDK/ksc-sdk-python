@@ -80,6 +80,106 @@ operations:
     name: DescribeInstancesWithListener
     http:
       method: GET
+  CreateLoadBalancerAcl:
+    name: CreateLoadBalancerAcl
+    http:
+      method: GET
+  DeleteLoadBalancerAcl:
+    name: DeleteLoadBalancerAcl
+    http:
+      method: GET
+  ModifyLoadBalancerAcl:
+    name: ModifyLoadBalancerAcl
+    http:
+      method: GET
+  DescribeLoadBalancerAcls:
+    name: DescribeLoadBalancerAcls
+    http:
+      method: GET
+  CreateLoadBalancerAclEntry:
+    name: CreateLoadBalancerAclEntry
+    http:
+      method: GET
+  DeleteLoadBalancerAclEntry:
+    name: DeleteLoadBalancerAclEntry
+    http:
+      method: GET
+  AssociateLoadBalancerAcl:
+    name: AssociateLoadBalancerAcl
+    http:
+      method: GET
+  DisassociateLoadBalancerAcl:
+    name: DisassociateLoadBalancerAcl
+    http:
+      method: GET
+  CreateHostHeader:
+    name: CreateHostHeader
+    http:
+      method: POST
+  CreateSlbRule:
+    name: CreateSlbRule
+    http:
+      method: POST
+  ModifySlbRule:
+    name: ModifySlbRule
+    http:
+      method: POST
+  DeleteRule:
+    name: DeleteRule
+    http:
+      method: POST
+  DescribeRules:
+    name: DescribeRules
+    http:
+      method: GET
+  DeleteHostHeader:
+    name: DeleteHostHeader
+    http:
+      method: POST
+  ModifyHostHeader:
+    name: ModifyHostHeader
+    http:
+      method: POST
+  DescribeHostHeaders:
+    name: DescribeHostHeaders
+    http:
+      method: GET
+  CreateBackendServerGroup:
+    name: CreateBackendServerGroup
+    http:
+      method: POST
+  DeleteBackendServerGroup:
+    name: DeleteBackendServerGroup
+    http:
+      method: POST
+  ModifyBackendServerGroup:
+    name: ModifyBackendServerGroup
+    http:
+      method: POST
+  ModifyBackendServerGroupHealthCheck:
+    name: ModifyBackendServerGroupHealthCheck
+    http:
+      method: POST
+  DescribeBackendServerGroups:
+    name: DescribeBackendServerGroups
+    http:
+      method: GET
+  RegisterBackendServer:
+    name: RegisterBackendServer
+    http:
+      method: POST
+  ModifyBackendServer:
+    name: ModifyBackendServer
+    http:
+      method: POST
+  DeregisterBackendServer:
+    name: DeregisterBackendServer
+    http:
+      method: POST
+  DescribeBackendServers:
+    name: DescribeBackendServers
+    http:
+      method: GET
 
 shapes:
   Id:

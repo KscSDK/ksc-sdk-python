@@ -24,6 +24,7 @@ import platform
 from kscore import __version__
 import kscore.configloader
 import kscore.credentials
+import kscore.domain
 import kscore.client
 from kscore.exceptions import ConfigNotFound, ProfileNotFound
 from kscore.exceptions import UnknownServiceError
@@ -145,6 +146,7 @@ class Session(object):
         self._profile = None
         self._config = None
         self._credentials = None
+        self._domain = None
         self._profile_map = None
         # This is a dict that stores per session specific config variable
         # overrides via set_config_variable().
@@ -157,6 +159,7 @@ class Session(object):
 
     def _register_components(self):
         self._register_credential_provider()
+        self._register_domain_provider()
         self._register_data_loader()
         self._register_endpoint_resolver()
         self._register_event_emitter()
@@ -169,6 +172,11 @@ class Session(object):
         self._components.lazy_register_component(
             'credential_provider',
             lambda:  kscore.credentials.create_credential_resolver(self))
+
+    def _register_domain_provider(self):
+        self._components.lazy_register_component(
+            'domain_provider',
+            lambda:  kscore.domain.create_domain_resolver(self))
 
     def _register_data_loader(self):
         dynamic_loader = self.get_config_variable('dynamic_loader')
@@ -405,6 +413,17 @@ class Session(object):
         """
         self._client_config = client_config
 
+    def set_domain(self, domain):
+        self._domain = kscore.domain.Domain(domain)
+
+    def get_domain(self):
+        if self._domain is None:
+            self._domain = self._components.get_component(
+                'domain_provider').load_domain()
+        return self._domain
+
+
+
     def set_credentials(self, access_key, secret_key, token=None):
         """
         Manually create credentials for this session.  If you would
@@ -425,6 +444,7 @@ class Session(object):
         self._credentials = kscore.credentials.Credentials(access_key,
                                                              secret_key,
                                                              token)
+
 
     def get_credentials(self):
         """
@@ -804,6 +824,15 @@ class Session(object):
                 token=ks_session_token)
         else:
             credentials = self.get_credentials()
+
+        if endpoint_url is None:
+            domain = self.get_domain()
+            if domain:
+                if use_ssl:
+                    endpoint_url = 'https://' + service_name + '.' + domain.ks_domain
+                else:
+                    endpoint_url = 'http://' + service_name + '.' + domain.ks_domain
+
         endpoint_resolver = self.get_component('endpoint_resolver')
         client_creator = kscore.client.ClientCreator(
             loader, endpoint_resolver, self.user_agent(), event_emitter,

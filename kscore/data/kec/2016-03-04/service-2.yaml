@@ -13,7 +13,7 @@ operations:
 
   RunInstances:
     http:
-      method: GET
+      method: POST
 
   TerminateInstances:
     http:
@@ -110,3 +110,15 @@ operations:
   DescribeDedicatedHosts:
     http:
       method: GET
+
+  DescribeAvailabilityZones:
+    http:
+      method: GET
+
+  ModifyInstanceAutoDeleteTime:
+    http:
+      method: GET
+
+  DistributeIpv6:
+    http:
+      method: POST
