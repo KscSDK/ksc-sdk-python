@@ -96,3 +96,20 @@ if __name__ == "__main__":
     m = client.add_cluster_epc_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
     '''
+    #查询已经存在的云服务器
+    param = {
+        "ClusterId": "84d89f76-xxxx-47a2-b37e-xxxxx",
+        "InstanceId.1": "8d1cae6a-xxxx-47f6-8fe6-xxxxx"
+    }
+    m = client.describe_existed_instances(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+
+    #添加已有的服务器
+    param = {
+        "ClusterId": "84d89f76-xxxx-47a2-b37e-xxxxx",
+        "ExistedInstanceKecSet.1.NodeRole": "worker",
+        "ExistedInstanceKecSet.1.KecPara.1": "{\"InstanceId\":\"8d1cae6a-23c3-47f6-8fe6-xxxxx\",\"ImageId\":\"81cc01c3-4d64-40fa-89af-xxxxx\",\"InstancePassword\":\"xxxxx\"}"
+    }
+
+    m = client.add_existed_instances(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
