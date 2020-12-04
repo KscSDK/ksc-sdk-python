@@ -2335,9 +2335,9 @@ shapes:
     members:
       Time:
         shape: String
-      DomainId:
+      SrcCodeSum:
         shape: SrcHttpCodeList
-      SrcCodes:
+      Domains:
         shape: SrcHttpCodeDataByDomainList
   SrcHttpCodeDataByTimeList:
     type: list
