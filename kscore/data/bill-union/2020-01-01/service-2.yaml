@@ -1,0 +1,30 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2020-01-01'
+  endpointPrefix: bill-union
+  jsonVersion: '1.1'
+  serviceFullName: Bill-Union Service
+  signatureVersion: v4
+  targetPrefix: bill-union
+  protocol: query-json
+
+operations:
+  DescribeBillSummaryByPayMode:
+    http:
+      method: GET
+  DescribeBillSummaryByProduct:
+    http:
+      method: GET
+  DescribeBillSummaryByProject:
+    http:
+      method: GET
+
+  DescribeInstanceSummaryBills:
+    http:
+      method: GET
+
+  DescribeProductCode:
+    http:
+      method: GET
+
