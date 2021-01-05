@@ -48,6 +48,33 @@ Config 配置
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
 
 ----------------
+接口输出自定义 SDK版本 >1.3.45
+----------------
++ 通过自定义映射yaml文件，文件名称必须为customer.yaml
+
++ customer.yaml必须放置在 您的路径/service名称/官网服务版本号 的路径下
+
++ 以EIP为例 需要放在 您的路径/eip/2016-03-04/customer.yaml
+
++ customer.yaml示例
+
+::
+
+  DescribeAddresses:
+    PublicIp: address
+    AllocationId: uuid
+    AddressesSet: ips
+
+
++ 使用示例
+
+::
+
+eipClient = s.create_client("eip", region, use_ssl=True,customer_path='your path')
+
+
+
+----------------
 金山云-私有云域名配置 SDK版本 >1.3.32
 ----------------
 

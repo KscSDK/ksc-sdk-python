@@ -10,6 +10,7 @@
 # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
+import collections
 import copy
 import logging
 import kscore.serialize
@@ -35,12 +36,12 @@ from kscore.utils import switch_to_virtual_host_style
 from kscore.utils import switch_host_s3_accelerate
 from kscore.utils import S3_ACCELERATE_ENDPOINT
 
-
 logger = logging.getLogger(__name__)
 
 
 class ClientCreator(object):
     """Creates client objects for a service."""
+
     def __init__(self, loader, endpoint_resolver, user_agent, event_emitter,
                  retry_handler_factory, retry_config_translator,
                  response_parser_factory=None):
@@ -56,12 +57,13 @@ class ClientCreator(object):
                       endpoint_url=None, verify=None,
                       credentials=None, scoped_config=None,
                       api_version=None,
-                      client_config=None):
+                      client_config=None,
+                      customer_path=None):
         service_model = self._load_service_model(service_name, api_version)
+        customer_model = self._load_customer_model(customer_path, service_name, api_version)
         cls = self._create_client_class(service_name, service_model)
-        client_args = self._get_client_args(
-            service_model, region_name, is_secure, endpoint_url,
-            verify, credentials, scoped_config, client_config)
+        client_args = self._get_client_args(customer_model, service_model, region_name, is_secure, endpoint_url,
+                                            verify, credentials, scoped_config, client_config)
         return cls(**client_args)
 
     def create_client_class(self, service_name, api_version=None):
@@ -79,6 +81,14 @@ class ClientCreator(object):
         class_name = get_service_module_name(service_model)
         cls = type(str(class_name), tuple(bases), class_attributes)
         return cls
+
+    def _load_customer_model(self, path, service_name, api_version=None):
+        if path:
+            json_model = self._loader.load_customer_model(path, service_name, 'service-2', 'customer',
+                                                          api_version=api_version)
+        else:
+            json_model = collections.OrderedDict()
+        return json_model
 
     def _load_service_model(self, service_name, api_version=None):
         json_model = self._loader.load_service_model(service_name, 'service-2',
@@ -132,7 +142,7 @@ class ClientCreator(object):
                 s3_configuration = s3_configuration.copy()
                 # Normalize on different possible values of True
                 if s3_configuration['use_accelerate_endpoint'] in [
-                        True, 'True', 'true']:
+                    True, 'True', 'true']:
                     s3_configuration['use_accelerate_endpoint'] = True
                 else:
                     s3_configuration['use_accelerate_endpoint'] = False
@@ -153,7 +163,7 @@ class ClientCreator(object):
 
         config_kwargs['s3'] = s3_configuration
 
-    def _get_client_args(self, service_model, region_name, is_secure,
+    def _get_client_args(self, customer_model, service_model, region_name, is_secure,
                          endpoint_url, verify, credentials,
                          scoped_config, client_config):
         service_name = service_model.endpoint_prefix
@@ -218,7 +228,8 @@ class ClientCreator(object):
             'request_signer': signer,
             'service_model': service_model,
             'loader': self._loader,
-            'client_config': new_config
+            'client_config': new_config,
+            'customer_model': customer_model
         }
 
     def _create_methods(self, service_model):
@@ -352,7 +363,7 @@ class ClientEndpointBridge(object):
 
     def _make_url(self, hostname, is_secure, supported_protocols):
         if is_secure and 'https' in supported_protocols:
-            scheme ='https'
+            scheme = 'https'
         else:
             scheme = 'http'
         return '%s://%s' % (scheme, hostname)
@@ -426,7 +437,6 @@ class ClientEndpointBridge(object):
 
 
 class BaseClient(object):
-
     # This is actually reassigned with the py->op_name mapping
     # when the client creator creates the subclass.  This value is used
     # because calls such as client.get_paginator('list_objects') use the
@@ -437,7 +447,7 @@ class BaseClient(object):
 
     def __init__(self, serializer, endpoint, response_parser,
                  event_emitter, request_signer, service_model, loader,
-                 client_config):
+                 client_config, customer_model):
         self._serializer = serializer
         self._endpoint = endpoint
         self._response_parser = response_parser
@@ -447,7 +457,7 @@ class BaseClient(object):
         self._client_config = client_config
         self.meta = ClientMeta(event_emitter, self._client_config,
                                endpoint.host, service_model,
-                               self._PY_TO_OP_NAME)
+                               self._PY_TO_OP_NAME, customer_model)
         self._register_handlers()
 
     def _register_handlers(self):
@@ -525,19 +535,43 @@ class BaseClient(object):
             http_response=http, parsed=parsed_response,
             model=operation_model, context=request_context
         )
-        
-        if (operation_name == 'ListMetrics' or 
-        operation_name == 'GetMetricStatistics' or 
-        operation_name == 'GetMetricStatisticsBatch' or 
-        operation_name == 'GetMetricStatisticsBatchV2' or
-        operation_name == 'ListMetricsV3' or
-        operation_name == 'GetMetricStatisticsV3'):
+
+        # result mapping to customer
+        self._mapping_to_customer_resp(parsed_response, operation_name)
+
+        if (operation_name == 'ListMetrics' or
+                operation_name == 'GetMetricStatistics' or
+                operation_name == 'GetMetricStatisticsBatch' or
+                operation_name == 'GetMetricStatisticsBatchV2' or
+                operation_name == 'ListMetricsV3' or
+                operation_name == 'GetMetricStatisticsV3'):
             return parsed_response
 
         if http.status_code >= 300:
             raise ClientError(parsed_response, operation_name)
         else:
             return parsed_response
+
+    def _mapping_to_customer_resp(self, parsed_response, operation_name):
+        if parsed_response and type(parsed_response) == dict and self.meta.customer_model.__contains__(operation_name):
+            self._mapping_recursion(parsed_response, self.meta.customer_model.get(operation_name))
+
+    def _mapping_recursion(self, parsed_response, _dict):
+        _del = []
+        if type(parsed_response) == dict:
+            _p = dict(parsed_response)
+            for _item in _p.items():
+                if _dict.__contains__(_item[0]):
+                    parsed_response[_dict.get(_item[0])] = _item[1]
+                    _del.append(_item[0])
+                if type(_item[1]) == list or type(_item[1]) == dict:
+                    self._mapping_recursion(_item[1], _dict)
+            for _d in _del:
+                del parsed_response[_d]
+        else:
+            for _item in list(parsed_response):
+                if type(_item) == dict:
+                    self._mapping_recursion(_item, _dict)
 
     def _convert_to_request_dict(self, api_params, operation_model,
                                  context=None):
@@ -566,7 +600,6 @@ class BaseClient(object):
         serializer = self._serializer
 
         if operation_model.is_rewrite_protocol:
-
             serializer = kscore.serialize.create_serializer(operation_model.protocol, True)
 
         request_dict = serializer.serialize_to_request(api_params, operation_model)
@@ -709,12 +742,13 @@ class ClientMeta(object):
     """
 
     def __init__(self, events, client_config, endpoint_url, service_model,
-                 method_to_api_mapping):
+                 method_to_api_mapping, customer_model):
         self.events = events
         self._client_config = client_config
         self._endpoint_url = endpoint_url
         self._service_model = service_model
         self._method_to_api_mapping = method_to_api_mapping
+        self._customer_model = customer_model
 
     @property
     def service_model(self):
@@ -727,6 +761,10 @@ class ClientMeta(object):
     @property
     def endpoint_url(self):
         return self._endpoint_url
+
+    @property
+    def customer_model(self):
+        return self._customer_model
 
     @property
     def config(self):
