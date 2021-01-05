@@ -187,10 +187,6 @@ operations:
     http:
       method: GET
 
-  QueryImageList:
-    http:
-      method: GET
-
   EnableImageCaching:
     http:
       method: GET
@@ -208,30 +204,6 @@ operations:
       method: GET
 
   DeleteLocalVolumeSnapshot:
-    http:
-      method: GET
-
-  CreateNetworkInterface:
-    http:
-      method: GET
-
-  DeleteNetworkInterface:
-    http:
-      method: GET
-
-  DescribeNetworkInterfaces:
-    http:
-      method: GET
-
-  CreateKey:
-    http:
-      method: GET
-
-  ImportKey:
-    http:
-      method: GET
-
-  DeleteKey:
     http:
       method: GET
 
