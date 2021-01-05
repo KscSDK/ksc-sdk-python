@@ -48,7 +48,7 @@ Config 配置
     client = s.create_client("iam", ks_access_key_id=ACCESS_KEY_ID, ks_secret_access_key=SECRET_ACCESS_KEY)
 
 ----------------
-接口输出自定义 SDK版本 >1.3.45
+接口输出自定义 SDK版本 >=1.3.46
 ----------------
 + 通过自定义映射yaml文件，文件名称必须为customer.yaml
 
