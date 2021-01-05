@@ -716,7 +716,7 @@ class Session(object):
     def create_client(self, service_name, region_name=None, api_version=None,
                       use_ssl=True, verify=None, endpoint_url=None,
                       ks_access_key_id=None, ks_secret_access_key=None,
-                      ks_session_token=None, config=None):
+                      ks_session_token=None, config=None, customer_path=None):
         """Create a kscore client.
 
         :type service_name: string
@@ -841,7 +841,7 @@ class Session(object):
             service_name=service_name, region_name=region_name,
             is_secure=use_ssl, endpoint_url=endpoint_url, verify=verify,
             credentials=credentials, scoped_config=self.get_scoped_config(),
-            client_config=config, api_version=api_version)
+            client_config=config, api_version=api_version, customer_path=customer_path)
         return client
 
     def get_available_partitions(self):
