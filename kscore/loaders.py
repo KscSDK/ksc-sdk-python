@@ -199,7 +199,7 @@ class YAMLFileLoader(object):
 
         with open(full_path, 'rb') as fp:
             payload = fp.read().decode('utf-8')
-            return OrderedDict(yaml.load(payload))
+            return OrderedDict(yaml.load(payload, Loader=yaml.Loader))
 
 
 def create_loader(search_path_string=None, dynamic_loader=None):
