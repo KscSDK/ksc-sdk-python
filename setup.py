@@ -15,9 +15,12 @@ URL = "https://github.com/KscSDK/ksc-sdk-python"
 
 requires = ['jmespath>=0.7.1,<1.0.0',
             'python-dateutil>=2.1,<3.0.0',
-            'docutils>=0.10',
-            'pyyaml==3.13']
+            'docutils>=0.10']
 
+if sys.version_info.major != 3:
+    requires.append('pyyaml==3.13')
+else:
+    requires.append('pyyaml>=3.13')
 
 if sys.version_info[:2] == (2, 6):
     # For python2.6 we have a few other dependencies.
