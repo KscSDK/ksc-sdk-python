@@ -199,7 +199,7 @@ class YAMLFileLoader(object):
 
         with open(full_path, 'rb') as fp:
             payload = fp.read().decode('utf-8')
-            return OrderedDict(yaml.load(payload))
+            return OrderedDict(yaml.load(payload, Loader=yaml.Loader))
 
 
 def create_loader(search_path_string=None, dynamic_loader=None):
@@ -361,6 +361,14 @@ class Loader(object):
         return sorted(known_api_versions)
 
     @instance_cache
+    def load_customer_model(self, path, service_name, type_name, customer_name, api_version=None):
+        if api_version is None:
+            api_version = self.determine_latest_version(
+                service_name, type_name)
+        full_path = os.path.join(path, service_name, api_version, customer_name)
+        return self.load_customer(full_path)
+
+    @instance_cache
     def load_service_model(self, service_name, type_name, api_version=None):
         """Load a kscore service model
 
@@ -398,6 +406,14 @@ class Loader(object):
                 service_name, type_name)
         full_path = os.path.join(service_name, api_version, type_name)
         return self.load_data(full_path)
+
+    @instance_cache
+    def load_customer(self, path):
+        found = self.file_loader.load_file(path)
+        if found is not None:
+            return found
+            # We didn't find anything that matched on any path.
+        raise DataNotFoundError(data_path=path)
 
     @instance_cache
     def load_data(self, name):
