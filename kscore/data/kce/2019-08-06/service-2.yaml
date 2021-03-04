@@ -62,3 +62,7 @@ operations:
     name: AddExistedInstances
     http:
       method: POST
+  ForceRemoveClusterInstance:
+    name: ForceRemoveClusterInstance
+    http:
+      method: POST
