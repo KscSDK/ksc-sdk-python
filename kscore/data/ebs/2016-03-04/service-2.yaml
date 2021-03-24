@@ -1,0 +1,60 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2016-03-04'
+  endpointPrefix: ebs
+  jsonVersion: '1.1'
+  serviceFullName: ebs Service
+  signatureVersion: v4
+  targetPrefix: ebs
+  protocol: query-json
+
+operations:
+  CreateVolume:
+    name: CreateVolume
+    http:
+      method: GET
+  DescribeVolumes:
+    name: DescribeVolumes
+    http:
+      method: GET
+  DescribeEbsInstances:
+    name: DescribeEbsInstances
+    http:
+      method: GET
+  ValidateAttachInstance:
+    name: ValidateAttachInstance
+    http:
+      method: GET
+  AttachVolume:
+    name: AttachVolume
+    http:
+      method: GET
+  DetachVolume:
+    name: DetachVolume
+    http:
+      method: GET
+  ResizeVolume:
+    name: ResizeVolume
+    http:
+      method: GET
+  ModifyVolume:
+    name: ModifyVolume
+    http:
+      method: GET
+  UpdateVolumeProject:
+    name: UpdateVolumeProject
+    http:
+      method: GET
+  DescribeInstanceVolumes:
+    name: DescribeInstanceVolumes
+    http:
+      method: GET
+  DeleteVolume:
+    name: DeleteVolume
+    http:
+      method: GET
+  RecoveryVolume:
+    name: RecoveryVolume
+    http:
+      method: GET
