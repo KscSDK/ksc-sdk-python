@@ -122,3 +122,95 @@ operations:
   DistributeIpv6:
     http:
       method: POST
+
+  DescribeSpotPriceHistory:
+    http:
+      method: GET
+
+  DescribePrice:
+    http:
+      method: GET
+
+  CreateModel:
+    http:
+      method: GET
+
+  TerminateModels:
+    http:
+      method: GET
+
+  DescribeModels:
+    http:
+      method: GET
+
+  AddVmIntoDataGuard:
+    http:
+      method: GET
+
+  ModifyDataGuardGroups:
+    http:
+      method: GET
+
+  DescribeDataGuardCapacity:
+    http:
+      method: GET
+
+  CreateDataGuardGroup:
+    http:
+      method: GET
+
+  DeleteDataGuardGroups:
+    http:
+      method: GET
+
+  DescribeDataGuardGroup:
+    http:
+      method: GET
+
+  RemoveVmFromDataGuard:
+    http:
+      method: GET
+
+  ImportImage:
+    http:
+      method: GET
+
+  CopyImage:
+    http:
+      method: GET
+
+  DescribeImageSharePermission:
+    http:
+      method: GET
+
+  ModifyImageSharePermission:
+    http:
+      method: GET
+
+  EnableImageCaching:
+    http:
+      method: GET
+
+  DisableImageCaching:
+    http:
+      method: GET
+
+  CreateLocalVolumeSnapshot:
+    http:
+      method: GET
+
+  RollbackLocalVolume:
+    http:
+      method: GET
+
+  DeleteLocalVolumeSnapshot:
+    http:
+      method: GET
+
+  AttachKey:
+    http:
+      method: GET
+
+  DetachKey:
+    http:
+      method: GET

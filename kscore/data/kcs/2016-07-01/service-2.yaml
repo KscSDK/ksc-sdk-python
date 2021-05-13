@@ -11,112 +11,173 @@ metadata:
   protocol: kcs
 
 operations:
+  # 创建实例
   CreateCacheCluster:
     name: CreateCacheCluster
     http:
       method: POST
-
-  DescribeCacheClusters:
-    name: DescribeCacheClusters
-    http:
-      method: GET
-
-  DescribeCacheCluster:
-    name: DescribeCacheCluster
-    http:
-      method: GET
-
-  FlushCacheCluster:
-    name: FlushCacheCluster
-    http:
-      method: PUT
-
-  RenameCacheCluster:
-    name: RenameCacheCluster
-    http:
-      method: PUT
-
-  ResizeCacheCluster:
-    name: ResizeCacheCluster
-    http:
-      method: PUT
-
+  # 删除缓存服务
   DeleteCacheCluster:
     name: DeleteCacheCluster
     http:
       method: DELETE
-
-  SetCacheParameters:
-    name: SetCacheParameters
+  # 更改缓存服务内存大小
+  ResizeCacheCluster:
+    name: ResizeCacheCluster
     http:
       method: PUT
-
+  # 查询缓存服务列表
+  DescribeCacheClusters:
+    name: DescribeCacheClusters
+    http:
+      method: GET
+  # 查询缓存服务详情
+  DescribeCacheCluster:
+    name: DescribeCacheCluster
+    http:
+      method: GET
+  # 清空缓存服务
+  FlushCacheCluster:
+    name: FlushCacheCluster
+    http:
+      method: PUT
+  # 重命名缓存服务
+  RenameCacheCluster:
+    name: RenameCacheCluster
+    http:
+      method: PUT
+  # 添加只读实例
+  AddCacheSlaveNode:
+    name: AddCacheSlaveNode
+    http:
+      method: PUT
+  # 删除只读实例
+  DeleteCacheSlaveNode:
+    name: DeleteCacheSlaveNode
+    http:
+      method: PUT
+  # 查询缓存服务只读实例列表
+  DescribeCacheReadonlyNode:
+    name: DescribeCacheReadonlyNode
+    http:
+      method: GET
+  # 查询概览页
+  StatisticDBInstances:
+    name: StatisticDBInstances
+    http:
+      method: GET
+  # 查询缓存服务参数
   DescribeCacheParameters:
     name: DescribeCacheParameters
     http:
       method: GET
-
-  SetCacheSecurityRules:
-    name: SetCacheSecurityRules
+  # 设置缓存服务参数
+  SetCacheParameters:
+    name: SetCacheParameters
     http:
       method: PUT
-
-  DeleteCacheSecurityRule:
-    name: DeleteCacheSecurityRule
-    http:
-      method: DELETE
-
-  DescribeCacheSecurityRules:
-    name: DescribeCacheSecurityRules
-    http:
-      method: GET
-
+  # 查询地域列表
   DescribeRegions:
     name: DescribeRegions
     http:
       method: GET
-
+  # 查询可用区列表
   DescribeAvailabilityZones:
-     name: DescribeAvailabilityZones
-     http:
-       method: GET
-
+    name: DescribeAvailabilityZones
+    http:
+      method: GET
+  # 创建备份
   CreateSnapshot:
-     name: CreateSnapshot
-     http:
-       method: POST
-
+    name: CreateSnapshot
+    http:
+      method: POST
+  # 备份删除
   DeleteSnapshot:
-     name: DeleteSnapshot
-     http:
-       method: DELETE
-
+    name: DeleteSnapshot
+    http:
+      method: DELETE
+  # 备份恢复
   RestoreSnapshot:
-     name: RestoreSnapshot
-     http:
-       method: PUT
-
-  DescribeSnapshot:
-     name: DescribeSnapshot
-     http:
-       method: GET
-
+    name: RestoreSnapshot
+    http:
+      method: PUT
+  # 备份列表
+  DescribeSnapshots:
+    name: DescribeSnapshots
+    http:
+      method: GET
+  # 备份下载
   DownloadSnapshot:
-     name: DownloadSnapshot
-     http:
-       method: GET
-
+    name: DownloadSnapshot
+    http:
+      method: GET
+  # 备份导出
   ExportSnapshot:
-     name: ExportSnapshot
-     http:
-       method: GET
-
+    name: ExportSnapshot
+    http:
+      method: GET
+  # 备份定时设置
   SetTimingSnapshot:
-     name: SetTimingSnapshot
-     http:
-       method: PUT
+    name: SetTimingSnapshot
+    http:
+      method: PUT
+  # 备份名称修改
+  RenameSnapshot:
+    name: RenameSnapshot
+    http:
+      method: PUT
+  # 备份详情
+  DescribeSnapshot:
+    name: DescribeSnapshot
+    http:
+      method: GET
 
-  StatisticDBInstances:
-     name: StatisticDBInstances
-     http:
-       method: GET
+  CreateSecurityGroup:
+    name: CreateSecurityGroup
+    http:
+      method: POST
+
+  CloneSecurityGroup:
+    name: CloneSecurityGroup
+    http:
+      method: POST
+
+  DeleteSecurityGroup:
+    name: DeleteSecurityGroup
+    http:
+      method: POST
+
+  ModifySecurityGroup:
+    name: ModifySecurityGroup
+    http:
+      method: POST
+
+  DescribeSecurityGroups:
+    name: DescribeSecurityGroups
+    http:
+      method: GET
+
+  DescribeSecurityGroup:
+    name: DescribeSecurityGroup
+    http:
+      method: GET
+
+  AllocateSecurityGroup:
+    name: AllocateSecurityGroup
+    http:
+      method: POST
+
+  DeallocateSecurityGroup:
+    name: DeallocateSecurityGroup
+    http:
+      method: POST
+
+  CreateSecurityGroupRule:
+    name: CreateSecurityGroupRule
+    http:
+      method: POST
+
+  DeleteSecurityGroupRule:
+    name: DeleteSecurityGroupRule
+    http:
+      method: POST

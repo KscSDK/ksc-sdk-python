@@ -9,7 +9,7 @@ if __name__ == "__main__":
     # 创建集群
 
     client = s.create_client("kce", "cn-beijing-6", use_ssl=True)
-
+    '''
     param = {
         "ClusterName": "xxxxx",
         "ClusterManageMode": "DedicatedCluster",
@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     m = client.create_cluster(**param)
     print json.dumps(m, sort_keys=True, indent=4)
-
+    '''
     '''
     #  查询集群列表
     m = client.describe_cluster()
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     m = client.describe_cluster_instance(ClusterId="a77b437f-07c9-4ae7-ac8d-xxxxx")
     print json.dumps(m, sort_keys=True, indent=4)
     '''
-
+    '''
     # 新增节点
     param = {
         "ClusterId": "a77b437f-07c9-4ae7-ac8d-xxxxx",
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     }
     m = client.add_cluster_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
-
+    '''
     '''
     # 删除集群中的节点
     param = {
@@ -57,7 +57,14 @@ if __name__ == "__main__":
     m = client.delete_cluster_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
     '''
-
+    #   强制移除节点,该接口必须在delete_cluster_instances后执行
+    param = {
+        "ClusterId": "a77b437f-07c9-4ae7-ac8d-xxxxx",
+        "InstanceId.1": "0253d503-485e-4adc-8859-xxxxx",
+        "InstanceId.2": "0253d503-485e-4adc-8860-xxxxx",
+    }
+    m = client.force_remove_cluster_instance(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
     # 修改集群基本信息
 
     '''
@@ -96,3 +103,22 @@ if __name__ == "__main__":
     m = client.add_cluster_epc_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
     '''
+    #查询已经存在的云服务器
+    '''
+    param = {
+        "ClusterId": "84d89f76-xxxx-47a2-b37e-xxxxx",
+        "InstanceId.1": "8d1cae6a-xxxx-47f6-8fe6-xxxxx"
+    }
+    m = client.describe_existed_instances(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    
+    #添加已有的服务器
+    param = {
+        "ClusterId": "84d89f76-xxxx-47a2-b37e-xxxxx",
+        "ExistedInstanceKecSet.1.NodeRole": "worker",
+        "ExistedInstanceKecSet.1.KecPara.1": "{\"InstanceId\":\"8d1cae6a-23c3-47f6-8fe6-xxxxx\",\"ImageId\":\"81cc01c3-4d64-40fa-89af-xxxxx\",\"InstancePassword\":\"xxxxx\"}"
+    }
+
+    m = client.add_existed_instances(**param)
+    '''
+    print json.dumps(m, sort_keys=True, indent=4)

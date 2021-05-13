@@ -53,3 +53,33 @@ if __name__ == "__main__":
 
     # 查询机房
     #print(kcsClient.describe_regions(**{'Engine': 'redis', 'Mode': 1}))
+
+    # 创建安全组
+    # print(kcsClient.create_security_group(**{'AvailableZone': 'az', 'Name': 'testPythonSdk', 'Description': 'testPythonSdk'}))
+
+    # 克隆安全组
+    # print(kcsClient.clone_security_group(**{'AvailableZone': 'az', 'Name': 'testPythonSdkClone', 'Description': 'testPythonSdkClone', 'SrcSecurityGroupId': 'srcSecurityGroupId'}))
+
+    # 删除安全组
+    # print(kcsClient.delete_security_group(**{'AvailableZone': 'az', 'SecurityGroupId.1': 'securityGroupId'}))
+
+    # 修改安全组
+    # print(kcsClient.modify_security_group(**{'AvailableZone': 'az', 'Name': 'testPythonSdk777', 'Description': 'testPythonSdk777', 'SecurityGroupId': 'securityGroupId'}))
+
+    # 查询安全组列表
+    # print(kcsClient.describe_security_groups(**{'AvailableZone': 'az'}))
+
+    # 查询安全组详情
+    # print(kcsClient.describe_security_group(**{'AvailableZone': 'az', 'SecurityGroupId': 'securityGroupId'}))
+
+    # 实例绑定安全组
+    # print(kcsClient.allocate_security_group(**{'AvailableZone': 'az', 'CacheId.1': 'cacheId', 'SecurityGroupId.1': 'securityGroupId'}))
+
+    # 实例解绑安全组
+    # print(kcsClient.deallocate_security_group(**{'AvailableZone': 'az', 'CacheId.1': 'cacheId', 'SecurityGroupId': 'securityGroupId'}))
+
+    # 创建安全组规则
+    # print(kcsClient.create_security_group_rule(**{'AvailableZone': 'az', 'SecurityGroupId': 'securityGroupId', 'Cidrs.1': "172.10.12.0/16"}))
+
+    # 删除安全组规则
+    # print(kcsClient.delete_security_group_rule(**{'AvailableZone': 'az', 'SecurityGroupId': 'securityGroupId', 'SecurityGroupRuleId.1': 'securityGroupRuleId'}))
