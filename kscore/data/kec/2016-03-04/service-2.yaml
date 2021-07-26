@@ -214,3 +214,111 @@ operations:
   DetachKey:
     http:
       method: GET
+      
+  DescribeScalingConfiguration:
+    http:
+      method: GET
+
+  CreateScalingConfiguration:
+    http:
+      method: GET
+
+  DeleteScalingConfiguration:
+    http:
+      method: GET
+
+  ModifyScalingConfiguration:
+    http:
+      method: GET
+
+  CreateScalingGroup:
+    http:
+      method: GET
+
+  DescribeScalingGroup:
+    http:
+      method: GET
+
+  ModifyScalingGroup:
+    http:
+      method: GET
+
+  SetKvmProtectedDetach:
+    http:
+      method: GET
+
+  DescribeScalingInstance:
+    http:
+      method: GET
+
+  AttachInstance:
+    http:
+      method: GET
+
+  DetachInstance:
+    http:
+      method: GET
+
+  DescribeScalingActivity:
+    http:
+      method: GET
+
+  DeleteScalingGroup:
+    http:
+      method: GET
+
+  DisableScalingGroup:
+    http:
+      method: GET
+
+  EnableScalingGroup:
+    http:
+      method: GET
+
+  ModifyScalingLoadBalancers:
+    http:
+      method: GET
+
+  DescribeScalingNotification:
+    http:
+      method: GET
+
+  CreateScalingNotification:
+    http:
+      method: GET
+
+  ModifyScalingNotification:
+    http:
+      method: GET
+
+  CreateScalingPolicy:
+    http:
+      method: GET
+
+  DescribeScalingPolicy:
+    http:
+      method: GET
+
+  ModifyScalingPolicy:
+    http:
+      method: GET
+
+  DeleteScalingPolicy:
+    http:
+      method: GET
+
+  CreateScheduledTask:
+    http:
+      method: GET
+
+  DescribeScheduledTask:
+    http:
+      method: GET
+
+  ModifyScheduledTask:
+    http:
+      method: GET
+
+  DeleteScheduledTask:
+    http:
+      method: GET
