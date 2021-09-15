@@ -10,14 +10,6 @@ metadata:
   protocol: query-json
 
 operations:
-  GetMetricStatistics:
-    name: GetMetricStatistics
-    http:
-      method: GET
-  ListMetrics:
-    name: ListMetrics
-    http:
-      method: GET
   ListAlarmPolicy:
     name: ListAlarmPolicy
     http:
