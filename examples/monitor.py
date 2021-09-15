@@ -5,54 +5,54 @@ import json
 
 if __name__ == "__main__":
     s = get_session()
+    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
+    clientv2 = s.create_client("monitorv2", "cn-beijing-6", use_ssl=True)
+
     '''
     通用产品线，不包含容器（docker）
     '''
     #ListMetrics
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.list_metrics(InstanceID="3f092bb4-7461-4dac-9ee5-xxxxx",
+    m = client.list_metrics(InstanceID="293bbbc1-6c27-4567-89fc-xxxxx",
                             Namespace="kec",
                             PageIndex="1",
                             PageSize="10")
     print(json.dumps(m, sort_keys=True, indent=4))
 
     #GetMetricStatistics
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.get_metric_statistics(
-        InstanceID="227d550e-88d4-428e-8b90-xxxxx",
-        Namespace="eip",
-        MetricName="eip.bps.in",
-        StartTime="2019-11-27T20:09:00Z",
-        EndTime="2019-11-27T20:19:00Z",
-        Period="60",
-        Aggregate="Average,Max,Min")
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = client.get_metric_statistics(
+    #    InstanceID="ef6eaa98-8e2b-4629-98e0-xxxxx",
+    #    Namespace="eip",
+    #    MetricName="eip.bps.in",
+    #    StartTime="2021-09-15T10:09:00Z",
+    #    EndTime="2021-09-15T10:19:00Z",
+    #    Period="60",
+    #    Aggregate="Average,Max,Min")
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #GetMetricStatisticsBatch      version=2018-11-14
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
     param = {
         "Namespace":
         "kec",
         "StartTime":
-        "2019-11-27T14:00:00Z",
+        "2021-09-15T10:00:00Z",
         "EndTime":
-        "2019-11-27T14:09:00Z",
+        "2021-09-15T10:09:00Z",
         "Period":
         "180",
         "Aggregate": ["Max", "Min", "Avg"],
         "Metrics": [{
-            "InstanceID": "3f092bb4-7461-4dac-9ee5-xxxxx",
+            "InstanceID": "293bbbc1-6c27-4567-89fc-xxxxx",
             "MetricName": "net.if.in"
         }, {
-            "InstanceID": "3f092bb4-7461-4dac-9ee5-xxxxx",
+            "InstanceID": "293bbbc1-6c27-4567-89fc-xxxxx",
             "MetricName": "cpu.utilizition.total"
         }, {
-            "InstanceID": "ee321b50-1d9b-474c-92d0-xxxxx",
+            "InstanceID": "6a725f27-1c7e-4704-95c8-xxxxx",
             "MetricName": "net.if.out"
         }]
     }
-    m = client.get_metric_statistics_batch_v2(**param)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = client.get_metric_statistics_batch_v2(**param)
+    #print(json.dumps(m, sort_keys=True, indent=4))
     '''
     只支持容器docker（kce），其余产品线不支持。
     '''
@@ -74,12 +74,11 @@ if __name__ == "__main__":
         "Dimensions.4.Name": "PodName",
         "Dimensions.4.Value": "xxxxx-xxxxx-xxxxx",
         # "Dimensions.5.Name":"ContainerName",
-        # "Dimensions.5.Value":"kxxxxx"
+        # "Dimensions.5.Value":"xxxxx"
     }
 
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.list_metrics_v3(**paraml)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = client.list_metrics_v3(**paraml)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #GetMetricStatistics
     paramg = {
@@ -87,8 +86,8 @@ if __name__ == "__main__":
         "Version": "2019-08-12",
         "Namespace": "kce",
         "MetricName": "pod.network.rx",
-        "StartTime": "2019-11-26T17:09:00Z",
-        "EndTime": "2019-11-26T17:19:00Z",
+        "StartTime": "2021-09-15T10:09:00Z",
+        "EndTime": "2021-09-15T10:19:00Z",
         "Period": "60",
         "Aggregate": "Average,Max,Min",
         "Dimensions.0.Name": "ClusterId",
@@ -105,29 +104,24 @@ if __name__ == "__main__":
         # "Dimensions.5.Value":"xxxxx"
     }
 
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.get_metric_statistics_v3(**paramg)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = client.get_metric_statistics_v3(**paramg)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #ListAlarmPolicy
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.list_alarm_policy(PageIndex=1, PageSize=1)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.list_alarm_policy(PageIndex=1, PageSize=10)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #DescribeAlarmPolicy
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.describe_alarm_policy(PolicyId=25232)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.describe_alarm_policy(PolicyId=25232)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #DescribePolicyObject
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.describe_policy_object(PolicyId=25232, PageIndex=1, PageSize=10)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.describe_policy_object(PolicyId=25232, PageIndex=1, PageSize=10)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #DescribeAlarmReceives
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.describe_alarm_receives(PolicyId=25232)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.describe_alarm_receives(PolicyId=25232)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #AddAlarmReceives
     paraml = {
@@ -137,9 +131,8 @@ if __name__ == "__main__":
         "ContactId": [1985, 3607],
     }
 
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.add_alarm_receives(**paraml)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.add_alarm_receives(**paraml)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #DeleteAlarmReceives
     paraml = {
@@ -148,25 +141,21 @@ if __name__ == "__main__":
         "ContactId": [1985, 3607],
     }
 
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.delete_alarm_receives(**paraml)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.delete_alarm_receives(**paraml)
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #GetUserGroup
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.get_user_group()
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.get_user_group()
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #GetAlertUser
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.get_alert_user(UserGrpId=[879, 1484])
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.get_alert_user(UserGrpId=[879, 1484])
+    #print(json.dumps(m, sort_keys=True, indent=4))
 
     #UpdateAlertUserStatus
     paraml = {
         "UserId": [1985, 3607],
         "UserStatus": 1,
     }
-    client = s.create_client("monitor", "cn-beijing-6", use_ssl=True)
-    m = client.update_alert_user_status(**paraml)
-    print(json.dumps(m, sort_keys=True, indent=4))
+    #m = clientv2.update_alert_user_status(**paraml)
+    #print(json.dumps(m, sort_keys=True, indent=4))
