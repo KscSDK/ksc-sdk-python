@@ -60,11 +60,11 @@ if __name__ == "__main__":
     param = {
         'HostId.1': 'd25d1261-506b-427b-8637-2fc6f7fcc0e1',
         'HostId.2': 'f3207312-8be0-44d5-af1c-96f899751711',
-        'Filter.1.Name':'host-type',
-        'Filter.1.Value.1':'CAL',
-        'Filter.1.Value.2':'SSD',
-        'MaxResults':20,
-        'NextToken':1
+        'Filter.1.Name': 'host-type',
+        'Filter.1.Value.1': 'CAL',
+        'Filter.1.Value.2': 'SSD',
+        'MaxResults': 20,
+        'NextToken': 1
     }
     resp=epcClient.describe_epcs(**param)
     print(resp)
@@ -74,7 +74,6 @@ if __name__ == "__main__":
     #     'HostId': 'a0e64a51-2fb9-4dd6-b5c4-0dcd8ff79b87'
     # }
     # resp = epcClient.start_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------StopEpc (关闭云物理主机)--------------------------
@@ -82,7 +81,6 @@ if __name__ == "__main__":
     #     'HostId': 'a0e64a51-2fb9-4dd6-b5c4-0dcd8ff79b87'
     # }
     # resp = epcClient.stop_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------RebootEpc(重启云物理主机)--------------------------
@@ -90,7 +88,6 @@ if __name__ == "__main__":
     #     'HostId': 'a0e64a51-2fb9-4dd6-b5c4-0dcd8ff79b87'
     # }
     # resp = epcClient.reboot_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ReinstallEpc（重装云物理主机）--------------------------
@@ -105,7 +102,6 @@ if __name__ == "__main__":
     #     'Raid':'Raid1'
     # }
     # resp = epcClient.reinstall_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ReinstallCustomerEpc（重装托管云物理主机）--------------------------
@@ -115,7 +111,6 @@ if __name__ == "__main__":
     #     'Path': '/linux.0'
     # }
     # resp = epcClient.reinstall_customer_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ReinstallCustomerEpc（重装托管云物理主机）--------------------------
@@ -125,7 +120,6 @@ if __name__ == "__main__":
     #     'Path': '/linux.0'
     # }
     # resp = epcClient.reinstall_customer_epc(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------CreateImage(创建自定义镜像)--------------------------
@@ -134,7 +128,6 @@ if __name__ == "__main__":
     #     'ImageName': 'image-test'
     # }
     # resp = epcClient.create_image(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifyImage(修改自定义镜像信息)--------------------------
@@ -143,7 +136,6 @@ if __name__ == "__main__":
     #     'ImageName': 'image-update'
     # }
     # resp = epcClient.modify_image(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DeleteImage(删除自定义镜像)--------------------------
@@ -151,7 +143,6 @@ if __name__ == "__main__":
     #     'ImageId': 'a0e64a51-2fb9-4dd6-b5c4-0dcd8ff79b87'
     # }
     # resp = epcClient.delete_image(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeImages(查看云物理主机镜像信息)--------------------------
@@ -166,7 +157,6 @@ if __name__ == "__main__":
     #     'Filter.2.Value.1': 'local',
     # }
     # resp = epcClient.describe_images(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifyNetworkInterfaceAttribute(修改网卡信息)--------------------------
@@ -178,7 +168,6 @@ if __name__ == "__main__":
     #     'SecurityGroupId.1': '251905f6-1316-4533-a599-ac8481a9afae'
     # }
     # resp = epcClient.modify_network_interface_attribute(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifyDns(修改网卡DNS信息)--------------------------
@@ -189,7 +178,6 @@ if __name__ == "__main__":
     #     'DNS2': '10.10.10.10'
     # }
     # resp = epcClient.modify_dns(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifySecurityGroup(修改网卡安全组信息)--------------------------
@@ -199,7 +187,6 @@ if __name__ == "__main__":
     #     'SecurityGroupId.1': '251905f6-1316-4533-a599-ac8481a9afae'
     # }
     # resp = epcClient.modify_security_group(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribePhysicalMonitor(获取硬件监控信息)--------------------------
@@ -207,7 +194,6 @@ if __name__ == "__main__":
     #     'HostId': 'a0e64a51-2fb9-4dd6-b5c4-0dcd8ff79b87'
     # }
     # resp = epcClient.describe_physical_monitor(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------CreateRemoteManagement（创建带外管理)--------------------------
@@ -217,7 +203,6 @@ if __name__ == "__main__":
     #     'Name': 'test'
     # }
     # resp = epcClient.create_remote_management(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifyRemoteManagement（修改带外管理)--------------------------
@@ -226,7 +211,6 @@ if __name__ == "__main__":
     #     'Name': 'test2'
     # }
     # resp = epcClient.modify_remote_management(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DeleteRemoteManagement（删除带外管理)--------------------------
@@ -234,7 +218,6 @@ if __name__ == "__main__":
     #     'RemoteManagementId': 'b75c6797-5562-4af4-b96f-38aeb0b4329f'
     # }
     # resp = epcClient.delete_remote_management(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------GetDynamicCode（获取验证码)--------------------------
@@ -242,7 +225,6 @@ if __name__ == "__main__":
     #     'RemoteManagementId': 'b75c6797-5562-4af4-b96f-38aeb0b4329f'
     # }
     # resp = epcClient.get_dynamic_code(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeRemoteManagements（查询带外管理信息)--------------------------
@@ -250,7 +232,6 @@ if __name__ == "__main__":
     #     'RemoteManagementId.1': '5d6620c1-6a23-40e4-bfd6-9be8ed7afc65'
     # }
     # resp = epcClient.describe_remote_managements(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeEpcManagements（查询ILO信息)--------------------------
@@ -262,7 +243,6 @@ if __name__ == "__main__":
     #     'NextToken': '1'
     # }
     # resp = epcClient.describe_epc_managements(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeVpns（查询VPN信息)--------------------------
@@ -272,7 +252,6 @@ if __name__ == "__main__":
     #     'Pin': '111111'
     # }
     # resp = epcClient.describe_vpns(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifyHyperThreading(修改超线程)--------------------------
@@ -281,7 +260,6 @@ if __name__ == "__main__":
     #     'HyperThreadingStatus': 'start'
     # }
     # resp = epcClient.modify_hyper_threading(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ResetPassword(重置密码)--------------------------
@@ -290,7 +268,6 @@ if __name__ == "__main__":
     #     'Password': 'Test@Passwrod'
     # }
     # resp = epcClient.reset_password(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeEpcStocks(查询云物理主机的库存)--------------------------
@@ -300,7 +277,6 @@ if __name__ == "__main__":
     #     'Filter.1.Value.1': 'SSD'
     # }
     # resp = epcClient.describe_epc_stocks(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeEpcDeviceAttributes(获取云物理设备列表信息)--------------------------
@@ -310,7 +286,6 @@ if __name__ == "__main__":
     #     'Filter.1.Value.1': 'SSD'
     # }
     # resp = epcClient.describe_epc_device_attributes(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeProcesses(查询工单信息)--------------------------
@@ -322,7 +297,6 @@ if __name__ == "__main__":
     #     'NextToken': '1'
     # }
     # resp = epcClient.describe_processes(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------CreateProcess(创建故障替换工单)--------------------------
@@ -338,7 +312,6 @@ if __name__ == "__main__":
     #     'MachineCount': '1'
     # }
     # resp = epcClient.create_process(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DeleteProcess(删除工单信息)--------------------------
@@ -346,7 +319,7 @@ if __name__ == "__main__":
     #     'OperationProcessId': '0a8b50f2-589a-445a-913a-b095fe60a726',
     # }
     # resp = epcClient.delete_process(**param)
-    # # # 或者
+
     # print(resp)
 
     # ------------------ReplyProcess(回复工单信息)--------------------------
@@ -355,7 +328,6 @@ if __name__ == "__main__":
     #     'Remarks': 'test'
     # }
     # resp = epcClient.reply_process(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeInspections(物理机巡检信息)--------------------------
@@ -364,7 +336,7 @@ if __name__ == "__main__":
     #     'NextToken': '1'
     # }
     # resp = epcClient.describe_inspections(**param)
-    # # # 或者
+
     # print(resp)
 
     # ------------------CreateCabinet （创建机柜）-------------------------
@@ -375,7 +347,6 @@ if __name__ == "__main__":
     #     'AvailabilityZone': 'cn-shanghai-3a'
     # }
     # resp = epcClient.create_cabinet(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------DescribeCabinets(获取云物理主机托管机柜列表信息)--------------------------
@@ -385,7 +356,6 @@ if __name__ == "__main__":
     #     'NextToken': '1'
     # }
     # resp = epcClient.describe_cabinets(**param)
-    # # # 或者
     # print(resp)
 
     # ------------------ModifySecurityGroup(修改网卡安全组信息)--------------------------
@@ -395,5 +365,4 @@ if __name__ == "__main__":
     #     'SecurityGroupId.1': '251905f6-1316-4533-a599-ac8481a9afae'
     # }
     # resp = epcClient.modify_security_group(**param)
-    # # # 或者
     # print(resp)
