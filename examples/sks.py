@@ -12,21 +12,44 @@ if __name__ == "__main__":
     region='cn-beijing-6'
     # region='cn-shanghai-2'
     sksClient = s.create_client("sks", region, use_ssl=True)
-    #query
-    allKeys=sksClient.describe_keys()
-    prettyPrinter().pprint(allKeys)
-    #create
-    # createKey = sksClient.create_key(**{"KeyName":"j-test-3"})
-    # prettyPrinter().pprint(createKey)
-     #import
-    # importKey = sksClient.import_key(**{"KeyName":"j-test-5","PublicKey":"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCcbmgQsS4zM43iFsCo31GtUfp1/cdTXhFha4MkvWnSQaz4Z7ehDHqx9nT2fadY1f0hBD4aNDO3bf+3zUSejOcJw15xlTtiNQ57ttH4LsG+6CP03h9WYYwcCtsnlaPfVr0LldSpLSiHa2UrhuAVItGe6v54+6e8ncueiA6fUW1jUw== root"})
-    # prettyPrinter().pprint(importKey)
 
-    #modify
-    # modifyKey = sksClient.modify_key(**{"KeyId":"005d19f6-774d-4631-9eda-3dbbd34100d1","KeyName":"modify-test"})
-    # prettyPrinter().pprint(modifyKey)
+    # 注:如果参数名中包含.请使用JSON格式数据，如参数名 HostId.N 、 Filter.N.Name 、 Filter.N.Value.1
+    # ------------------DescribeKeys(获取密钥列表信息)--------------------------
+    param = {
+        'KeyId.1': '89e84941-41fb-43e3-8426-43676ac11b0b',
+        'MaxResults': 20,
+        'NextToken': 1
+    }
+    resp=sksClient.describe_keys(**param)
+    print(resp)
 
-     #delete
-    # deleteKey = sksClient.delete_key(**{"KeyId":"a748558d-8994-4f5e-add1-9c4230115608"})
-    # prettyPrinter().pprint(deleteKey)
+    # ------------------CreateKey(创建密钥)--------------------------
+    # param = {
+    #     'KeyName': 'test'
+    # }
+    # resp = sksClient.create_key(**param)
+    # print(resp)
+
+    # ------------------ImportKey(导入密钥)--------------------------
+    # param = {
+    #     'KeyName': 'test-import',
+    #     "PublicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCcbmgQsS4zM43iFsCo31GtUfp1/cdTXhFha4MkvWnSQaz4Z7ehDHqx9nT2fadY1f0hBD4aNDO3bf+3zUSejOcJw15xlTtiNQ57ttH4LsG+6CP03h9WYYwcCtsnlaPfVr0LldSpLSiHa2UrhuAVItGe6v54+6e8ncueiA6fUW1jUw== root"
+    # }
+    # resp = sksClient.import_key(**param)
+    # print(resp)
+
+    # ------------------ModifyKey(修改密钥信息)--------------------------
+    # param = {
+    #     'KeyId': 'f3a5e823-2713-4ffc-920c-f0b57dffd8f8',
+    #     "KeyName": "test-update"
+    # }
+    # resp = sksClient.modify_key(**param)
+    # print(resp)
+
+    # ------------------DeleteKey(删除密钥)--------------------------
+    # param = {
+    #     'KeyId': 'f3a5e823-2713-4ffc-920c-f0b57dffd8f8'
+    # }
+    # resp = sksClient.delete_key(**param)
+    # print(resp)
 
