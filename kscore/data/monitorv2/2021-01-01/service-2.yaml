@@ -1,0 +1,54 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2021-01-01'
+  endpointPrefix: monitor
+  jsonVersion: '1.1'
+  serviceFullName: KSC Monitor Service
+  signatureVersion: v4
+  targetPrefix: monitor
+  protocol: query-json
+
+operations:
+  ListAlarmPolicy:
+    name: ListAlarmPolicy
+    http:
+      method: GET
+  DescribeAlarmPolicy:
+    name: DescribeAlarmPolicy
+    http:
+      method: GET
+  DescribePolicyObject:
+    name: DescribePolicyObject
+    http:
+      method: GET
+  DescribeAlarmReceives:
+    name: DescribeAlarmReceives
+    http:
+      method: GET
+  AddAlarmReceives:
+    name: AddAlarmReceives
+    protocol: json
+    http:
+      method: POST
+      requestUri: ?Action=AddAlarmReceives&Version=2021-01-01
+  DeleteAlarmReceives:
+    name: DeleteAlarmReceives
+    protocol: json
+    http:
+      method: POST
+      requestUri: ?Action=DeleteAlarmReceives&Version=2021-01-01
+  GetUserGroup:
+    name: GetUserGroup
+    http:
+      method: GET
+  GetAlertUser:
+    name: GetAlertUser
+    http:
+      method: GET
+  UpdateAlertUserStatus:
+    name: UpdateAlertUserStatus
+    protocol: json
+    http:
+      method: POST
+      requestUri: ?Action=UpdateAlertUserStatus&Version=2021-01-01

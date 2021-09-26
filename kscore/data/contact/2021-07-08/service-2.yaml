@@ -1,0 +1,16 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2021-07-08'
+  endpointPrefix: contact
+  jsonVersion: '1.1'
+  serviceFullName: contact Service
+  signatureVersion: v4
+  targetPrefix: contact
+  protocol: query-json
+
+operations:
+  queryInMailList:
+    http:
+      method: GET
+
