@@ -56,7 +56,7 @@ if __name__ == "__main__":
     }
     m = client.delete_cluster_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
-    '''
+    
     #   强制移除节点,该接口必须在delete_cluster_instances后执行
     param = {
         "ClusterId": "a77b437f-07c9-4ae7-ac8d-xxxxx",
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     print json.dumps(m, sort_keys=True, indent=4)
     # 修改集群基本信息
 
-    '''
+    
     m = client.modify_cluster_info(ClusterId="6f7f35d4-5c91-42f2-bab8-xxxxx", ClusterName="xxxxx",
                                    ClusterDesc="xxxxx")
     print json.dumps(m, sort_keys=True, indent=4)
@@ -120,5 +120,152 @@ if __name__ == "__main__":
     }
 
     m = client.add_existed_instances(**param)
+    
+    print json.dumps(m, sort_keys=True, indent=4)
     '''
+    ''' 
+    #创建节点池
+    param = {
+        "NodePoolName": "xuan-create",
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "EnableAutoScale": True,
+        "MinSize": 0,
+        "DesiredCapacity": 0,
+        "MaxSize": 2,
+        "Label.0.Key": "labelk",
+        "Label.0.Value": "labelv",
+        "Taint.0.Key": "taintk",
+        "Taint.0.Value": "taintv",
+        "Taint.0.Effect": "NoSchedule",
+        "NodeTemplate.ImageId": "13107fc5-0dd8-xxx-xxxxx",
+        # "NodeTemplate.KeyId.1":"c409d431-xxx-xxx-9834-xxxxx",
+        "NodeTemplate.DataDiskGb": 0,
+        "NodeTemplate.SubnetId.1": "2c83f2d6-8160-xxx-xxxxx",
+        "NodeTemplate.InstanceType": "E1.4B",
+        "NodeTemplate.SecurityGroupId": "8728f772-6186-xxx-xxxxx",
+        "NodeTemplate.ChargeType": "HourlyInstantSettlement",
+        "NodeTemplate.SystemDisk.DiskType": "Local_SSD",
+        "NodeTemplate.SubnetStrategy": "balanced-distribution",
+        "NodeTemplate.AdvancedSetting.DockerPath": "/data/docker",
+        "NodeTemplate.AdvancedSetting.Schedulable": True,
+        "NodeTemplate.AdvancedSetting.UserScript": "ZWNobyAicG9zIiA+cG9z",
+        "NodeTemplate.AdvancedSetting.PreUserScript": "ZWNobyAicHJlIiA+cHJl",
+        "NodeTemplate.AdvancedSetting.ContainerLogMaxSize": 100,
+        "NodeTemplate.AdvancedSetting.ContainerLogMaxFiles": 10,
+        "NodeTemplate.SystemDisk.DiskSize": 20,
+        "NodeTemplate.ProjectId": 0,
+        "NodeTemplate.Password": "Xuanxxx",
+        "NodeTemplate.DataDisk.1.Type": "EHDD",
+        "NodeTemplate.DataDisk.1.Size": 30
+    }
+    m = client.create_node_pool(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    
+    #查询节点池
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId.1": "64xxxxxxxx"
+    }
+    m = client.describe_node_pool(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    #修改节点池
+    param = {
+        "NodePoolId": "64xxxxxxxxx",
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolName": "xuan-update",
+        "EnableAutoScale": False,
+        "MinSize": 1,
+        "DesiredCapacity": 0,
+        "MaxSize": 3,
+        "Label.0.Key": "labelkupdate",
+        "Label.0.Value": "labelvupdate",
+        "Taint.0.Key": "taintkupdate",
+        "Taint.0.Value": "taintvupdate",
+        "Taint.0.Effect": "NoSchedule",
+        "UpdateExistingNodes": True
+    }
+    m = client.modify_node_pool(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    
+    #删除节点池
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId.1": "64xxxxxxxxx"
+    }
+    m = client.delete_node_pool(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    # 修改节点池模板
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId": "64xxxxxxxxx",
+        "NodeTemplate.ImageId": "13107fc5-0dd8-xxx-xxxxx",
+        # "NodeTemplate.KeyId.1":"c409d431-xxx-xxx-9834-xxxxx",
+        "NodeTemplate.DataDiskGb": 0,
+        "NodeTemplate.SubnetId.1": "2c83f2d6-8160-xxx-xxxxx",
+        "NodeTemplate.InstanceType": "E1.2B",
+        "NodeTemplate.SecurityGroupId": "8728f772-6186-xxx-xxxxx",
+        "NodeTemplate.ChargeType": "HourlyInstantSettlement",
+        "NodeTemplate.SystemDisk.DiskType": "Local_SSD",
+        "NodeTemplate.SubnetStrategy": "balanced-distribution",
+        "NodeTemplate.AdvancedSetting.DockerPath": "/data/docker/xuan",
+        "NodeTemplate.AdvancedSetting.Schedulable": True,
+        "NodeTemplate.AdvancedSetting.UserScript": "ZWNobyAicG9zIiA+cG9z",
+        "NodeTemplate.AdvancedSetting.PreUserScript": "ZWNobyAicHJlIiA+cHJl",
+        "NodeTemplate.AdvancedSetting.ContainerLogMaxSize": 110,
+        "NodeTemplate.AdvancedSetting.ContainerLogMaxFiles": 11,
+        "NodeTemplate.SystemDisk.DiskSize": 20,
+        "NodeTemplate.ProjectId": 0,
+        "NodeTemplate.Password": "Xuanxxx",
+        "NodeTemplate.DataDisk.1.Type": "EHDD",
+        "NodeTemplate.DataDisk.1.Size": 30
+    }
+    m = client.modify_node_template(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+
+    #修改节点池扩容策略
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "ScaleUpPolicy": "most-pods"
+    }
+    m = client.modify_node_pool_scale_up_policy(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    #修改节点池缩容策略
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "MaxEmptyBulkDelete": 1,
+        "ScaleDownDelayAfterAdd": 1,
+        "ScaleDownEnabled": True,
+        "ScaleDownUnneededTime": 1,
+        "ScaleDownUtilizationThreshold": 60
+
+    }
+    m = client.modify_node_pool_scale_down_policy(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    
+    #将集群内节点移入节点池
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId": "64xxxxxxxxx",
+        "InstanceIds.1": "7654649f-bbc4-xxx-xxxxx"
+    }
+    m = client.add_cluster_instance_to_node_pool(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    #节点池节点设置缩容保护
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId": "64xxxxxxxxx",
+        "InstanceIds.1": "7654649f-bbc4-xxx-xxxxx",
+        "ProtectedFromScaleDown": True
+    }
+    m = client.protected_from_scale_down(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+    '''
+    #移除节点池节点
+    param = {
+        "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
+        "NodePoolId": "64xxxxxxxxx",
+        "InstanceIds.1": "40b1fee5-5d0d-xxx-xxxxx",
+        "InstanceDeleteMode": "Terminate"
+    }
+    m = client.delete_cluster_instances_from_node_pool(**param)
     print json.dumps(m, sort_keys=True, indent=4)

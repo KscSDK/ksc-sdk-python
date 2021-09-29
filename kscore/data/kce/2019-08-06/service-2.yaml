@@ -66,3 +66,44 @@ operations:
     name: ForceRemoveClusterInstance
     http:
       method: POST
+  CreateNodePool:
+    name: CreateNodePool
+    http:
+      method: POST
+  DescribeNodePool:
+    name: DescribeNodePool
+    http:
+      method: GET
+  DeleteNodePool:
+    name: DeleteNodePool
+    http:
+      method: POST
+  ModifyNodePool:
+    name: ModifyNodePool
+    http:
+      method: POST
+  ModifyNodeTemplate:
+    name: ModifyNodeTemplate
+    http:
+      method: POST
+  ModifyNodePoolScaleUpPolicy:
+    name: ModifyNodePoolScaleUpPolicy
+    http:
+      method: POST
+  ModifyNodePoolScaleDownPolicy:
+    name: ModifyNodePoolScaleDownPolicy
+    http:
+      method: POST
+  AddClusterInstanceToNodePool:
+    name: AddClusterInstanceToNodePool
+    http:
+      method: POST
+  ProtectedFromScaleDown:
+    name: ProtectedFromScaleDown
+    http:
+      method: POST
+  DeleteClusterInstancesFromNodePool:
+    name: DeleteClusterInstancesFromNodePool
+    http:
+      method: GET
+
