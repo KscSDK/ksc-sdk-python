@@ -66,6 +66,10 @@ operations:
     name: ForceRemoveClusterInstance
     http:
       method: POST
+  DescribeEpcImage:
+    name: DescribeEpcImage
+    http:
+      method: GET
   CreateNodePool:
     name: CreateNodePool
     http:
