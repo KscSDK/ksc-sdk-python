@@ -9,7 +9,9 @@ if __name__ == "__main__":
     # 创建集群
 
     client = s.create_client("kce", "cn-beijing-6", use_ssl=True)
+    client2 = s.create_client("kcev2", "cn-beijing-6", use_ssl=True)
     '''
+    #创建集群（老版2019-08-06不推荐）
     param = {
         "ClusterName": "xxxxx",
         "ClusterManageMode": "DedicatedCluster",
@@ -29,6 +31,35 @@ if __name__ == "__main__":
     m = client.create_cluster(**param)
     print json.dumps(m, sort_keys=True, indent=4)
     '''
+
+    #创建集群（新版2020-12-31推荐）
+    param = {
+        "ClusterName": "xxxxx",
+        "ClusterManageMode": "DedicatedCluster",
+        "VpcId": "15552848-026b-4ad6-a3e3-xxxxx",
+        "PodCidr": "10.32.0.0/14",
+        "ServiceCidr": "10.254.0.0/16",
+        "NetworkType": "Flannel",
+        "K8sVersion": "v1.19.3",
+        "ReserveSubnetId": "9729f4c0-93ee-4e2a-9b2a-xxxxx",
+        "PublicApiServer": "{\"LineId\":\"5fc2595f-1bfd-481b-bf64-2d08f116d800\",\"BandWidth\": \"10\",\"ChargeType\": \"PostPaidByDay\"}",
+        "InstanceForNode.1.NodeRole": "Master_Etcd",
+        "InstanceForNode.1.NodeConfig.1.Para": "{\"MaxCount\":3,\"MinCount\":3,\"ImageId\":\"a0699172-76c6-4885-a4e9-0799a9cb811d\",\"SubnetId\":\"4a077fa8-a239-47bf-a18f-xxxxx\",\"InstancePassword\":\"Root23123\",\"SecurityGroupId\":\"0dcd8356-9e7e-43ae-897b-xxxxx\",\"DataDiskGb\":0,\"ChargeType\":\"Daily\",\"InstanceType\":\"I3.2A\",\"PurchaseTime\":0,\"InstanceName\":\"kce-py\",\"InstanceNameSuffix\":1}",
+        "InstanceForNode.1.NodeConfig.1.AdvancedSetting.DockerPath": "/data1/docker",
+        "InstanceForNode.1.NodeConfig.1.AdvancedSetting.DataDisk.FileSystem": "ext3",
+        "InstanceForNode.1.NodeConfig.1.AdvancedSetting.DataDisk.MountTarget": "/data1",
+        "InstanceForNode.2.NodeRole": "Worker",
+        "InstanceForNode.2.NodeConfig.1.Para": "{\"MaxCount\":1,\"MinCount\":1,\"ImageId\":\"a0699172-76c6-4885-a4e9-0799a9cb811d\",\"SubnetId\":\"4a077fa8-a239-47bf-a18f-xxxxx\",\"InstancePassword\":\"Root23123\",\"SecurityGroupId\":\"0dcd8356-9e7e-43ae-897b-xxxxx\",\"DataDiskGb\":0,\"ChargeType\":\"Daily\",\"InstanceType\":\"I3.2A\",\"PurchaseTime\":0,\"InstanceName\":\"kce-py\",\"InstanceNameSuffix\":1}",
+        "InstanceForNode.2.NodeConfig.1.AdvancedSetting.DockerPath": "/data1/docker",
+        "InstanceForNode.2.NodeConfig.1.AdvancedSetting.Label.1.Key": "label",
+        "InstanceForNode.2.NodeConfig.1.AdvancedSetting.Label.1.Value": "worker",
+        "InstanceForNode.2.NodeConfig.1.AdvancedSetting.DataDisk.FileSystem": "ext4",
+        "InstanceForNode.2.NodeConfig.1.AdvancedSetting.DataDisk.MountTarget": "/data1",
+    }
+
+    m = client2.create_cluster(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+
     '''
     #  查询集群列表
     m = client.describe_cluster()
@@ -120,9 +151,17 @@ if __name__ == "__main__":
     }
 
     m = client.add_existed_instances(**param)
-    
     print json.dumps(m, sort_keys=True, indent=4)
     '''
+
+    #获取裸金属服务器支持的节点操作系统
+    param = {
+        # "ImageId": "84d89f76-xxxx-47a2-b37e-xxxxx",
+    }
+
+    m = client.describe_epc_image(**param)
+    print json.dumps(m, sort_keys=True, indent=4)
+
     ''' 
     #创建节点池
     param = {
@@ -259,7 +298,7 @@ if __name__ == "__main__":
     }
     m = client.protected_from_scale_down(**param)
     print json.dumps(m, sort_keys=True, indent=4)
-    '''
+    
     #移除节点池节点
     param = {
         "ClusterId": "d9a0adf0-a8f3-xxx-xxxxx",
@@ -269,3 +308,4 @@ if __name__ == "__main__":
     }
     m = client.delete_cluster_instances_from_node_pool(**param)
     print json.dumps(m, sort_keys=True, indent=4)
+    '''

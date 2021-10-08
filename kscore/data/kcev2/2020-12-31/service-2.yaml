@@ -1,0 +1,16 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2020-12-31'
+  endpointPrefix: kce
+  jsonVersion: '1.1'
+  serviceFullName: KSC Kce Service
+  signatureVersion: v4
+  targetPrefix: kce
+  protocol: query-json
+
+operations:
+  CreateCluster:
+    name: CreateCluster
+    http:
+      method: POST
