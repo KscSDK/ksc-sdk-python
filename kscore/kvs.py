@@ -1,6 +1,9 @@
 # -*- encoding:utf-8 -*-
-from kscore.session import get_session
 import time
+
+from kscore.session import get_session
+
+
 class KvsClient:
 	def __init__(self,service_name,region_name,use_ssl,ks_access_key_id,ks_secret_access_key):
 		s = get_session()
@@ -70,6 +73,9 @@ class KvsClient:
 
 	def QueryPipeline(self,PipelineName="usual"):
 		return self.client.query_pipeline(PipelineName=PipelineName)
+
+	def QueryTaskStats(self,Preset="", StartDate=20170101):
+		return self.client.query_task_stats(Preset=Preset, StartDate=StartDate)
 
 	def GetInterfaceNumber(self,StartUnixTime,EndUnixTime,Granularity=5,ResultType=1):
 		return self.client.get_interface_number(StartUnixTime=StartUnixTime,EndUnixTime=EndUnixTime,Granularity=Granularity,ResultType=ResultType)
