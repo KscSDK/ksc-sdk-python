@@ -108,6 +108,11 @@ operations:
     name: QueryPipeline
     http:
       method: GET
+      
+  QueryTaskStats:
+    name: QueryTaskStats
+    http:
+      method: GET
 
   GetInterfaceNumber:
     name: GetInterfaceNumber
