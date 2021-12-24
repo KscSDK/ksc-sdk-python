@@ -22,7 +22,7 @@ Config 配置
 
 + 获取安全凭证方法：
 
-参见金山云文档： https://docs.ksyun.com/directories/1600
+参见金山云文档： https://docs.ksyun.com/documents/40311
 
 + 通过文件配置及管理密钥，参考examples内示例：
 
