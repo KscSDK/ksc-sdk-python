@@ -5,9 +5,9 @@ import sys
 
 from setuptools import setup, find_packages
 
-AUTHOR = "liuyichen,xuyaming"
+AUTHOR = "liuyichen,xuyaming,ksc_online_sdk"
 
-AUTHOR_EMAIL = "ksc_sdk@kingsoft.com,xuyaming@kingsoft.com"
+AUTHOR_EMAIL = "ksc_sdk@kingsoft.com,xuyaming@kingsoft.com,ksc_online_sdk@kingsoft.com"
 
 KEYWORDS = "ksc-sdk-python"
 
