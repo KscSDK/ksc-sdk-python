@@ -135,9 +135,9 @@ if __name__ == "__main__":
         "ClusterId": "a77b437f-07c9-4ae7-ac8d-xxxxx",
         "InstanceId.1": "0253d503-485e-4adc-8859-xxxxx",
         "InstanceId.2": "0253d503-485e-4adc-8860-xxxxx",
-        "AdvancedSetting.ExtraArgs.Kubelet.1.CustomArg": "--feature-gates=EphemeralContainers=true",
-        "AdvancedSetting.ExtraArgs.Kubelet.2.CustomArg": "--read-only-port=0",
-        "AdvancedSetting.ExtraArgs.Kubelet.3.CustomArg": "--cluster-dns=127.0.0.1"
+        "AdvancedSetting.ExtraArg.Kubelet.1.CustomArg": "--feature-gates=EphemeralContainers=true",
+        "AdvancedSetting.ExtraArg.Kubelet.2.CustomArg": "--read-only-port=0",
+        "AdvancedSetting.ExtraArg.Kubelet.3.CustomArg": "--cluster-dns=127.0.0.1"
     }
     m = client.add_cluster_epc_instances(**param)
     print json.dumps(m, sort_keys=True, indent=4)
