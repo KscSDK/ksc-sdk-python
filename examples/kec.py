@@ -172,6 +172,7 @@ if __name__ == "__main__":
 
     # 创建弹性伸缩配置
     # pprint("-------------------------------创建弹性伸缩配置---------------------------------")
+    # # API参数参见: https://docs.ksyun.com/documents/28246
     # res = client.create_scaling_configuration(**{
     #     "ScalingConfigurationName": "test-scaling-configuration",
     #     "ImageId": "IMG-5465174a-6d71-4770-b8e1-917a0dd92466",
@@ -189,6 +190,7 @@ if __name__ == "__main__":
 
     # 编辑弹性伸缩配置
     # pprint("-------------------------------编辑弹性伸缩配置---------------------------------")
+    # # API参数参见: https://docs.ksyun.com/documents/28247
     # res = client.modify_scaling_configuration(**{
     #     "ScalingConfigurationId": res["ScalingConfigurationId"],
     #     "ScalingConfigurationName": "test-scaling-configuration123",
