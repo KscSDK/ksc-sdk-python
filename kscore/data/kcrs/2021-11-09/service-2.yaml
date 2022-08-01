@@ -1,0 +1,124 @@
+---
+version: '2.0'
+metadata:
+  apiVersion: '2021-11-09'
+  endpointPrefix: kcrs
+  jsonVersion: '1.1'
+  serviceFullName: KSC Kcrs Service
+  signatureVersion: v4
+  targetPrefix: kcrs
+  protocol: query-json
+
+operations:
+  CreateInstance:
+    name: CreateInstance
+    http:
+      method: POST
+  DescribeInstance:
+    name: DescribeInstance
+    http:
+      method: GET
+  DescribeInstanceUsage:
+    name: DescribeInstanceUsage
+    http:
+      method: GET
+  DeleteInstance:
+    name: DeleteInstance
+    http:
+      method: GET
+  CreateInstanceToken:
+    name: CreateInstanceToken
+    http:
+      method: POST
+  ModifyInstanceTokenStatus:
+    name: ModifyInstanceTokenStatus
+    http:
+      method: POST
+  ModifyInstanceTokenInformation:
+    name: ModifyInstanceTokenInformation
+    http:
+      method: POST
+  DescribeInstanceToken:
+    name: DescribeInstanceToken
+    http:
+      method: GET
+  DeleteInstanceToken:
+    name: DeleteInstanceToken
+    http:
+      method: GET
+  CreateInternalEndpoint:
+    name: CreateInternalEndpoint
+    http:
+      method: POST
+  DescribeInternalEndpointDns:
+    name: DescribeInternalEndpointDns
+    http:
+      method: GET
+  DeleteInternalEndpointDns:
+    name: DeleteInternalEndpointDns
+    http:
+      method: GET
+  CreateNamespace:
+    name: CreateNamespace
+    http:
+      method: POST
+  DescribeNamespace:
+    name: DescribeNamespace
+    http:
+      method: GET
+  ModifyNamespaceType:
+    name: ModifyNamespaceType
+    http:
+      method: POST
+  DeleteNamespace:
+    name: DeleteNamespace
+    http:
+      method: GET
+  DescribeRepository:
+    name: DescribeRepository
+    http:
+      method: GET
+  DeleteRepository:
+    name: DeleteRepository
+    http:
+      method: GET
+  ModifyRepoDesc:
+    name: ModifyRepoDesc
+    http:
+      method: POST
+  DescribeImages:
+    name: DescribeImages
+    http:
+      method: GET
+  DeleteImages:
+    name: DeleteImages
+    http:
+      method: GET
+  DeleteRepoTag:
+    name: DeleteRepoTag
+    http:
+      method: GET
+  StartImageScan:
+    name: StartImageScan
+    http:
+      method: GET
+  DescribeImageScan:
+    name: DescribeImageScan
+    http:
+      method: GET
+  CreateWebhookTrigger:
+    name: CreateWebhookTrigger
+    http:
+      method: POST
+  DescribeWebhookTrigger:
+    name: DescribeWebhookTrigger
+    http:
+      method: GET
+  ModifyWebhookTrigger:
+    name: ModifyWebhookTrigger
+    http:
+      method: POST
+  DeleteWebhookTrigger:
+    name: DeleteWebhookTrigger
+    http:
+      method: GET
