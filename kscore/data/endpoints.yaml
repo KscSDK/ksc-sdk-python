@@ -165,6 +165,29 @@ partitions:
         cn-shanghai-2:
           protocols:
           - http
+    kes:
+      defaults:
+        credentialScope:
+          service: kes
+      endpoints:
+        cn-shanghai-3:
+          protocols:
+            - http
+        cn-beijing-1:
+          protocols:
+            - http
+        cn-beijing-3:
+          protocols:
+            - http
+        cn-beijing-6:
+          protocols:
+            - http
+        cn-shanghai-1:
+          protocols:
+            - http
+        cn-shanghai-2:
+          protocols:
+            - http
 
     tag:
       defaults:

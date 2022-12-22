@@ -1,0 +1,49 @@
+---
+version: '1.0'
+
+metadata:
+  apiVersion: '2020-12-15'
+  endpointPrefix: kes
+  jsonVersion: '1.1'
+  serviceFullName: KES Service
+  signatureVersion: v4
+  targetPrefix: kes
+ # protocol: kes
+  protocol: query-json
+
+operations:
+  # 创建集群
+  LaunchCluster:
+    name: LaunchCluster
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-12-15/LaunchCluster
+  # 查看所有集群的信息
+  ListClusters:
+    name: ListClusters
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-12-15/ListClusters
+  # 查看指定集群详情信息
+  DescribeCluster:
+    name: DescribeCluster
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-12-15/DescribeCluster
+  # 重启指定的金山云KES集群
+  RestartCluster:
+    name: RestartCluster
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-12-15/RestartCluster
+  # 完成现有集群扩容操作
+  ScaleOutInstanceGroups:
+    name: ScaleOutInstanceGroups
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-12-15/ScaleOutInstanceGroups
