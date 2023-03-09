@@ -6,6 +6,7 @@ if __name__ == "__main__":
     s = get_session()
     client = s.create_client("cdn", use_ssl=False)
     clientv2 = s.create_client("cdnv2", use_ssl=False)
+    clientv3 = s.create_client("cdnv3", use_ssl=False)
 
     ''' 
     GetCdnDomains 查询域名列表
@@ -1649,4 +1650,32 @@ if __name__ == "__main__":
 
     # res = client.ip_check(Ip='1.0.0.1')
     # print(res)
+
+    data = {
+    "StartTime":"2023-03-01T08:00+0800",
+    "EndTime":"2023-03-01T08:05+0800",
+    "Metric":"flow",
+    "DataType": "edge",
+    "Interval": 5,
+    "CdnType": "video",
+    "Regions": "CN",
+    "Schema": "",
+    "ResultType": ""
+}
+    res = clientv3.get_server_data(**data)
+    print(res)
+
+    data2 = {
+        "StartTime": "2023-03-01T08:00+0800",
+        "EndTime": "2023-03-01T08:05+0800",
+        "Metric": "flow",
+        "DataType": "edge",
+        "Interval": 5,
+        "CdnType": "video",
+        "Regions": "CN",
+        "Schema": "",
+        "ResultType": ""
+    }
+    res2 = clientv3.get_client_request_data(**data2)
+    print(res2)
 
