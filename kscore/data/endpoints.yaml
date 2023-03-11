@@ -43,6 +43,30 @@ partitions:
 
     cn-shanghai-3:
       description: China ShangHai (PengBoShiVPC)
+    
+    cn-beijing-fin:
+      description: China Beijing (Fin)
+
+    cn-shanghai-fin:
+      description: China ShangHai (Fin)
+    
+    cn-guangzhou-1:
+      description: China GuangZhou
+
+    ap-singapore-1:
+      description: Singapore
+    
+    eu-east-1:
+      description: Russia (Moscow)
+
+    cn-southwest-1:
+      description: China ChongQing
+    
+    cn-central-1:
+      description: China WuHan
+    
+    cn-northwest-1:
+      description: China QingYang
       
   # services
   services:
@@ -105,6 +129,30 @@ partitions:
           protocols:
           - http
           - https
+        cn-beijing-fin:
+          protocols:
+          - http
+          - https
+        cn-shanghai-fin:
+          protocols:
+          - http
+          - https
+        cn-guangzhou-1:
+          protocols:
+          - http
+          - https
+        cn-hongkong-2:
+          protocols:
+          - http
+          - https
+        ap-singapore-1:
+          protocols:
+          - http
+          - https
+        eu-east-1:
+          protocols:
+          - http
+          - https
     monitor:
       defaults:
         credentialScope:
@@ -120,6 +168,42 @@ partitions:
           - http
           - https
         cn-beijing-5:
+          protocols:
+          - http
+          - https
+        cn-hongkong-2:
+          protocols:
+          - http
+          - https
+        cn-guangzhou-1:
+          protocols:
+          - http
+          - https
+        ap-singapore-1:
+          protocols:
+          - http
+          - https
+        eu-east-1:
+          protocols:
+          - http
+          - https
+        cn-beijing-fin:
+          protocols:
+          - http
+          - https
+        cn-shanghai-fin:
+          protocols:
+          - http
+          - https
+        cn-southwest-1:
+          protocols:
+          - http
+          - https
+        cn-central-1:
+          protocols:
+          - http
+          - https
+        cn-northwest-1:
           protocols:
           - http
           - https
@@ -163,6 +247,18 @@ partitions:
           protocols:
           - http
         cn-shanghai-2:
+          protocols:
+          - http
+        cn-guangzhou-1:
+          protocols:
+          - http
+        cn-hongkong-2:
+          protocols:
+          - http
+        ap-singapore-1:
+          protocols:
+          - http
+        eu-east-1:
           protocols:
           - http
     kes:
