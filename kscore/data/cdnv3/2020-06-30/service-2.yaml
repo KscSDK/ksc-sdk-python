@@ -1,0 +1,32 @@
+---
+version: '2.1'
+
+metadata:
+  # Version 
+  apiVersion: '2020-06-30'
+  endpointPrefix: cdn
+  globalEndpoint: cdn.api.ksyun.com
+  jsonVersion: '1.1'
+  serviceFullName: cdn Service
+  signatureVersion: v4
+  targetPrefix: cdnv3
+  protocol: query-json
+
+documentation: ''
+
+operations:
+
+  
+  GetServerData:
+    name: GetServerData
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-06-30/statistics/GetServerData
+
+  GetClientRequestData:
+    name: GetClientRequestData
+    protocol: json
+    http:
+      method: POST
+      requestUri: /2020-06-30/statistics/GetClientRequestData
