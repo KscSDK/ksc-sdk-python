@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # region='cn-shanghai-2'
     sksClient = s.create_client("sks", region, use_ssl=True)
 
-    # 注:如果参数名中包含.请使用JSON格式数据，如参数名 HostId.N 、 Filter.N.Name 、 Filter.N.Value.1
+    # 注:如果参数名中包含.请使用JSON格式数据，如参数名 KeyId.N 、 Filter.N.Name 、 Filter.N.Value.1
     # ------------------DescribeKeys(获取密钥列表信息)--------------------------
     param = {
         'KeyId.1': '89e84941-41fb-43e3-8426-43676ac11b0b',
