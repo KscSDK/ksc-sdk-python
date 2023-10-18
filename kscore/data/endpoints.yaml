@@ -215,3 +215,32 @@ partitions:
         cn-shanghai-1:
           hostname: cdn.api.ksyun.com
 
+    kmr:
+      defaults:
+        credentialScope:
+          service: kmr
+      endpoints:
+        cn-beijing-6:
+          protocols:
+            - http
+        cn-shanghai-2:
+          protocols:
+            - http
+        cn-hongkong-2:
+          protocols:
+            - http
+        cn-beijing-fin:
+          protocols:
+            - http
+        cn-taipei-1:
+          protocols:
+            - http
+        cn-north-vip1:
+          protocols:
+            - http
+        ap-singapore-1:
+          protocols:
+            - http
+        eu-east-1:
+          protocols:
+            - http

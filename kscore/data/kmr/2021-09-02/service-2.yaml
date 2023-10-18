@@ -1,0 +1,54 @@
+---
+version: '2.0'
+
+metadata:
+  apiVersion: '2021-09-02'
+  endpointPrefix: kmr
+  jsonVersion: '1.1'
+  serviceFullName: KMR Service
+  signatureVersion: v4
+  targetPrefix: kmr
+  protocol: query-json
+
+operations:
+  # 创建集群
+  LaunchCluster:
+    name: LaunchCluster
+    protocol: json
+    http:
+      method: POST
+
+  # 查看所有集群列表
+  ListClusters:
+    name: ListClusters
+    protocol: json
+    http:
+      method: POST
+
+  # 查看指定集群详情信息
+  DescribeCluster:
+    name: DescribeCluster
+    protocol: json
+    http:
+      method: POST
+
+  # 集群扩容
+  ScaleOutInstanceGroups:
+    name: ScaleOutInstanceGroups
+    protocol: json
+    http:
+      method: POST
+
+  # 集群缩容
+  ScaleInInstanceGroups:
+    name: ScaleInInstanceGroups
+    protocol: json
+    http:
+      method: POST
+
+  # 集群升配
+  UpgradeInstanceGroups:
+    name: UpgradeInstanceGroups
+    protocol: json
+    http:
+      method: POST
