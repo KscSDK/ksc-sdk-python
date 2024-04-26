@@ -31,6 +31,13 @@ from .cookies import RequestsCookieJar, cookiejar_from_dict
 from .structures import CaseInsensitiveDict
 from .exceptions import InvalidURL
 
+try:
+    from collections import Mapping, MutableMapping
+except ImportError:
+    from collections.abc import Mapping, MutableMapping
+
+
+
 _hush_pyflakes = (RequestsCookieJar,)
 
 NETRC_FILES = ('.netrc', '_netrc')
@@ -163,7 +170,7 @@ def to_key_val_list(value):
     if isinstance(value, (str, bytes, bool, int)):
         raise ValueError('cannot encode objects that are not 2-tuples')
 
-    if isinstance(value, collections.Mapping):
+    if isinstance(value, Mapping):
         value = value.items()
 
     return list(value)
