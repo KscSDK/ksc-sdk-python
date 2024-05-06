@@ -9,7 +9,14 @@ requests (cookies, auth, proxies).
 
 """
 import os
-from collections import Mapping
+# from collections import Mapping
+try:
+    from collections import Mapping, MutableMapping
+except ImportError:
+    from collections.abc import Mapping, MutableMapping
+
+
+
 from datetime import datetime
 
 from .auth import _basic_auth_str
