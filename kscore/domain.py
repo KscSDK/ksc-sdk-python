@@ -13,7 +13,7 @@
 # language governing permissions and limitations under the License.
 import os
 import logging
-
+import re
 import kscore.configloader
 from kscore.exceptions import ConfigNotFound, PartialCredentialsError
 
@@ -64,6 +64,8 @@ class KsDomainProvider(object):
                 continue
             if 'Domain' in config:
                 domain = config['Domain']
+                api_domain = re.sub(r'[\'\"](.*?)[\'\"]', r'\1', str(domain["ks_domain"]))
+                domain.update({'ks_domain': api_domain})
                 if self.KS_DOMAIN in domain:
                     logger.info("Found Domain in ksc config file: %s",
                                 filename)
